@@ -1,4 +1,5 @@
 import type { AttributeVector, EntryWithContext, Extraction } from "@/lib/types";
+import { entrySpan } from "./when";
 import { blend, isEmpty, scale } from "./vector";
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
@@ -73,6 +74,12 @@ export function bestQuote(e: EntryWithContext): string | null {
   return first.length > 140 ? first.slice(0, 137) + "…" : first;
 }
 
+/** A single moment for ordering: the middle of the span the user named, else the day it was added. */
 export function entryDate(e: EntryWithContext): Date {
-  return new Date(e.entry.consumed_at ?? e.entry.created_at);
+  return entrySpan(e.entry)?.mid ?? new Date(e.entry.created_at);
+}
+
+/** False for onboarding and canon entries the user has not dated. Eras and phases skip those. */
+export function isDated(e: EntryWithContext): boolean {
+  return entrySpan(e.entry) !== null;
 }

@@ -15,6 +15,9 @@ import { DIMENSIONS, DIMENSION_LABEL, ENTRY_STATUSES, STATUS_LABEL, type EntrySt
 import { formatDate } from "@/components/entry/entry-row";
 import { describeKey } from "@/lib/taste/vocabulary";
 import { cn } from "@/lib/utils";
+import { WhenPicker } from "@/components/when-picker";
+import { kindLabel } from "@/components/search-results";
+import type { When } from "@/lib/taste/when";
 
 export function EntryScreen({ id }: { id: string }) {
   const router = useRouter();
@@ -30,7 +33,7 @@ export function EntryScreen({ id }: { id: string }) {
     onSuccess: () => { setNote(""); setDims({}); invalidate(); q.refetch(); },
   });
   const update = useMutation({
-    mutationFn: (body: { status?: EntryStatus; private_score?: number | null }) => api(`/api/entries/${id}`, { method: "PATCH", json: body }),
+    mutationFn: (body: { status?: EntryStatus; private_score?: number | null } & Partial<When>) => api(`/api/entries/${id}`, { method: "PATCH", json: body }),
     onSuccess: () => { invalidate(); q.refetch(); },
   });
   const remove = useMutation({ mutationFn: () => api(`/api/entries/${id}`, { method: "DELETE" }), onSuccess: () => { invalidate(); router.push("/history"); } });
@@ -57,7 +60,8 @@ export function EntryScreen({ id }: { id: string }) {
           <CategoryChip category={e.item.category} />
           <h1 className="mt-1 text-balance text-3xl leading-tight">{e.item.title}</h1>
           {e.item.subtitle && <p className="text-sm text-ink-soft">{e.item.subtitle}{e.item.release_year ? ` · ${e.item.release_year}` : ""}{e.item.metadata.album ? ` · ${String(e.item.metadata.album)}` : ""}</p>}
-          <p className="mt-2 text-xs text-ink-faint">{STATUS_LABEL[e.status]} · {formatDate(e.consumed_at ?? e.created_at, { day: "numeric", month: "long", year: "numeric" })}</p>
+          <p className="mt-2 text-xs text-ink-faint">{[kindLabel(e.item), STATUS_LABEL[e.status], e.status !== "want" ? (e.when?.label ?? "Undated") : null].filter(Boolean).join(" · ")}</p>
+          {e.item.metadata.overview && <p className="mt-2 line-clamp-4 text-sm leading-snug text-ink-soft">{e.item.metadata.overview}</p>}
           {e.extraction.summary && <p className="mt-2 text-sm text-ink-soft">In your words: <span className="quote">{e.extraction.summary}</span></p>}
         </div>
       </header>
@@ -119,6 +123,14 @@ export function EntryScreen({ id }: { id: string }) {
           </div>
         </div>
       </section>
+
+      {e.status !== "want" && (
+        <section id="when" className="mt-6" aria-labelledby="when-h">
+          <h2 id="when-h" className="eyebrow mb-2">When <span className="normal-case tracking-normal text-ink-faint">· roughly is fine; this is what places it on your timeline</span></h2>
+          <WhenPicker key={`${e.consumed_at}:${e.consumed_until}:${e.consumed_precision}`} value={{ consumed_at: e.consumed_at, consumed_until: e.consumed_until, consumed_precision: e.consumed_precision }}
+            onChange={(w) => update.mutate(w)} />
+        </section>
+      )}
 
       {/* Connections from this entry */}
       {connections.length > 0 && (

@@ -1,6 +1,6 @@
 import type { AttributeVector, Category, EntryWithContext, Phase } from "@/lib/types";
 import { CATEGORY_PLURAL } from "@/lib/types";
-import { affinity, entryDate, hasOwnWords } from "./affinity";
+import { affinity, entryDate, hasOwnWords, isDated } from "./affinity";
 import { categoryMix, relativeTags, tasteCentroid } from "./portrait";
 import { adjective, describeKey } from "./vocabulary";
 
@@ -43,7 +43,8 @@ export function periodBounds(key: PeriodKey): { start: string; end: string; labe
 
 /** Period-over-period portrait of how taste shifted. Editorial, not a dashboard. */
 export function buildEvolution(entries: EntryWithContext[], phases: Phase[]): Evolution {
-  const logged = entries.filter((e) => e.entry.status !== "want");
+  // Undated entries have no period to belong to.
+  const logged = entries.filter((e) => e.entry.status !== "want" && isDated(e));
   if (logged.length === 0) return { granularity: "year", periods: [] };
   const dates = logged.map(entryDate).sort((a, b) => a.getTime() - b.getTime());
   const spanYears = (dates[dates.length - 1].getTime() - dates[0].getTime()) / (365 * 86_400_000);

@@ -1,6 +1,7 @@
 import type { AttributeVector, Category, EntryWithContext, Phase } from "@/lib/types";
 import { CATEGORY_PLURAL } from "@/lib/types";
 import { affinity, entryDate, entryVector } from "./affinity";
+import { entrySpan, PHASE_MAX_SPAN_DAYS, spanDays as whenSpanDays } from "./when";
 import { centroid, topTags } from "./vector";
 import { describeKey } from "./vocabulary";
 import { isTooBroadForPhases, normaliseTags } from "./tag-lexicon";
@@ -81,8 +82,11 @@ const CREATOR_ROLE: Record<Category, string> = { movie: "director", tv: "creator
  * feeling clusters (shared extracted attributes), and genre runs.
  */
 export function detectPhases(all: EntryWithContext[]): DetectedPhase[] {
-  const entries = all.filter((e) => e.entry.status !== "want");
-  if (entries.length < 3) return [];
+  const logged = all.filter((e) => e.entry.status !== "want");
+  // Time-window phases need a date at least as precise as a season. "~2019" or "as a teen"
+  // cannot place an entry inside a 45-day window, and undated entries have no place at all.
+  const entries = logged.filter((e) => { const s = entrySpan(e.entry); return !!s && whenSpanDays(s) <= PHASE_MAX_SPAN_DAYS; });
+  if (logged.length < 3) return [];
   const out: DetectedPhase[] = [];
 
   // 1. Creator runs / artist phases: ≥3 by the same creator within 75 days.
@@ -106,7 +110,7 @@ export function detectPhases(all: EntryWithContext[]): DetectedPhase[] {
 
   // 2. Album rollups: ≥3 songs from one album, any time span.
   const byAlbum = new Map<string, EntryWithContext[]>();
-  for (const e of entries) {
+  for (const e of logged) {
     if (e.item.category !== "music") continue;
     const album = (e.item.metadata.album as string | undefined)?.trim();
     if (!album) continue;

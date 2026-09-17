@@ -1,12 +1,13 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Compass, History, Home, Plus, Sparkles, Settings } from "lucide-react";
+import { CalendarRange, Compass, History, Home, Plus, Sparkles, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV = [
   { href: "/", label: "Mirror", icon: Home, match: (p: string) => p === "/" || p.startsWith("/connections") || p.startsWith("/resurface") },
-  { href: "/history", label: "History", icon: History, match: (p: string) => p.startsWith("/history") || p.startsWith("/entry") },
+  { href: "/timeline", label: "Timeline", icon: CalendarRange, match: (p: string) => p.startsWith("/timeline") || /^\/history\/./.test(p) },
+  { href: "/history", label: "History", icon: History, match: (p: string) => p === "/history" || p.startsWith("/entry") },
   { href: "/add", label: "Add", icon: Plus, match: (p: string) => p.startsWith("/add") || p.startsWith("/search"), primary: true },
   { href: "/taste", label: "Taste", icon: Sparkles, match: (p: string) => p.startsWith("/taste") },
   { href: "/recommend", label: "Find", icon: Compass, match: (p: string) => p.startsWith("/recommend") },
@@ -47,13 +48,13 @@ export function AppShell({ children, hideNav = false }: { children: React.ReactN
         <main className={cn("mx-auto w-full max-w-2xl flex-1 px-4 pt-4 md:px-8 md:pt-8", bare ? "pb-8" : "pb-28 md:pb-12")}>{children}</main>
         {!bare && (
           <nav aria-label="Primary" className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper/90 backdrop-blur safe-bottom md:hidden">
-            <ul className="mx-auto grid max-w-md grid-cols-5 items-end px-2 pt-1">
+            <ul className="mx-auto grid max-w-md grid-cols-6 items-end px-1 pt-1">
               {NAV.map((n) => {
                 const active = n.match(pathname);
                 return (
                   <li key={n.href} className="flex justify-center">
                     <Link href={n.href} aria-current={active ? "page" : undefined} aria-label={n.label}
-                      className={cn("flex min-w-14 flex-col items-center gap-0.5 rounded-lg px-2 py-1.5 text-[10px] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-ring",
+                      className={cn("flex min-w-12 flex-col items-center gap-0.5 rounded-lg px-1 py-1.5 text-[10px] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-ring",
                         n.primary ? "-mt-4" : "", active ? "text-ink" : "text-ink-faint hover:text-ink-soft")}>
                       {n.primary ? (
                         <span className={cn("flex size-12 items-center justify-center rounded-full bg-ink text-paper shadow-md transition-transform active:scale-95", active && "ring-4 ring-ember/25")}>

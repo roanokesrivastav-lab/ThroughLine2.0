@@ -9,8 +9,10 @@ import { LogSheet } from "@/components/log-sheet";
 import { useSearch, useEntries } from "@/lib/api";
 import { EntryRow } from "@/components/entry/entry-row";
 import type { CatalogResult } from "@/lib/catalog/types";
-import { CATEGORIES, CATEGORY_PLURAL, type Category } from "@/lib/types";
+import { CATEGORY_PLURAL, type Category } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { CategoryTabs } from "@/components/category-tabs";
+import { ManualAdd } from "@/components/manual-add";
 
 export function AddScreen() {
   const params = useSearchParams();
@@ -36,14 +38,7 @@ export function AddScreen() {
             className="h-12 rounded-xl border-line bg-card pl-9 pr-9 text-base" />
           {q && <button type="button" onClick={() => { setQ(""); inputRef.current?.focus(); }} aria-label="Clear" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-ink-faint hover:text-ink"><X className="size-4" /></button>}
         </div>
-        <div className="mt-2 flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none]" role="tablist" aria-label="Category">
-          {(["all", ...CATEGORIES] as const).map((c) => (
-            <button key={c} type="button" role="tab" aria-selected={category === c} onClick={() => setCategory(c)}
-              className={cn("shrink-0 rounded-full border px-3 py-1 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-ring", category === c ? "border-ink bg-ink text-paper" : "border-line bg-card text-ink-soft hover:bg-paper-2")}>
-              {c === "all" ? "Everything" : CATEGORY_PLURAL[c]}
-            </button>
-          ))}
-        </div>
+        <CategoryTabs value={category} onChange={setCategory} className="mt-2" />
       </div>
 
       <section className="mt-2" aria-live="polite">
@@ -61,11 +56,15 @@ export function AddScreen() {
         ) : search.isError ? (
           <ErrorState message={search.error.message} retry={() => search.refetch()} />
         ) : search.data.results.length === 0 ? (
-          <EmptyState title="Nothing found" body="Try fewer words, or switch the category. Movies, TV and anime need a TMDB key to search the full catalogue." />
+          <div>
+            <EmptyState title="Nothing found" body="Try fewer words, or switch the category. Or add it yourself — web novels and anything else the catalogues miss." />
+            <ManualAdd initialTitle={debounced.trim()} initialCategory={category === "all" ? undefined : category} onAdd={setSelected} className="mt-2" />
+          </div>
         ) : (
           <div className="space-y-0.5">
             {search.data.degraded.length > 0 && <p className="mb-2 rounded-lg bg-paper-2 px-3 py-2 text-xs text-ink-soft">Showing built-in results for {search.data.degraded.map((c) => CATEGORY_PLURAL[c as Category].toLowerCase()).join(", ")} — the live catalogue was unavailable.</p>}
             {search.data.results.map((r, i) => <SearchResultRow key={`${r.source}:${r.external_id}`} r={r} onSelect={setSelected} className={cn("rise", i < 4 && `rise-${i + 1}`)} />)}
+            <ManualAdd key={debounced} initialTitle={debounced.trim()} initialCategory={category === "all" ? undefined : category} onAdd={setSelected} className="mt-3" />
           </div>
         )}
       </section>

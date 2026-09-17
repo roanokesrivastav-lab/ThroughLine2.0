@@ -59,7 +59,7 @@ export function estimatedMinutes(item: MediaItem): number | null {
   switch (item.category) {
     case "movie": return m.runtime_minutes ?? null;
     case "tv":
-    case "anime": return m.episode_runtime_minutes ?? null;
+    case "anime": return m.episode_runtime_minutes ?? m.runtime_minutes ?? null; // an anime feature carries runtime_minutes
     case "music": return m.duration_seconds ? Math.max(1, Math.round(m.duration_seconds / 60)) : 4;
     case "book": return m.pages ? Math.round(m.pages * 1.6) : null; // ~1.6 min/page, used only for "short read"
   }
@@ -73,7 +73,8 @@ export function fitsTime(item: MediaItem, minutes: TimeBudget): { ok: boolean; n
     if (minutes < 40) return { ok: false, note: null };
     return { ok: true, note: est && est <= 240 ? "Short enough to finish in a few sittings" : "A chapter or two" };
   }
-  if (item.category === "tv" || item.category === "anime") {
+  const isSeries = (item.category === "tv" || item.category === "anime") && !(item.metadata.episode_runtime_minutes == null && item.metadata.runtime_minutes != null);
+  if (isSeries) {
     if (est == null) return { ok: minutes >= 40, note: "One episode" };
     return est <= minutes ? { ok: true, note: `One episode, about ${est} min` } : { ok: false, note: null };
   }
@@ -232,7 +233,9 @@ export function scoreCandidates(
       fits: fit.note,
     });
   }
-  scored.sort((a, b) => b.score - a.score);
+  // Ties break on the candidate key so the order never depends on which
+  // catalogue call answered first.
+  scored.sort((a, b) => b.score - a.score || candidateKey(a.item).localeCompare(candidateKey(b.item)));
 
   // ---- Diversity is a selection pass, never a score mutation, so the number
   // shown in the breakdown is always the number that was computed. ----

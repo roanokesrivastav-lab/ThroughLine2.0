@@ -17,6 +17,17 @@ export function SignInScreen() {
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<{ kind: "error" | "ok"; text: string } | null>(null);
 
+  // TEMPORARY: skips the confirmation email while delivery is broken. Development only.
+  const devBypass = process.env.NODE_ENV !== "production";
+  const confirmInDev = async () => {
+    const res = await fetch("/api/dev/confirm", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    if (!res.ok) throw new Error(((await res.json().catch(() => null)) as { error?: string } | null)?.error ?? "Could not skip verification");
+  };
+
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBusy(true); setMsg(null);
@@ -27,12 +38,25 @@ export function SignInScreen() {
         if (error) throw error;
         setMsg({ kind: "ok", text: "Check your email for a sign-in link." });
       } else if (mode === "up") {
+        if (devBypass) {
+          // Create the account already confirmed, then sign straight in.
+          await confirmInDev();
+          const { error } = await supabase.auth.signInWithPassword({ email, password });
+          if (error) throw error;
+          router.push("/onboarding"); router.refresh();
+          return;
+        }
         const { data, error } = await supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${location.origin}/auth/callback` } });
         if (error) throw error;
         if (data.session) { router.push("/onboarding"); router.refresh(); }
         else setMsg({ kind: "ok", text: "Account created. Check your email to confirm, then sign in." });
       } else {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        let { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error && devBypass && /confirm/i.test(error.message)) {
+          // The address is unconfirmed and the email never arrives; confirm it here and retry.
+          await confirmInDev();
+          ({ error } = await supabase.auth.signInWithPassword({ email, password }));
+        }
         if (error) throw error;
         router.push(next); router.refresh();
       }
@@ -67,6 +91,9 @@ export function SignInScreen() {
             {mode !== "up" && <button type="button" className="underline-offset-4 hover:underline" onClick={() => setMode("up")}>Create an account</button>}
             {mode !== "link" && <button type="button" className="underline-offset-4 hover:underline" onClick={() => setMode("link")}>Use a magic link</button>}
           </div>
+          {devBypass && mode !== "link" && (
+            <p className="text-xs text-ink-soft">Dev mode: email confirmation is skipped, so accounts sign in immediately.</p>
+          )}
         </form>
       </div>
     </main>

@@ -19,7 +19,7 @@ export function rowToItem(r: MediaItemsRow): MediaItem {
   };
 }
 export function rowToEntry(r: EntriesRow): Entry {
-  return { id: r.id, user_id: r.user_id, media_item_id: r.media_item_id, status: r.status, private_score: r.private_score, consumed_at: r.consumed_at, origin: r.origin, created_at: r.created_at, updated_at: r.updated_at };
+  return { id: r.id, user_id: r.user_id, media_item_id: r.media_item_id, status: r.status, private_score: r.private_score, consumed_at: r.consumed_at, consumed_until: r.consumed_until, consumed_precision: r.consumed_precision, origin: r.origin, created_at: r.created_at, updated_at: r.updated_at };
 }
 export function rowToReaction(r: ReactionsRow) {
   return { id: r.id, entry_id: r.entry_id, user_id: r.user_id, dimensions: asDimensions(r.dimensions), raw_note: r.raw_note, source: r.source, created_at: r.created_at };

@@ -25,7 +25,11 @@ export const PATCH = route(async (req: Request, { params }: Ctx) => {
   const { user, supabase } = await requireUser();
   const { id } = await params;
   const body = updateEntrySchema.parse(await req.json());
-  const { error } = await supabase.from("entries").update(body).eq("id", id).eq("user_id", user.id);
+  // Clearing the date clears its precision and end with it; a date with no precision means a day.
+  const update = body.consumed_at === null ? { ...body, consumed_until: null, consumed_precision: null }
+    : body.consumed_at ? { ...body, consumed_precision: body.consumed_precision ?? "day", consumed_until: body.consumed_until ?? null }
+    : body;
+  const { error } = await supabase.from("entries").update(update).eq("id", id).eq("user_id", user.id);
   if (error) throw new HttpError(500, error.message);
   after(() => syncPhases(supabase, user.id).catch(console.error));
   const e = await loadEntry(supabase, user.id, id);

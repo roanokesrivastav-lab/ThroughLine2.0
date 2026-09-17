@@ -16,7 +16,7 @@ export type MediaItemsRow = {
 };
 export type EntriesRow = {
   id: string; user_id: string; media_item_id: string; status: EntryStatus; private_score: number | null;
-  consumed_at: string | null; origin: "log" | "onboarding_pick" | "canon" | "demo"; created_at: string; updated_at: string;
+  consumed_at: string | null; consumed_until: string | null; consumed_precision: "day" | "month" | "season" | "year" | "range" | null; origin: "log" | "onboarding_pick" | "canon" | "demo"; created_at: string; updated_at: string;
 };
 export type ReactionsRow = {
   id: string; entry_id: string; user_id: string; dimensions: Json; raw_note: string | null;

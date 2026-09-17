@@ -90,6 +90,10 @@ export async function buildRecommendations(
     results: recs.map((r) => ({
       id: r.item.id, title: r.item.title, category: r.item.category, score: r.score, route: r.route,
       matchedTags: r.breakdown.matchedTags.map((m) => m.tag), bridge: r.bridge?.entryId ?? null,
+      // The feature vector as shown, so a later per-user model can train on what the engine believed (RECOMMENDATIONS §14).
+      components: r.breakdown.components.map((c) => ({ key: c.key, weight: c.weight, value: c.value, contribution: c.contribution })),
+      adjustments: r.breakdown.adjustments.map((a) => ({ key: a.key, delta: a.delta })),
+      normalisedWeight: r.breakdown.normalisedWeight,
     })) as unknown as QuerySessionsRow["results"],
   });
   return recs;

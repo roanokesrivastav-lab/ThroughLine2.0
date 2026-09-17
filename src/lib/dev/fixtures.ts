@@ -21,7 +21,7 @@ export function buildFixtureLibrary(now = Date.now()): EntryWithContext[] {
     const entryId = `entry-${s.slug}`;
     const created = iso(s.daysAgo, now);
     const e: EntryWithContext = {
-      entry: { id: entryId, user_id: "u", media_item_id: item.id, status: s.status ?? "completed", private_score: s.score ?? null, consumed_at: created.slice(0, 10), origin: "demo", created_at: created, updated_at: created },
+      entry: { id: entryId, user_id: "u", media_item_id: item.id, status: s.status ?? "completed", private_score: s.score ?? null, consumed_at: created.slice(0, 10), consumed_until: null, consumed_precision: "day", origin: "demo", created_at: created, updated_at: created },
       item, reactions: [], extractions: [], resurfaces: [],
     };
     if (s.note || (s.dims && Object.keys(s.dims).length)) {

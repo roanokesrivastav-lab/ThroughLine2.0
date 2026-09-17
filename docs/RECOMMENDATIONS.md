@@ -10,6 +10,14 @@
 > Everything in §1–§12 below therefore becomes **Stage 1.5**, and the old "Stage 1" list in §13
 > is what Stage 1.5 contains. Nothing here is cancelled. The seam is already in place: Stage 1.5
 > is an upgrade of the `feeling` component, not a replacement of the engine.
+>
+> **Update, 2026-09-15.** The founder set new priorities before the Stage 3 build:
+> - **Film, TV, anime and books are scored story-first.** Story and themes carry the most weight;
+>   feeling and mood are second.
+> - **Music is profiled but not matched** until the founder settles its specifics.
+> - The full attribute list now lives in `docs/ATTRIBUTES.md`. Where it differs from §2, ATTRIBUTES
+>   wins.
+> - §14 below records the scoring weights and the model choice.
 
 The full target design for Throughline's recommendation system, across all stages. This is
 the reference document; `docs/STATE.md` records what is actually built. Nothing here overrides
@@ -479,3 +487,53 @@ meaningful reactions · which phases are emerging.
 7. Novelty and diversity controls
 8. Feedback: "too similar", "more like this", "not for me"
 9. Explanations generated from the exact matching evidence
+
+---
+
+## 14. Model (agreed 2026-09-15)
+
+### Now: a hand-tuned weighted score for film, TV, anime and books
+
+This is the existing component system in `src/lib/taste/recommend.ts`, with story added as the
+top component. It replaces the per-medium tables in §6 for these four media until real use says
+otherwise.
+
+1. **Hard filters:** category, time available or commitment band, already logged, hidden.
+2. **Score:**
+
+   | Component | Weight |
+   |---|---|
+   | Story & themes match (`ATTRIBUTES.md` 1B) | 0.40 |
+   | Feeling & mood match (1C) | 0.20 |
+   | Form fit: length, commitment, pacing, structure (1D) | 0.15 |
+   | Creator link | 0.10 |
+   | Current-phase fit | 0.10 |
+   | Novelty / diversity | 0.05 |
+
+   As today, weights re-normalise over the components that have evidence.
+3. **Adjustments after normalisation:** anti-profile penalty, recently-shown penalty, private
+   score of at most ±0.05.
+4. **Mix:** roughly 70% familiar, 20% adjacent, 10% stretch (§7), and at most two results per
+   creator (§8).
+5. **Explanation** comes only from the matched words and the person's own "what I valued"
+   phrases (§11). `ending` values are never named.
+
+### Later: learn the weights from the person's own answers
+
+- **Model:** a per-user **logistic regression** over the same named component scores. It is
+  trained only on that person's answers to recommendations (`ATTRIBUTES.md` Part 4).
+- **Regularised toward the hand-tuned weights,** so a handful of answers cannot swing it. Each
+  weight stays within a fixed band around its starting value.
+- **Starts after roughly 50 answers.** Before that, the hand-tuned weights stand.
+- **Why:** it keeps every result explainable ("story match counted 0.43 for you"), works on tiny
+  data, and runs in plain TypeScript with no ML service.
+- **Optional after that:** Thompson sampling to tune the 70/20/10 mix from "too similar" and
+  "more like this" answers.
+
+### Rejected
+- **Collaborative filtering, matrix factorization, two-tower models, LightFM:** they need many
+  users' data (PRD §2.1).
+- **Embeddings or vector similarity:** PRD §9.
+- **Sequence models such as SASRec:** they need thousands of interactions. Revisit only for Stage 4.
+- **Gradient-boosted ranking such as LightGBM LambdaMART:** it overfits a few hundred answers and
+  is hard to explain. It is a possible much-later upgrade.

@@ -1,6 +1,7 @@
 import "server-only";
 import { pushConfigured } from "@/lib/server/push";
-import { aiEnabled } from "@/lib/ai/extractor";
+import { aiProvider, anthropicModel } from "@/lib/ai/extractor";
+import { nvidiaModel } from "@/lib/ai/nvidia";
 import type { NotificationPrefs } from "@/lib/types";
 import type { Db } from "./entries";
 
@@ -23,7 +24,6 @@ export async function loadProfile(supabase: Db, userId: string, email: string | 
     notificationPrefs: prefs,
     pushSubscriptions: subs ?? 0,
     entryCount: entries ?? 0,
-    capabilities: { push: pushConfigured(), ai: aiEnabled() ? "claude" : "mock", tmdb: !!process.env.TMDB_API_KEY, vapidPublicKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY ?? null },
+    capabilities: { push: pushConfigured(), ai: aiProvider(), aiModel: aiProvider() === "nvidia" ? nvidiaModel() : aiProvider() === "claude" ? anthropicModel() : null, spotify: !!process.env.SPOTIFY_CLIENT_ID?.trim(), tmdb: !!process.env.TMDB_API_KEY, vapidPublicKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY ?? null },
   };
 }
-

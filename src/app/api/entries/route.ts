@@ -8,7 +8,35 @@ import { syncPhases } from "@/lib/server/phases";
 import { serializeEntry } from "@/lib/server/dto";
 import { CATEGORIES, ENTRY_STATUSES } from "@/lib/types";
 import type { ReactionsRow } from "@/lib/db/types";
-import { entryDate } from "@/lib/taste/affinity";
+import { entryDate, isDated } from "@/lib/taste/affinity";
+import { dayWhen, todayIso } from "@/lib/taste/when";
+import type { CatalogResult } from "@/lib/catalog/types";
+import type { Db } from "@/lib/server/entries";
+
+const slug = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 120);
+
+/**
+ * Something the catalogues could not find, typed in by the user. Keyed to that user so one
+ * person's hand-typed title never merges with, or shows up for, anyone else. No image and no
+ * feeling prior: nothing is claimed about it beyond what they typed.
+ */
+function manualResult(r: CatalogResult, userId: string): CatalogResult {
+  return {
+    ...r, source: "manual", external_id: `${userId}:${r.category}:${slug(r.title) || "untitled"}`,
+    image_url: null, feel_prior: null, genre_tags: [],
+    creators: r.subtitle ? [{ name: r.subtitle, role: r.category === "book" ? "author" : r.category === "music" ? "artist" : r.category === "movie" ? "director" : "creator" }] : [],
+    metadata: r.category === "book" && r.metadata.book_kind ? { book_kind: r.metadata.book_kind } : {},
+  };
+}
+
+/** True when every tapped dimension is already on one of the entry's reactions. */
+async function tapsAlreadyRecorded(db: Db, entryId: string, dims: Record<string, boolean | undefined>): Promise<boolean> {
+  const tapped = Object.entries(dims).filter(([, v]) => v).map(([k]) => k);
+  if (!tapped.length) return false;
+  const { data } = await db.from("reactions").select("dimensions").eq("entry_id", entryId);
+  const seen = new Set((data ?? []).flatMap((r) => Object.entries((r.dimensions ?? {}) as Record<string, unknown>).filter(([, v]) => v === true).map(([k]) => k)));
+  return tapped.every((k) => seen.has(k));
+}
 
 const listSchema = z.object({
   category: z.enum(CATEGORIES).optional(),
@@ -25,6 +53,8 @@ export const GET = route(async (req: Request) => {
   let library = await loadLibrary(supabase, user.id);
   if (f.category) library = library.filter((e) => e.item.category === f.category);
   if (f.status) library = library.filter((e) => e.entry.status === f.status);
+  // Date filters are about when something was consumed, so undated entries cannot match them.
+  if (f.year || f.from || f.to) library = library.filter(isDated);
   if (f.year) library = library.filter((e) => entryDate(e).getUTCFullYear() === f.year);
   if (f.from) library = library.filter((e) => entryDate(e).toISOString().slice(0, 10) >= f.from!);
   if (f.to) library = library.filter((e) => entryDate(e).toISOString().slice(0, 10) <= f.to!);
@@ -38,21 +68,30 @@ export const POST = route(async (req: Request) => {
 
   let mediaItemId = body.media_item_id;
   if (!mediaItemId && body.result) {
-    const item = await upsertMediaItem(body.result);
+    const result = body.result.source === "manual" ? manualResult(body.result, user.id) : body.result;
+    const item = await upsertMediaItem(result);
     mediaItemId = item.id;
-    const result = body.result;
-    after(() => enrichMediaItem(item.id, result));
+    if (result.source !== "manual") after(() => enrichMediaItem(item.id, result));
   }
   if (!mediaItemId) throw new HttpError(400, "No media item");
 
+  // Say nothing about when unless the user did, or this is an ordinary "just finished" log.
+  // Onboarding picks stay undated rather than being stamped with today (migration 0002).
+  const when = body.consumed_at !== undefined
+    ? { consumed_at: body.consumed_at, consumed_until: body.consumed_at ? (body.consumed_until ?? null) : null, consumed_precision: body.consumed_at ? (body.consumed_precision ?? "day") : null }
+    : body.origin === "log" && body.status === "completed" ? dayWhen(todayIso()) : {};
+
+  const { data: existing } = await supabase.from("entries").select("id").eq("user_id", user.id).eq("media_item_id", mediaItemId).maybeSingle();
   const { data: entry, error } = await supabase.from("entries").upsert(
-    { user_id: user.id, media_item_id: mediaItemId, status: body.status, private_score: body.private_score ?? null, consumed_at: body.consumed_at ?? (body.status === "completed" ? new Date().toISOString().slice(0, 10) : null), origin: body.origin },
+    { user_id: user.id, media_item_id: mediaItemId, status: body.status, private_score: body.private_score ?? null, origin: body.origin, ...(existing && body.consumed_at === undefined ? {} : when) },
     { onConflict: "user_id,media_item_id" },
   ).select("*").single();
   if (error || !entry) throw new HttpError(500, error?.message ?? "Could not save");
 
   const hasReaction = (body.note && body.note.trim()) || (body.dimensions && Object.values(body.dimensions).some(Boolean));
-  if (hasReaction) {
+  if (hasReaction && !body.note?.trim() && existing && await tapsAlreadyRecorded(supabase, entry.id, body.dimensions ?? {})) {
+    // Picking the same thing twice (e.g. after going back in onboarding) should not double its weight.
+  } else if (hasReaction) {
     const { data: reaction, error: rErr } = await supabase.from("reactions").insert({
       entry_id: entry.id, user_id: user.id, dimensions: (body.dimensions ?? {}) as ReactionsRow["dimensions"], raw_note: body.note?.trim() || null, source: body.origin === "log" ? "log" : "onboarding",
     }).select("*").single();

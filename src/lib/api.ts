@@ -7,6 +7,7 @@ import type { CatalogResult } from "@/lib/catalog/types";
 import type { Evolution } from "@/lib/taste/evolution";
 import type { Portrait } from "@/lib/taste/portrait";
 import type { PhaseWithMembers } from "@/lib/server/phases";
+import type { Precision, When } from "@/lib/taste/when";
 
 export class ApiError extends Error {
   constructor(public status: number, message: string) { super(message); }
@@ -31,7 +32,7 @@ export type ProfileDTO = {
   email: string | null; onboardingCompletedAt: string | null; onboardingPrefs: Record<string, unknown>;
   notificationPrefs: { push: boolean; cadence: "weekly" | "biweekly" | "monthly" | "off"; snoozed_until: string | null };
   pushSubscriptions: number; entryCount: number;
-  capabilities: { push: boolean; ai: "claude" | "mock"; tmdb: boolean; vapidPublicKey: string | null };
+  capabilities: { push: boolean; ai: "claude" | "nvidia" | "mock"; aiModel: string | null; spotify: boolean; tmdb: boolean; vapidPublicKey: string | null };
 };
 
 export const keys = {
@@ -93,7 +94,7 @@ export function useInvalidateLibrary() {
 export type CreateEntryInput = {
   result?: CatalogResult; media_item_id?: string;
   status: "want" | "in_progress" | "completed" | "dropped";
-  private_score?: number | null; consumed_at?: string | null;
+  private_score?: number | null; consumed_at?: string | null; consumed_until?: string | null; consumed_precision?: Precision | null;
   dimensions?: Record<string, boolean>; note?: string; origin?: "log" | "onboarding_pick";
 };
 
@@ -132,4 +133,28 @@ export function useCreateEntry() {
     mutationFn: (input: CreateEntryInput) => api<{ entry: EntryDTO | null }>("/api/entries", { method: "POST", json: input }),
     onSuccess: invalidate,
   });
+}
+
+export type UpdateEntryInput = Partial<When> & { status?: "want" | "in_progress" | "completed" | "dropped"; private_score?: number | null };
+
+export function useUpdateEntry() {
+  const invalidate = useInvalidateLibrary();
+  return useMutation({
+    mutationFn: ({ id, ...body }: UpdateEntryInput & { id: string }) => api<{ entry: EntryDTO | null }>(`/api/entries/${id}`, { method: "PATCH", json: body }),
+    onSuccess: invalidate,
+  });
+}
+
+/** Optional birth year, used only to turn "as a kid" / "as a teen" into years. Stored in onboarding prefs. */
+export function useBirthYear(): { birthYear: number | null; setBirthYear: (y: number) => Promise<unknown> } {
+  const profile = useProfile();
+  const qc = useQueryClient();
+  const raw = profile.data?.onboardingPrefs?.birth_year;
+  return {
+    birthYear: typeof raw === "number" ? raw : null,
+    setBirthYear: async (y: number) => {
+      const next = await api<ProfileDTO>("/api/settings", { method: "PATCH", json: { onboardingPrefs: { birth_year: y } } });
+      qc.setQueryData(keys.profile, next);
+    },
+  };
 }

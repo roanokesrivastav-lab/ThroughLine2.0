@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { ArrowRight, Bell, Check, Eye, EyeOff, Heart, Search as SearchIcon, X } from "lucide-react";
+import { ArrowRight, Bell, BookmarkPlus, Check, CircleHelp, Eye, EyeOff, Heart, Search as SearchIcon, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MediaArt } from "@/components/media/media-art";
@@ -12,7 +12,11 @@ import { SearchResultRow } from "@/components/search-results";
 import { PortraitCard } from "@/components/portrait-card";
 import { RowSkeleton } from "@/components/states";
 import { ThreadMark } from "@/components/shell/app-shell";
-import { api, keys, useCanonDeck, useCreateEntry, useHome, useInvalidateLibrary, useProfile, useSearch } from "@/lib/api";
+import { api, keys, useCanonDeck, useCreateEntry, useEntries, useHome, useInvalidateLibrary, useProfile, useSearch, useUpdateEntry } from "@/lib/api";
+import { CategoryTabs } from "@/components/category-tabs";
+import { ManualAdd } from "@/components/manual-add";
+import { WhenPicker } from "@/components/when-picker";
+import type { Category } from "@/lib/types";
 import { usePushSubscription } from "@/hooks/use-push";
 import type { CatalogResult } from "@/lib/catalog/types";
 import { cn } from "@/lib/utils";
@@ -43,22 +47,36 @@ export function OnboardingScreen() {
 }
 
 /* ---------- Stage one: up to ten things you have loved ---------- */
+const pickKey = (category: string, title: string) => `${category}:${title.trim().toLowerCase()}`;
+
 function Picks({ onNext }: { onNext: () => void }) {
   const [q, setQ] = useState("");
   const [debounced, setDebounced] = useState("");
-  const [picked, setPicked] = useState<CatalogResult[]>([]);
+  const [category, setCategory] = useState<Category | "all">("all");
+  // Picks already saved come from the server, so going Back and forward again never loses or doubles them.
+  const library = useEntries({});
+  const [pending, setPending] = useState<CatalogResult[]>([]);
+  const [dating, setDating] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const create = useCreateEntry();
+  const update = useUpdateEntry();
   useEffect(() => { const t = setTimeout(() => setDebounced(q), 250); return () => clearTimeout(t); }, [q]);
-  const search = useSearch(debounced, "all");
-  const pickedKeys = useMemo(() => new Set(picked.map((p) => `${p.source}:${p.external_id}`)), [picked]);
+  const search = useSearch(debounced, category);
+
+  const saved = useMemo(() => (library.data?.entries ?? []).filter((e) => e.origin === "onboarding_pick"), [library.data]);
+  const savedKeys = useMemo(() => new Set(saved.map((e) => pickKey(e.item.category, e.item.title))), [saved]);
+  const waiting = pending.filter((p) => !savedKeys.has(pickKey(p.category, p.title)));
+  const count = saved.length + waiting.length;
+  const isPicked = (r: CatalogResult) => savedKeys.has(pickKey(r.category, r.title)) || waiting.some((p) => pickKey(p.category, p.title) === pickKey(r.category, r.title));
+  const datingEntry = saved.find((e) => e.id === dating);
 
   const add = (r: CatalogResult) => {
-    if (picked.length >= 10 || pickedKeys.has(`${r.source}:${r.external_id}`)) return;
-    setPicked((p) => [...p, r]);
+    if (count >= 10 || isPicked(r)) return;
+    setPending((p) => [...p, r]);
     setQ(""); setDebounced("");
-    inputRef.current?.focus();
-    create.mutate({ result: r, status: "completed", dimensions: { loved: true }, origin: "onboarding_pick" });
+    create.mutate({ result: r, status: "completed", dimensions: { loved: true }, origin: "onboarding_pick" }, {
+      onSuccess: (d) => { if (d.entry) setDating(d.entry.id); },
+    });
   };
 
   return (
@@ -69,19 +87,47 @@ function Picks({ onNext }: { onNext: () => void }) {
 
       <div className="relative mt-5">
         <SearchIcon className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-ink-faint" aria-hidden />
-        <Input ref={inputRef} value={q} onChange={(e) => setQ(e.target.value)} placeholder="A film, a song, a book, a series…" aria-label="Search" disabled={picked.length >= 10} className="h-12 rounded-xl border-line bg-card pl-9 text-base" autoFocus />
+        <Input ref={inputRef} value={q} onChange={(e) => setQ(e.target.value)} placeholder="A film, a song, a book, a series…" aria-label="Search" disabled={count >= 10} className="h-12 rounded-xl border-line bg-card pl-9 text-base" autoFocus />
       </div>
+      <CategoryTabs value={category} onChange={setCategory} className="mt-2" />
 
       <div className="mt-2 min-h-24" aria-live="polite">
-        {debounced.length >= 2 && (search.isPending ? <RowSkeleton n={3} /> : search.data?.results.length ? (
-          <div className="space-y-0.5">{search.data.results.slice(0, 8).map((r) => <SearchResultRow key={`${r.source}:${r.external_id}`} r={r} onSelect={add} className={cn(pickedKeys.has(`${r.source}:${r.external_id}`) && "opacity-40")} />)}</div>
-        ) : <p className="px-2 py-4 text-sm text-ink-faint">Nothing found. Try another spelling.</p>)}
+        {debounced.length >= 2 && (search.isPending ? <RowSkeleton n={3} /> : (
+          <>
+            {search.data?.results.length ? (
+              <div className="space-y-0.5">{search.data.results.slice(0, 12).map((r) => <SearchResultRow key={`${r.source}:${r.external_id}`} r={r} onSelect={add} className={cn(isPicked(r) && "opacity-40")} />)}</div>
+            ) : <p className="px-2 py-4 text-sm text-ink-faint">Nothing found. Try another spelling, or pick what kind of thing it is above.</p>}
+            <ManualAdd key={debounced} initialTitle={debounced.trim()} initialCategory={category === "all" ? undefined : category} onAdd={add} className="mt-2" />
+          </>
+        ))}
       </div>
 
-      {picked.length > 0 && (
+      {datingEntry && (
+        <div className="rise mt-4 rounded-2xl border border-line bg-card p-4">
+          <p className="text-[15px]">When was <span className="font-medium">{datingEntry.item.title}</span>, roughly?</p>
+          <p className="mb-3 text-xs text-ink-faint">Optional. It is what lets Throughline find the eras you loved things in.</p>
+          <WhenPicker key={datingEntry.id} allowNow={false} value={datingEntry.when ? { consumed_at: datingEntry.consumed_at, consumed_until: datingEntry.consumed_until, consumed_precision: datingEntry.consumed_precision } : null}
+            onChange={(w) => update.mutate({ id: datingEntry.id, ...w })} />
+          <div className="mt-3 flex justify-end">
+            <Button size="sm" variant={datingEntry.when ? "default" : "ghost"} onClick={() => { setDating(null); inputRef.current?.focus(); }}>{datingEntry.when ? "Done" : "Skip"}</Button>
+          </div>
+        </div>
+      )}
+
+      {count > 0 && (
         <ul className="mt-4 flex flex-wrap gap-2" aria-label="Your picks">
-          {picked.map((p) => (
-            <li key={`${p.source}:${p.external_id}`} className="rise flex items-center gap-2 rounded-full border border-line bg-card py-1 pl-1 pr-3 text-sm">
+          {saved.map((e) => (
+            <li key={e.id}>
+              <button type="button" onClick={() => setDating(e.id)} aria-label={`${e.item.title}. ${e.when ? e.when.label : "Add when"}`}
+                className={cn("rise flex items-center gap-2 rounded-full border bg-card py-1 pl-1 pr-3 text-sm hover:bg-paper-2", dating === e.id ? "border-ink" : "border-line")}>
+                <MediaArt title={e.item.title} category={e.item.category} image={e.item.image_url} size="xs" />
+                <span className="max-w-40 truncate">{e.item.title}</span>
+                <span className="text-[11px] text-ink-faint">{e.when?.label ?? "when?"}</span>
+              </button>
+            </li>
+          ))}
+          {waiting.map((p) => (
+            <li key={`${p.source}:${p.external_id}`} className="flex items-center gap-2 rounded-full border border-line bg-card py-1 pl-1 pr-3 text-sm opacity-60">
               <MediaArt title={p.title} category={p.category} image={p.image_url} size="xs" />
               <span className="max-w-40 truncate">{p.title}</span>
             </li>
@@ -90,36 +136,39 @@ function Picks({ onNext }: { onNext: () => void }) {
       )}
 
       <div className="mt-6 flex items-center justify-between">
-        <p className="text-xs text-ink-faint">{picked.length} of 10</p>
-        <Button size="lg" onClick={onNext}>{picked.length ? "Continue" : "Skip for now"} <ArrowRight className="size-4" data-icon="inline-end" /></Button>
+        <p className="text-xs text-ink-faint">{count} of 10</p>
+        <Button size="lg" onClick={onNext}>{count ? "Continue" : "Skip for now"} <ArrowRight className="size-4" data-icon="inline-end" /></Button>
       </div>
     </section>
   );
 }
 
 /* ---------- Stage two: rapid canon pass ---------- */
+type CanonResponse = "loved" | "seen" | "want" | "unsure" | "never";
+const CANON_KEYS: Record<string, CanonResponse> = { "1": "loved", "2": "seen", "3": "want", "4": "unsure", "5": "never" };
+
 function Canon({ onDone, onBack, skipHint }: { onDone: () => void; onBack: () => void; skipHint: boolean }) {
   const deck = useCanonDeck();
   const [index, setIndex] = useState(0);
-  const [tally, setTally] = useState({ loved: 0, seen: 0, never: 0 });
+  const [tally, setTally] = useState<Record<CanonResponse, number>>({ loved: 0, seen: 0, want: 0, unsure: 0, never: 0 });
   const qc = useQueryClient();
   const react = useMutation({
-    mutationFn: (body: { result: CatalogResult; response: "loved" | "seen" | "never" }) => api<{ ok: true }>("/api/onboarding", { method: "POST", json: body }),
+    mutationFn: (body: { result: CatalogResult; response: CanonResponse }) => api<{ ok: true }>("/api/onboarding", { method: "POST", json: body }),
   });
   const cards = deck.data?.cards ?? [];
   const card = cards[index];
   const total = cards.length;
 
-  const answer = (response: "loved" | "seen" | "never") => {
+  const answer = (response: CanonResponse) => {
     if (!card) return;
     react.mutate({ result: card, response });
     setTally((t) => ({ ...t, [response]: t[response] + 1 }));
     if (index + 1 >= total) finish(); else setIndex(index + 1);
   };
-  const finish = () => { qc.invalidateQueries({ queryKey: keys.home }); qc.invalidateQueries({ queryKey: keys.canon }); onDone(); };
+  const finish = () => { qc.invalidateQueries({ queryKey: keys.home }); qc.invalidateQueries({ queryKey: keys.canon }); qc.invalidateQueries({ queryKey: ["entries"] }); onDone(); };
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "1") answer("loved"); if (e.key === "2") answer("seen"); if (e.key === "3") answer("never"); };
+    const onKey = (e: KeyboardEvent) => { const r = CANON_KEYS[e.key]; if (r) answer(r); };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -141,7 +190,7 @@ function Canon({ onDone, onBack, skipHint }: { onDone: () => void; onBack: () =>
           </div>
         ) : (
           <div key={`${card.source}:${card.external_id}`} className="rise">
-            <div className="flex items-center justify-between text-xs text-ink-faint"><span>{index + 1} of {total}</span><span>{tally.loved} loved · {tally.seen} seen</span></div>
+            <div className="flex items-center justify-between text-xs text-ink-faint"><span>{index + 1} of {total}</span><span>{tally.loved} loved · {tally.seen} seen · {tally.want} to try</span></div>
             <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-paper-3" aria-hidden><div className="h-full bg-ink transition-[width]" style={{ width: `${((index) / Math.max(total, 1)) * 100}%` }} /></div>
             <article className={cn("mt-4 overflow-hidden rounded-3xl border border-line bg-card", `cat-${card.category}`)}>
               <div className="flex gap-5 p-5">
@@ -150,14 +199,18 @@ function Canon({ onDone, onBack, skipHint }: { onDone: () => void; onBack: () =>
                   <CategoryChip category={card.category} />
                   <h2 className="mt-2 text-balance text-2xl leading-tight md:text-3xl">{card.title}</h2>
                   <p className="mt-1 text-sm text-ink-soft">{[card.subtitle, card.release_year].filter(Boolean).join(" · ")}</p>
+                  {card.metadata.overview && <p className="mt-2 line-clamp-4 text-xs leading-snug text-ink-faint">{card.metadata.overview}</p>}
                 </div>
               </div>
-              <div className="grid grid-cols-3 border-t border-line">
+              <div className="grid grid-cols-5 border-t border-line">
                 <CanonTap icon={<Heart className="size-5" />} label="Loved it" hint="1" onClick={() => answer("loved")} tone="ember" />
                 <CanonTap icon={<Eye className="size-5" />} label="Seen it" hint="2" onClick={() => answer("seen")} />
-                <CanonTap icon={<EyeOff className="size-5" />} label="Never heard of it" hint="3" onClick={() => answer("never")} />
+                <CanonTap icon={<BookmarkPlus className="size-5" />} label="Want to" hint="3" onClick={() => answer("want")} />
+                <CanonTap icon={<CircleHelp className="size-5" />} label="Not sure" hint="4" onClick={() => answer("unsure")} />
+                <CanonTap icon={<EyeOff className="size-5" />} label="Never heard" hint="5" onClick={() => answer("never")} />
               </div>
             </article>
+            <p className="mt-2 text-center text-[11px] text-ink-faint">&ldquo;Want to&rdquo; saves it for later. &ldquo;Not sure&rdquo; means you have heard of it but are undecided.</p>
           </div>
         )}
       </div>
@@ -172,7 +225,7 @@ function Canon({ onDone, onBack, skipHint }: { onDone: () => void; onBack: () =>
 
 function CanonTap({ icon, label, hint, onClick, tone }: { icon: React.ReactNode; label: string; hint: string; onClick: () => void; tone?: "ember" }) {
   return (
-    <button type="button" onClick={onClick} className={cn("flex min-h-20 flex-col items-center justify-center gap-1.5 px-2 py-3 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring active:bg-paper-2", tone === "ember" ? "text-ember hover:bg-ember-soft/50" : "text-ink-soft hover:bg-paper-2")}>
+    <button type="button" onClick={onClick} className={cn("flex min-h-20 flex-col items-center justify-center gap-1.5 px-1 py-3 text-center text-[11px] font-medium leading-tight sm:text-xs transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring active:bg-paper-2", tone === "ember" ? "text-ember hover:bg-ember-soft/50" : "text-ink-soft hover:bg-paper-2")}>
       <span aria-hidden>{icon}</span>{label}<kbd className="hidden text-[10px] text-ink-faint md:block">{hint}</kbd>
     </button>
   );

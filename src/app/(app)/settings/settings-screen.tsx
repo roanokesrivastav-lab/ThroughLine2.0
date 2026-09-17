@@ -34,6 +34,7 @@ export function SettingsScreen() {
   const theme = useSyncExternalStore(subscribeStorage, readTheme, () => "system" as const);
 
   const prefs = useMutation({ mutationFn: (p: Record<string, unknown>) => api("/api/settings", { method: "PATCH", json: { notificationPrefs: p } }), onSuccess: () => profile.refetch() });
+  const reread = useMutation({ mutationFn: () => api<{ queued: number; provider: string }>("/api/extractions/reread", { method: "POST" }) });
   const seed = useMutation({ mutationFn: () => api<{ created: number }>("/api/demo/seed", { method: "POST" }), onSuccess: () => { invalidate(); router.push("/"); } });
   const signOut = async () => { await supabaseBrowser().auth.signOut(); router.push("/auth/sign-in"); router.refresh(); };
 
@@ -90,15 +91,22 @@ export function SettingsScreen() {
         <section className="rounded-2xl border border-line bg-card p-5" aria-labelledby="engine">
           <h2 id="engine" className="flex items-center gap-2 text-lg"><Sparkles className="size-4 text-ink-soft" aria-hidden /> How this works</h2>
           <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-sm">
-            <dt className="text-ink-faint">Reading your words</dt><dd>{p.capabilities.ai === "claude" ? "Claude, server-side only. Your raw notes are never rewritten." : "Built-in lexicon (no AI key configured). Deterministic and private."}</dd>
+            <dt className="text-ink-faint">Reading your words</dt><dd>{p.capabilities.ai === "claude" ? "Claude, server-side only. Your raw notes are never rewritten." : p.capabilities.ai === "nvidia" ? `${p.capabilities.aiModel ?? "NVIDIA model"} via NVIDIA, server-side only. Your notes are sent to NVIDIA to be read and are never rewritten.` : "Built-in lexicon (no AI key configured). Deterministic and private."}</dd>
             <dt className="text-ink-faint">Film, TV, anime</dt><dd>{p.capabilities.tmdb ? "TMDB search" : "Built-in list only — add a TMDB key for full search"}</dd>
             <dt className="text-ink-faint">Books</dt><dd>Open Library</dd>
-            <dt className="text-ink-faint">Music</dt><dd>MusicBrainz</dd>
-            <dt className="text-ink-faint">Sharing</dt><dd>None. Nothing you log leaves your account.</dd>
+            <dt className="text-ink-faint">Music</dt><dd>{p.capabilities.spotify ? "Spotify search, then MusicBrainz" : "MusicBrainz"}</dd>
+            <dt className="text-ink-faint">Sharing</dt><dd>None. Nothing you log is shown to anyone else.</dd>
           </dl>
           <div className="mt-4 flex flex-wrap gap-2">
             <Button size="sm" variant="outline" render={<Link href="/onboarding" />}>Revisit the opening</Button>
+            {p.capabilities.ai !== "mock" && (
+              <Button size="sm" variant="outline" onClick={() => reread.mutate()} disabled={reread.isPending || reread.isSuccess}>
+                {reread.isPending ? "Queuing…" : "Re-read my notes"}
+              </Button>
+            )}
           </div>
+          {reread.isSuccess && <p className="mt-2 text-xs text-ink-soft">{reread.data.queued ? `Re-reading ${reread.data.queued} ${reread.data.queued === 1 ? "note" : "notes"} in the background. Each takes a few seconds, so give it a few minutes, then refresh.` : "Every note has already been read by the current model."}</p>}
+          {reread.isError && <p className="mt-2 text-xs text-destructive">{reread.error.message}</p>}
         </section>
 
         <section className="rounded-2xl border border-dashed border-line bg-paper-2/40 p-5" aria-labelledby="demo">

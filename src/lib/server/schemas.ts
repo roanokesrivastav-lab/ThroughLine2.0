@@ -1,5 +1,17 @@
 import { z } from "zod";
 import { CATEGORIES, DIMENSIONS, ENTRY_STATUSES, RESURFACE_RESPONSES } from "@/lib/types";
+import { PRECISIONS } from "@/lib/taste/when";
+
+const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
+
+/** consumed_until only makes sense with a start, and never before it. */
+const whenFields = {
+  consumed_at: isoDate.nullable().optional(),
+  consumed_until: isoDate.nullable().optional(),
+  consumed_precision: z.enum(PRECISIONS).nullable().optional(),
+};
+const whenIsCoherent = (v: { consumed_at?: string | null; consumed_until?: string | null }) =>
+  !v.consumed_until || (!!v.consumed_at && v.consumed_until >= v.consumed_at);
 
 export const categorySchema = z.enum(CATEGORIES);
 
@@ -26,17 +38,18 @@ export const createEntrySchema = z.object({
   media_item_id: z.string().uuid().optional(),
   status: z.enum(ENTRY_STATUSES).default("completed"),
   private_score: z.number().int().min(1).max(10).nullable().optional(),
-  consumed_at: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
+  ...whenFields,
   dimensions: dimensionsSchema.optional(),
   note: z.string().max(4000).optional(),
   origin: z.enum(["log", "onboarding_pick", "canon"]).default("log"),
-}).refine((v) => v.result || v.media_item_id, { message: "result or media_item_id required" });
+}).refine((v) => v.result || v.media_item_id, { message: "result or media_item_id required" })
+  .refine(whenIsCoherent, { message: "consumed_until must follow consumed_at" });
 
 export const updateEntrySchema = z.object({
   status: z.enum(ENTRY_STATUSES).optional(),
   private_score: z.number().int().min(1).max(10).nullable().optional(),
-  consumed_at: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
-});
+  ...whenFields,
+}).refine(whenIsCoherent, { message: "consumed_until must follow consumed_at" });
 
 export const reactionSchema = z.object({
   dimensions: dimensionsSchema.optional(),
@@ -64,7 +77,8 @@ export const pushSubscriptionSchema = z.object({
 
 export const canonReactSchema = z.object({
   result: catalogResultSchema,
-  response: z.enum(["loved", "seen", "never"]),
+  // want: heard of it and wants to. unsure: heard of it, undecided. Neither is a verdict on the work.
+  response: z.enum(["loved", "seen", "want", "unsure", "never"]),
 });
 
 /** Pinned / muted tags and dismissed candidates. Lives in users.onboarding_prefs.taste. */

@@ -5,10 +5,11 @@ import { z } from "zod";
 import type { Recommendation } from "@/lib/types";
 import { fallbackExplanation } from "@/lib/taste/recommend";
 import { describeKey } from "@/lib/taste/vocabulary";
-import { aiEnabled, anthropicModel } from "./extractor";
+import { aiProvider, anthropicModel } from "./extractor";
+import { nvidiaExplainer } from "./nvidia";
 
 export interface Explainer {
-  readonly name: "mock" | "claude";
+  readonly name: "mock" | "claude" | "nvidia";
   /** Adds a plain-language explanation to each recommendation. Never invents metadata; only uses what it is handed. */
   explain(recs: Recommendation[], portraitLine: string): Promise<Recommendation[]>;
 }
@@ -79,6 +80,6 @@ export function claudeExplainer(client: Anthropic, model: string): Explainer {
 let cached: Explainer | null = null;
 export function getExplainer(): Explainer {
   if (cached) return cached;
-  cached = aiEnabled() ? claudeExplainer(new Anthropic(), anthropicModel()) : mockExplainer;
+  cached = aiProvider() === "nvidia" ? nvidiaExplainer() : aiProvider() === "claude" ? claudeExplainer(new Anthropic(), anthropicModel()) : mockExplainer;
   return cached;
 }

@@ -10,6 +10,7 @@ export { mockExtract, mockExtractor } from "./mock-extractor";
 
 export type { ExtractionInput, ExtractionResult, Extractor } from "./mock-extractor";
 import type { Extractor } from "./mock-extractor";
+import { nvidiaExtractor } from "./nvidia";
 
 /* ------------------------------------------------------------------------ */
 /* Claude: structured output against the same vocabulary.                    */
@@ -72,7 +73,16 @@ export function claudeExtractor(client: Anthropic, model: string): Extractor {
 /* ------------------------------------------------------------------------ */
 
 export function aiEnabled(): boolean {
-  return !!process.env.ANTHROPIC_API_KEY;
+  return aiProvider() !== "mock";
+}
+export function aiProvider(): "claude" | "nvidia" | "mock" {
+  if (process.env.AI_PROVIDER === "nvidia") return process.env.NVIDIA_API_KEY ? "nvidia" : "mock";
+  if (process.env.AI_PROVIDER === "claude") return process.env.ANTHROPIC_API_KEY ? "claude" : "mock";
+  if (process.env.AI_PROVIDER === "mock") return "mock";
+  // Backwards-compatible auto-selection for deployments without AI_PROVIDER.
+  if (process.env.ANTHROPIC_API_KEY) return "claude";
+  if (process.env.NVIDIA_API_KEY) return "nvidia";
+  return "mock";
 }
 export function anthropicModel(): string {
   return process.env.ANTHROPIC_MODEL || "claude-opus-5";
@@ -82,6 +92,6 @@ let cached: Extractor | null = null;
 /** Picks Claude when a key is configured; otherwise the deterministic mock. Same interface either way. */
 export function getExtractor(): Extractor {
   if (cached) return cached;
-  cached = aiEnabled() ? claudeExtractor(new Anthropic(), anthropicModel()) : mockExtractor;
+  cached = aiProvider() === "nvidia" ? nvidiaExtractor() : aiProvider() === "claude" ? claudeExtractor(new Anthropic(), anthropicModel()) : mockExtractor;
   return cached;
 }

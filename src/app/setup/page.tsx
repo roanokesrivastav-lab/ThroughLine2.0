@@ -16,7 +16,7 @@ export default function SetupPage() {
         <li>Run the migration in <code>supabase/migrations/0001_init.sql</code> (SQL editor, or <code>supabase db push</code>).</li>
         <li>Restart <code>npm run dev</code>. Sign up, then load the demo library from Settings.</li>
       </ol>
-      <p className="mt-6 text-xs text-ink-faint">Optional keys (TMDB, Anthropic, VAPID) unlock full search, Claude extraction and push. Without them the app uses a built-in catalogue and a deterministic mock.</p>
+      <p className="mt-6 text-xs text-ink-faint">Optional keys (TMDB, Anthropic, NVIDIA, VAPID) unlock full search, AI extraction and push. Without an AI key the app uses a deterministic local fallback.</p>
     </main>
   );
 }

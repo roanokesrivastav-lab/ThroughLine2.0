@@ -1,4 +1,5 @@
 // Shared domain types used across server and client.
+import type { Precision } from "@/lib/taste/when";
 
 export const CATEGORIES = ["movie", "tv", "anime", "book", "music"] as const;
 export type Category = (typeof CATEGORIES)[number];
@@ -56,6 +57,13 @@ export type ResurfaceResponse = (typeof RESURFACE_RESPONSES)[number];
 
 export type Creator = { name: string; role: string };
 
+/** Books cover more than novels. Web novels, light novels and manga are books with a kind (PRD §5 keeps five categories). */
+export const BOOK_KINDS = ["novel", "web_novel", "light_novel", "manga", "comic", "nonfiction", "poetry"] as const;
+export type BookKind = (typeof BOOK_KINDS)[number];
+export const BOOK_KIND_LABEL: Record<BookKind, string> = {
+  novel: "Novel", web_novel: "Web novel", light_novel: "Light novel", manga: "Manga", comic: "Comic", nonfiction: "Non-fiction", poetry: "Poetry",
+};
+
 export type MediaMetadata = {
   runtime_minutes?: number;          // movie
   episode_runtime_minutes?: number;  // tv / anime
@@ -64,6 +72,7 @@ export type MediaMetadata = {
   duration_seconds?: number;         // music
   album?: string;
   overview?: string;
+  book_kind?: BookKind;
   encounter_weight?: number;         // canon only: rough likelihood the user has met this title. Never displayed.
   [key: string]: unknown;
 };
@@ -90,6 +99,8 @@ export type Entry = {
   status: EntryStatus;
   private_score: number | null;
   consumed_at: string | null;
+  consumed_until: string | null;
+  consumed_precision: Precision | null;
   origin: "log" | "onboarding_pick" | "canon" | "demo";
   created_at: string;
   updated_at: string;

@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC_PREFIXES = ["/auth", "/~offline", "/manifest.json", "/icons", "/sw.js", "/api/cron", "/api/health", "/dev/"];
+const PUBLIC_PREFIXES = ["/auth", "/~offline", "/manifest.json", "/icons", "/sw.js", "/api/cron", "/api/health", "/dev/", "/api/dev/"];
 
 /**
  * Refreshes the Supabase session cookie on every request and gates the app routes.

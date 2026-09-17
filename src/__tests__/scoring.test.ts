@@ -170,3 +170,23 @@ function bare(id: string, genres: string[]): MediaItem {
     metadata: { runtime_minutes: 100 }, feel_prior: null,
   };
 }
+
+describe("regressions", () => {
+  const profile = buildTagProfile(lib);
+
+  it("treats an anime feature as a film for time budgets, not as one episode", () => {
+    const feature: MediaItem = { ...bare("anime-feature", ["animation", "drama"]), category: "anime", metadata: { runtime_minutes: 125 } };
+    expect(scoreCandidates(lib, [{ item: feature, vector: null }], { minutes: 40, limit: 1 }, "u1", profile)).toHaveLength(0);
+    const [r] = scoreCandidates(lib, [{ item: feature, vector: null }], { minutes: 150, limit: 1 }, "u1", profile);
+    expect(r.fits).toBe("125 min");
+  });
+
+  it("breaks score ties by candidate key, whatever order the candidates arrived in", () => {
+    const a: Candidate = { item: bare("tie-a", ["thriller"]), vector: null };
+    const b: Candidate = { item: bare("tie-b", ["thriller"]), vector: null };
+    const forward = scoreCandidates(lib, [a, b], { limit: 2 }, "u1", profile);
+    const reversed = scoreCandidates(lib, [b, a], { limit: 2 }, "u1", profile);
+    expect(forward[0].score).toBe(forward[1].score);
+    expect(forward.map((r) => r.item.id)).toEqual(reversed.map((r) => r.item.id));
+  });
+});

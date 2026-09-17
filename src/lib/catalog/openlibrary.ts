@@ -10,6 +10,16 @@ const SUBJECT_MAP: Array<[RegExp, string]> = [
   [/humor|humour|comic/i, "comedy"], [/literary/i, "literary"], [/nature/i, "nature"], [/grief|death/i, "grief"],
 ];
 
+/** Open Library descriptions often trail into source links and markdown; keep the first few sentences of prose. */
+function shortDescription(raw: string): string | undefined {
+  const text = raw.split(/\n\s*(?:-{3,}|\(\[source\]|\[source\]|See also)/i)[0].replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/\s+/g, " ").trim();
+  if (!text) return undefined;
+  const sentences = text.match(/[^.!?]+[.!?]+(\s|$)/g) ?? [text];
+  let out = "";
+  for (const s of sentences) { if ((out + s).length > 320 && out) break; out += s; }
+  return out.trim().slice(0, 360);
+}
+
 export const openLibraryAdapter: CatalogAdapter = {
   source: "openlibrary",
   categories: ["book"],
@@ -35,6 +45,19 @@ export const openLibraryAdapter: CatalogAdapter = {
         metadata: { pages: d.number_of_pages_median ?? undefined },
       };
     });
+  },
+  /** Adds the work's own description, trimmed to a few sentences. Never ratings. */
+  async enrich(result, signal) {
+    try {
+      const res = await fetchWithTimeout(`https://openlibrary.org/works/${result.external_id}.json`, { headers: { accept: "application/json" } }, 7000, signal);
+      if (!res.ok) return result;
+      const d = (await res.json()) as { description?: string | { value?: string } };
+      const raw = typeof d.description === "string" ? d.description : d.description?.value;
+      const overview = raw ? shortDescription(raw) : undefined;
+      return overview ? { ...result, metadata: { ...result.metadata, overview } } : result;
+    } catch {
+      return result;
+    }
   },
   async byCreator(name, _category, signal) {
     const url = new URL("https://openlibrary.org/search.json");

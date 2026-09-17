@@ -7,15 +7,15 @@ import { STATUS_LABEL } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export function EntryRow({ entry, showQuote = true, className, dense }: { entry: EntryDTO; showQuote?: boolean; className?: string; dense?: boolean }) {
-  const date = entry.consumed_at ?? entry.created_at.slice(0, 10);
+  const date = entry.when?.label ?? "Undated";
   return (
     <Link href={`/entry/${entry.id}`} className={cn("group flex gap-3 rounded-xl p-2 -mx-2 transition-colors hover:bg-paper-2/70 focus-visible:outline-2 focus-visible:outline-ring", className)}>
       <MediaArt title={entry.item.title} category={entry.item.category} image={entry.item.image_url} size={dense ? "sm" : "md"} />
       <div className="min-w-0 flex-1 py-0.5">
         <div className="flex items-center gap-2">
           <CategoryChip category={entry.item.category} />
-          {entry.status !== "completed" && <span className="text-[11px] text-ink-faint">· {STATUS_LABEL[entry.status]}</span>}
-          <span className="ml-auto text-[11px] tabular-nums text-ink-faint">{formatDate(date)}</span>
+          <span className="text-[11px] text-ink-faint">· {STATUS_LABEL[entry.status]}</span>
+          {entry.status !== "want" && <span className="ml-auto text-[11px] tabular-nums text-ink-faint">{date}</span>}
         </div>
         <h3 className="mt-0.5 truncate text-base leading-snug">{entry.item.title}</h3>
         {entry.item.subtitle && <p className="truncate text-xs text-ink-soft">{entry.item.subtitle}{entry.item.release_year ? ` · ${entry.item.release_year}` : ""}</p>}

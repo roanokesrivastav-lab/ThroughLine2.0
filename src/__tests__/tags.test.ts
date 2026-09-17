@@ -225,7 +225,7 @@ function makeEntry(id: string, genres: string[], dims: Record<string, boolean>):
   return {
     entry: {
       id: `entry-${id}`, user_id: "u", media_item_id: item.id, status: "completed",
-      private_score: null, consumed_at: created.slice(0, 10), origin: "log", created_at: created, updated_at: created,
+      private_score: null, consumed_at: created.slice(0, 10), consumed_until: null, consumed_precision: "day", origin: "log", created_at: created, updated_at: created,
     },
     item,
     reactions: Object.keys(dims).length

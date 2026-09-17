@@ -9,9 +9,23 @@ import { useEntries, usePhases } from "@/lib/api";
 import type { EntryDTO } from "@/lib/server/dto";
 import { CATEGORIES, CATEGORY_PLURAL, ENTRY_STATUSES, STATUS_LABEL } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { seasonOf } from "@/lib/taste/when";
 
-const MONTH = (iso: string) => iso.slice(0, 7);
 const monthLabel = (ym: string) => new Date(`${ym}-15T00:00:00Z`).toLocaleDateString(undefined, { month: "long", year: "numeric", timeZone: "UTC" });
+
+type Group = { key: string; label: string; href: string | null; sort: string; items: EntryDTO[] };
+
+/** Group by the honest precision of each date: months for exact ones, seasons, "sometime in 2019", or undated. */
+function groupOf(e: EntryDTO): Omit<Group, "items"> {
+  const w = e.when;
+  if (e.status === "want") return { key: "want", label: "Want to", href: null, sort: "9999-99-99" };
+  if (!w) return { key: "undated", label: "Not dated yet", href: "/timeline#undated", sort: "0000-00-00" };
+  const mid = new Date(`${w.mid}T00:00:00Z`);
+  if (w.precision === "day" || w.precision === "month") { const ym = w.mid.slice(0, 7); return { key: ym, label: monthLabel(ym), href: `/history/${ym}`, sort: w.mid }; }
+  if (w.precision === "season") { const s = seasonOf(mid); return { key: `${s.year}-${s.season}`, label: w.label, href: `/history/${s.year}-${s.season}`, sort: w.mid }; }
+  if (w.precision === "year") return { key: w.start.slice(0, 4), label: `Sometime in ${w.start.slice(0, 4)}`, href: `/history/${w.start.slice(0, 4)}`, sort: `${w.start.slice(0, 4)}-00` };
+  return { key: `range-${w.start}-${w.end}`, label: w.label.replace("~", "Across "), href: null, sort: w.mid };
+}
 
 export function HistoryScreen() {
   const [category, setCategory] = useState<string | undefined>();
@@ -23,17 +37,19 @@ export function HistoryScreen() {
 
   const years = useMemo(() => {
     const ys = new Set<string>();
-    for (const e of all.data?.entries ?? []) ys.add((e.consumed_at ?? e.created_at).slice(0, 4));
+    for (const e of all.data?.entries ?? []) if (e.when) ys.add(e.when.mid.slice(0, 4));
     return [...ys].sort().reverse();
   }, [all.data]);
 
   const grouped = useMemo(() => {
-    const m = new Map<string, EntryDTO[]>();
+    const m = new Map<string, Group>();
     for (const e of entries.data?.entries ?? []) {
-      const k = MONTH(e.consumed_at ?? e.created_at);
-      m.set(k, [...(m.get(k) ?? []), e]);
+      const g = groupOf(e);
+      const cur = m.get(g.key) ?? { ...g, items: [] };
+      cur.items.push(e);
+      m.set(g.key, cur);
     }
-    return [...m.entries()];
+    return [...m.values()].sort((a, b) => b.sort.localeCompare(a.sort));
   }, [entries.data]);
 
   const activePhases = (phases.data?.phases ?? []).filter((p) => !p.dismissed);
@@ -68,13 +84,14 @@ export function HistoryScreen() {
           action={all.data?.entries.length ? <Button variant="outline" onClick={() => { setCategory(undefined); setStatus(undefined); setYear(undefined); }}>Clear filters</Button> : <Button render={<Link href="/add" />}>Add something</Button>} />
       ) : (
         <div className="space-y-7">
-          {grouped.map(([ym, items]) => (
-            <section key={ym} aria-labelledby={`m-${ym}`}>
+          {grouped.map((g) => (
+            <section key={g.key} aria-labelledby={`m-${g.key}`}>
               <div className="mb-2 flex items-baseline justify-between">
-                <h2 id={`m-${ym}`} className="text-lg"><Link href={`/history/${ym}`} className="underline-offset-4 hover:underline">{monthLabel(ym)}</Link></h2>
-                <span className="text-xs text-ink-faint">{items.length}</span>
+                <h2 id={`m-${g.key}`} className="text-lg">{g.href ? <Link href={g.href} className="underline-offset-4 hover:underline">{g.label}</Link> : g.label}</h2>
+                <span className="text-xs text-ink-faint">{g.items.length}</span>
               </div>
-              <div className="space-y-1">{items.map((e) => <EntryRow key={e.id} entry={e} />)}</div>
+              {g.key === "undated" && <p className="-mt-1 mb-2 text-xs text-ink-faint">Open one and say roughly when, or date them all from the <Link href="/timeline#undated" className="underline underline-offset-4">timeline</Link>.</p>}
+              <div className="space-y-1">{g.items.map((e) => <EntryRow key={e.id} entry={e} />)}</div>
             </section>
           ))}
         </div>

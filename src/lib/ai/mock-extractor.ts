@@ -11,10 +11,10 @@ export type ExtractionInput = {
   subtitle?: string | null;
 };
 
-export type ExtractionResult = { extraction: Extraction; vector: AttributeVector; extractor: "mock" | "claude"; vocabulary_version: string };
+export type ExtractionResult = { extraction: Extraction; vector: AttributeVector; extractor: "mock" | "claude" | "nvidia"; vocabulary_version: string };
 
 export interface Extractor {
-  readonly name: "mock" | "claude";
+  readonly name: "mock" | "claude" | "nvidia";
   extract(input: ExtractionInput): Promise<ExtractionResult>;
 }
 
@@ -77,4 +77,3 @@ export function mockQuote(text: string): string | null {
 }
 
 export const mockExtractor: Extractor = { name: "mock", extract: async (i) => mockExtract(i) };
-

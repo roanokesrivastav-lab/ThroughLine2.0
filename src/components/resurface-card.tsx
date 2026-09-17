@@ -9,7 +9,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { api, useInvalidateLibrary } from "@/lib/api";
 import type { EntryDTO } from "@/lib/server/dto";
 import type { ResurfaceResponse } from "@/lib/types";
-import { formatDate } from "@/components/entry/entry-row";
 import { cn } from "@/lib/utils";
 
 type Card = { eventId: string; entry: EntryDTO };
@@ -30,7 +29,6 @@ export function ResurfaceCard({ card, onNext, className, compact }: { card: Card
   });
 
   const e = card.entry;
-  const when = e.consumed_at ?? e.created_at;
 
   return (
     <article className={cn("relative overflow-hidden rounded-2xl border border-line bg-card p-4 md:p-5", className)} aria-live="polite">
@@ -41,7 +39,7 @@ export function ResurfaceCard({ card, onNext, className, compact }: { card: Card
           <CategoryChip category={e.item.category} />
           <h3 className="mt-1 text-balance text-2xl leading-tight">{e.item.title}</h3>
           {e.item.subtitle && <p className="text-sm text-ink-soft">{e.item.subtitle}</p>}
-          <p className="mt-1 text-xs text-ink-faint">{formatDate(when, { month: "long", year: "numeric" })}</p>
+          {e.when && <p className="mt-1 text-xs text-ink-faint">{e.when.label}</p>}
           {e.extraction.quote && <p className="quote mt-3 text-[15px] leading-relaxed text-ink-soft">“{e.extraction.quote}”</p>}
         </div>
       </div>

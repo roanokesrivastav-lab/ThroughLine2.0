@@ -8,9 +8,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { MediaArt } from "@/components/media/media-art";
 import { CategoryChip } from "@/components/media/category-chip";
 import { useCreateEntry } from "@/lib/api";
+import { kindLabel } from "@/components/search-results";
 import type { CatalogResult } from "@/lib/catalog/types";
 import { DIMENSIONS, DIMENSION_LABEL, ENTRY_STATUSES, STATUS_LABEL, type EntryStatus } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { WhenPicker } from "@/components/when-picker";
+import { dayWhen, todayIso, type When } from "@/lib/taste/when";
 
 /**
  * Fast, one-handed logging. Status is the only required choice and it is preselected,
@@ -36,10 +39,13 @@ function LogForm({ result, defaultStatus, onOpenChange, onSaved }: { result: Cat
   const [dims, setDims] = useState<Record<string, boolean>>({});
   const [note, setNote] = useState("");
   const [saved, setSaved] = useState<string | null>(null);
+  const [when, setWhen] = useState<When>(dayWhen(todayIso()));
   const create = useCreateEntry();
 
   const save = () => {
-    create.mutate({ result, status, private_score: score, dimensions: dims, note: note.trim() || undefined, origin: "log" }, {
+    // "Want to" has not happened yet, so it carries no date.
+    const dated = status === "want" ? {} : when;
+    create.mutate({ result, status, private_score: score, dimensions: dims, note: note.trim() || undefined, origin: "log", ...dated }, {
       onSuccess: (data) => { setSaved(data.entry?.id ?? null); onSaved?.(data.entry?.id ?? null); },
     });
   };
@@ -51,7 +57,8 @@ function LogForm({ result, defaultStatus, onOpenChange, onSaved }: { result: Cat
           <div className="min-w-0 flex-1">
             <CategoryChip category={result.category} />
             <SheetTitle className="mt-1 text-balance font-serif text-2xl font-normal leading-tight">{result.title}</SheetTitle>
-            <SheetDescription className="text-sm text-ink-soft">{[result.subtitle, result.release_year].filter(Boolean).join(" · ") || "Log it in a few taps."}</SheetDescription>
+            <SheetDescription className="text-sm text-ink-soft">{[kindLabel(result), result.subtitle, result.release_year].filter(Boolean).join(" · ") || "Log it in a few taps."}</SheetDescription>
+            {result.metadata.overview && <p className="mt-1.5 line-clamp-3 text-xs leading-snug text-ink-faint">{result.metadata.overview}</p>}
           </div>
         </div>
 
@@ -77,6 +84,13 @@ function LogForm({ result, defaultStatus, onOpenChange, onSaved }: { result: Cat
                 ))}
               </div>
             </fieldset>
+
+            {status !== "want" && (
+              <fieldset>
+                <legend className="eyebrow mb-2">When <span className="normal-case tracking-normal text-ink-faint">· roughly is fine</span></legend>
+                <WhenPicker value={when} onChange={setWhen} />
+              </fieldset>
+            )}
 
             <fieldset>
               <legend className="eyebrow mb-2">Private score <span className="normal-case tracking-normal text-ink-faint">· optional, just for you</span></legend>

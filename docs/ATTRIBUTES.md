@@ -5,6 +5,14 @@ behaviour, so the recommender has one agreed list to draw on. Agreed with the fo
 2026-09-15, before the Stage 3 build. `docs/STATE.md` records what is actually built;
 `docs/RECOMMENDATIONS.md` says how these attributes are scored.
 
+> **Revised 2026-09-17 to match `docs/SPEC-STAGE3.md` (Stage 3, vocabulary v2).** Where the two
+> differ, the spec wins for Stage 3. What changed here: `found-family` left `theme` (it lives in
+> `bond`); `romance` left `bond`; `historical` left `frame`; `slow-burn` and `action-driven` left
+> `momentum`; the story scalars are now only `moral-complexity` and `complexity`; readings
+> (Part 2) are non-negative, with negation recorded as `absent` instead of a negative weight;
+> the entry-vector blend table moved to SPEC §4.2. The Stage 3 code pins `VOCABULARY_VERSION` to
+> v1 until the extractors emit v2, so nothing here changes what live rows carry until then.
+
 **Priorities (founder, 2026-09-15):**
 - Story and themes carry the most weight. Feeling and mood are second.
 - All five media are profiled.
@@ -25,7 +33,9 @@ behaviour, so the recommender has one agreed list to draw on. Agreed with the fo
   person's own note or taps), or `manual`
 - a `confidence` from 0 to 1
 
-Weights run from 0 to 1 on item profiles. Only a user reading (Part 2) may carry negative weights.
+Weights run from 0 to 1 everywhere — item profiles and user readings alike. A reading that
+would have carried a negative weight instead records the key in `absent` (Part 2); negative
+vector values are invalid and mark the extraction row failed.
 
 ---
 
@@ -51,25 +61,27 @@ describes the work and is forbidden from judging quality or reception.
 
 | Group | Values |
 |---|---|
-| `theme` | grief, love, memory, loneliness, growing-up, obsession, family, home, faith, violence, class, time, identity, freedom, death, friendship, art, nature, power, desire, survival, justice, madness, wonder, found-family, ambition, destiny-vs-choice, expectation, exploitation, humanitys-limits, war, revenge, redemption, sacrifice, belonging, duty, truth-and-lies, corruption, legacy, isolation, technology, otherness |
+| `theme` | grief, love, memory, loneliness, growing-up, obsession, family, home, faith, violence, class, time, identity, freedom, death, friendship, art, nature, power, desire, survival, justice, madness, wonder, ambition, destiny-vs-choice, expectation, exploitation, humanitys-limits, war, revenge, redemption, sacrifice, belonging, duty, truth-and-lies, corruption, legacy, isolation, technology, otherness |
 | `arc` | transformation, characters-changing-each-other, parallels-and-foils, self-determination, breaking-expectations, coming-of-age, rise-and-fall, redemption-arc, descent, quest, homecoming |
 | `conflict` | vs-self, vs-person, vs-society, vs-system, vs-nature, vs-fate, vs-the-unknown |
 | `cast` | ensemble, sprawling-cast, single-protagonist, duo, morally-grey, every-character-a-lead, antihero, underdog |
-| `bond` | found-family, rivals, mentor-student, romance, siblings, parent-child, friendship, partners |
+| `bond` | found-family, rivals, mentor-student, siblings, parent-child, friendship, partners |
 | `world` | lived-in, systemic, mythic, grounded, hostile, intimate-scale |
 | `setting` | contemporary, historical, near-future, far-future, secondary-world, timeless, urban, rural, school, workplace, wartime, space |
-| `frame` | realism, fantasy, sci-fi, horror, crime, mystery, thriller, romance, comedy, adventure, slice-of-life, historical, satire |
+| `frame` | realism, fantasy, sci-fi, horror, crime, mystery, thriller, romance, comedy, adventure, slice-of-life, satire |
 | `structure` | linear, nonlinear, multiple-pov, frame-story, unreliable-narrator, mystery-box, anthology |
-| `momentum` | slow-burn, suspenseful, action-driven, unpredictable, episodic-arcs, twisty, cliffhangers |
+| `momentum` | suspenseful, unpredictable, episodic-arcs, twisty, cliffhangers |
 | `stakes` | personal, community, world, cosmic |
 | `ending` *(never shown: spoiler)* | resolved, open, ambiguous, bittersweet, tragic, triumphant |
-| story scalars | darkness, hope, humour, romance, moral-complexity, complexity |
+| story scalars | moral-complexity, complexity |
 
 Notes:
 - `systemic` means a world run by rules, such as magic or power systems.
-- `bond` is the relationship at the centre of the story.
+- `bond` is the relationship at the centre of the story. `found-family` is a bond, not a theme.
 - `frame` is genre, normalised from catalogue tags where they exist and filled by `ai` where they don't.
 - The `complexity` scalar runs from easy to follow (0) to demanding (1).
+- `ending` is stored and never scored: it is a spoiler, and it is excluded from similarity
+  (SPEC-STAGE3 §1.1 gives it group weight 0).
 
 ### 1C. Feeling & mood — SECONDARY · `ai` for items, `user` for readings · shown
 
@@ -120,30 +132,33 @@ The v1 vocabulary, kept unchanged. It is the cross-media bridge and still carrie
 ## Part 2 — A reading: what the person felt and valued
 
 Written per reaction into `extracted_attributes`, using **the same words as 1B and 1C** so a
-reading and an item profile compare directly.
+reading and an item profile compare directly. This is SPEC-STAGE3 §1.3, the vocabulary-v2
+reading; it is what the Stage 3 extractors will emit.
 
-- **Vector** over 1B and 1C. **Negative weights are allowed**: "there's no quiet feeling" gives
-  `register.quiet = -0.6`. Chips are context for the reader, never injected tags.
-- **What they valued:** short phrases in their own wording, e.g. "every character is their own
-  main character".
-- **What didn't work:** phrases in the same form. These feed the anti-profile.
+- **Vector** over 1B and 1C. **Every value is 0..1; negative values are invalid** and mark the
+  extraction row failed. What the person said was *not* there is recorded in `absent` instead:
+  "there's no quiet feeling" puts `register.quiet` in `absent` (≤ 6 keys, all vocabulary keys).
+  `absent` zeroes those keys in that entry's vector when it is built (SPEC §4.2).
+- **What didn't work** (`didnt_work`): ≤ 4 vocabulary keys plus ≤ 3 verbatim phrases from the
+  note. These are preference evidence and feed the anti-profile (SPEC §4.6). Empty means nothing
+  was said, not that nothing was absent.
+- **What they valued** (`valued`): ≤ 3 short phrases in their own wording, verbatim substrings of
+  the note, e.g. "every character is their own main character".
 - **Taps (existing `reactions.dimensions`):** loved, moved me, stuck with me, would return,
   changed my perspective, comforted me, challenged me. Taps raise the entry's weight; they do not
-  add feeling words.
-- **Summary** that echoes the person's emphasis, never a default adjective.
+  add words to the reading.
+- **Summary** that echoes the person's emphasis, never a default adjective (≤ 60 chars).
+- **Quote:** ≤ 160 chars, verbatim, guarded as today.
 
-**How an entry's vector is built:**
-
-| What exists | Reading | Item profile |
-|---|---|---|
-| A note | 0.8 (negatives subtract) | 0.2 |
-| Taps, no note | taps set intensity | 0.7 |
-| Nothing | — | 0.5 |
+**How an entry's vector is built** is SPEC-STAGE3 §4.2: with a note, 0.8 reading + 0.2 item
+profile; without a note, the item profile alone. The old blend table here (0.7 taps-only, 0.5
+nothing) is superseded: no profile and no reading means no vector and the entry is skipped.
 
 ## Part 3 — Behaviour & time (mostly built)
 
 - `entries.status`: want, in progress, finished, dropped. Finishing is not liking.
-- `entries.private_score` (1–10): a nudge of at most ±0.05.
+- `entries.private_score` (1–10): enters the system only inside `affinity(e)` (SPEC §4.1,
+  ±0.135), superseding the separate ±0.05 scoring nudge (DECISIONS #59, Q4).
 - When: `consumed_at`, `consumed_until`, `consumed_precision`.
 - `entries.origin`: onboarding pick, canon, log.
 - `resurface_events.response`: still hits, doesn't hit, not revisited.
@@ -164,6 +179,10 @@ table, `recommendation_feedback`, with RLS.
 | More like this | strengthen that route |
 | Not for me | penalise that item and its matched words, never a whole creator or genre |
 | Already know it | remove from discovery; it may still confirm taste |
+
+Where this meets Stage 3: the snapshot stored with each shown result is SPEC-STAGE3 §9, the
+feature vector the learner will read is §12.1, and per DECISIONS #32/#59 a "not for me" stays
+item-scoped and does **not** feed the Stage 3 anti-profile; "what didn't work" in a note does.
 
 ## Part 5 — Taste profiles (computed from Parts 1–4, never stored)
 

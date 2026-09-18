@@ -490,50 +490,27 @@ meaningful reactions · which phases are emerging.
 
 ---
 
-## 14. Model (agreed 2026-09-15)
+## 14. Model (Stage 3)
 
-### Now: a hand-tuned weighted score for film, TV, anime and books
+**Superseded 2026-09-17 by `docs/SPEC-STAGE3.md`**, which is now the normative Stage 3
+specification for scoring, calibration, profile construction, candidate generation, filtering,
+re-ranking, explanation, the impression snapshot and the future learning contract. This section
+keeps only the model choice; see it there.
 
-This is the existing component system in `src/lib/taste/recommend.ts`, with story added as the
-top component. It replaces the per-medium tables in §6 for these four media until real use says
-otherwise.
-
-1. **Hard filters:** category, time available or commitment band, already logged, hidden.
-2. **Score:**
-
-   | Component | Weight |
-   |---|---|
-   | Story & themes match (`ATTRIBUTES.md` 1B) | 0.40 |
-   | Feeling & mood match (1C) | 0.20 |
-   | Form fit: length, commitment, pacing, structure (1D) | 0.15 |
-   | Creator link | 0.10 |
-   | Current-phase fit | 0.10 |
-   | Novelty / diversity | 0.05 |
-
-   As today, weights re-normalise over the components that have evidence.
-3. **Adjustments after normalisation:** anti-profile penalty, recently-shown penalty, private
-   score of at most ±0.05.
-4. **Mix:** roughly 70% familiar, 20% adjacent, 10% stretch (§7), and at most two results per
-   creator (§8).
-5. **Explanation** comes only from the matched words and the person's own "what I valued"
-   phrases (§11). `ending` values are never named.
-
-### Later: learn the weights from the person's own answers
-
-- **Model:** a per-user **logistic regression** over the same named component scores. It is
-  trained only on that person's answers to recommendations (`ATTRIBUTES.md` Part 4).
-- **Regularised toward the hand-tuned weights,** so a handful of answers cannot swing it. Each
-  weight stays within a fixed band around its starting value.
-- **Starts after roughly 50 answers.** Before that, the hand-tuned weights stand.
-- **Why:** it keeps every result explainable ("story match counted 0.43 for you"), works on tiny
-  data, and runs in plain TypeScript with no ML service.
-- **Optional after that:** Thompson sampling to tune the 70/20/10 mix from "too similar" and
-  "more like this" answers.
-
-### Rejected
-- **Collaborative filtering, matrix factorization, two-tower models, LightFM:** they need many
-  users' data (PRD §2.1).
-- **Embeddings or vector similarity:** PRD §9.
-- **Sequence models such as SASRec:** they need thousands of interactions. Revisit only for Stage 4.
-- **Gradient-boosted ranking such as LightGBM LambdaMART:** it overfits a few hundred answers and
-  is hard to explain. It is a possible much-later upgrade.
+- **Now (Stage 3): a hand-tuned weighted score for film, TV, anime and books.** Six fixed
+  components — story 0.40, feeling 0.20, form 0.15, creator 0.10, phase 0.10, anti −0.15 — with
+  **no re-normalisation**: the score is the plain weighted sum, and a component without evidence
+  contributes 0 rather than being dropped. The form component scores the **length band only**
+  (runtime, commitment hours, reading hours); craft words are stored but not scored. Novelty is
+  no longer a score term — it is the stretch slot at re-rank. The private score enters only
+  through affinity (SPEC §4.1), superseding the separate ±0.05 nudge. Weights and every other
+  constant live in `src/lib/taste/weights.ts` under `FEATURE_VERSION = "f1"`.
+- **Later: learn the weights from the person's own answers.** A per-user logistic regression
+  regularised toward the hand-tuned weights (SPEC §12: κ = 25, ±50% bounds on component weights,
+  from n ≥ 50 answers at the current feature_version), so a handful of answers cannot swing it
+  and every result stays explainable. Not built in Stage 3; Stage 3 must only produce the
+  snapshot data it needs.
+- **Rejected** (unchanged, PRD §2.1 and §9): collaborative filtering, matrix factorization,
+  two-tower models and LightFM (they need many users' data); embeddings and vector similarity;
+  sequence models such as SASRec (too little data); gradient-boosted ranking such as LightGBM
+  LambdaMART (overfits a few hundred answers, hard to explain).

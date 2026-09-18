@@ -1,6 +1,8 @@
-import type { AttributeVector, EntryWithContext, Extraction } from "@/lib/types";
+import type { AttributeVector, EntryWithContext, Extraction, ItemProfile } from "@/lib/types";
+import { PROFILE_VERSION } from "@/lib/taste/weights";
+import { VOCABULARY_V2_VERSION } from "./vocabulary";
 import { entrySpan } from "./when";
-import { blend, isEmpty, scale } from "./vector";
+import { blend, isEmpty, scale, type Family } from "./vector";
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
@@ -77,6 +79,70 @@ export function bestQuote(e: EntryWithContext): string | null {
 /** A single moment for ordering: the middle of the span the user named, else the day it was added. */
 export function entryDate(e: EntryWithContext): Date {
   return entrySpan(e.entry)?.mid ?? new Date(e.entry.created_at);
+}
+
+// ---------------------------------------------------------------------------
+// Stage 3 entry vector (SPEC-STAGE3 §4.2). Additive: the legacy entryVector above
+// stays for the v1 engines (DECISIONS #60); the Stage 3 scorer reads the family
+// version below.
+// ---------------------------------------------------------------------------
+
+/**
+ * A profile is usable iff it exists, is done, and carries the current PROFILE_VERSION
+ * (§1.2). The domain MediaItem carries only the profile itself — the loader attaches it
+ * only when the row qualifies — so the version check is the guard here.
+ */
+export function usableProfile(item: EntryWithContext["item"]): ItemProfile | null {
+  const p = item.profile;
+  return p && p.profile_version === PROFILE_VERSION ? p : null;
+}
+
+/**
+ * vec_F(e) per §4.2: the item profile's family vector blended with the person's own v2
+ * readings — 0.8 reading / 0.2 profile when readings exist, the profile alone when they
+ * do not, readings alone when the item has no usable profile, and null when neither
+ * exists. Keys in the readings' `absent` are deleted: the person said the work did not
+ * carry them as they experienced it. feel_prior is no longer read (§4.2); committed item
+ * profiles replace it.
+ */
+export function entryVectorFamily(e: EntryWithContext, family: Family): AttributeVector | null {
+  if (e.entry.status === "want") return null;
+
+  // v2 rows store { story, feeling } in the same jsonb vector column the flat v1 map uses.
+  const familyVector = (x: EntryWithContext["extractions"][number]): AttributeVector | null => {
+    const v = x.vector as unknown as { story?: AttributeVector; feeling?: AttributeVector } | null;
+    return (v && typeof v === "object" && !Array.isArray(v) ? v[family] ?? null : null);
+  };
+  const absentKeys = (x: EntryWithContext["extractions"][number]): string[] => {
+    const r = x.attributes as unknown as { absent?: string[] } | null;
+    return Array.isArray(r?.absent) ? r.absent : [];
+  };
+
+  const readings = e.extractions
+    .filter((x) => x.status === "done" && x.vocabulary_version === VOCABULARY_V2_VERSION && familyVector(x) !== null)
+    .sort((x, y) => (y.extracted_at ?? "").localeCompare(x.extracted_at ?? ""));
+
+  const p = usableProfile(e.item)?.vector[family] ?? null;
+  let v: AttributeVector | null;
+  if (readings.length === 0) {
+    v = p;
+  } else {
+    const r = blend(readings.map((x, i) => ({ v: familyVector(x)!, w: i === 0 ? 1 : 0.5 })));
+    v = p ? blend([{ v: r, w: 0.8 }, { v: p, w: 0.2 }]) : r;
+  }
+  if (!v) return null;
+
+  for (const x of readings) for (const k of absentKeys(x)) delete v[k];
+  return v;
+}
+
+/**
+ * ownWords (§4.3): the person put their own words on this entry — a done v2 reading whose
+ * reaction carries a note. Drives the "what I valued" phrase in explanations.
+ */
+export function hasOwnWordsV2(e: EntryWithContext): boolean {
+  const noted = new Set(e.reactions.filter((r) => (r.raw_note ?? "").trim().length > 0).map((r) => r.id));
+  return e.extractions.some((x) => x.status === "done" && x.vocabulary_version === VOCABULARY_V2_VERSION && noted.has(x.reaction_id));
 }
 
 /** False for onboarding and canon entries the user has not dated. Eras and phases skip those. */

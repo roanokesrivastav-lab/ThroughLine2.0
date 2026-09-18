@@ -9,6 +9,9 @@
 
 export const FEATURE_VERSION = "f1";
 
+/** Item-profile version (SPEC §1.9): bump when the profiling prompt, schema, caps or merge rules change. A profile is usable only at this version. */
+export const PROFILE_VERSION = "p1";
+
 /** Fixed component order = feature order for the learner (§2.8, §12.1). */
 export const COMPONENTS = ["story", "feeling", "form", "creator", "phase", "anti"] as const;
 export type Component = (typeof COMPONENTS)[number];

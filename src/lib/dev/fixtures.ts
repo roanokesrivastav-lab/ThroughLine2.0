@@ -4,9 +4,41 @@ import { CANON_BY_SLUG } from "@/lib/catalog/canon-data";
 import { canonToResult } from "@/lib/catalog/canon";
 import { mockExtract } from "@/lib/ai/mock-extractor";
 import { SEEDS } from "@/lib/server/demo-seeds";
-import type { EntryWithContext, MediaItem } from "@/lib/types";
+import { PROFILE_VERSION } from "@/lib/taste/weights";
+import { familyOf } from "@/lib/taste/vocabulary";
+import { band as formBand, minutesToFinish } from "@/lib/taste/form";
+import type { AttributeVector, EntryWithContext, ItemProfile, MediaItem } from "@/lib/types";
 
 const iso = (daysAgo: number, now: number) => new Date(now - daysAgo * 86_400_000).toISOString();
+
+/**
+ * PLACEHOLDER item profile for fixtures and tests (SPEC-STAGE3 §B26 says fixture items
+ * carry profiles so tests run without a model; the real canon profiles are a generated
+ * file from the real profiler, a later session). This derivation is deterministic and
+ * does not pretend to be profiling: it routes the canon item's existing v1 feel_prior
+ * keys to their v2 family with familyOf() and computes the length band with form.ts.
+ * Attribute[] stay empty — the vector is the only thing a scorer reads, and these keys
+ * are real vocabulary, but nothing here claims a model wrote a premise or craft list.
+ */
+export function fixtureProfile(item: MediaItem): ItemProfile {
+  const story: AttributeVector = {};
+  const feeling: AttributeVector = {};
+  for (const [k, w] of Object.entries(item.feel_prior ?? {})) {
+    const f = familyOf(k);
+    if (f === "story") story[k] = Math.max(0, Math.min(1, w));
+    else if (f === "feeling") feeling[k] = Math.max(0, Math.min(1, w));
+  }
+  const minutes = minutesToFinish(item);
+  return {
+    profile_version: PROFILE_VERSION,
+    vocabulary_version: "v2",
+    premise: null, // placeholder: the profiler writes this; none is invented here
+    story: [],
+    feeling: [],
+    form: { minutes_to_finish: minutes, band: formBand(item.category, minutes), craft: [] },
+    vector: { story, feeling },
+  };
+}
 
 export function buildFixtureLibrary(now = Date.now()): EntryWithContext[] {
   const seen = new Set<string>();
@@ -17,7 +49,7 @@ export function buildFixtureLibrary(now = Date.now()): EntryWithContext[] {
     const canon = CANON_BY_SLUG.get(s.slug);
     if (!canon) continue;
     const r = canonToResult(canon);
-    const item: MediaItem = { ...r, id: `item-${s.slug}`, feel_prior: r.feel_prior ?? null };
+    const item: MediaItem = { ...r, id: `item-${s.slug}`, feel_prior: r.feel_prior ?? null, profile: fixtureProfile(r as MediaItem) };
     const entryId = `entry-${s.slug}`;
     const created = iso(s.daysAgo, now);
     const e: EntryWithContext = {

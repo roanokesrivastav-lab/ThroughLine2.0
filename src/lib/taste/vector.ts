@@ -1,5 +1,5 @@
 import type { AttributeVector, Extraction, WeightedTag } from "@/lib/types";
-import { G_FEELING, G_STORY, SCALARS, STORY_GROUPS, type FeelingGroup, GROUP_WEIGHTS, type Group, isKnownKey, type StoryGroup } from "./vocabulary";
+import { G_FEELING, G_STORY, SCALARS, type FeelingGroup, GROUP_WEIGHTS, type Group, isKnownKey, type StoryGroup } from "./vocabulary";
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 

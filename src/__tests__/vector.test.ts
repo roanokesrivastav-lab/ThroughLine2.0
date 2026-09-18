@@ -1,10 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { assertNonNegative, sharedFamily, simFamily } from "@/lib/taste/vector";
 
-// Vectors hold only family keys, as the profile builder will emit them.
-const storyVec = (over: Record<string, number>) => over; // story keys are "group.value" or the two story scalars
-const feelVec = (over: Record<string, number>) => over;
-
 describe("simFamily family restriction (SPEC §2.1, test matrix #1)", () => {
   it("ignores keys of the other family entirely", () => {
     const u = { "tone.warm": 1, "theme.grief": 1 }; // theme is story, tone is feeling

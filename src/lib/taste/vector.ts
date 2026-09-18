@@ -1,5 +1,5 @@
 import type { AttributeVector, Extraction, WeightedTag } from "@/lib/types";
-import { GROUP_WEIGHTS, SCALARS, type Group, isKnownKey } from "./vocabulary";
+import { G_FEELING, G_STORY, SCALARS, STORY_GROUPS, type FeelingGroup, GROUP_WEIGHTS, type Group, isKnownKey, type StoryGroup } from "./vocabulary";
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
@@ -114,6 +114,87 @@ export function similarity(a: AttributeVector, b: AttributeVector): SimilarityRe
   const score = totalWeight ? clamp01(total / totalWeight) : 0;
   contributions.sort((x, y) => y.weight - x.weight);
   return { score, shared: contributions.slice(0, 6), byGroup };
+}
+
+// ---------------------------------------------------------------------------
+// Family-restricted similarity (SPEC-STAGE3 §2.1). Additive: the legacy whole-vector
+// similarity above stays until the Stage 3 engine replaces it (DECISIONS #60).
+// ---------------------------------------------------------------------------
+
+export type Family = "story" | "feeling";
+export type FamilyWeights = Record<StoryGroup | "scalar", number> | Record<FeelingGroup | "scalar", number>;
+
+/**
+ * sim_F(u, v), exactly as written in §2.1: per-group weighted cosines over the groups
+ * present on BOTH sides (a group empty on either side is skipped and its weight excluded
+ * from the divisor), scalar closeness averaged over the scalars both sides define, all
+ * normalised by the weight actually used, clamped to [0, 1]. Keys of the other family are
+ * ignored; a group with weight 0 (ending) is never read because the loop runs over G_F.
+ */
+export function simFamily(family: Family, u: AttributeVector, v: AttributeVector): number {
+  const G = (family === "story" ? G_STORY : G_FEELING) as Record<string, number>;
+  let total = 0;
+  let weight = 0;
+
+  for (const [g, gw] of Object.entries(G)) {
+    if (gw <= 0 || g === "scalar") continue;
+    const U = Object.keys(u).filter((k) => k.startsWith(g + "."));
+    const V = Object.keys(v).filter((k) => k.startsWith(g + "."));
+    if (U.length === 0 || V.length === 0) continue; // group skipped: missing on one side
+    let dot = 0;
+    let nu = 0;
+    let nv = 0;
+    for (const k of U) nu += u[k] * u[k];
+    for (const k of V) nv += v[k] * v[k];
+    for (const k of U) if (v[k] !== undefined) dot += u[k] * v[k];
+    const cos = nu === 0 || nv === 0 ? 0 : dot / (Math.sqrt(nu) * Math.sqrt(nv));
+    total += gw * cos;
+    weight += gw;
+  }
+
+  const scalars = family === "story" ? ["moral-complexity", "complexity"] : ["intensity", "ache", "pace"];
+  const defined = scalars.filter((s) => u[s] !== undefined && v[s] !== undefined);
+  if (defined.length) {
+    const close = defined.reduce((acc, s) => acc + (1 - Math.abs(u[s] - v[s])), 0) / defined.length;
+    total += G.scalar * close;
+    weight += G.scalar;
+  }
+
+  return weight > 0 ? clamp01(total / weight) : 0;
+}
+
+/**
+ * shared_F(u, v): { key, weight } pairs for explanation (§2.1). Word keys present on both
+ * sides contribute u[k]·v[k]·G_F[group]; scalars closer than 0.8 contribute
+ * (1 − |u[s] − v[s]|)·0.15. Sorted by weight descending, then key ascending. Not a score.
+ */
+export function sharedFamily(family: Family, u: AttributeVector, v: AttributeVector): WeightedTag[] {
+  const G = (family === "story" ? G_STORY : G_FEELING) as Record<string, number>;
+  const out: WeightedTag[] = [];
+  for (const k of Object.keys(u)) {
+    if (v[k] === undefined) continue;
+    const g = k.includes(".") ? (k.split(".")[0] as StoryGroup | FeelingGroup) : null;
+    const gw = g ? G[g] : undefined;
+    if (!g || gw === undefined || gw <= 0) continue;
+    out.push({ key: k, weight: u[k] * v[k] * gw });
+  }
+  const scalars = family === "story" ? ["moral-complexity", "complexity"] : ["intensity", "ache", "pace"];
+  for (const s of scalars) {
+    if (u[s] === undefined || v[s] === undefined) continue;
+    const close = 1 - Math.abs(u[s] - v[s]);
+    if (close > 0.8) out.push({ key: s, weight: close * 0.15 });
+  }
+  return out.sort((a, b) => b.weight - a.weight || a.key.localeCompare(b.key));
+}
+
+/**
+ * A vector with any negative value is invalid input, not a smaller opinion (SPEC §1.3:
+ * NEGATIVE VALUES ARE INVALID). Readers of stored vectors call this before trusting them.
+ */
+export function assertNonNegative(v: AttributeVector, where = "vector"): void {
+  for (const [k, n] of Object.entries(v)) {
+    if (typeof n === "number" && n < 0) throw new Error(`${where}: negative value for ${k} (${n})`);
+  }
 }
 
 /** Top-N strongest tags of a vector (non-scalar), strongest first. */

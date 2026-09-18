@@ -259,7 +259,52 @@ No app code changed this session; local config only.
 1. Founder: paste `supabase/migrations/0002_consumed_precision.sql` into the Supabase SQL editor and
    run it. This is the one step nothing in this environment can do (no DB password, no Supabase CLI,
    no `psql`).
-2. Decide whether to commit the 44 files sitting uncommitted since 2026-09-10.
-3. When first deploying, copy `.env.local` into the Vercel project's environment variables, including
-   the new `CRON_SECRET` and VAPID keys.
+2. Decide whether to commit the 44 files sitting uncommitted since 2026-09-10.3. When first deploying, copy `.env.local` into the Vercel project's environment variables, including the new `CRON_SECRET` and VAPID keys.
 4. Founder answers `docs/SPEC-STAGE3.md` §E; then Stage 3 in the §B order.
+
+## 2026-09-17 — Stage 3 §E answered; safe-scope implementation begins (migration 0003 only)
+
+### Built
+- **Founder answered all eleven `docs/SPEC-STAGE3.md` §E questions** (DECISIONS #59): every default confirmed except #9 — the recency window is **14 days**, not the spec's 7, so `RECENCY_DAYS = 14` when `weights.ts` is written.
+- **Stage 3 coding scope fixed (DECISIONS #60):** AI sessions implement only the deterministic, low-risk layer (docs sync, vocabulary v2, weights/constants, calibration utility, vector/form utilities, entry-vector plumbing, types, migration 0003, profile construction, deterministic fixtures, profiler interfaces/mock, unit tests) and stop before the recommendation engine, which is reserved for the stronger-model sessions. Approved deviations are recorded there; §E is closed, nothing blocks implementation.
+- **`supabase/migrations/0003_item_profiles.sql` written** per SPEC §1.2: six columns on `media_items` (`profile` jsonb, `profile_version` text, `profile_status` text with the pending/done/failed check and 'pending' default, `profile_attempts` int, `profile_error` text, `profiled_at` timestamptz) plus the queue index on `(profile_status, profiled_at)`. No RLS change (DECISIONS #4). Nothing else in this session touched code — the audit of what already exists vs what is missing was delivered in conversation, and batches 2–10 await the founder's go.
+
+### Verified
+- **AI-verified:** nothing to run — SQL and documents only. `tsc`/`vitest` untouched.
+- **Not verified:** the migration has not run anywhere, not even locally. Nothing phone-verified.
+
+### Next
+1. Founder: run `supabase/migrations/0002_consumed_precision.sql` (still not applied live — saving entries still fails) and then `0003_item_profiles.sql` in the Supabase SQL editor.
+2. Founder gives the go for the safe-scope batches in order: docs sync → vocabulary v2 → weights → calibration → vector → form → types → entryVector → profile construction → fixtures/profiler interfaces, each left typecheck/lint/test-green.
+3. Scoring pipeline, candidate generation, filtering, re-ranking, snapshot wiring, explainer and real profiling are reserved for the stronger-model sessions (DECISIONS #60).
+
+## 2026-09-17 — Stage 3 safe-scope foundation, batches 1–10 (unattended run)
+
+### Built
+Ten batches, one green commit each, in the founder-specified lane (DECISIONS #60). Nothing outside the lane was touched: `recommend.ts`, `server/recommend.ts`, the extractors, `explainer.ts`, `rec-card.tsx` and the v1 engines are byte-identical.
+1. **Docs sync** (§B1–B3): ATTRIBUTES gets the v2 lists, non-negative readings with `absent`/`didnt_work`/`valued`, Part 4 wired to SPEC §9/§12; RECOMMENDATIONS §14 is a pointer to SPEC-STAGE3 with the fixed six-component sum; DECISIONS #61 records the supersessions (#12, #30, #51) and #62 the v1 pin.
+2. **Vocabulary v2, additive** (§B4): story-family lists exactly as specified, G_STORY/G_FEELING (ending weight 0), `familyOf`, `isKnownKeyIn`. `VOCABULARY_VERSION` stays `"v1"` with the pin comment; the v2 exports are read by nothing that writes live rows.
+3. **weights.ts** (§B5): FEATURE_VERSION "f1", COMPONENTS, W0, LOVED, MAX_ANCHORS, BAND, QUOTAS, CREATOR_CAP, **RECENCY_DAYS = 14** (founder ruling, #59), PHASE_ACTIVE_DAYS, ANTI_MIN_EVIDENCE, pool/source sizes, PROFILE_VERSION "p1".
+4. **calibration.ts** (§3): provisional constants, `cal`/`calStory`/`calFeeling`, pure `calibrate()` with nearest-rank P10/P90 and both guards, exhaustive ≤1500 / seeded 1M-pair sampling, `xorshift32` (see Blocked). 13 tests.
+5. **vector.ts additive** (§2.1): `simFamily` (group skipping, per-pair normalisation, scalars), `sharedFamily`, `assertNonNegative`. Legacy similarity untouched. 14 tests.
+6. **form.ts** (§1.4): `minutesToFinish`, `band`. `fitsTime`/`estimatedMinutes` stay in recommend.ts (#60). 9 tests.
+7. **Types + migration** (§1.2–§1.3, §B13–B15): `ItemProfile`, `Attribute`, `Reading` in types.ts; `MediaItem.profile` optional; MediaItemsRow mirrors 0003; migration committed (founder applies by hand after 0002).
+8. **affinity.ts additive + profiler infra** (§4.2, §B8/B16): `entryVectorFamily` (0.8/0.2 blend, absent deletion, no feel_prior), `usableProfile`, `hasOwnWordsV2`; `ai/profiler.ts` with the ItemProfiler interface, PROFILE_VERSION re-export, and the exact `frameFromGenre` table.
+9. **profile.ts** (§4): `buildUserProfile` — aff² centroids, ≤40 anchors, form dist (n ≥ 3), active-phase selection, anti-profile with the ≥2-evidence rule; plus `pickActivePhase` exported separately. 21 tests covering §C 7–12, 14 and the §4.3 edges.
+10. **Fixture profiles** (§B26): `fixtureProfile` derives a PLACEHOLDER profile from the canon feel_prior via familyOf + form.ts, labeled as such in the code.
+
+### Verified
+- **AI-verified:** `tsc --noEmit` clean after every batch; `eslint` clean on every touched file (project totals unchanged: the 1 error / 86–89 warnings all remain in generated `public/sw.js`); `vitest` **124/124** (from 67); `next build --webpack` succeeds. Ten commits, one per batch, none amended.
+- **Not verified:** migration 0003 has not run anywhere (not even locally); nothing has run against a live database; nothing phone-verified.
+
+### Blocked (STOP rather than decide)
+1. **Mock profiler's overview lexicon (§B16) is unspecified.** No mock profiler was written rather than invent lexicon content; profiler.ts ships the interface + frameFromGenre only. The engine session or the founder must supply the word lists.
+2. **§B26's demo-seed content targets are outside the lane** (demo-seeds.ts is a never-touch file): the fixture library does not yet gain its dropped-entry-with-profile / doesnt_hit / negation-note / two-creator / sparse-category rows. The engine session's tests need them added there or the lane widened once.
+3. **"The existing xorshift generator" (§3.3) never existed in the repo** (only an unexported FNV hash in recommend.ts). Committed `xorshift32` in calibration.ts, seeded 20260915; the spec-pinned behaviour (seed, count, uniqueness, reproducibility) is implemented and tested identical twice. DECISIONS #63.
+4. **§B7's in-place similarity signature change and §B10's move of fitsTime/estimatedMinutes** were pre-approved deviations (#60): both done additively instead.
+5. **Route/Recommendation/snapshot type changes (§1.8) are deferred** to the engine session — they would break the legacy engine the lane protects.
+
+### Next
+1. Founder: run migrations 0002 (still unapplied live) then 0003 in the Supabase SQL editor.
+2. Engine session (Sol/Astra/Opus) picks up §B11 onward: recommend.ts, server pipeline, snapshot, explainer, rec-card, extractor v2 (§B20 — required before any VOCABULARY_VERSION bump), then scripts/calibrate.ts against the profiled canon.
+3. Founder supplies or approves the mock profiler lexicon (Blocked #1) before the mock can exist.

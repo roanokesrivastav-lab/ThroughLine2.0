@@ -12,7 +12,13 @@ export type UsersRow = {
 export type MediaItemsRow = {
   id: string; category: Category; title: string; subtitle: string | null; source: string; external_id: string;
   image_url: string | null; release_year: number | null; creators: Json; genre_tags: string[]; metadata: Json;
-  feel_prior: Json | null; created_at: string; updated_at: string;
+  feel_prior: Json | null;
+  // Stage 3 profiling columns (migration 0003, SPEC-STAGE3 §1.2). A profile is usable iff
+  // profile_status = 'done' and profile_version equals the PROFILE_VERSION constant in code.
+  profile: Json | null; profile_version: string | null;
+  profile_status: "pending" | "done" | "failed"; profile_attempts: number;
+  profile_error: string | null; profiled_at: string | null;
+  created_at: string; updated_at: string;
 };
 export type EntriesRow = {
   id: string; user_id: string; media_item_id: string; status: EntryStatus; private_score: number | null;

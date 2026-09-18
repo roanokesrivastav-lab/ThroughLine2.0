@@ -1,5 +1,7 @@
 // Shared domain types used across server and client.
 import type { Precision } from "@/lib/taste/when";
+import type { FeelingGroup, StoryGroup } from "@/lib/taste/vocabulary";
+import { READING_SCALARS } from "@/lib/taste/vocabulary";
 
 export const CATEGORIES = ["movie", "tv", "anime", "book", "music"] as const;
 export type Category = (typeof CATEGORIES)[number];
@@ -90,6 +92,8 @@ export type MediaItem = {
   genre_tags: string[];
   metadata: MediaMetadata;
   feel_prior: AttributeVector | null;
+  /** Stage 3 item profile (SPEC §1.2), when the row has been profiled. Optional so every existing constructor still typechecks. */
+  profile?: ItemProfile | null;
 };
 
 export type Entry = {
@@ -185,6 +189,44 @@ export type Extraction = {
   summary: string;
   /** A short verbatim excerpt of the user's own words, or null. */
   quote: string | null;
+};
+
+// ---------------------------------------------------------------------------
+// Stage 3 data model (SPEC-STAGE3 §1.2–§1.3). Additive: nothing reads these yet
+// until the engine work; the v1 Extraction above stays what extractors emit.
+// ---------------------------------------------------------------------------
+
+/** One attribute of an item profile: key "group.value" or a bare scalar name; weight and confidence in [0, 1]. */
+export type Attribute = { key: string; weight: number; source: "catalog" | "ai" | "manual"; confidence: number };
+
+/** The profile stored on media_items.profile (SPEC §1.2). vector[F][key] = clamp01(weight × confidence) ≥ 0.05, computed at write time — the only thing the scorer reads. */
+export type ItemProfile = {
+  profile_version: string;          // "p1"; bump when the prompt, schema or merge rules change
+  vocabulary_version: string;       // "v2"
+  premise: string | null;           // ≤ 400 chars, spoiler-light, no praise words; null for manual items
+  story: Attribute[];
+  feeling: Attribute[];
+  form: {
+    minutes_to_finish: number | null;  // §1.4; null = unknown
+    band: 0 | 1 | 2 | 3 | null;        // §1.4; null = unknown
+    craft: Attribute[];                // ATTRIBUTES 1D words; stored, not scored in Stage 3
+  };
+  vector: { story: AttributeVector; feeling: AttributeVector };
+};
+
+/** A vocabulary-v2 reading of one note (SPEC §1.3), what the Stage 3 extractors will emit. Every vector value must be ≥ 0: negatives mark the row failed. */
+export type Reading = {
+  story: Record<StoryGroup, WeightedTag[]>;
+  feeling: Record<FeelingGroup, WeightedTag[]>;
+  scalars: Partial<Record<(typeof READING_SCALARS)[number], number>>;
+  /** Keys the person explicitly said were not there; ≤ 6; must be vocabulary keys; zeroes them in the entry vector (§4.2). */
+  absent: string[];
+  /** Preference evidence; feeds the anti-profile (§4.6). */
+  didnt_work: { keys: WeightedTag[]; phrases: string[] };
+  /** ≤ 3 verbatim substrings of the note, the person's own wording of what they valued. */
+  valued: string[];
+  summary: string;                  // ≤ 60 chars
+  quote: string | null;             // ≤ 160 chars, verbatim, guarded as today
 };
 
 /** An entry joined with its media item and everything the engines need. */

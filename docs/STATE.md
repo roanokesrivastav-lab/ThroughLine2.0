@@ -308,3 +308,61 @@ Ten batches, one green commit each, in the founder-specified lane (DECISIONS #60
 1. Founder: run migrations 0002 (still unapplied live) then 0003 in the Supabase SQL editor.
 2. Engine session (Sol/Astra/Opus) picks up §B11 onward: recommend.ts, server pipeline, snapshot, explainer, rec-card, extractor v2 (§B20 — required before any VOCABULARY_VERSION bump), then scripts/calibrate.ts against the profiled canon.
 3. Founder supplies or approves the mock profiler lexicon (Blocked #1) before the mock can exist.
+
+## 2026-09-19 — four Stage 3 profile-invariant fixes (pre-integration cleanup)
+
+Tightly scoped cleanup pass before Stage 3 integration. Nothing else changed: the v1
+engine, `recommend.ts`, the extractors and `explainer.ts` are byte-identical;
+`VOCABULARY_VERSION` stays `"v1"` (#62) and `RECENCY_DAYS = 14` (#59).
+
+### Founder-confirmed
+- **Migrations 0002 and 0003 have been applied** to the live Supabase project (SQL editor),
+  closing the long-standing "0002 not applied" blocker.
+
+### Fixed
+1. **Anti-profile evidence threshold** (`profile.ts`): evidence is now tracked as distinct
+   evidence IDs per family — `${entryId}:dropped`, `${entryId}:doesnt_hit`, and one
+   `${entryId}:didnt_work` per affected family covering all of that entry's `didnt_work`
+   keys collectively. A family becomes non-null only at ≥ `ANTI_MIN_EVIDENCE` distinct IDs
+   of that family, so one note with two disliked story keys no longer activates
+   `anti.story` on its own. Each valid key still blends as its own one-hot part at its own
+   weight. `anti.evidence` remains the global count of distinct `(entryId, source)` pairs.
+2. **V2 scalar blending** (`vector.ts`): `blend()` now averages all five reading scalars
+   (`intensity`, `ache`, `pace`, `moral-complexity`, `complexity`) defined-only, driven off
+   the existing `READING_SCALARS` constant; a missing story scalar is no longer diluted as a
+   zero-valued word attribute. Word keys still count missing as zero.
+3. **Strict closed-vocabulary checks** (`vocabulary.ts`): `familyOf` resolves only exact v2
+   keys — grouped keys must contain exactly one dot and an exactly listed value, bare
+   scalars are valid only in their own family — and `isKnownKeyIn` is now
+   `familyOf(key) === family`. The anti-profile accepts a `didnt_work` key only when it
+   passes validation; malformed or unknown keys neither enter the vector nor count as
+   evidence. Legacy `isKnownKey` (v1) is untouched.
+4. **Misnamed profiling-category constant** (`profile.ts`): `PROFILED_CATEGORIES` is now all
+   five media per DECISIONS #50, readonly via `satisfies readonly Category[]`, with a new
+   `MATCHED_CATEGORIES` (movie, tv, anime, book) for Stage 3 matching. Repository search
+   confirmed the old export had no consumers.
+
+### Tests
+- `src/__tests__/vector.test.ts`: 6 new blend tests (one-sided `complexity` preserved,
+  weighted two-sided averaging, `moral-complexity` same, v1 scalars unchanged, word keys
+  still diluted, undefined when nobody defines it).
+- `src/__tests__/profile.test.ts`: 9 new tests — one entry with two story `didnt_work` keys
+  stays null; two entries activate; one entry feeding both families still needs two IDs per
+  family; malformed `didnt_work` keys never route nor count; `familyOf`/`isKnownKeyIn`
+  strict cases; music profiled but not matched; `entryVectorFamily` preserves a profile
+  story scalar the reading omits.
+
+### Verified
+- **AI-verified:** `tsc --noEmit` clean; `npx eslint` clean on all five touched files
+  (project totals unchanged — the 1 error / 86+ warnings remain in the generated
+  `public/sw.js`, untouched); `vitest` **139/139** (from 124); `next build --webpack`
+  succeeds; `git diff --check` clean. Commands run sequentially, not concurrently.
+- **Not verified:** nothing here runs against a database — all changed code is pure and
+  deterministic; no migration was run or needed. Nothing phone-verified.
+
+### Next
+1. Stage 3 integration resumes at §B11 (engine session lane): recommend.ts, server
+   pipeline, snapshot, explainer, extractor v2 (required before any VOCABULARY_VERSION
+   bump), then scripts/calibrate.ts.
+2. Founder supplies or approves the mock profiler lexicon (Blocked #1) before the mock
+   profiler can exist.

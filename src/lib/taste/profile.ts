@@ -43,7 +43,7 @@ export type UserProfile = {
   form: Partial<Record<Category, { dist: [number, number, number, number]; n: number }>>;
   creators: Map<string, CreatorAffinity>;
   activePhase: ActivePhase | null;
-  /** A family is null when its evidence count is < 2 (§4.6); evidence = distinct (entryId, source) pairs across both families. */
+  /** A family is null while its distinct evidence IDs are < ANTI_MIN_EVIDENCE (§4.6); evidence = distinct (entryId, source) pairs across both families, counted once globally. */
   anti: { story: AttributeVector | null; feeling: AttributeVector | null; evidence: number };
   evidence: { loved: number; notes: number; profiled: number };
 };
@@ -114,19 +114,24 @@ export function buildUserProfile(
   // §4.7: the one active phase.
   const activePhase = pickActivePhase(phases, now);
 
-  // §4.6: the anti-profile. Evidence pieces, each routed to the families it has a vector for.
+  // §4.6: the anti-profile. Evidence pieces, each routed to the families it has a vector
+  // for. A family becomes non-null only at ANTI_MIN_EVIDENCE distinct evidence IDs *of
+  // that family*: one note naming two disliked keys is one piece of evidence, not two.
   const parts: Record<Family, Array<{ v: AttributeVector; w: number }>> = { story: [], feeling: [] };
-  const evidencePairs = new Set<string>();
+  const familyEvidence: Record<Family, Set<string>> = { story: new Set(), feeling: new Set() };
+  const globalEvidence = new Set<string>();
+  const addEvidence = (f: Family, id: string) => {
+    familyEvidence[f].add(id);
+    globalEvidence.add(id);
+  };
   const addPiece = (e: EntryWithContext, source: string, weight: number) => {
-    let contributed = false;
     for (const f of ["story", "feeling"] as Family[]) {
       const v = familyVec(e, f);
       if (v) {
         parts[f].push({ v, w: weight });
-        contributed = true;
+        addEvidence(f, `${e.entry.id}:${source}`);
       }
     }
-    if (contributed) evidencePairs.add(`${e.entry.id}:${source}`);
   };
 
   for (const e of logged) {
@@ -136,19 +141,23 @@ export function buildUserProfile(
     // A "doesn't hit" resurface counts at 0.5. One piece per (entry, source): repeated
     // responses are one signal, not several (the evidence counter is per distinct pair).
     if (e.resurfaces.some((r) => r.response === "doesnt_hit") && usableProfile(e.item)) addPiece(e, "doesnt_hit", 0.5);
-    // Every didnt_work key in a v2 reading, one-hot, at the entry's affinity with a 0.5 floor.
+    // Every valid didnt_work key in a v2 reading, one-hot, at the entry's affinity with a
+    // 0.5 floor. All keys from one entry are collectively one evidence ID per affected
+    // family: a note with two dislikes is one piece of evidence, not two. Keys must pass
+    // exact vocabulary validation (familyOf) or they neither route nor count.
     for (const x of e.extractions) {
       if (x.status !== "done" || x.vocabulary_version !== "v2") continue;
       const r = x.attributes as unknown as { didnt_work?: { keys?: Array<{ key: string; weight: number }> } } | null;
       for (const t of r?.didnt_work?.keys ?? []) {
-        if (familyOf(t.key) === null) continue; // only vocabulary keys route anywhere
-        parts[familyOf(t.key)!].push({ v: { [t.key]: t.weight }, w: Math.max(a, 0.5) });
-        evidencePairs.add(`${e.entry.id}:didnt_work`);
+        const f = familyOf(t.key);
+        if (f === null) continue; // malformed or unknown key: never routes, never counts
+        parts[f].push({ v: { [t.key]: t.weight }, w: Math.max(a, 0.5) });
+        addEvidence(f, `${e.entry.id}:didnt_work`);
       }
     }
   }
   const antiVector = (f: Family): AttributeVector | null =>
-    parts[f].length >= ANTI_MIN_EVIDENCE ? blend(parts[f]) : null;
+    familyEvidence[f].size >= ANTI_MIN_EVIDENCE ? blend(parts[f]) : null;
 
   return {
     story: familyProfile("story"),
@@ -159,7 +168,7 @@ export function buildUserProfile(
     anti: {
       story: antiVector("story"),
       feeling: antiVector("feeling"),
-      evidence: evidencePairs.size,
+      evidence: globalEvidence.size,
     },
     evidence: {
       loved: logged.filter((e) => aff.get(e.entry.id)! >= LOVED).length,
@@ -223,5 +232,7 @@ export function pickActivePhase(phases: Phase[], now: Date = new Date()): Active
 
 /** Re-exported so the engine session has one import surface for the whole profile layer. */
 export { usableProfile, entryVectorFamily, hasOwnWordsV2, affinity as entryAffinity };
-export const PROFILED_CATEGORIES: Category[] = ["movie", "tv", "anime", "book"];
+/** All five media get profiled (DECISIONS #50); only the four below are matched in Stage 3 (§E Q1, #61). */
+export const PROFILED_CATEGORIES = ["movie", "tv", "anime", "book", "music"] as const satisfies readonly Category[];
+export const MATCHED_CATEGORIES = ["movie", "tv", "anime", "book"] as const satisfies readonly Category[];
 export type { EntryWithContext };

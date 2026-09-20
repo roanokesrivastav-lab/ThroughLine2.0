@@ -1,5 +1,5 @@
 import type { AttributeVector, Extraction, WeightedTag } from "@/lib/types";
-import { G_FEELING, G_STORY, SCALARS, type FeelingGroup, GROUP_WEIGHTS, type Group, isKnownKey, type StoryGroup } from "./vocabulary";
+import { G_FEELING, G_STORY, SCALARS, READING_SCALARS, type FeelingGroup, GROUP_WEIGHTS, type Group, isKnownKey, type StoryGroup } from "./vocabulary";
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
@@ -43,7 +43,9 @@ export function blend(parts: Array<{ v: AttributeVector; w: number }>): Attribut
   if (!total) return out;
   for (const k of Object.keys(out)) out[k] = out[k] / total;
   // Scalars are only meaningful where present: average them over the vectors that define them.
-  for (const s of SCALARS) {
+  // READING_SCALARS covers the three v1 feeling scalars and the two v2 story scalars; word
+  // keys stay weighted-means with missing = zero.
+  for (const s of READING_SCALARS) {
     const defined = parts.filter((p) => p.w > 0 && p.v[s] !== undefined);
     if (defined.length) out[s] = defined.reduce((a, p) => a + p.v[s] * p.w, 0) / defined.reduce((a, p) => a + p.w, 0);
     else delete out[s];

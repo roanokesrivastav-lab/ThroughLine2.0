@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { assertNonNegative, sharedFamily, simFamily } from "@/lib/taste/vector";
+import { assertNonNegative, blend, sharedFamily, simFamily } from "@/lib/taste/vector";
 
 describe("simFamily family restriction (SPEC §2.1, test matrix #1)", () => {
   it("ignores keys of the other family entirely", () => {
@@ -103,5 +103,42 @@ describe("assertNonNegative (test matrix #4)", () => {
     expect(() => assertNonNegative({ "tone.warm": 0, "theme.grief": 1 })).not.toThrow();
     expect(() => assertNonNegative({ "tone.warm": -0.01 })).toThrow(/tone\.warm/);
     expect(() => assertNonNegative({ ache: -1 }, "entry vector")).toThrow(/entry vector/);
+  });
+});
+
+describe("blend scalar handling (v2 story scalars, SPEC §4.2)", () => {
+  it("a v2 story scalar defined on one side only survives undiluted", () => {
+    const out = blend([{ v: { complexity: 0.9 }, w: 1 }, { v: { "theme.grief": 1 }, w: 2 }]);
+    expect(out.complexity).toBeCloseTo(0.9, 12);
+    // The word key is still a weighted mean with missing = zero.
+    expect(out["theme.grief"]).toBeCloseTo(2 / 3, 12);
+  });
+
+  it("two defined complexity values average by their weights", () => {
+    const out = blend([{ v: { complexity: 0.4 }, w: 3 }, { v: { complexity: 0.8 }, w: 1 }]);
+    expect(out.complexity).toBeCloseTo((0.4 * 3 + 0.8 * 1) / 4, 12);
+  });
+
+  it("moral-complexity behaves the same way", () => {
+    const kept = blend([{ v: { "moral-complexity": 0.7 }, w: 1 }, { v: {}, w: 1 }]);
+    expect(kept["moral-complexity"]).toBeCloseTo(0.7, 12);
+    const mixed = blend([{ v: { "moral-complexity": 0.2 }, w: 1 }, { v: { "moral-complexity": 1 }, w: 3 }]);
+    expect(mixed["moral-complexity"]).toBeCloseTo(0.8, 12);
+  });
+
+  it("v1 feeling scalars keep their defined-only averaging", () => {
+    const out = blend([{ v: { intensity: 0.6 }, w: 1 }, { v: { "tone.warm": 1 }, w: 4 }]);
+    expect(out.intensity).toBeCloseTo(0.6, 12);
+  });
+
+  it("an ordinary word key is still diluted when the other side omits it", () => {
+    const out = blend([{ v: { "theme.grief": 0.9 }, w: 1 }, { v: { "tone.warm": 1 }, w: 1 }]);
+    expect(out["theme.grief"]).toBeCloseTo(0.45, 12);
+  });
+
+  it("no side defines the scalar → the key is absent", () => {
+    const out = blend([{ v: { "tone.warm": 1 }, w: 1 }, { v: { "theme.grief": 1 }, w: 1 }]);
+    expect(out.complexity).toBeUndefined();
+    expect(out["moral-complexity"]).toBeUndefined();
   });
 });

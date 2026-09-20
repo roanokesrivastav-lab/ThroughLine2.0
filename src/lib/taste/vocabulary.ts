@@ -180,33 +180,33 @@ export const G_FEELING: Record<FeelingGroup | "scalar", number> = {
   scalar: 0.5,
 };
 
-/** The family a key belongs to, or null when it is neither (SPEC §1.1: the families share no key). */
+/**
+ * The family a key belongs to, or null when it is not an exact key of either family
+ * (SPEC §1.1: the families share no key). The v2 vocabulary is closed: grouped keys must
+ * be "group.value" with the value exactly as listed (one dot, no empty segments), bare
+ * scalars are valid only in their own family, and anything else — unknown values, bare
+ * words, extra dotted segments — is null.
+ */
 export function familyOf(key: string): "story" | "feeling" | null {
-  const group = key.split(".")[0];
-  if (group === "theme" || group === "arc" || group === "conflict" || group === "cast" || group === "bond" || group === "world" || group === "setting" || group === "frame" || group === "structure" || group === "momentum" || group === "stakes" || group === "ending") return "story";
-  if (group === "tone" || group === "register" || group === "texture" || group === "aftertaste") return "feeling";
-  // Bare scalars: the feeling three are shared with v1; the story two are v2-only.
-  if (key === "intensity" || key === "ache" || key === "pace") return "feeling";
-  if (key === "moral-complexity" || key === "complexity") return "story";
+  if ((SCALARS as readonly string[]).includes(key)) return "feeling";
+  if ((STORY_SCALARS as readonly string[]).includes(key)) return "story";
+  const dot = key.indexOf(".");
+  if (dot === -1) return null;
+  const group = key.slice(0, dot);
+  const value = key.slice(dot + 1);
+  if (!value || value.includes(".")) return null;
+  if ((FEELING_GROUPS as Record<string, readonly string[]>)[group]?.includes(value)) return "feeling";
+  if ((STORY_GROUPS as Record<string, readonly string[]>)[group]?.includes(value)) return "story";
   return null;
 }
 
 /**
- * Is this a well-formed key of the given family? Story keys are "group.value" from the v2
- * lists, plus the bare scalars moral-complexity and complexity. Feeling keys are exactly
- * what v1's isKnownKey accepts minus theme. (SPEC-STAGE3 §1.1.)
+ * Is this an exact, well-formed key of the given family? True exactly when `familyOf`
+ * resolves the key to that family, so malformed keys (extra dots, empty segments),
+ * unknown values and wrong-family scalars are all rejected. (SPEC-STAGE3 §1.1.)
  */
 export function isKnownKeyIn(key: string, family: "story" | "feeling"): boolean {
-  if (family === "story") {
-    if (key === "moral-complexity" || key === "complexity") return true;
-    const [group, value] = key.split(".");
-    const list = (STORY_GROUPS as Record<string, readonly string[]>)[group];
-    return !!list && !!value && list.includes(value);
-  }
-  if ((SCALARS as readonly string[]).includes(key)) return true;
-  const [group, value] = key.split(".");
-  const list = (FEELING_GROUPS as Record<string, readonly string[]>)[group];
-  return !!list && !!value && list.includes(value);
+  return familyOf(key) === family;
 }
 
 export function isKnownKey(key: string): boolean {

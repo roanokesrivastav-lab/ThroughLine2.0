@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { buildUserProfile, pickActivePhase } from "@/lib/taste/profile";
+import { buildUserProfile, pickActivePhase, MATCHED_CATEGORIES, PROFILED_CATEGORIES } from "@/lib/taste/profile";
 import type { Anchor } from "@/lib/taste/profile";
 import { usableProfile, entryVectorFamily } from "@/lib/taste/affinity";
 import { minutesToFinish, band as formBand } from "@/lib/taste/form";
+import { familyOf, isKnownKeyIn } from "@/lib/taste/vocabulary";
 import { PROFILE_VERSION, FEATURE_VERSION } from "@/lib/taste/weights";
 import type { AttributeVector, EntryWithContext, ItemProfile, MediaItem, Phase } from "@/lib/types";
 
@@ -34,7 +35,7 @@ type Seed = {
   dims?: Record<string, boolean>;
   note?: string | null;
   score?: number | null;
-  reading?: { vector: { story: AttributeVector; feeling: AttributeVector }; absent?: string[]; valued?: string[] } | null;
+  reading?: { vector: { story: AttributeVector; feeling: AttributeVector }; absent?: string[]; valued?: string[]; didntWork?: Array<{ key: string; weight: number }> } | null;
   band?: 0 | 1 | 2 | 3 | null;
   profileVec?: { story: AttributeVector; feeling: AttributeVector } | null;
   doesntHit?: boolean;
@@ -60,14 +61,14 @@ const entryFrom = (s: Seed, i: number): EntryWithContext => {
   if (s.dims || s.note) {
     const rid = `reaction-${s.key}`;
     e.reactions.push({ id: rid, entry_id: e.entry.id, user_id: "u", dimensions: s.dims ?? {}, raw_note: s.note ?? null, source: "log", created_at: created });
-    if (s.reading) {
-      e.extractions.push({
-        id: `x-${s.key}`, reaction_id: rid, entry_id: e.entry.id, user_id: "u", status: "done",
-        attributes: { absent: s.reading.absent ?? [], valued: s.reading.valued ?? [], didnt_work: { keys: [], phrases: [] } } as never,
-        vector: s.reading.vector as never,
-        vocabulary_version: "v2", extractor: "mock", attempts: 1, last_error: null, extracted_at: created, created_at: created,
-      });
-    }
+  }
+  if (s.reading) {
+    e.extractions.push({
+      id: `x-${s.key}`, reaction_id: e.reactions[0]?.id ?? null, entry_id: e.entry.id, user_id: "u", status: "done",
+      attributes: { absent: s.reading.absent ?? [], valued: s.reading.valued ?? [], didnt_work: { keys: s.reading.didntWork ?? [], phrases: [] } } as never,
+      vector: s.reading.vector as never,
+      vocabulary_version: "v2", extractor: "mock", attempts: 1, last_error: null, extracted_at: created, created_at: created,
+    });
   }
   if (s.doesntHit) e.resurfaces.push({ id: `rs-${s.key}`, user_id: "u", entry_id: e.entry.id, surfaced_at: created, channel: "home", response: "doesnt_hit", responded_at: created, note_reaction_id: null, snoozed_until: null });
   return e;
@@ -195,6 +196,68 @@ describe("anti-profile minimum evidence (§4.6, test matrix #11)", () => {
     expect(p.anti.story).not.toBeNull();
     expect(p.anti.story!["momentum.suspenseful"]).toBeGreaterThan(0);
   });
+
+  it("one note with two story didnt_work keys is one piece of evidence: anti.story stays null", () => {
+    const e = entryFrom({
+      key: "dw-multi", note: "both missed",
+      reading: { vector: { story: {}, feeling: {} }, didntWork: [{ key: "momentum.suspenseful", weight: 0.8 }, { key: "theme.war", weight: 0.7 }] },
+    }, 0);
+    const p = buildUserProfile([e], [], undefined, NOW);
+    expect(p.anti.story).toBeNull();
+    expect(p.anti.evidence).toBe(1);
+  });
+
+  it("two different entries with story didnt_work evidence do activate anti.story", () => {
+    const a = entryFrom({
+      key: "dw-a", note: "missed one",
+      reading: { vector: { story: {}, feeling: {} }, didntWork: [{ key: "momentum.suspenseful", weight: 0.8 }] },
+    }, 0);
+    const b = entryFrom({
+      key: "dw-b", note: "missed two",
+      reading: { vector: { story: {}, feeling: {} }, didntWork: [{ key: "theme.war", weight: 0.6 }] },
+    }, 1);
+    const p = buildUserProfile([a, b], [], undefined, NOW);
+    expect(p.anti.story).not.toBeNull();
+    expect(p.anti.story!["momentum.suspenseful"]).toBeGreaterThan(0);
+    expect(p.anti.story!["theme.war"]).toBeGreaterThan(0);
+    expect(p.anti.evidence).toBe(2);
+  });
+
+  it("one entry can feed both families, but each family still needs two distinct evidence IDs", () => {
+    const mixed = entryFrom({
+      key: "dw-both", note: "story and feeling both missed",
+      reading: { vector: { story: {}, feeling: { "tone.bleak": 0.6 } }, didntWork: [{ key: "theme.war", weight: 0.8 }, { key: "tone.bleak", weight: 0.7 }] },
+    }, 0);
+    const both = buildUserProfile([mixed], [], undefined, NOW);
+    expect(both.anti.story).toBeNull();
+    expect(both.anti.feeling).toBeNull();
+    expect(both.anti.evidence).toBe(1);
+
+    // The second piece is a dropped entry with a real feeling vector on that family only.
+    const drop = entryFrom({ key: "dw-drop", status: "dropped", profileVec: { story: { "theme.war": 1 }, feeling: { "tone.bleak": 1 } } }, 1);
+    const p = buildUserProfile([mixed, drop], [], undefined, NOW);
+    expect(p.anti.story).not.toBeNull(); // mixed + drop: two story evidence IDs
+    expect(p.anti.feeling).not.toBeNull(); // mixed + drop: two feeling evidence IDs
+    expect(p.anti.evidence).toBe(2);
+  });
+
+  it("malformed didnt_work keys neither enter the anti-profile nor count as evidence", () => {
+    const a = entryFrom({
+      key: "dw-bad", note: "nonsense keys",
+      reading: {
+        vector: { story: {}, feeling: {} },
+        didntWork: [
+          { key: "theme.not-a-real-value", weight: 0.8 },
+          { key: "theme.grief.extra", weight: 0.8 },
+          { key: "theme.", weight: 0.8 },
+        ],
+      },
+    }, 0);
+    const p = buildUserProfile([a], [], undefined, NOW);
+    expect(p.anti.story).toBeNull();
+    expect(p.anti.feeling).toBeNull();
+    expect(p.anti.evidence).toBe(0);
+  });
 });
 
 describe("active phase selection (§4.7, test matrix #12)", () => {
@@ -305,6 +368,58 @@ describe("centroid and anchors (§4.3)", () => {
     e.item.profile = { ...profile({}, {}, null), profile_version: "p0" };
     expect(usableProfile(e.item)).toBeNull();
     expect(FEATURE_VERSION).toBe("f1");
+  });
+
+  it("entryVectorFamily preserves a profile story scalar the reading omits", () => {
+    // The drop's profile carries a real feeling vector, not {}, so the feeling family has
+    // evidence; {} would also contribute (an empty vector is still present).
+    const e = entryFrom({
+      key: "scalar", note: "a note",
+      reading: { vector: { story: { "theme.grief": 1 }, feeling: { "tone.warm": 0.5 } } },
+      profileVec: { story: { "theme.grief": 1, complexity: 0.9 }, feeling: {} },
+    }, 0);
+    const v = entryVectorFamily(e, "story")!;
+    expect(v["theme.grief"]).toBeCloseTo(1, 10); // word key: weighted mean with missing = zero
+    expect(v.complexity).toBeCloseTo(0.9, 10); // defined-only: (0.9 × 0.2) / 0.2, not 0.9 × 0.2 / 1
+  });
+});
+
+describe("strict closed vocabulary (v2 keys are exact)", () => {
+  it("familyOf resolves exact keys to their family", () => {
+    expect(familyOf("theme.grief")).toBe("story");
+    expect(familyOf("tone.warm")).toBe("feeling");
+    expect(familyOf("complexity")).toBe("story");
+    expect(familyOf("pace")).toBe("feeling");
+    expect(familyOf("moral-complexity")).toBe("story");
+  });
+
+  it("familyOf rejects malformed and unknown keys", () => {
+    expect(familyOf("theme.not-real")).toBeNull();
+    expect(familyOf("theme.grief.extra")).toBeNull();
+    expect(familyOf("theme.")).toBeNull();
+    expect(familyOf(".grief")).toBeNull();
+    expect(familyOf("grief")).toBeNull(); // bare word: not a scalar
+    expect(familyOf("not-a-scalar")).toBeNull();
+  });
+
+  it("isKnownKeyIn agrees with familyOf per family", () => {
+    expect(isKnownKeyIn("theme.grief", "story")).toBe(true);
+    expect(isKnownKeyIn("theme.grief", "feeling")).toBe(false);
+    expect(isKnownKeyIn("tone.warm", "feeling")).toBe(true);
+    expect(isKnownKeyIn("complexity", "story")).toBe(true);
+    expect(isKnownKeyIn("pace", "feeling")).toBe(true);
+    expect(isKnownKeyIn("pace", "story")).toBe(false);
+    expect(isKnownKeyIn("theme.not-real", "story")).toBe(false);
+    expect(isKnownKeyIn("theme.grief.extra", "story")).toBe(false);
+    expect(isKnownKeyIn("theme.", "story")).toBe(false);
+    expect(isKnownKeyIn("not-a-scalar", "feeling")).toBe(false);
+  });
+
+  it("all five media are profiled; only four are matched", () => {
+    expect(PROFILED_CATEGORIES).toEqual(["movie", "tv", "anime", "book", "music"]);
+    expect(MATCHED_CATEGORIES).toEqual(["movie", "tv", "anime", "book"]);
+    expect(PROFILED_CATEGORIES.includes("music")).toBe(true);
+    expect(MATCHED_CATEGORIES).not.toContain("music");
   });
 });
 

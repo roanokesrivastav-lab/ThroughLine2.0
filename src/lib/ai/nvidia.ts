@@ -1,10 +1,11 @@
 import "server-only";
 import { z } from "zod";
-import type { Extraction } from "@/lib/types";
-import { extractionToVector } from "@/lib/taste/vector";
-import { AFTERTASTES, REGISTERS, TEXTURES, THEMES, TONES, VOCABULARY_VERSION } from "@/lib/taste/vocabulary";
+import type { Reading } from "@/lib/types";
+import { readingToVector } from "@/lib/taste/vector";
+import { VOCABULARY_VERSION } from "@/lib/taste/vocabulary";
 import type { ExtractionInput, ExtractionResult, Extractor } from "./mock-extractor";
 import type { Explainer } from "./explainer";
+import { emptyReading, finalizeReading, READING_SYSTEM_PROMPT, ReadingSchema } from "./reading";
 
 const endpoint = () => process.env.NVIDIA_BASE_URL || "https://integrate.api.nvidia.com/v1";
 /** Default chosen by testing real notes: gpt-oss-20b gave contradictory readings of the same note; Nemotron 3 Super was consistent. */
@@ -47,26 +48,16 @@ function json<T>(text: string, schema: z.ZodType<T>): T {
   return schema.parse(JSON.parse(start >= 0 && end > start ? cleaned.slice(start, end + 1) : cleaned));
 }
 
-const extractionSchema = z.object({
-  tones: z.array(z.object({ key: z.enum(TONES), weight: z.number().min(0).max(1) })).max(4),
-  registers: z.array(z.object({ key: z.enum(REGISTERS), weight: z.number().min(0).max(1) })).max(3),
-  textures: z.array(z.object({ key: z.enum(TEXTURES), weight: z.number().min(0).max(1) })).max(3),
-  aftertastes: z.array(z.object({ key: z.enum(AFTERTASTES), weight: z.number().min(0).max(1) })).max(3),
-  themes: z.array(z.object({ key: z.enum(THEMES), weight: z.number().min(0).max(1) })).max(4),
-  intensity: z.number().min(0).max(1), ache: z.number().min(0).max(1), pace: z.number().min(0).max(1),
-  summary: z.string().max(60), quote: z.string().max(160).nullable(),
-});
-
-const extractionSystem = `Return only valid JSON. Extract one person's words into this fixed vocabulary. Use only these keys: tones [${TONES.join(", ")}], registers [${REGISTERS.join(", ")}], textures [${TEXTURES.join(", ")}], aftertastes [${AFTERTASTES.join(", ")}], themes [${THEMES.join(", ")}]. Each list item is {"key": string, "weight": number from 0 to 1}. Include at most 4 tones, 3 registers, 3 textures, 3 aftertastes, and 4 themes. Interpret negation: do not add an attribute the person explicitly rejects. intensity, ache, and pace are numbers from 0 to 1. summary is a short noun phrase. quote must be an exact substring of their words or null. Never judge the work.`;
-
 export function nvidiaExtractor(): Extractor {
   return { name: "nvidia", async extract(input: ExtractionInput): Promise<ExtractionResult> {
-    const dims = Object.entries(input.dimensions ?? {}).filter(([, value]) => value).map(([key]) => key.replace(/_/g, " "));
-    const user = [`Category: ${input.category}`, `Title: ${input.title}${input.subtitle ? ` — ${input.subtitle}` : ""}`, `Tapped reactions: ${dims.length ? dims.join(", ") : "none"}`, `Their words:`, input.note?.trim() || "(nothing written)"].join("\n");
-    const parsed = json(await complete(extractionSystem, user, 8192), extractionSchema) as Extraction;
-    const quote = parsed.quote && input.note?.includes(parsed.quote) ? parsed.quote : null;
-    const extraction = { ...parsed, quote };
-    return { extraction, vector: extractionToVector(extraction), extractor: "nvidia", vocabulary_version: VOCABULARY_VERSION };
+    if (!input.note?.trim()) {
+      const extraction = emptyReading();
+      return { extraction, vector: readingToVector(extraction), extractor: "nvidia", vocabulary_version: VOCABULARY_VERSION };
+    }
+    const user = [`Category: ${input.category}`, `Title: ${input.title}${input.subtitle ? ` — ${input.subtitle}` : ""}`, `Their words:`, input.note.trim()].join("\n");
+    const parsed = json(await complete(READING_SYSTEM_PROMPT, user, 8192), ReadingSchema);
+    const extraction: Reading = finalizeReading(parsed, input.note);
+    return { extraction, vector: readingToVector(extraction), extractor: "nvidia", vocabulary_version: VOCABULARY_VERSION };
   } };
 }
 

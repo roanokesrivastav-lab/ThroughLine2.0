@@ -25,6 +25,7 @@ export async function runPendingExtractions(db: Db, opts: { userId?: string; lim
   const { userId, limit = 20, maxAttempts = 5 } = opts;
   let q = db.from("extracted_attributes")
     .select("*, reactions(*, entries(media_items(*)))")
+    .eq("vocabulary_version", VOCABULARY_VERSION)
     .neq("status", "done").lt("attempts", maxAttempts)
     .order("created_at", { ascending: true }).limit(limit);
   if (userId) q = q.eq("user_id", userId);

@@ -91,13 +91,18 @@ export const LEXICON: Rule[] = [
   r("love|loved it|adore\\w*|cherish\\w*", [["theme.love", 0.5], ["tone.warm", 0.3]]),
 ];
 
-/** Dimensional reactions carry a weak, category-agnostic signal of their own. */
-export const DIMENSION_TAGS: Record<string, Array<[string, number]>> = {
-  moved_me: [["ache", 0.55], ["intensity", 0.55], ["aftertaste.cathartic", 0.4]],
-  stuck_with_me: [["aftertaste.lingering", 0.7]],
-  would_return: [["aftertaste.comforting", 0.45], ["tone.warm", 0.3]],
-  changed_perspective: [["register.cerebral", 0.5], ["aftertaste.lingering", 0.4]],
-  comforted_me: [["aftertaste.comforting", 0.75], ["tone.warm", 0.6], ["intensity", 0.3]],
-  challenged_me: [["texture.dense", 0.5], ["aftertaste.unsettling", 0.4], ["intensity", 0.6]],
-  loved: [["intensity", 0.5]],
-};
+/** Preference evidence is separate from the descriptive reading vector. */
+export const DISLIKE_MARKER = /\b(?:hate(?:d)?|dislike(?:d)?|did(?:n't| not) work|could(?:n't| not) stand|not for me|boring|dragged|too)\b/i;
+export const VALUED_MARKER = /\b(?:love(?:d)?|like(?:d)?|adore(?:d)?|appreciate(?:d)?|favorite|favourite|what worked)\b/i;
+
+/** Applied only inside a sentence that also contains DISLIKE_MARKER. */
+export const DISLIKE_LEXICON: Rule[] = [
+  r("slow|sluggish|dragged|draggy|pacing", [["pace", 0.15]]),
+  r("fast|rushed|frantic|breakneck", [["pace", 0.9]]),
+  r("intense|overwhelming|relentless", [["intensity", 0.9]]),
+  r("bleak|hopeless|depressing|grim", [["tone.bleak", 0.85]]),
+  r("cold|detached|distant", [["tone.cold", 0.8]]),
+  r("loud|noisy|abrasive", [["register.loud", 0.85]]),
+  r("dense|confusing|complicated|convoluted", [["texture.dense", 0.8], ["complexity", 0.85]]),
+  r("violent|violence|gory|gore", [["theme.violence", 0.85]]),
+];

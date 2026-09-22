@@ -1,10 +1,11 @@
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database, EntriesRow, ExtractedAttributesRow, MediaItemsRow, ReactionsRow, ResurfaceEventsRow } from "@/lib/db/types";
-import { asDimensions, asExtraction, asVector } from "@/lib/db/types";
+import { asDimensions, asExtractionPayload, asItemProfile, asStoredVector, asVector } from "@/lib/db/types";
 import type { Creator, Entry, EntryWithContext, MediaItem, MediaMetadata } from "@/lib/types";
 import type { CatalogResult } from "@/lib/catalog/types";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { PROFILE_VERSION } from "@/lib/taste/weights";
 
 export type Db = SupabaseClient<Database>;
 
@@ -16,6 +17,7 @@ export function rowToItem(r: MediaItemsRow): MediaItem {
     genre_tags: r.genre_tags ?? [],
     metadata: (r.metadata && typeof r.metadata === "object" ? r.metadata : {}) as MediaMetadata,
     feel_prior: asVector(r.feel_prior),
+    profile: r.profile_status === "done" && r.profile_version === PROFILE_VERSION ? asItemProfile(r.profile) : null,
   };
 }
 export function rowToEntry(r: EntriesRow): Entry {
@@ -25,7 +27,7 @@ export function rowToReaction(r: ReactionsRow) {
   return { id: r.id, entry_id: r.entry_id, user_id: r.user_id, dimensions: asDimensions(r.dimensions), raw_note: r.raw_note, source: r.source, created_at: r.created_at };
 }
 export function rowToExtraction(r: ExtractedAttributesRow) {
-  return { id: r.id, reaction_id: r.reaction_id, entry_id: r.entry_id, user_id: r.user_id, status: r.status, attributes: asExtraction(r.attributes), vector: asVector(r.vector), vocabulary_version: r.vocabulary_version, extractor: r.extractor, attempts: r.attempts, last_error: r.last_error, extracted_at: r.extracted_at, created_at: r.created_at };
+  return { id: r.id, reaction_id: r.reaction_id, entry_id: r.entry_id, user_id: r.user_id, status: r.status, attributes: asExtractionPayload(r.attributes, r.vocabulary_version), vector: asStoredVector(r.vector, r.vocabulary_version), vocabulary_version: r.vocabulary_version, extractor: r.extractor, attempts: r.attempts, last_error: r.last_error, extracted_at: r.extracted_at, created_at: r.created_at };
 }
 export function rowToResurface(r: ResurfaceEventsRow) {
   return { id: r.id, user_id: r.user_id, entry_id: r.entry_id, surfaced_at: r.surfaced_at, channel: r.channel, response: r.response, responded_at: r.responded_at, note_reaction_id: r.note_reaction_id, snoozed_until: r.snoozed_until };

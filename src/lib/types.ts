@@ -126,8 +126,8 @@ export type ExtractedAttributes = {
   entry_id: string;
   user_id: string;
   status: "pending" | "done" | "failed";
-  attributes: Extraction | null;
-  vector: AttributeVector | null;
+  attributes: ExtractionPayload | null;
+  vector: StoredAttributeVector | null;
   vocabulary_version: string;
   extractor: string | null;
   attempts: number;
@@ -173,6 +173,13 @@ export type NotificationPrefs = {
 /** A flattened attribute space: "tone.tender" -> 0..1, plus scalars "intensity", "ache", "pace". */
 export type AttributeVector = Record<string, number>;
 
+/** Vocabulary-v2 vectors are separated so story evidence cannot leak into feeling scores. */
+export type ReadingVector = { story: AttributeVector; feeling: AttributeVector };
+
+/** JSON shapes that may coexist while historical v1 readings are retained. */
+export type ExtractionPayload = Extraction | Reading;
+export type StoredAttributeVector = AttributeVector | ReadingVector;
+
 export type WeightedTag = { key: string; weight: number };
 
 /** Structured output of the extraction step (shared vocabulary, category-agnostic). */
@@ -192,8 +199,8 @@ export type Extraction = {
 };
 
 // ---------------------------------------------------------------------------
-// Stage 3 data model (SPEC-STAGE3 §1.2–§1.3). Additive: nothing reads these yet
-// until the engine work; the v1 Extraction above stays what extractors emit.
+// Stage 3 data model (SPEC-STAGE3 §1.2–§1.3). Historical v1 Extraction rows remain
+// readable; current extractors emit Reading and the Stage 3 family APIs consume it.
 // ---------------------------------------------------------------------------
 
 /** One attribute of an item profile: key "group.value" or a bare scalar name; weight and confidence in [0, 1]. */

@@ -366,3 +366,46 @@ engine, `recommend.ts`, the extractors and `explainer.ts` are byte-identical;
    bump), then scripts/calibrate.ts.
 2. Founder supplies or approves the mock profiler lexicon (Blocked #1) before the mock
    profiler can exist.
+
+## 2026-09-19 — vocabulary-v2 extraction cutover
+
+The §B20/§B22 reading cutover is complete. This was deliberately limited to extraction,
+version-safe persistence/loading, and compatibility with the still-active v1 engines; the
+Stage 3 recommendation engine itself was not changed.
+
+### Built
+- `VOCABULARY_VERSION` is now `v2`, with an explicit `VOCABULARY_V1_VERSION` retained for
+  historical rows and a complete exact-key list used by structured schemas.
+- `src/lib/ai/reading.ts` owns the shared v2 Zod contract, empty reading, model prompt and
+  verbatim guards. Mock, Claude and NVIDIA now emit the same `Reading` and separated
+  `{ story, feeling }` vector. No-note reactions return an empty reading without a model
+  call; tapped dimensions no longer manufacture words.
+- The deterministic mock implements the specified three-token negation window,
+  `didnt_work` preference evidence and verbatim `valued` phrases. Negative/out-of-range
+  values are rejected rather than clamped.
+- DB/domain loaders distinguish v1 and v2 JSON, attach only current done item profiles,
+  and retain both extraction versions. Re-read creates missing v2 rows and resets only
+  stale current-version/provider rows; v1 rows are never relabelled. Pending workers only
+  process the current vocabulary version. The mock provider may perform a free vocabulary
+  upgrade through the same route.
+- Legacy engines receive a temporary deterministic projection of v2 feeling plus theme
+  evidence, so this cutover does not erase note-derived behavior before the Stage 3 scorer
+  lands. Empty story/feeling vectors now mean no evidence, closing the `{}` issue found in
+  the preceding review.
+
+### Tests and verification
+- `src/__tests__/extraction.test.ts` now covers separated families/schema validity,
+  determinism, taps adding no words, negation, `didnt_work`, verbatim `valued` text and
+  rejection of negative weights. `profile.test.ts` covers empty-family semantics.
+- **AI-verified:** `npm run typecheck` clean; touched-file ESLint clean; `npm test`
+  **145/145**; `npm run build` succeeds; `git diff --check` clean.
+- **Not verified:** no Claude/NVIDIA request was sent, no live Supabase row was written or
+  re-read, and nothing was phone-verified. Migrations 0002 and 0003 remain founder-confirmed
+  applied from the preceding session; this cutover needs no migration.
+
+### Next
+1. Live-check one new note and one Settings → Re-read flow, then inspect the resulting v2
+   `attributes`, nested vector, preserved v1 row and UI summary.
+2. Continue the remaining Stage 3 engine lane (`recommend.ts`, server candidates/filters,
+   snapshot, deterministic re-ranking and evidence-grounded explanation) without changing
+   this feature vector contract.

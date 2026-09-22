@@ -1,5 +1,5 @@
-import type { AttributeVector, Extraction, WeightedTag } from "@/lib/types";
-import { G_FEELING, G_STORY, SCALARS, READING_SCALARS, type FeelingGroup, GROUP_WEIGHTS, type Group, isKnownKey, type StoryGroup } from "./vocabulary";
+import type { AttributeVector, Extraction, Reading, ReadingVector, WeightedTag } from "@/lib/types";
+import { G_FEELING, G_STORY, SCALARS, READING_SCALARS, type FeelingGroup, GROUP_WEIGHTS, type Group, familyOf, isKnownKey, type StoryGroup } from "./vocabulary";
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
@@ -26,6 +26,34 @@ export function extractionToVector(x: Extraction): AttributeVector {
   v.ache = clamp01(x.ache);
   v.pace = clamp01(x.pace);
   return v;
+}
+
+/** Flatten a structured vocabulary-v2 reading into its two disjoint family vectors. */
+export function readingToVector(x: Reading): ReadingVector {
+  const vector: ReadingVector = { story: {}, feeling: {} };
+  const put = (family: Family, group: string, tags: WeightedTag[]) => {
+    for (const tag of tags ?? []) {
+      const key = `${group}.${tag.key}`;
+      if (familyOf(key) !== family) continue;
+      if (!Number.isFinite(tag.weight) || tag.weight < 0 || tag.weight > 1) {
+        throw new Error(`reading.${family}: invalid value for ${key} (${tag.weight})`);
+      }
+      const weight = tag.weight;
+      if (weight > 0) vector[family][key] = Math.max(vector[family][key] ?? 0, weight);
+    }
+  };
+  for (const [group, tags] of Object.entries(x.story)) put("story", group, tags);
+  for (const [group, tags] of Object.entries(x.feeling)) put("feeling", group, tags);
+  for (const [key, value] of Object.entries(x.scalars)) {
+    const family = familyOf(key);
+    if (family && value !== undefined) {
+      if (!Number.isFinite(value) || value < 0 || value > 1) throw new Error(`reading.${family}: invalid value for ${key} (${value})`);
+      vector[family][key] = value;
+    }
+  }
+  assertNonNegative(vector.story, "reading.story");
+  assertNonNegative(vector.feeling, "reading.feeling");
+  return vector;
 }
 
 /**

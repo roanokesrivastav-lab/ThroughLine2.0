@@ -1,8 +1,8 @@
-import type { AttributeVector, EntryWithContext, Extraction, ItemProfile } from "@/lib/types";
+import type { AttributeVector, EntryWithContext, ExtractionPayload, ItemProfile, ReadingVector } from "@/lib/types";
 import { PROFILE_VERSION } from "@/lib/taste/weights";
 import { VOCABULARY_V2_VERSION } from "./vocabulary";
 import { entrySpan } from "./when";
-import { blend, isEmpty, scale, type Family } from "./vector";
+import { assertNonNegative, blend, isEmpty, scale, type Family } from "./vector";
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
@@ -35,11 +35,24 @@ export function hasStrongReaction(e: EntryWithContext): boolean {
 }
 
 /** The latest completed extraction for an entry, if any. */
-export function latestExtraction(e: EntryWithContext): Extraction | null {
+export function latestExtraction(e: EntryWithContext): ExtractionPayload | null {
   const done = e.extractions
     .filter((x) => x.status === "done" && x.attributes)
     .sort((x, y) => (y.extracted_at ?? "").localeCompare(x.extracted_at ?? ""));
   return done[0]?.attributes ?? null;
+}
+
+/** Temporary projection that keeps the v1 engines useful while v2 rows coexist. */
+function legacyCompatibleVector(x: EntryWithContext["extractions"][number]): AttributeVector | null {
+  if (!x.vector) return null;
+  if (x.vocabulary_version !== VOCABULARY_V2_VERSION) return x.vector as AttributeVector;
+  const nested = x.vector as ReadingVector;
+  if (!nested.feeling || typeof nested.feeling !== "object" || Array.isArray(nested.feeling)) return null;
+  const out: AttributeVector = { ...nested.feeling };
+  if (nested.story && typeof nested.story === "object" && !Array.isArray(nested.story)) {
+    for (const [key, weight] of Object.entries(nested.story)) if (key.startsWith("theme.")) out[key] = weight;
+  }
+  return Object.keys(out).length ? out : null;
 }
 
 /**
@@ -49,10 +62,10 @@ export function latestExtraction(e: EntryWithContext): Extraction | null {
  */
 export function entryVector(e: EntryWithContext): AttributeVector | null {
   const done = e.extractions
-    .filter((x) => x.status === "done" && x.vector)
+    .filter((x) => x.status === "done" && legacyCompatibleVector(x))
     .sort((x, y) => (y.extracted_at ?? "").localeCompare(x.extracted_at ?? ""));
   if (done.length) {
-    const parts = done.map((x, i) => ({ v: x.vector as AttributeVector, w: i === 0 ? 1 : 0.5 }));
+    const parts = done.map((x, i) => ({ v: legacyCompatibleVector(x)!, w: i === 0 ? 1 : 0.5 }));
     const v = blend(parts);
     if (e.item.feel_prior && !isEmpty(e.item.feel_prior)) {
       return blend([{ v, w: 1 }, { v: e.item.feel_prior, w: 0.25 }]);
@@ -64,7 +77,8 @@ export function entryVector(e: EntryWithContext): AttributeVector | null {
 }
 
 export function hasOwnWords(e: EntryWithContext): boolean {
-  return e.extractions.some((x) => x.status === "done" && x.vector);
+  const noted = new Set(e.reactions.filter((r) => (r.raw_note ?? "").trim().length > 0).map((r) => r.id));
+  return e.extractions.some((x) => x.status === "done" && noted.has(x.reaction_id));
 }
 
 export function bestQuote(e: EntryWithContext): string | null {
@@ -111,7 +125,10 @@ export function entryVectorFamily(e: EntryWithContext, family: Family): Attribut
   // v2 rows store { story, feeling } in the same jsonb vector column the flat v1 map uses.
   const familyVector = (x: EntryWithContext["extractions"][number]): AttributeVector | null => {
     const v = x.vector as unknown as { story?: AttributeVector; feeling?: AttributeVector } | null;
-    return (v && typeof v === "object" && !Array.isArray(v) ? v[family] ?? null : null);
+    const out = v && typeof v === "object" && !Array.isArray(v) ? v[family] ?? null : null;
+    if (!out || typeof out !== "object" || Array.isArray(out) || Object.keys(out).length === 0) return null;
+    try { assertNonNegative(out, `stored ${family} reading`); } catch { return null; }
+    return Object.values(out).every((value) => Number.isFinite(value) && value <= 1) ? out : null;
   };
   const absentKeys = (x: EntryWithContext["extractions"][number]): string[] => {
     const r = x.attributes as unknown as { absent?: string[] } | null;
@@ -122,7 +139,8 @@ export function entryVectorFamily(e: EntryWithContext, family: Family): Attribut
     .filter((x) => x.status === "done" && x.vocabulary_version === VOCABULARY_V2_VERSION && familyVector(x) !== null)
     .sort((x, y) => (y.extracted_at ?? "").localeCompare(x.extracted_at ?? ""));
 
-  const p = usableProfile(e.item)?.vector[family] ?? null;
+  const profileVector = usableProfile(e.item)?.vector[family] ?? null;
+  const p = profileVector && Object.keys(profileVector).length > 0 ? profileVector : null;
   let v: AttributeVector | null;
   if (readings.length === 0) {
     v = p;

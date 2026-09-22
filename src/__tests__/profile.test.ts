@@ -370,9 +370,13 @@ describe("centroid and anchors (§4.3)", () => {
     expect(FEATURE_VERSION).toBe("f1");
   });
 
+  it("an empty family vector is missing evidence, not profile evidence", () => {
+    const e = entryFrom({ key: "empty-family", profileVec: { story: { "theme.grief": 1 }, feeling: {} } }, 0);
+    expect(entryVectorFamily(e, "story")).toEqual({ "theme.grief": 1 });
+    expect(entryVectorFamily(e, "feeling")).toBeNull();
+  });
+
   it("entryVectorFamily preserves a profile story scalar the reading omits", () => {
-    // The drop's profile carries a real feeling vector, not {}, so the feeling family has
-    // evidence; {} would also contribute (an empty vector is still present).
     const e = entryFrom({
       key: "scalar", note: "a note",
       reading: { vector: { story: { "theme.grief": 1 }, feeling: { "tone.warm": 0.5 } } },

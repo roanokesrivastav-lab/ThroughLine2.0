@@ -2,14 +2,10 @@
 // stamped with VOCABULARY_VERSION so a future vocabulary can be reprocessed
 // without touching the user's raw words.
 
-// Pinned to v1 until the extractors emit v2 in the same commit. Four write paths stamp
-// this constant onto live rows (server/extraction.ts, extractor.ts, nvidia.ts,
-// mock-extractor.ts) and the re-read route keys off extractor, not version, so a premature
-// bump would mislabel real data permanently with no self-heal. See DECISIONS #62.
-export const VOCABULARY_VERSION = "v1";
-
-/** The vocabulary the v2 lists below describe; stamped onto item profiles and v2 readings. */
-export const VOCABULARY_V2_VERSION = "v2";
+/** Historical rows remain readable under v1; all new extraction writes use v2. */
+export const VOCABULARY_V1_VERSION = "v1";
+export const VOCABULARY_VERSION = "v2";
+export const VOCABULARY_V2_VERSION = VOCABULARY_VERSION;
 
 export const TONES = [
   "warm", "tender", "bleak", "playful", "wry", "earnest", "eerie", "lush",
@@ -150,6 +146,14 @@ export const FEELING_GROUPS = {
   texture: TEXTURES,
   aftertaste: AFTERTASTES,
 } as const;
+
+/** Every exact full key accepted in `absent` and `didnt_work.keys`. */
+export const VOCABULARY_V2_KEYS = [
+  ...Object.entries(STORY_GROUPS).flatMap(([group, values]) => values.map((value) => `${group}.${value}`)),
+  ...Object.entries(FEELING_GROUPS).flatMap(([group, values]) => values.map((value) => `${group}.${value}`)),
+  ...STORY_SCALARS,
+  ...SCALARS,
+] as string[];
 
 /** The five feeling scalars a v2 reading may carry; item profiles use only the feeling three. */
 export const READING_SCALARS = ["intensity", "ache", "pace", "moral-complexity", "complexity"] as const;

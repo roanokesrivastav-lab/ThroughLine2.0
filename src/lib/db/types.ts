@@ -1,5 +1,6 @@
 // Hand-maintained mirror of supabase/migrations. Keep in sync when the schema changes.
-import type { AttributeVector, Category, Dimensions, EntryStatus, Extraction, ResurfaceResponse } from "@/lib/types";
+import type { AttributeVector, Category, Dimensions, EntryStatus, Extraction, ExtractionPayload, ItemProfile, Reading, ReadingVector, ResurfaceResponse, StoredAttributeVector } from "@/lib/types";
+import { VOCABULARY_V1_VERSION, VOCABULARY_V2_VERSION } from "@/lib/taste/vocabulary";
 
 type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
@@ -79,3 +80,17 @@ export type Database = {
 export const asDimensions = (j: Json): Dimensions => (j && typeof j === "object" && !Array.isArray(j) ? (j as Dimensions) : {});
 export const asVector = (j: Json | null): AttributeVector | null => (j && typeof j === "object" && !Array.isArray(j) ? (j as AttributeVector) : null);
 export const asExtraction = (j: Json | null): Extraction | null => (j && typeof j === "object" && !Array.isArray(j) ? (j as unknown as Extraction) : null);
+export const asReading = (j: Json | null): Reading | null => (j && typeof j === "object" && !Array.isArray(j) ? (j as unknown as Reading) : null);
+export const asReadingVector = (j: Json | null): ReadingVector | null => (j && typeof j === "object" && !Array.isArray(j) ? (j as unknown as ReadingVector) : null);
+export const asExtractionPayload = (j: Json | null, version: string): ExtractionPayload | null => {
+  if (version === VOCABULARY_V2_VERSION) return asReading(j);
+  if (version === VOCABULARY_V1_VERSION) return asExtraction(j);
+  return null;
+};
+export const asStoredVector = (j: Json | null, version: string): StoredAttributeVector | null => {
+  if (version === VOCABULARY_V2_VERSION) return asReadingVector(j);
+  if (version === VOCABULARY_V1_VERSION) return asVector(j);
+  return null;
+};
+export const asItemProfile = (j: Json | null): ItemProfile | null =>
+  j && typeof j === "object" && !Array.isArray(j) ? (j as unknown as ItemProfile) : null;

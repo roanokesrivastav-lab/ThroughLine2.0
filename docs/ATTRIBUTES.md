@@ -10,8 +10,8 @@ behaviour, so the recommender has one agreed list to draw on. Agreed with the fo
 > `bond`); `romance` left `bond`; `historical` left `frame`; `slow-burn` and `action-driven` left
 > `momentum`; the story scalars are now only `moral-complexity` and `complexity`; readings
 > (Part 2) are non-negative, with negation recorded as `absent` instead of a negative weight;
-> the entry-vector blend table moved to SPEC §4.2. The Stage 3 code pins `VOCABULARY_VERSION` to
-> v1 until the extractors emit v2, so nothing here changes what live rows carry until then.
+> the entry-vector blend table moved to SPEC §4.2. Since the 2026-09-19 cutover (DECISIONS #65) `VOCABULARY_VERSION` is `v2`: new readings
+> are written in v2, and historical v1 rows are kept and never relabelled.
 
 **Priorities (founder, 2026-09-15):**
 - Story and themes carry the most weight. Feeling and mood are second.
@@ -191,4 +191,6 @@ item-scoped and does **not** feed the Stage 3 anti-profile; "what didn't work" i
 - **Story profile:** 1B.
 - **Feeling profile:** 1C.
 - **Creator profile.**
-- **Anti-profile:** drops, "doesn't hit", "not for me", what-didn't-work phrases, negative weights.
+- **Anti-profile (Stage 3, SPEC §4.6):** dropped entries, "doesn't hit" resurface answers, and
+  `didnt_work` keys from v2 readings. "Not for me" is item-scoped and not anti-profile evidence
+  (DECISIONS #32, §E Q6); readings carry no negative weights (DECISIONS #61).

@@ -409,3 +409,17 @@ Stage 3 recommendation engine itself was not changed.
 2. Continue the remaining Stage 3 engine lane (`recommend.ts`, server candidates/filters,
    snapshot, deterministic re-ranking and evidence-grounded explanation) without changing
    this feature vector contract.
+
+## 2026-09-22 — v2 cutover committed; docs reconciled; Session 2 planned (documents only after the commit)
+
+### Done
+- **Session 1 closed.** Reviewed the uncommitted vocabulary-v2 cutover (Codex's assessment plus a targeted read of the re-read route, extraction queue and loaders) and committed it as `ba22541`. Verified before committing: `npm run typecheck` clean; `npm test` 145/145; `npx eslint src` clean; `npm run build` succeeds; `git diff --check` clean. No model call, database write or re-read was performed.
+- **Docs reconciled (founder-approved, no code):** SPEC-STAGE3 recency references now say 14 days (#59); ATTRIBUTES no longer says vocabulary is pinned to v1, and its anti-profile summary no longer lists "not for me" or negative weights; DECISIONS #66 records the Opus-plan → GLM-implement → review → founder-commit workflow (superseding #60's model lane) and names ThroughLine2.0 as the project of record; #67 records the profiler provider (NVIDIA default) and the mock-lexicon ruling, which closes Blocked #1. `docs/handoff/A1-data-model-plan.md` is marked stale and non-authoritative.
+- **Session 2 plan written:** `docs/handoff/S2-profiler-contract.md`, for GLM.
+
+### Known live facts (Codex read-only inventory, 2026-09-22)
+24 media items, all `pending` with no profile; 24 entries; 19 extractions, all `done | v1 | mock`; 12 query sessions; 2 genre_run phases; no entry has `consumed_precision`. No live row carries Stage 3 data yet.
+
+### Next
+1. GLM runs Session 2 (profiler contract) from the handoff; then review, then founder authorizes the commit.
+2. Sessions 3–10 per DECISIONS #66.

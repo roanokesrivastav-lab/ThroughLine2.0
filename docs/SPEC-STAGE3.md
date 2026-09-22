@@ -638,7 +638,7 @@ a score. Counts removed per step are recorded in the snapshot context (§9.2).
    has no usable profile. At most 5 are profiled inline after the response (`after()`), the rest by the
    daily cron (≤ 20 per run, `attempts < 5`). The snapshot context records `deferred` count.
 9. **Recent impressions.** `key` appears in the `results` of any `query_sessions` row of this user with
-   kind in `{home, recommend, time}` created in the last 7 days → set aside. If fewer than `limit`
+   kind in `{home, recommend, time}` created in the last `RECENCY_DAYS` = 14 days (founder ruling, DECISIONS #59) → set aside. If fewer than `limit`
    candidates remain after this step, re-admit set-aside candidates in order of oldest impression first
    until `limit` is reached, and record `policy.recency_relaxed = true`.
 
@@ -819,7 +819,7 @@ and `query_sessions.answers` as `{ filters, context }`. Both are jsonb; no migra
   "learned": null,                                 // later: { n, trained_at }
   "versions": { … as above … },
   "calibration": { "story": { "lo": 0.18, "hi": 0.62 }, "feeling": { "lo": 0.16, "hi": 0.58 } },
-  "thresholds": { "loved": 0.55, "band_familiar": 0.60, "band_adjacent": 0.35, "creator_cap": 2, "category_cap": 3, "theme_cap": 3, "recency_days": 7 },
+  "thresholds": { "loved": 0.55, "band_familiar": 0.60, "band_adjacent": 0.35, "creator_cap": 2, "category_cap": 3, "theme_cap": 3, "recency_days": 14 },
   "profile": {
     "story":   { "top": [["theme.memory", 0.61], …20], "n_loved": 18 },      // top 20 centroid keys
     "feeling": { "top": [ … ], "n_loved": 18 },
@@ -950,7 +950,7 @@ The normative pipeline, in execution order. Each step cites the section that def
 
 Constants, all in `weights.ts` under `FEATURE_VERSION = "f1"`: `W0`; `LOVED = 0.55`; anchors `40`;
 `BAND = { familiar: 0.60, adjacent: 0.35 }`; quotas table; `CREATOR_CAP = 2`; category and theme caps
-`ceil(L/2)`; `RECENCY_DAYS = 7`; `PHASE_ACTIVE_DAYS = 90`; `ANTI_MIN_EVIDENCE = 2`; pool `500`; neighbour
+`ceil(L/2)`; `RECENCY_DAYS = 14` (founder ruling, DECISIONS #59); `PHASE_ACTIVE_DAYS = 90`; `ANTI_MIN_EVIDENCE = 2`; pool `500`; neighbour
 tops `30`, phase top `20`, creator `3 × 5`. Calibration in `calibration.ts`.
 
 # B. File-by-file implementation plan
@@ -1134,7 +1134,7 @@ Defaults are what the specification above assumes; each can be changed without t
    which provider profiles items (NVIDIA credits vs Claude).
 8. **Committing canon profiles to the repository** (`canon-profiles.ts`, generated once by the real
    model, reviewed by hand). This is what makes tests model-free. Confirm.
-9. **Recency window 7 days** for the "recently shown" filter. Alternative: 14.
+9. **Recency window 7 days** for the "recently shown" filter. Alternative: 14. *(Answered 2026-09-17: 14 days, DECISIONS #59.)*
 10. **Form = length only in Stage 3.** Craft words are stored and not scored. Confirm.
 11. **`category_stretch` as a phase component** gives a flat +0.10 to a whole category while the stretch is
     active. Keep, or restrict the phase component to `feeling_cluster` and `genre_run`.

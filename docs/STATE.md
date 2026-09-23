@@ -423,3 +423,41 @@ Stage 3 recommendation engine itself was not changed.
 ### Next
 1. GLM runs Session 2 (profiler contract) from the handoff; then review, then founder authorizes the commit.
 2. Sessions 3–10 per DECISIONS #66.
+
+## 2026-09-22 — Session 2: item profiler contract (GLM, uncommitted)
+
+Implemented `docs/handoff/S2-profiler-contract.md` in full. Nothing committed; the diff awaits Codex review and the founder's authorization. No database read or write, no route, no migration, no dependency change; `package.json` is untouched. No live model call was made — all provider tests use stubbed `fetch` or a hand-written fake Anthropic client, and the suite is offline-safe.
+
+### Built
+- `src/lib/taste/vocabulary.ts` — additive only: `CRAFT` (closed per-category craft lists exactly from ATTRIBUTES §1D) and `isCraftKey` (exact-match, like `familyOf`). Nothing existing changed; `VOCABULARY_VERSION` stays `v2` (DECISIONS #68).
+- `src/lib/ai/mock-extractor.ts` — refactor only: the lexicon loop moved verbatim into an exported `lexiconVector(text)` returning `{ vector, absent }`; `mockExtract` now calls it and behaves byte-identically (all 145 pre-existing tests pass unedited).
+- `src/lib/ai/profile-contract.ts` (new) — `ProfileDraftSchema` (strict: unknown keys rejected, never clamped), `ProfileValidationError`, `buildItemProfile` (the one pure builder: flatten → craft category-check → frame merge with catalogue-wins ties and top-3 cap → music 0.5 confidence cap → strict/lenient completeness → praise-guard premise → form from `form.ts` → deterministic ordering → vector at w×c ≥ 0.05 rounded to 4 decimals), `profilerInput` (the only item data a model sees; overview omitted for manual items; never feel_prior, image, encounter_weight, external_id, scores or unlisted metadata), and `PROFILE_SYSTEM_PROMPT` generated from the constants. Imports no `server-only`.
+- `src/lib/ai/profiler.ts` — kept `ItemProfiler` and `frameFromGenre`; added `mockProfile`/`mockProfiler` running `lexiconVector` over the overview (empty for manual items), negated keys dropped, every tag at confidence 0.5, caps enforced by weight with key-ascending ties, then through `buildItemProfile` with `catalog` source and lenient validation. Header comment marks mock profiles as placeholders (like `fixtureProfile`). Deterministic: same item → deep-equal profile.
+- `src/lib/ai/nvidia.ts` — added `nvidiaProfiler()` reusing the private `complete()`/`json()` helpers (120 s timeout, fenced-JSON cleanup) and building strict via `buildItemProfile`. Errors propagate.
+- `src/lib/ai/item-profiler.ts` (new, imports `server-only`) — `claudeProfiler(client, model)` via `messages.parse` + `zodOutputFormat(ProfileDraftSchema)` with cached system prompt and `effort: "low"`, refusal/missing-output throw; `profilerFor(provider)`; `getProfiler()` cached like `getExtractor`, reusing `aiProvider()`/`anthropicModel()` (NVIDIA default per DECISIONS #67).
+- `src/__tests__/profile-contract.test.ts` (new) — §3 tests A–M (contract, caps, merge, craft, music cap, manual/praise guards, form, ordering determinism, leakage), plus two review-round tests: provider-shaped genre normalisation before the frame table, and anime-film runtime in `profilerInput`.
+- `src/__tests__/profiler.test.ts` (new) — §3 tests N–T (mock determinism/lexicon/negation/manual, NVIDIA happy + failure paths via stubbed fetch, Claude via a fake client, `profilerFor` names), plus one review-round test: negation drops a key even when the same word matched positively elsewhere. `vi.mock("server-only", () => ({}))`; no test touches the network.
+- `docs/DECISIONS.md` — appended #68–#72 exactly as the handoff §4 lists them.
+
+### Review round (Codex review, fixed same session)
+Codex reviewed the first green run and identified three contract gaps, each reproduced as a failing test before the fix:
+1. **Catalogue frames missed provider-shaped genres.** `buildItemProfile` passed raw `genre_tags` to `frameFromGenre`, but SPEC §1.2 requires `normaliseTags` first — TMDB's `"sci-fi & fantasy"` normalises to `sci-fi` yet produced no catalogue frame. Fixed by normalising before the table; new test asserts `frame.sci-fi` with `source: "catalog"` from that exact tag.
+2. **The mock did not always drop negated keys.** `mockProfile` ignored the `absent` set from `lexiconVector`, so in `"A lonely hero. Not a lonely world."` the positive mention kept `theme.loneliness` alive. Fixed by deleting every absent key from the vector before the draft is built; new test covers the mixed positive/negated case.
+3. **Anime films lost runtime in the model input.** `profilerInput` gated `runtime_minutes` on movies, while `minutesToFinish` already uses it for anime films; the provider saw less than the form calculation did. Fixed to include it for movie and anime; new test asserts input and form agree on the same number.
+
+### Verified
+- **AI-verified (final sequential run, after the review round):** `npm run typecheck` — clean, exit 0. `npm test` — `Tests 168 passed (168)` (145 pre-existing + 23 new). `npx eslint src` — clean, exit 0 (project-wide lint's 1 error / ~86 warnings remain confined to the generated `public/sw.js`, pre-existing and untouched). `npm run build` — `✓ Compiled successfully`, exit 0. `git diff --check` clean.
+- **AI-verified only; no live model call, no database write, nothing phone-verified.**
+
+### Deviations
+- **Schema shape unchanged; no §2.5 simplification was needed** — `zodOutputFormat` accepts `ProfileDraftSchema` as specified (zod v4 + SDK 0.124), so scalars stay an object of `{ value, confidence }` rather than the array fallback. Recorded here per the handoff's instruction to log such choices.
+- **`ProfileDraftSchema` uses `z.strictObject`** (and strict sub-objects) rather than `z.object`: with plain objects Zod strips unknown keys, which would have silently passed test C's unknown-key rejection; the plan's "unknown keys are rejected by the schema" requires strict objects. Same rules, stricter surface.
+- **Craft groups enforce one value per group by dropping later duplicates with a reason**, not by failing the whole craft list — the handoff defines a second value in a group as a reason, so only the extra entries are errors.
+- One test-authoring fix: test J originally expected band 3 for a 148-minute film; SPEC §1.4 puts 148 in band 2 (120–149). The code was correct; the assertion was fixed.
+
+### STOPs
+- None. No existing test needed to change, no file outside §1 was touched, and no spec contradiction was found.
+
+### Next
+- Session 3 (canon profiles + extraction QA) — needs the founder's spend approval before any live profiler run.
+- Session 4 (profile runtime) — must never persist a mock profile as real without an explicit decision (DECISIONS #72).

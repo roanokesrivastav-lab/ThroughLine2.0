@@ -2,6 +2,8 @@
 // stamped with VOCABULARY_VERSION so a future vocabulary can be reprocessed
 // without touching the user's raw words.
 
+import type { Category } from "@/lib/types";
+
 /** Historical rows remain readable under v1; all new extraction writes use v2. */
 export const VOCABULARY_V1_VERSION = "v1";
 export const VOCABULARY_VERSION = "v2";
@@ -157,6 +159,58 @@ export const VOCABULARY_V2_KEYS = [
 
 /** The five feeling scalars a v2 reading may carry; item profiles use only the feeling three. */
 export const READING_SCALARS = ["intensity", "ache", "pace", "moral-complexity", "complexity"] as const;
+
+// ---------------------------------------------------------------------------
+// Craft words (ATTRIBUTES §1D, implemented as specified by the Session 2 plan §2.1).
+// Closed per-category lists. A key is "<group>.<value>" with exactly one dot; values are
+// lowercase and hyphenated. The length bands (runtime, commitment, reading time) are NOT
+// craft words — they are form.band — and music lyric themes live in story theme. Craft
+// words are stored on the profile and never enter a vector, so VOCABULARY_VERSION does
+// not change (DECISIONS #68).
+// ---------------------------------------------------------------------------
+
+export const CRAFT: Record<Category, Record<string, readonly string[]>> = {
+  movie: {
+    visual: ["naturalistic", "stylised", "lush", "stark", "animated"],
+    dialogue: ["sparse", "balanced", "dialogue-heavy"],
+    drive: ["plot-driven", "atmosphere-driven"],
+  },
+  tv: {
+    format: ["serialized", "episodic"],
+    hook: ["immediate", "a-few-episodes", "slow"],
+  },
+  anime: {
+    format: ["serialized", "episodic"],
+    hook: ["immediate", "a-few-episodes", "slow"],
+    filler: ["light", "moderate", "heavy"],
+    animation: ["detailed", "stylised", "limited"],
+  },
+  book: {
+    prose: ["spare", "ornate"],
+    perspective: ["first", "third", "second", "multiple"],
+    "chapter-length": ["short", "medium", "long"],
+    difficulty: ["easy", "moderate", "demanding"],
+    rereadability: ["low", "medium", "high"],
+  },
+  music: {
+    energy: ["low", "medium", "high"],
+    tempo: ["slow", "mid", "fast"],
+    vocal: ["intimate", "theatrical", "restrained", "confessional", "aggressive", "none"],
+    instrumentation: ["piano", "guitar", "synth", "strings", "percussion", "orchestral"],
+    production: ["lo-fi", "spacious", "polished", "raw", "atmospheric"],
+  },
+} as const;
+
+/** Exact-match craft-key check for one category, like familyOf: one dot, group and value exactly as listed. */
+export function isCraftKey(category: Category, key: string): boolean {
+  const dot = key.indexOf(".");
+  if (dot === -1) return false;
+  const group = key.slice(0, dot);
+  const value = key.slice(dot + 1);
+  if (!value || value.includes(".")) return false;
+  const groups = CRAFT[category] as Record<string, readonly string[]> | undefined;
+  return !!groups && !!groups[group]?.includes(value);
+}
 
 /** Group weights for the story family (SPEC §2.1). ending has weight 0: stored, never scored. */
 export const G_STORY: Record<StoryGroup | "scalar", number> = {

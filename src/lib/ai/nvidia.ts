@@ -6,6 +6,7 @@ import { VOCABULARY_VERSION } from "@/lib/taste/vocabulary";
 import type { ExtractionInput, ExtractionResult, Extractor } from "./mock-extractor";
 import type { Explainer } from "./explainer";
 import { emptyReading, finalizeReading, READING_SYSTEM_PROMPT, ReadingSchema } from "./reading";
+import { buildItemProfile, PROFILE_SYSTEM_PROMPT, ProfileDraftSchema, profilerInput } from "./profile-contract";
 
 const endpoint = () => process.env.NVIDIA_BASE_URL || "https://integrate.api.nvidia.com/v1";
 /** Default chosen by testing real notes: gpt-oss-20b gave contradictory readings of the same note; Nemotron 3 Super was consistent. */
@@ -59,6 +60,17 @@ export function nvidiaExtractor(): Extractor {
     const extraction: Reading = finalizeReading(parsed, input.note);
     return { extraction, vector: readingToVector(extraction), extractor: "nvidia", vocabulary_version: VOCABULARY_VERSION };
   } };
+}
+
+export function nvidiaProfiler(): import("./profiler").ItemProfiler {
+  return {
+    name: "nvidia",
+    async profile(item) {
+      const draft = json(await complete(PROFILE_SYSTEM_PROMPT, profilerInput(item), 8192), ProfileDraftSchema);
+      // Let NVIDIA and validation errors propagate: the queue marks the row failed.
+      return buildItemProfile(item, draft, { attributeSource: "ai", completeness: "strict" });
+    },
+  };
 }
 
 export function nvidiaExplainer(): Explainer {

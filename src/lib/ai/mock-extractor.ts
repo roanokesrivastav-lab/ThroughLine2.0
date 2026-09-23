@@ -38,6 +38,39 @@ function isNegated(text: string, index: number): boolean {
 
 const sentences = (text: string) => text.split(/(?<=[.!?])\s+|\n+/).map((sentence) => sentence.trim()).filter(Boolean);
 
+/**
+ * The shared lexicon pass: run every LEXICON rule over a text, noisy-OR the word-tag
+ * weights, average the scalars, and collect negated keys as absent (the extractor moves
+ * them into `reading.absent`; the item profiler drops them entirely). Exported so the
+ * deterministic mock profiler reads catalog overviews with the exact same rules — no
+ * separate word list is invented for profiles (DECISIONS #67).
+ */
+export function lexiconVector(text: string): { vector: AttributeVector; absent: Set<string> } {
+  const acc: Record<string, number[]> = {};
+  const absent = new Set<string>();
+  const push = (key: string, weight: number) => { (acc[key] ??= []).push(weight); };
+
+  for (const rule of LEXICON) {
+    for (const match of matches(rule, text)) {
+      for (const [key, weight] of rule.tags) {
+        if (familyOf(key) === null) continue;
+        if (isNegated(text, match.index)) absent.add(key);
+        else push(key, weight);
+      }
+    }
+  }
+
+  const vector: AttributeVector = {};
+  for (const [key, weights] of Object.entries(acc)) {
+    if (["intensity", "ache", "pace", "moral-complexity", "complexity"].includes(key)) {
+      vector[key] = weights.reduce((sum, weight) => sum + weight, 0) / weights.length;
+    } else {
+      vector[key] = 1 - weights.reduce((product, weight) => product * (1 - weight), 1);
+    }
+  }
+  return { vector, absent };
+}
+
 const CAPS: Record<string, number> = {
   theme: 4, arc: 2, conflict: 2, cast: 3, bond: 2, world: 2, setting: 3, frame: 3,
   structure: 2, momentum: 3, stakes: 1, ending: 1,
@@ -68,28 +101,7 @@ export function mockExtract(input: ExtractionInput): ExtractionResult {
     return { extraction, vector: readingToVector(extraction), extractor: "mock", vocabulary_version: VOCABULARY_VERSION };
   }
 
-  const acc: Record<string, number[]> = {};
-  const absent = new Set<string>();
-  const push = (key: string, weight: number) => { (acc[key] ??= []).push(weight); };
-
-  for (const rule of LEXICON) {
-    for (const match of matches(rule, text)) {
-      for (const [key, weight] of rule.tags) {
-        if (familyOf(key) === null) continue;
-        if (isNegated(text, match.index)) absent.add(key);
-        else push(key, weight);
-      }
-    }
-  }
-
-  const vector: AttributeVector = {};
-  for (const [key, weights] of Object.entries(acc)) {
-    if (["intensity", "ache", "pace", "moral-complexity", "complexity"].includes(key)) {
-      vector[key] = weights.reduce((sum, weight) => sum + weight, 0) / weights.length;
-    } else {
-      vector[key] = 1 - weights.reduce((product, weight) => product * (1 - weight), 1);
-    }
-  }
+  const { vector, absent } = lexiconVector(text);
 
   const dislikedKeys = new Map<string, number>();
   const dislikedPhrases: string[] = [];

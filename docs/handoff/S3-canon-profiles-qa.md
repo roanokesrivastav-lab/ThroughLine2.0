@@ -41,6 +41,7 @@ Read fully, because you will call into them:
 | `src/lib/taste/qa.ts` (**new**, pure) | QA metrics and thresholds (§2.1) |
 | `src/lib/dev/profiling-run.ts` (**new**, Node-only dev tooling) | `CallLedger` budget, `withRetries`, cache read/write (§2.2) |
 | `src/lib/dev/canon-profiles-render.ts` (**new**, pure) | `renderCanonProfilesModule` (§2.3) |
+| `src/lib/ai/profile-contract.ts` | **Refactor only:** export `PROFILE_CAPS` and have `ProfileDraftSchema` use it (§2.1). No rule changes. |
 | `src/lib/ai/nvidia.ts` | Add `nvidiaReadingDraft(input)` (the pre-`finalizeReading` parse) and make `nvidiaExtractor` call it. Behaviour must be identical. Add `nvidiaProfileDraft(item)` (the parsed `ProfileDraft` before building) and make `nvidiaProfiler` call it. |
 | `src/lib/catalog/canon-profiles.ts` (**new, generated**) | Written only by `scripts/profile-canon.ts` (§2.3) |
 | `src/lib/catalog/canon.ts` | Add `canonProfile(slug): ItemProfile \| null`, reading `CANON_PROFILES` |
@@ -55,7 +56,7 @@ Read fully, because you will call into them:
 
 ### Out of scope. If you need any of this, STOP and report
 - Any Supabase import, read or write, from any script or file in this session.
-- Changing `PROFILE_SYSTEM_PROMPT`, `READING_SYSTEM_PROMPT`, `ProfileDraftSchema`, `ReadingSchema`, `buildItemProfile`, `PROFILE_VERSION`, `VOCABULARY_VERSION` or any vocabulary list. **This includes changing them to make a threshold pass.**
+- Changing `PROFILE_SYSTEM_PROMPT`, `READING_SYSTEM_PROMPT`, `ProfileDraftSchema`, `ReadingSchema`, `buildItemProfile`, `PROFILE_VERSION`, `VOCABULARY_VERSION` or any vocabulary list (the only exception is the behaviour-identical `PROFILE_CAPS` refactor above). **This includes changing them to make a threshold pass.**
 - Switching `dev/fixtures.ts` or any test fixture to the canon profiles. That happens in Session 5.
 - Server runtime: `ensureProfiles`, cron, queue (Session 4), and anything in the recommender.
 - Claude calls, and using the mock profiler's output in `canon-profiles.ts` (DECISIONS #72).
@@ -96,7 +97,7 @@ export function evaluate(metrics: { firstPassStrict: number; committedStrict: nu
 // agreement: pass iff value ≥ threshold. scalarMae: pass iff value ≤ threshold.
 // prevalenceFlag: pass iff maxPrevalence ≤ threshold. A null value gives pass: null ("not measurable"), never a silent pass.
 ```
-Group caps come from the §1.2 caps. Read them from one place: if `profile-contract.ts` already has a caps constant, export and reuse it rather than duplicating the numbers.
+Group caps come from the §1.2 caps. Right now they exist only as `.max(n)` calls inside `ProfileDraftSchema`. Add an exported `PROFILE_CAPS` constant to `profile-contract.ts`, make the schema read its `.max()` values from it (behaviour identical; the Session 2 tests must stay green), and import it here.
 
 ### 2.2 `src/lib/dev/profiling-run.ts` (Node dev tooling; never imported by app code)
 

@@ -10,7 +10,10 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "icons": "node scripts/generate-icons.mjs",
-    "seed:demo": "node --env-file=.env.local --import tsx scripts/seed-demo.ts"
+    "seed:demo": "node --env-file=.env.local --import tsx scripts/seed-demo.ts",
+    "profile:canon": "node --conditions=react-server --env-file=.env.local --import tsx scripts/profile-canon.mts",
+    "qa:profiles": "node --conditions=react-server --env-file=.env.local --import tsx scripts/profile-report.mts",
+    "qa:repeat": "node --conditions=react-server --env-file=.env.local --import tsx scripts/repeat-eval.mts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.124.0",

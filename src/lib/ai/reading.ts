@@ -25,6 +25,43 @@ const tag = (values: readonly string[]) => z.object({
   key: z.enum(values as [string, ...string[]]),
   weight: z.number().min(0).max(1),
 });
+
+/**
+ * Amendment 1 §B: the JSON shape section, generated from the constants. One worked
+ * example with one entry per non-empty group and [] elsewhere. Declared before the
+ * prompt so it can be interpolated into it.
+ */
+const first = (values: readonly string[]): string => values[0];
+
+const READING_SHAPE_EXAMPLE = JSON.stringify(
+  {
+    story: {
+      theme: [{ key: first(THEMES_V2), weight: 0.8 }],
+      arc: [], conflict: [], cast: [], bond: [], world: [], setting: [], frame: [], structure: [],
+      momentum: [], stakes: [], ending: [],
+      intensity: 0.6,
+      complexity: 0.5,
+    },
+    feeling: { tone: [{ key: first(TONES), weight: 0.7 }], register: [], texture: [], aftertaste: [], ache: 0.6 },
+    absent: [],
+    didnt_work: { keys: [], phrases: [] },
+    valued: [],
+    summary: "rebuilding a life",
+    quote: null,
+  },
+  null,
+  2,
+);
+
+const READING_SHAPE_RULES = `
+
+JSON shape (the response is machine-parsed against a schema; violations are rejected):
+- Every tag is exactly {"key": <one listed value>, "weight": 0..1}. It is never a bare string, and the field is never called "value" or "name".
+- Every group is an array, even when it has one item or none ([]). "story", "feeling", "scalars", "absent", "didnt_work", "valued", "summary" and "quote" are always present as top-level keys.
+- Scalars are plain numbers 0..1 inside story (moral-complexity, complexity) and feeling (intensity, ache, pace).
+- Worked example of the exact top-level shape (values are illustrative; use only listed keys):
+${READING_SHAPE_EXAMPLE}
+- Return only the JSON object: no prose, no code fences.`;
 const evidenceTag = z.object({
   key: z.enum(VOCABULARY_V2_KEYS as [string, ...string[]]),
   weight: z.number().min(0).max(1),
@@ -161,4 +198,4 @@ Rules:
 - valued contains only what the person explicitly says they valued, loved, liked, or appreciated.
 - summary is a plain noun phrase of at most 60 characters that echoes the note's emphasis, with no quality judgment.
 - quote is an exact verbatim substring of at most 160 characters, or null.
-- Never use reviews, popularity, outside knowledge, or other users' opinions.`;
+- Never use reviews, popularity, outside knowledge, or other users' opinions.${READING_SHAPE_RULES}`;

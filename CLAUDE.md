@@ -13,7 +13,7 @@ Read `docs/PRD.md` and `docs/STATE.md` before touching code.
 Commands: `npm run dev`, `npm run typecheck`, `npm run lint`, `npm test`, `npm run build`.
 
 
-## vexp - Context-Aware AI Coding <!-- vexp v3.1.3 -->
+## vexp - Context-Aware AI Coding <!-- vexp v3.2.4 -->
 
 ### Context strategy: call run_pipeline ONCE at task start
 If the task already names the files/symbols to touch, SKIP vexp. Otherwise one

@@ -63,28 +63,36 @@ const tag = (values: readonly string[]) =>
 
 const scalarField = z.strictObject({ value: z.number().min(0).max(1), confidence: z.number().min(0).max(1) });
 
+/** The §1.2 caps, in one place so the schema and the QA tooling read the same numbers (Session 3 §2.1). */
+export const PROFILE_CAPS = {
+  theme: 4, arc: 2, conflict: 2, cast: 3, bond: 2, world: 2, setting: 3, frame: 3,
+  structure: 2, momentum: 3, stakes: 1, ending: 1,
+  tone: 4, register: 3, texture: 3, aftertaste: 3,
+  craft: 8,
+} as const;
+
 /** The exact draft every provider must return (plan §2.2). Unknown keys and out-of-range numbers are rejected, never clamped. */
 export const ProfileDraftSchema = z.strictObject({
   premise: z.string().max(400).nullable(),
   story: z.strictObject({
-    theme: z.array(tag(THEMES_V2)).max(4),
-    arc: z.array(tag(ARCS)).max(2),
-    conflict: z.array(tag(CONFLICTS)).max(2),
-    cast: z.array(tag(CASTS)).max(3),
-    bond: z.array(tag(BONDS)).max(2),
-    world: z.array(tag(WORLDS)).max(2),
-    setting: z.array(tag(SETTINGS_V2)).max(3),
-    frame: z.array(tag(FRAMES)).max(3),
-    structure: z.array(tag(STRUCTURES)).max(2),
-    momentum: z.array(tag(MOMENTUMS)).max(3),
-    stakes: z.array(tag(STAKES)).max(1),
-    ending: z.array(tag(ENDINGS)).max(1),
+    theme: z.array(tag(THEMES_V2)).max(PROFILE_CAPS.theme),
+    arc: z.array(tag(ARCS)).max(PROFILE_CAPS.arc),
+    conflict: z.array(tag(CONFLICTS)).max(PROFILE_CAPS.conflict),
+    cast: z.array(tag(CASTS)).max(PROFILE_CAPS.cast),
+    bond: z.array(tag(BONDS)).max(PROFILE_CAPS.bond),
+    world: z.array(tag(WORLDS)).max(PROFILE_CAPS.world),
+    setting: z.array(tag(SETTINGS_V2)).max(PROFILE_CAPS.setting),
+    frame: z.array(tag(FRAMES)).max(PROFILE_CAPS.frame),
+    structure: z.array(tag(STRUCTURES)).max(PROFILE_CAPS.structure),
+    momentum: z.array(tag(MOMENTUMS)).max(PROFILE_CAPS.momentum),
+    stakes: z.array(tag(STAKES)).max(PROFILE_CAPS.stakes),
+    ending: z.array(tag(ENDINGS)).max(PROFILE_CAPS.ending),
   }),
   feeling: z.strictObject({
-    tone: z.array(tag(TONES)).max(4),
-    register: z.array(tag(REGISTERS)).max(3),
-    texture: z.array(tag(TEXTURES)).max(3),
-    aftertaste: z.array(tag(AFTERTASTES)).max(3),
+    tone: z.array(tag(TONES)).max(PROFILE_CAPS.tone),
+    register: z.array(tag(REGISTERS)).max(PROFILE_CAPS.register),
+    texture: z.array(tag(TEXTURES)).max(PROFILE_CAPS.texture),
+    aftertaste: z.array(tag(AFTERTASTES)).max(PROFILE_CAPS.aftertaste),
   }),
   // All five scalars are optional in the draft; strict completeness then demands them.
   scalars: z.strictObject({
@@ -100,7 +108,7 @@ export const ProfileDraftSchema = z.strictObject({
     key: z.string(),
     weight: z.number().min(0).max(1),
     confidence: z.number().min(0).max(1),
-  })).max(8),
+  })).max(PROFILE_CAPS.craft),
 });
 
 export type ProfileDraft = z.infer<typeof ProfileDraftSchema>;
@@ -320,6 +328,48 @@ const FEELING_LINES = Object.entries(FEELING_GROUPS)
   .join("\n");
 
 /**
+ * Amendment 1 §B: the JSON shape section, generated from the constants so the words and
+ * caps can never drift from the schema. One worked example with one entry per non-empty
+ * group and [] elsewhere; the example premise is neutral and names no real work.
+ */
+const first = (values: readonly string[]): string => values[0];
+
+const PROFILE_SHAPE_EXAMPLE = JSON.stringify(
+  {
+    premise: "A quiet story about two people rebuilding their lives in a new town.",
+    story: {
+      theme: [{ key: first(THEMES_V2), weight: 0.8, confidence: 0.9 }],
+      arc: [], conflict: [], cast: [], bond: [], world: [], setting: [], frame: [], structure: [],
+      momentum: [],
+      stakes: [{ key: first(STAKES), weight: 0.8, confidence: 0.9 }],
+      ending: [{ key: first(ENDINGS), weight: 0.8, confidence: 0.9 }],
+      "moral-complexity": { value: 0.5, confidence: 0.8 },
+      complexity: { value: 0.5, confidence: 0.8 },
+    },
+    feeling: {
+      tone: [{ key: first(TONES), weight: 0.7, confidence: 0.9 }],
+      register: [], texture: [], aftertaste: [],
+      intensity: { value: 0.6, confidence: 0.8 },
+      ache: { value: 0.6, confidence: 0.8 },
+      pace: { value: 0.4, confidence: 0.8 },
+    },
+    craft: [],
+  },
+  null,
+  2,
+);
+
+const PROFILE_SHAPE_RULES = `
+
+JSON shape (the response is machine-parsed against a schema; violations are rejected):
+- Every tag is exactly {"key": <one listed value>, "weight": 0..1, "confidence": 0..1}. It is never a bare string, and the field is never called "value" or "name".
+- Every group is an array, even when it has one item or none ([]). "story", "feeling", "scalars" and "craft" are always present as top-level keys.
+- Scalars are objects: {"value": 0..1, "confidence": 0..1}.
+- Worked example of the exact top-level shape (values are illustrative; use only listed keys):
+${PROFILE_SHAPE_EXAMPLE}
+- Return only the JSON object: no prose, no code fences.`;
+
+/**
  * The one system prompt for both real providers. Generated from the constants, like
  * READING_SYSTEM_PROMPT. ending.* is still required: it is never shown to the user
  * (DECISIONS #52).
@@ -347,7 +397,7 @@ Rules:
 - In strict mode you must also give exactly one stakes, both story scalars (moral-complexity, complexity) and all three feeling scalars (intensity, ache, pace).
 - Use craft keys only from the item's category, at most one value per craft group.
 - For a manual item (no overview supplied), premise is null.
-- Return JSON only.`;
+- Return JSON only.${PROFILE_SHAPE_RULES}`;
 
 /**
  * profilerInput(item): the only item data any model sees (SPEC §1.2). Omits the overview

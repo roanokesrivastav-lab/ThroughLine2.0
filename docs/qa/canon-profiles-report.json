@@ -1,0 +1,213 @@
+{
+  "generated_at": "2026-09-23T04:51:57.708Z",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "profile_version": "p1",
+  "prompt_hash": "5d4a12956aea",
+  "counts": {
+    "movie": {
+      "profiled": 0,
+      "failed": 1,
+      "unreached": 23,
+      "total": 24
+    },
+    "tv": {
+      "profiled": 0,
+      "failed": 0,
+      "unreached": 20,
+      "total": 20
+    },
+    "anime": {
+      "profiled": 0,
+      "failed": 0,
+      "unreached": 18,
+      "total": 18
+    },
+    "book": {
+      "profiled": 0,
+      "failed": 1,
+      "unreached": 22,
+      "total": 23
+    },
+    "music": {
+      "profiled": 0,
+      "failed": 0,
+      "unreached": 25,
+      "total": 25
+    }
+  },
+  "firstPassStrict": 0,
+  "committedStrict": 0,
+  "evaluate": [
+    {
+      "name": "firstPassStrict",
+      "value": 0,
+      "threshold": 0.9,
+      "pass": false
+    },
+    {
+      "name": "committedStrict",
+      "value": 0,
+      "threshold": 1,
+      "pass": false
+    },
+    {
+      "name": "agreementStory",
+      "value": null,
+      "threshold": 0.5,
+      "pass": null
+    },
+    {
+      "name": "agreementFeeling",
+      "value": null,
+      "threshold": 0.5,
+      "pass": null
+    },
+    {
+      "name": "scalarMae",
+      "value": null,
+      "threshold": 0.15,
+      "pass": null
+    },
+    {
+      "name": "prevalenceFlag",
+      "value": 0,
+      "threshold": 0.5,
+      "pass": true
+    }
+  ],
+  "failure_reasons": {
+    "[\n  {\n    \"code\": \"invalid_value\",\n    \"values\": [\n      \"grief\",\n      \"love\",\n      \"memory\",\n      \"loneliness\",\n    ": 2
+  },
+  "prevalence_top30": [],
+  "review_flags": [],
+  "category_artifacts": [],
+  "singleton_keys": 0,
+  "group_fill": [],
+  "mean_confidence": {
+    "story": 0,
+    "feeling": 0
+  },
+  "premise": {
+    "null_share": 0,
+    "praise_drops": 0
+  },
+  "music": {
+    "count": 0,
+    "top": []
+  },
+  "failed_slugs": [
+    "movie-spirited-away",
+    "book-the-hobbit"
+  ],
+  "unreached_slugs": [
+    "movie-eternal-sunshine",
+    "movie-the-godfather",
+    "movie-parasite",
+    "movie-in-the-mood-for-love",
+    "movie-before-sunrise",
+    "movie-moonlight",
+    "movie-the-dark-knight",
+    "movie-lost-in-translation",
+    "movie-mad-max-fury-road",
+    "movie-the-shawshank-redemption",
+    "movie-pulp-fiction",
+    "movie-her",
+    "movie-inception",
+    "movie-paddington-2",
+    "movie-hereditary",
+    "movie-la-la-land",
+    "movie-everything-everywhere",
+    "movie-portrait-of-a-lady-on-fire",
+    "movie-no-country-for-old-men",
+    "movie-aftersun",
+    "movie-the-social-network",
+    "movie-amelie",
+    "movie-past-lives",
+    "tv-breaking-bad",
+    "tv-the-office-us",
+    "tv-fleabag",
+    "tv-the-bear",
+    "tv-succession",
+    "tv-the-sopranos",
+    "tv-severance",
+    "tv-mad-men",
+    "tv-ted-lasso",
+    "tv-twin-peaks",
+    "tv-the-wire",
+    "tv-station-eleven",
+    "tv-chernobyl",
+    "tv-normal-people",
+    "tv-the-leftovers",
+    "tv-better-call-saul",
+    "tv-game-of-thrones",
+    "tv-stranger-things",
+    "tv-atlanta",
+    "tv-derry-girls",
+    "anime-cowboy-bebop",
+    "anime-neon-genesis-evangelion",
+    "anime-your-name",
+    "anime-fullmetal-alchemist-brotherhood",
+    "anime-attack-on-titan",
+    "anime-mob-psycho-100",
+    "anime-a-silent-voice",
+    "anime-death-note",
+    "anime-haikyuu",
+    "anime-mushishi",
+    "anime-frieren",
+    "anime-princess-mononoke",
+    "anime-spy-x-family",
+    "anime-monster",
+    "anime-jujutsu-kaisen",
+    "anime-march-comes-in-like-a-lion",
+    "anime-hunter-x-hunter",
+    "anime-perfect-blue",
+    "book-the-great-gatsby",
+    "book-1984",
+    "book-to-kill-a-mockingbird",
+    "book-normal-people",
+    "book-a-little-life",
+    "book-the-road",
+    "book-harry-potter-1",
+    "book-beloved",
+    "book-never-let-me-go",
+    "book-the-remains-of-the-day",
+    "book-klara-and-the-sun",
+    "book-pride-and-prejudice",
+    "book-the-catcher-in-the-rye",
+    "book-the-year-of-magical-thinking",
+    "book-the-little-prince",
+    "book-dune",
+    "book-piranesi",
+    "book-crying-in-h-mart",
+    "book-the-alchemist",
+    "book-kafka-on-the-shore",
+    "book-educated",
+    "book-the-name-of-the-wind",
+    "song-hallelujah-buckley",
+    "song-bohemian-rhapsody",
+    "song-motion-picture-soundtrack",
+    "song-holocene",
+    "song-both-sides-now",
+    "song-runaway-kanye",
+    "song-the-night-we-met",
+    "song-champagne-supernova",
+    "song-wide-open-spaces",
+    "song-nights-frank-ocean",
+    "song-teardrop",
+    "song-fast-car",
+    "song-motion-sickness",
+    "song-god-only-knows",
+    "song-seventeen-sharon-van-etten",
+    "song-clair-de-lune",
+    "song-all-too-well-10",
+    "song-blue-in-green",
+    "song-dancing-on-my-own",
+    "song-re-stacks",
+    "song-skinny-love",
+    "song-flume",
+    "song-everything-is-free",
+    "song-heroes",
+    "song-strange-fruit"
+  ],
+  "review_sample": []
+}

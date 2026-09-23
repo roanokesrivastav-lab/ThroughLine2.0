@@ -1,6 +1,12 @@
-import type { AttributeVector, Category } from "@/lib/types";
+import type { AttributeVector, Category, ItemProfile } from "@/lib/types";
 import { CANON, type CanonItem } from "./canon-data";
+import { CANON_PROFILES } from "./canon-profiles";
 import type { CatalogAdapter, CatalogResult } from "./types";
+
+/** The committed NVIDIA-written profile for a canon slug, or null when none exists. */
+export function canonProfile(slug: string): ItemProfile | null {
+  return CANON_PROFILES[slug] ?? null;
+}
 
 const ROLE: Record<Category, string> = { movie: "director", tv: "creator", anime: "creator", book: "author", music: "artist" };
 

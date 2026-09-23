@@ -461,3 +461,50 @@ Codex reviewed the first green run and identified three contract gaps, each repr
 ### Next
 - Session 3 (canon profiles + extraction QA) — needs the founder's spend approval before any live profiler run.
 - Session 4 (profile runtime) — must never persist a mock profile as real without an explicit decision (DECISIONS #72).
+
+## 2026-09-23 — Session 3: canon profiles + QA (GLM, uncommitted — STOPPED at smoke gate)
+
+Implemented all of the Session 3 offline machinery, then hit the handoff's §7 STOP condition on the
+live smoke run: the NVIDIA model's JSON dialect is too unstable for the strict §1.2 schema to accept
+more than an occasional draft. **No full canon run was started; canon-profiles.ts still holds 0
+entries; nothing is committed.** Full evidence in `docs/qa/session3-smoke-findings.md`.
+
+### Built
+- `src/lib/taste/qa.ts` (new, pure) — QA_THRESHOLDS, weightedJaccard, topKOverlap, scalarMae, setJaccard, pairwise, prevalence, categoryArtifacts, groupFill, evaluate.
+- `src/lib/dev/profiling-run.ts` (new, Node-only) — CallLedger (append-only JSONL, 500-call hard cap, cross-run persistence), withRetries (every attempt takes budget; BudgetExceededError never retried), draft cache with provider/model/version/prompt-hash reuse identity, promptHash, stable JSON writer.
+- `src/lib/dev/canon-profiles-render.ts` (new, pure) — byte-identical module renderer with metadata header and failed-slug list.
+- `src/lib/ai/profile-contract.ts` — PROFILE_CAPS exported; the schema's .max() values now read from it. Behaviour identical: all 168 Session 2 tests pass unedited.
+- `src/lib/ai/nvidia.ts` — nvidiaReadingDraft/nvidiaProfileDraft extracted (behaviour identical, test J pins both); nvidiaProfileDraft normalizes the model's `{"value": ...}` tag dialect to `{"key": ...}` before the strict parse (adapter plumbing only; schema and prompt untouched).
+- `src/lib/catalog/canon-profiles.ts` (new, generated) — zero-entry placeholder written by hand before the first live run; the script owns it from here.
+- `src/lib/catalog/canon.ts` — canonProfile(slug) added.
+- `scripts/profile-canon.mts`, `scripts/profile-report.mts`, `scripts/repeat-eval.mts` (new) — dry-run/only/max-calls/no-resume/write-only flags; report writer; live repeat eval with budget stops. `.mts` because Node reads the repo as CJS and the scripts need top-level await.
+- `package.json` — scripts only (profile:canon, qa:profiles, qa:repeat); no dependency changes. `.gitignore` — scripts/out/.
+- `src/__tests__/qa.test.ts`, `profiling-run.test.ts`, `canon-profiles.test.ts`, `nvidia-drafts.test.ts` (new) — §3 tests A–J offline.
+- `docs/qa/canon-profiles-report.md + .json`, `docs/qa/canon-review.md` (empty-sample, honest), `docs/qa/repeatability-report.md + .json` (not written — see below), `docs/qa/session3-smoke-findings.md` (the STOP report).
+
+### Live runs (all budgeted; ledger `scripts/out/calls.jsonl` = 51/500 lines, no keys or bodies)
+- `npm run profile:canon -- --dry-run` — clean: title/creator/year/genres/runtime only; no feel_prior, encounter_weight or image.
+- Smoke `--only movie-spirited-away,book-the-hobbit` ×3 runs (~18 calls) — **0 valid drafts**. Fix to the `value→key` dialect got individual probes through intermittently, but the model's shape varies every run (`{"value"}`, `{"name"}`, bare strings, objects-where-arrays, missing `story`/`feeling` wrappers), plus 11× 503 "Service temporarily overloaded", 3× 120 s timeouts, 4× prose-wrapped JSON. Ledger error census: 21 schema `invalid_value`, 11 schema `invalid_type`, 11× 503, 3 timeout, 4 JSON-parse, 1 fetch-fail, 1 trailing-char.
+- `npm run qa:repeat` twice (partial, ~33 calls) — same failure profile; budget stop in the readings loop was missing and was fixed mid-review (BudgetExceededError → PARTIAL break).
+- **STOP taken under §7** ("smoke run fails on both items / output structurally wrong" and "A threshold FAILs. Finish all the reports, then report. Don't edit prompts or schemas"). The prompt and schema are frozen this session; both candidate fixes (prompt shape example, or a broader normalizer) touch frozen ground and need the founder's authorization.
+
+### QA
+- `docs/qa/canon-profiles-report.md/.json` written honestly for 0 profiles: firstPassStrict FAIL (0.00 < 0.90), committedStrict FAIL (0/0 → 0 by the report's convention), prevalence PASS vacuously, agreement rows null (not measurable). Failure-reason census included. Review sheet has an empty sample (20 slots unfilled).
+- `docs/qa/repeatability-report.*` NOT written: with 0 committed profiles, run 1 has no draft to reuse, and every profile run failed validation, so there are no pairs to measure. Writing a table of nulls would misrepresent the run as merely unmeasured rather than failed; the findings doc carries the numbers instead.
+
+### Verified
+- **AI-verified (final sequential run):** `npm run typecheck` clean; `npm test` **204/204** (168 pre-existing unedited + 36 new); `npx eslint src` clean; `npm run build` succeeds; `git diff --check` clean. `scripts/out/calls.jsonl` = 51 lines ≤ 500.
+- **AI-verified only; no database access; nothing phone-verified.**
+
+### Deviations
+- `categoryArtifacts` takes a second `categoryTotals` argument: the ≥5-profile rule is not computable from shares alone (a 1.0 share looks identical at n=1 and n=100). `prevalence` now emits 0-shares for absent keys so the rule is evaluable. Test C updated to the real signature.
+- `scripts/*.mts` extension (plan said `.ts`): top-level await doesn't parse under Node's CJS default for this repo; documented in DECISIONS #76.
+- `nvidiaProfileDraft` normalizes `{"value"}` → `{"key"}` before parsing (adapter-level dialect fix, schema/prompt untouched). Live evidence showed this was necessary.
+- Budget stop added to the readings loop of repeat-eval (the plan's spec only placed it in section A; without it the script would run unbounded against the ledger).
+
+### STOPs
+1. **Smoke gate failed** — model JSON dialect unstable + provider 503s; 0/51 valid drafts. Three founder options are laid out in `docs/qa/session3-smoke-findings.md`: (a) one-prompt-fix go-ahead (shape example with `key`), (b) authorize a broader adapter normalizer, (c) switch `NVIDIA_MODEL` to a steadier JSON model and re-smoke. The offline layer needs no changes in any case; the ledger resumes at 51/500.
+
+### Next
+1. Founder picks a fix for the dialect problem (findings doc §"Founder decision needed"), then Session 3 re-runs from the smoke gate.
+2. Session 4 (profile runtime) and Session 5 (fixtures → canon profiles; pure scorer) unchanged.

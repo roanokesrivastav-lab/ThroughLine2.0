@@ -20,14 +20,16 @@ const supportsReasoningEffort = (m: string) => /gpt-oss/i.test(m);
  * picks the mode and writes it into .env.local; "none" keeps the historical freeform call.
  * The schema sent over the wire is generated from the same Zod schema that validates the
  * response locally, so the model and the validator can never disagree about the shape.
+ *
+ * Read per call, not at import time: the probe switches the env between variants, and a
+ * module constant froze the first value for every call (the first probe run measured
+ * nothing because of exactly this bug).
  */
-export const NVIDIA_JSON_MODE = (process.env.NVIDIA_JSON_MODE?.trim() || "none") as
-  | "response_format"
-  | "guided_json"
-  | "none";
+export type NvidiaJsonMode = "response_format" | "guided_json" | "none";
+export const jsonMode = (): NvidiaJsonMode => (process.env.NVIDIA_JSON_MODE?.trim() || "none") as NvidiaJsonMode;
 
-/** Whether thinking is disabled for the constrained calls (set by the probe, Amendment 1 §A). */
-const THINKING_DISABLED = process.env.NVIDIA_DISABLE_THINKING?.trim() === "1";
+/** Whether thinking is disabled for the constrained calls (set by the probe, Amendment 1 §A). Read per call. */
+const thinkingDisabled = () => process.env.NVIDIA_DISABLE_THINKING?.trim() === "1";
 
 async function complete(
   system: string,
@@ -41,7 +43,7 @@ async function complete(
   // Only strip maxItems/minItems if the endpoint rejects them — the local parse still
   // enforces every cap, so removing them from the sent copy loses no validation.
   let sentSchema: Record<string, unknown> | undefined;
-  const mode = NVIDIA_JSON_MODE;
+  const mode = jsonMode();
   if (format && mode !== "none") {
     sentSchema = z.toJSONSchema(format.schema, { io: "output" }) as Record<string, unknown>;
   }
@@ -53,7 +55,7 @@ async function complete(
     return { nvext: { guided_json: sentSchema } };
   };
   const thinkingBody = (): Record<string, unknown> => {
-    if (!format || !THINKING_DISABLED) return {};
+    if (!format || !thinkingDisabled()) return {};
     return { chat_template_kwargs: { enable_thinking: false } };
   };
   const attempt = async (): Promise<Response> =>

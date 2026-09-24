@@ -1,6 +1,6 @@
 // Session 3 §2.6: repeatability eval. LIVE and budgeted through the same ledger as
 // profile-canon. Run via npm run qa:repeat.
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { BudgetExceededError, CACHE_DIR, CallLedger, readCache, promptHash, withRetries } from "@/lib/dev/profiling-run";
 import { buildItemProfile, PROFILE_SYSTEM_PROMPT, ProfileDraftSchema } from "@/lib/ai/profile-contract";
 import { nvidiaProfileDraft, nvidiaReadingDraft, nvidiaModel } from "@/lib/ai/nvidia";
@@ -17,6 +17,32 @@ import type { MediaItem } from "@/lib/types";
 const today = new Date().toISOString().slice(0, 10);
 const ledger = new CallLedger();
 console.log(`provider: nvidia  model: ${nvidiaModel()}  budget: ${ledger.used}/${ledger.max} used`);
+
+// Operational only (doesn't change §2.6 semantics): the run checkpoints each item's
+// computed row as soon as it is complete and resumes from the checkpoint on the next
+// invocation, so a wall-clock cap never discards finished work. Row shapes and the
+// metrics they feed are identical to a single-pass run.
+const CHECKPOINT_FILE = "scripts/out/repeat-eval-checkpoint.json";
+const DEADLINE_MS = 450_000; // exit cleanly before any external 600s kill
+
+type Checkpoint = { profiles: Array<ProfileRuns>; readings: Array<ReadingRuns> };
+type ProfileRuns = { slug: string; vectors: Array<{ story: Record<string, number>; feeling: Record<string, number> }>; scalars: Array<Record<string, number>>; valid: boolean[] };
+type ReadingRuns = { slug: string; pairs: number; excluded: number; jStory: number[]; jFeeling: number[]; mae: number[]; absentJ: number[]; didntJ: number[]; guardDrops: number; guardTotal: number; schemaFailures: number };
+
+const loadCheckpoint = (): Checkpoint => {
+  try {
+    return JSON.parse(readFileSync(CHECKPOINT_FILE, "utf8")) as Checkpoint;
+  } catch {
+    return { profiles: [], readings: [] };
+  }
+};
+const saveCheckpoint = (cp: Checkpoint) => {
+  mkdirSync("scripts/out", { recursive: true });
+  writeFileSync(CHECKPOINT_FILE, JSON.stringify(cp));
+};
+
+const deadline = Date.now() + DEADLINE_MS;
+const timeLeft = () => deadline - Date.now();
 
 const toMediaItem = (slug: string): MediaItem => {
   const c = CANON_BY_SLUG.get(slug)!;
@@ -40,10 +66,11 @@ let partial = false;
 // A. Profiles: run 1 = committed cached draft (free), runs 2 and 3 = fresh, no retries.
 // ---------------------------------------------------------------------------
 
-type ProfileRuns = { slug: string; vectors: Array<{ story: Record<string, number>; feeling: Record<string, number> }>; scalars: Array<Record<string, number>>; valid: boolean[] };
-
-const profileRows: ProfileRuns[] = [];
+const checkpoint = loadCheckpoint();
+const profileRows: ProfileRuns[] = checkpoint.profiles;
 for (const slug of sampleSlugs) {
+  if (profileRows.some((r) => r.slug === slug)) { console.log(`profiles ${slug}: cached from checkpoint`); continue; }
+  if (timeLeft() < 60_000) { partial = true; console.log("deadline reached — resuming profile phase on next run"); break; }
   const item = toMediaItem(slug);
   const vectors: ProfileRuns["vectors"] = [];
   const scalars: ProfileRuns["scalars"] = [];
@@ -85,6 +112,7 @@ for (const slug of sampleSlugs) {
   if (partial) break;
 
   profileRows.push({ slug, vectors, scalars, valid });
+  saveCheckpoint({ profiles: profileRows, readings: checkpoint.readings });
   console.log(`profiles ${slug}: valid ${valid.filter(Boolean).length}/3`);
 }
 
@@ -115,12 +143,12 @@ for (const row of profileRows) {
 // B. Readings: 35 demo seed notes × 3 runs, no retries.
 // ---------------------------------------------------------------------------
 
-type ReadingRuns = { slug: string; pairs: number; excluded: number; jStory: number[]; jFeeling: number[]; mae: number[]; absentJ: number[]; didntJ: number[]; guardDrops: number; guardTotal: number; schemaFailures: number };
-
-const readingRows: ReadingRuns[] = [];
+const readingRows: ReadingRuns[] = checkpoint.readings;
 const usableSeeds = SEEDS.filter((s) => s.note);
 
 for (const seed of usableSeeds) {
+  if (readingRows.some((r) => r.slug === seed.slug)) { console.log(`reading ${seed.slug}: cached from checkpoint`); continue; }
+  if (timeLeft() < 90_000) { partial = true; console.log("deadline reached — resuming reading phase on next run"); break; }
   const item = toMediaItem(seed.slug);
   const runs: Array<{ story: Record<string, number>; feeling: Record<string, number> } | null> = [];
   const absentSets: string[][] = [];
@@ -131,9 +159,14 @@ for (const seed of usableSeeds) {
   let schemaFailures = 0;
 
   for (let run = 0; run < 3; run++) {
+    // §2.6 "live, budgeted": reading calls count against the same ledger as profiles.
+    const t0 = Date.now();
+    let attempt: number;
+    try { attempt = ledger.take(); } catch { partial = true; break; }
     try {
       const input = { note: seed.note ?? "", dimensions: {}, category: item.category, title: item.title, subtitle: item.subtitle };
       const { reading: draft, raw } = await nvidiaReadingDraft(input);
+      ledger.record({ script: "repeat-eval", id: `${seed.slug}:read${run + 1}`, attempt, ok: true, ms: Date.now() - t0 });
       const finalized = finalizeReading(draft, seed.note ?? null);
       const vec = readingToVector(finalized);
       runs.push(vec);
@@ -154,6 +187,7 @@ for (const seed of usableSeeds) {
       if (rawDraft.quote) { guardTotal++; if (!rawTextOk(rawDraft.quote) || finalized.quote !== rawDraft.quote) guardDrops++; }
       void raw;
     } catch (e) {
+      ledger.record({ script: "repeat-eval", id: `${seed.slug}:read${run + 1}`, attempt, ok: false, ms: Date.now() - t0, error: e instanceof Error ? e.message : String(e) });
       if (e instanceof BudgetExceededError) { partial = true; break; }
       schemaFailures++;
       runs.push(null);
@@ -189,6 +223,7 @@ for (const seed of usableSeeds) {
     slug: seed.slug, pairs: jStory.length + jFeeling.length, excluded,
     jStory, jFeeling, mae, absentJ: aJ, didntJ: dJ, guardDrops, guardTotal, schemaFailures,
   });
+  saveCheckpoint({ profiles: profileRows, readings: readingRows });
   console.log(`reading ${seed.slug}: ${runs.filter(Boolean).length}/3 runs parsed`);
   if (partial) break;
 }
@@ -199,9 +234,6 @@ const latency = () => {
   return fs;
 };
 function await0(): { p50: number; p95: number; timeouts: number } {
-  // Synchronous read of the JSONL ledger (node:fs was imported at top for write; read via createRequire to stay simple).
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const { readFileSync, existsSync } = require("node:fs") as typeof import("node:fs");
   const file = "scripts/out/calls.jsonl";
   if (!existsSync(file)) return { p50: 0, p95: 0, timeouts: 0 };
   const lines = readFileSync(file, "utf8").split("\n").filter((l) => l.trim()).map((l) => JSON.parse(l) as { ok: boolean; ms: number; error?: string });
@@ -217,8 +249,6 @@ const lat = latency();
 
 const firstPassStrict = 0; // read from canon-profiles-report.json
 const readJsonReport = () => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const { readFileSync, existsSync } = require("node:fs") as typeof import("node:fs");
   const file = "docs/qa/canon-profiles-report.json";
   if (!existsSync(file)) return null;
   return JSON.parse(readFileSync(file, "utf8")) as { firstPassStrict: number; committedStrict: number; prevalence_top30: Array<{ global: number }>; review_flags: string[] };

@@ -334,7 +334,8 @@ const FEELING_LINES = Object.entries(FEELING_GROUPS)
  */
 const first = (values: readonly string[]): string => values[0];
 
-const PROFILE_SHAPE_EXAMPLE = JSON.stringify(
+/** Exported so tests can assert the example matches the schema's actual shape. */
+export const PROFILE_SHAPE_EXAMPLE = JSON.stringify(
   {
     premise: "A quiet story about two people rebuilding their lives in a new town.",
     story: {
@@ -343,15 +344,17 @@ const PROFILE_SHAPE_EXAMPLE = JSON.stringify(
       momentum: [],
       stakes: [{ key: first(STAKES), weight: 0.8, confidence: 0.9 }],
       ending: [{ key: first(ENDINGS), weight: 0.8, confidence: 0.9 }],
-      "moral-complexity": { value: 0.5, confidence: 0.8 },
-      complexity: { value: 0.5, confidence: 0.8 },
     },
     feeling: {
       tone: [{ key: first(TONES), weight: 0.7, confidence: 0.9 }],
       register: [], texture: [], aftertaste: [],
+    },
+    scalars: {
       intensity: { value: 0.6, confidence: 0.8 },
       ache: { value: 0.6, confidence: 0.8 },
       pace: { value: 0.4, confidence: 0.8 },
+      "moral-complexity": { value: 0.5, confidence: 0.8 },
+      complexity: { value: 0.5, confidence: 0.8 },
     },
     craft: [],
   },
@@ -364,7 +367,8 @@ const PROFILE_SHAPE_RULES = `
 JSON shape (the response is machine-parsed against a schema; violations are rejected):
 - Every tag is exactly {"key": <one listed value>, "weight": 0..1, "confidence": 0..1}. It is never a bare string, and the field is never called "value" or "name".
 - Every group is an array, even when it has one item or none ([]). "story", "feeling", "scalars" and "craft" are always present as top-level keys.
-- Scalars are objects: {"value": 0..1, "confidence": 0..1}.
+- Craft keys join a group and one of its listed values with a literal dot: "<group>.<value>" (e.g. "visual.dense" for a movie, "prose.spare" for a book). A bare group name ("visual", "prose") is invalid, and at most one value per group.
+- Scalars are objects: {"value": 0..1, "confidence": 0..1}, inside the top-level "scalars" object (intensity, ache, pace, moral-complexity, complexity) — never inside "story" or "feeling".
 - Worked example of the exact top-level shape (values are illustrative; use only listed keys):
 ${PROFILE_SHAPE_EXAMPLE}
 - Return only the JSON object: no prose, no code fences.`;
@@ -386,6 +390,8 @@ Scalars (each { value: 0..1, confidence: 0..1 }): intensity, ache, pace (feeling
 
 Craft keys, by category — use only the item's category:
 ${CRAFT_LINES}
+
+A craft key is "<group>.<value>" — the group, a literal dot, then exactly one of that group's listed values: "visual.dense" for a movie, "prose.spare" for a book. Never a bare group name ("visual" or "prose" alone is invalid), and at most one value per craft group.
 
 Rules:
 - Describe what the work is, never how good it is.

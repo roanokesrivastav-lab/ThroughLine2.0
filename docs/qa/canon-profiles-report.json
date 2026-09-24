@@ -1,54 +1,54 @@
 {
-  "generated_at": "2026-09-23T04:51:57.708Z",
+  "generated_at": "2026-09-24T02:18:35.979Z",
   "model": "nvidia/nemotron-3-super-120b-a12b",
   "profile_version": "p1",
-  "prompt_hash": "5d4a12956aea",
+  "prompt_hash": "1586263905ca",
   "counts": {
     "movie": {
-      "profiled": 0,
-      "failed": 1,
-      "unreached": 23,
+      "profiled": 24,
+      "failed": 0,
+      "unreached": 0,
       "total": 24
     },
     "tv": {
-      "profiled": 0,
+      "profiled": 20,
       "failed": 0,
-      "unreached": 20,
+      "unreached": 0,
       "total": 20
     },
     "anime": {
-      "profiled": 0,
+      "profiled": 18,
       "failed": 0,
-      "unreached": 18,
+      "unreached": 0,
       "total": 18
     },
     "book": {
-      "profiled": 0,
-      "failed": 1,
-      "unreached": 22,
+      "profiled": 23,
+      "failed": 0,
+      "unreached": 0,
       "total": 23
     },
     "music": {
-      "profiled": 0,
-      "failed": 0,
-      "unreached": 25,
+      "profiled": 24,
+      "failed": 1,
+      "unreached": 0,
       "total": 25
     }
   },
-  "firstPassStrict": 0,
-  "committedStrict": 0,
+  "firstPassStrict": 0.8807339449541285,
+  "committedStrict": 1,
   "evaluate": [
     {
       "name": "firstPassStrict",
-      "value": 0,
+      "value": 0.8807339449541285,
       "threshold": 0.9,
       "pass": false
     },
     {
       "name": "committedStrict",
-      "value": 0,
+      "value": 1,
       "threshold": 1,
-      "pass": false
+      "pass": true
     },
     {
       "name": "agreementStory",
@@ -70,144 +70,626 @@
     },
     {
       "name": "prevalenceFlag",
-      "value": 0,
+      "value": 1,
       "threshold": 0.5,
-      "pass": true
+      "pass": false
     }
   ],
   "failure_reasons": {
-    "[\n  {\n    \"code\": \"invalid_value\",\n    \"values\": [\n      \"grief\",\n      \"love\",\n      \"memory\",\n      \"loneliness\",\n    ": 2
+    "profile validation failed: craft: more than one \"instrumentation.*\" value for a music": 1
   },
-  "prevalence_top30": [],
-  "review_flags": [],
+  "prevalence_top30": [
+    {
+      "key": "ache",
+      "family": "feeling",
+      "global": 1,
+      "byCategory": {
+        "movie": 1,
+        "tv": 1,
+        "anime": 1,
+        "book": 1,
+        "music": 1
+      }
+    },
+    {
+      "key": "complexity",
+      "family": "story",
+      "global": 1,
+      "byCategory": {
+        "movie": 1,
+        "tv": 1,
+        "anime": 1,
+        "book": 1,
+        "music": 1
+      }
+    },
+    {
+      "key": "intensity",
+      "family": "feeling",
+      "global": 1,
+      "byCategory": {
+        "movie": 1,
+        "tv": 1,
+        "anime": 1,
+        "book": 1,
+        "music": 1
+      }
+    },
+    {
+      "key": "moral-complexity",
+      "family": "story",
+      "global": 1,
+      "byCategory": {
+        "movie": 1,
+        "tv": 1,
+        "anime": 1,
+        "book": 1,
+        "music": 1
+      }
+    },
+    {
+      "key": "pace",
+      "family": "feeling",
+      "global": 1,
+      "byCategory": {
+        "movie": 1,
+        "tv": 1,
+        "anime": 1,
+        "book": 1,
+        "music": 1
+      }
+    },
+    {
+      "key": "aftertaste.lingering",
+      "family": "feeling",
+      "global": 0.963302752293578,
+      "byCategory": {
+        "movie": 0.9583333333333334,
+        "tv": 0.95,
+        "anime": 1,
+        "book": 0.9130434782608695,
+        "music": 1
+      }
+    },
+    {
+      "key": "momentum.unpredictable",
+      "family": "story",
+      "global": 0.8715596330275229,
+      "byCategory": {
+        "movie": 1,
+        "tv": 1,
+        "anime": 1,
+        "book": 0.8260869565217391,
+        "music": 0.5833333333333334
+      }
+    },
+    {
+      "key": "register.meditative",
+      "family": "feeling",
+      "global": 0.8532110091743119,
+      "byCategory": {
+        "movie": 0.8333333333333334,
+        "tv": 0.8,
+        "anime": 0.8333333333333334,
+        "book": 0.9565217391304348,
+        "music": 0.8333333333333334
+      }
+    },
+    {
+      "key": "conflict.vs-self",
+      "family": "story",
+      "global": 0.8440366972477065,
+      "byCategory": {
+        "movie": 0.8333333333333334,
+        "tv": 0.85,
+        "anime": 0.9444444444444444,
+        "book": 0.9565217391304348,
+        "music": 0.6666666666666666
+      }
+    },
+    {
+      "key": "arc.transformation",
+      "family": "story",
+      "global": 0.8256880733944955,
+      "byCategory": {
+        "movie": 1,
+        "tv": 0.9,
+        "anime": 1,
+        "book": 0.8260869565217391,
+        "music": 0.4583333333333333
+      }
+    },
+    {
+      "key": "stakes.personal",
+      "family": "story",
+      "global": 0.7981651376146789,
+      "byCategory": {
+        "movie": 0.8333333333333334,
+        "tv": 0.65,
+        "anime": 0.6666666666666666,
+        "book": 0.8260869565217391,
+        "music": 0.9583333333333334
+      }
+    },
+    {
+      "key": "tone.wistful",
+      "family": "feeling",
+      "global": 0.7889908256880734,
+      "byCategory": {
+        "movie": 0.7083333333333334,
+        "tv": 0.6,
+        "anime": 0.6666666666666666,
+        "book": 0.9565217391304348,
+        "music": 0.9583333333333334
+      }
+    },
+    {
+      "key": "register.intimate",
+      "family": "feeling",
+      "global": 0.7706422018348624,
+      "byCategory": {
+        "movie": 0.7916666666666666,
+        "tv": 0.65,
+        "anime": 0.6666666666666666,
+        "book": 0.782608695652174,
+        "music": 0.9166666666666666
+      }
+    },
+    {
+      "key": "tone.earnest",
+      "family": "feeling",
+      "global": 0.7247706422018348,
+      "byCategory": {
+        "movie": 0.625,
+        "tv": 0.8,
+        "anime": 0.7777777777777778,
+        "book": 0.9565217391304348,
+        "music": 0.5
+      }
+    },
+    {
+      "key": "tone.melancholy",
+      "family": "feeling",
+      "global": 0.6788990825688074,
+      "byCategory": {
+        "movie": 0.5416666666666666,
+        "tv": 0.5,
+        "anime": 0.7222222222222222,
+        "book": 0.7391304347826086,
+        "music": 0.875
+      }
+    },
+    {
+      "key": "structure.linear",
+      "family": "story",
+      "global": 0.6697247706422018,
+      "byCategory": {
+        "movie": 0.6666666666666666,
+        "tv": 0.75,
+        "anime": 0.7222222222222222,
+        "book": 0.7391304347826086,
+        "music": 0.5
+      }
+    },
+    {
+      "key": "world.lived-in",
+      "family": "story",
+      "global": 0.6513761467889908,
+      "byCategory": {
+        "movie": 0.8333333333333334,
+        "tv": 0.85,
+        "anime": 0.8888888888888888,
+        "book": 0.6956521739130435,
+        "music": 0.08333333333333333
+      }
+    },
+    {
+      "key": "bond.found-family",
+      "family": "story",
+      "global": 0.6330275229357798,
+      "byCategory": {
+        "movie": 0.7083333333333334,
+        "tv": 1,
+        "anime": 0.8333333333333334,
+        "book": 0.6086956521739131,
+        "music": 0.125
+      }
+    },
+    {
+      "key": "aftertaste.haunting",
+      "family": "feeling",
+      "global": 0.6055045871559633,
+      "byCategory": {
+        "movie": 0.5,
+        "tv": 0.5,
+        "anime": 0.6111111111111112,
+        "book": 0.6956521739130435,
+        "music": 0.7083333333333334
+      }
+    },
+    {
+      "key": "setting.contemporary",
+      "family": "story",
+      "global": 0.5688073394495413,
+      "byCategory": {
+        "movie": 0.75,
+        "tv": 0.8,
+        "anime": 0.6111111111111112,
+        "book": 0.43478260869565216,
+        "music": 0.2916666666666667
+      }
+    },
+    {
+      "key": "setting.urban",
+      "family": "story",
+      "global": 0.5504587155963303,
+      "byCategory": {
+        "movie": 0.8333333333333334,
+        "tv": 0.75,
+        "anime": 0.6666666666666666,
+        "book": 0.34782608695652173,
+        "music": 0.20833333333333334
+      }
+    },
+    {
+      "key": "cast.single-protagonist",
+      "family": "story",
+      "global": 0.5412844036697247,
+      "byCategory": {
+        "movie": 0.4583333333333333,
+        "tv": 0.15,
+        "anime": 0.5,
+        "book": 0.9130434782608695,
+        "music": 0.625
+      }
+    },
+    {
+      "key": "texture.hazy",
+      "family": "feeling",
+      "global": 0.5412844036697247,
+      "byCategory": {
+        "movie": 0.5416666666666666,
+        "tv": 0.55,
+        "anime": 0.3888888888888889,
+        "book": 0.4782608695652174,
+        "music": 0.7083333333333334
+      }
+    },
+    {
+      "key": "frame.realism",
+      "family": "story",
+      "global": 0.5137614678899083,
+      "byCategory": {
+        "movie": 0.5416666666666666,
+        "tv": 0.55,
+        "anime": 0.16666666666666666,
+        "book": 0.6956521739130435,
+        "music": 0.5416666666666666
+      }
+    },
+    {
+      "key": "register.quiet",
+      "family": "feeling",
+      "global": 0.5137614678899083,
+      "byCategory": {
+        "movie": 0.5833333333333334,
+        "tv": 0.6,
+        "anime": 0.4444444444444444,
+        "book": 0.6956521739130435,
+        "music": 0.25
+      }
+    },
+    {
+      "key": "world.systemic",
+      "family": "story",
+      "global": 0.4954128440366973,
+      "byCategory": {
+        "movie": 0.4583333333333333,
+        "tv": 0.8,
+        "anime": 0.6111111111111112,
+        "book": 0.4782608695652174,
+        "music": 0.20833333333333334
+      }
+    },
+    {
+      "key": "momentum.suspenseful",
+      "family": "story",
+      "global": 0.48623853211009177,
+      "byCategory": {
+        "movie": 0.5833333333333334,
+        "tv": 0.65,
+        "anime": 0.7777777777777778,
+        "book": 0.43478260869565216,
+        "music": 0.08333333333333333
+      }
+    },
+    {
+      "key": "texture.dense",
+      "family": "feeling",
+      "global": 0.48623853211009177,
+      "byCategory": {
+        "movie": 0.5416666666666666,
+        "tv": 0.65,
+        "anime": 0.7222222222222222,
+        "book": 0.43478260869565216,
+        "music": 0.16666666666666666
+      }
+    },
+    {
+      "key": "aftertaste.hopeful",
+      "family": "feeling",
+      "global": 0.46788990825688076,
+      "byCategory": {
+        "movie": 0.5416666666666666,
+        "tv": 0.45,
+        "anime": 0.5555555555555556,
+        "book": 0.5217391304347826,
+        "music": 0.2916666666666667
+      }
+    },
+    {
+      "key": "cast.ensemble",
+      "family": "story",
+      "global": 0.44954128440366975,
+      "byCategory": {
+        "movie": 0.5416666666666666,
+        "tv": 0.8,
+        "anime": 0.6666666666666666,
+        "book": 0.30434782608695654,
+        "music": 0.041666666666666664
+      }
+    }
+  ],
+  "review_flags": [
+    "ache",
+    "complexity",
+    "intensity",
+    "moral-complexity",
+    "pace",
+    "aftertaste.lingering",
+    "momentum.unpredictable",
+    "register.meditative",
+    "conflict.vs-self",
+    "arc.transformation",
+    "stakes.personal",
+    "tone.wistful",
+    "register.intimate",
+    "tone.earnest",
+    "tone.melancholy",
+    "structure.linear",
+    "world.lived-in",
+    "bond.found-family",
+    "aftertaste.haunting",
+    "setting.contemporary",
+    "setting.urban",
+    "cast.single-protagonist",
+    "texture.hazy",
+    "frame.realism",
+    "register.quiet"
+  ],
   "category_artifacts": [],
-  "singleton_keys": 0,
-  "group_fill": [],
+  "singleton_keys": 6,
+  "group_fill": [
+    {
+      "group": "theme",
+      "meanCount": 3.8624,
+      "cap": 4,
+      "shareAtCap": 0.8991
+    },
+    {
+      "group": "arc",
+      "meanCount": 1.7248,
+      "cap": 2,
+      "shareAtCap": 0.8257
+    },
+    {
+      "group": "conflict",
+      "meanCount": 1.7982,
+      "cap": 2,
+      "shareAtCap": 0.8532
+    },
+    {
+      "group": "cast",
+      "meanCount": 1.7798,
+      "cap": 3,
+      "shareAtCap": 0.1743
+    },
+    {
+      "group": "bond",
+      "meanCount": 1.5046,
+      "cap": 2,
+      "shareAtCap": 0.7248
+    },
+    {
+      "group": "world",
+      "meanCount": 1.7523,
+      "cap": 2,
+      "shareAtCap": 0.8073
+    },
+    {
+      "group": "setting",
+      "meanCount": 2.5229,
+      "cap": 3,
+      "shareAtCap": 0.7156
+    },
+    {
+      "group": "frame",
+      "meanCount": 2.3394,
+      "cap": 3,
+      "shareAtCap": 0.5872
+    },
+    {
+      "group": "structure",
+      "meanCount": 1.633,
+      "cap": 2,
+      "shareAtCap": 0.7064
+    },
+    {
+      "group": "momentum",
+      "meanCount": 2.2018,
+      "cap": 3,
+      "shareAtCap": 0.4587
+    },
+    {
+      "group": "stakes",
+      "meanCount": 1,
+      "cap": 1,
+      "shareAtCap": 1
+    },
+    {
+      "group": "ending",
+      "meanCount": 1,
+      "cap": 1,
+      "shareAtCap": 1
+    },
+    {
+      "group": "tone",
+      "meanCount": 3.8716,
+      "cap": 4,
+      "shareAtCap": 0.8807
+    },
+    {
+      "group": "register",
+      "meanCount": 2.8073,
+      "cap": 3,
+      "shareAtCap": 0.8165
+    },
+    {
+      "group": "texture",
+      "meanCount": 2.8257,
+      "cap": 3,
+      "shareAtCap": 0.8349
+    },
+    {
+      "group": "aftertaste",
+      "meanCount": 2.9266,
+      "cap": 3,
+      "shareAtCap": 0.9358
+    },
+    {
+      "group": "craft",
+      "meanCount": 0,
+      "cap": 8,
+      "shareAtCap": 0
+    }
+  ],
   "mean_confidence": {
-    "story": 0,
-    "feeling": 0
+    "story": 0.7951789627465335,
+    "feeling": 0.7537217598097483
   },
   "premise": {
-    "null_share": 0,
+    "null_share": 0.027522935779816515,
     "praise_drops": 0
   },
   "music": {
-    "count": 0,
-    "top": []
+    "count": 24,
+    "top": [
+      {
+        "key": "ache",
+        "family": "feeling",
+        "global": 1,
+        "byCategory": {
+          "music": 1
+        }
+      },
+      {
+        "key": "aftertaste.lingering",
+        "family": "feeling",
+        "global": 1,
+        "byCategory": {
+          "music": 1
+        }
+      },
+      {
+        "key": "complexity",
+        "family": "story",
+        "global": 1,
+        "byCategory": {
+          "music": 1
+        }
+      },
+      {
+        "key": "intensity",
+        "family": "feeling",
+        "global": 1,
+        "byCategory": {
+          "music": 1
+        }
+      },
+      {
+        "key": "moral-complexity",
+        "family": "story",
+        "global": 1,
+        "byCategory": {
+          "music": 1
+        }
+      },
+      {
+        "key": "pace",
+        "family": "feeling",
+        "global": 1,
+        "byCategory": {
+          "music": 1
+        }
+      },
+      {
+        "key": "stakes.personal",
+        "family": "story",
+        "global": 0.9583333333333334,
+        "byCategory": {
+          "music": 0.9583333333333334
+        }
+      },
+      {
+        "key": "tone.wistful",
+        "family": "feeling",
+        "global": 0.9583333333333334,
+        "byCategory": {
+          "music": 0.9583333333333334
+        }
+      },
+      {
+        "key": "register.intimate",
+        "family": "feeling",
+        "global": 0.9166666666666666,
+        "byCategory": {
+          "music": 0.9166666666666666
+        }
+      },
+      {
+        "key": "tone.melancholy",
+        "family": "feeling",
+        "global": 0.875,
+        "byCategory": {
+          "music": 0.875
+        }
+      }
+    ]
   },
   "failed_slugs": [
-    "movie-spirited-away",
-    "book-the-hobbit"
+    "song-all-too-well-10"
   ],
-  "unreached_slugs": [
+  "unreached_slugs": [],
+  "review_sample": [
+    "movie-spirited-away",
     "movie-eternal-sunshine",
     "movie-the-godfather",
     "movie-parasite",
-    "movie-in-the-mood-for-love",
-    "movie-before-sunrise",
-    "movie-moonlight",
-    "movie-the-dark-knight",
-    "movie-lost-in-translation",
-    "movie-mad-max-fury-road",
-    "movie-the-shawshank-redemption",
-    "movie-pulp-fiction",
-    "movie-her",
-    "movie-inception",
-    "movie-paddington-2",
-    "movie-hereditary",
-    "movie-la-la-land",
-    "movie-everything-everywhere",
-    "movie-portrait-of-a-lady-on-fire",
-    "movie-no-country-for-old-men",
-    "movie-aftersun",
-    "movie-the-social-network",
-    "movie-amelie",
-    "movie-past-lives",
     "tv-breaking-bad",
     "tv-the-office-us",
     "tv-fleabag",
     "tv-the-bear",
-    "tv-succession",
-    "tv-the-sopranos",
-    "tv-severance",
-    "tv-mad-men",
-    "tv-ted-lasso",
-    "tv-twin-peaks",
-    "tv-the-wire",
-    "tv-station-eleven",
-    "tv-chernobyl",
-    "tv-normal-people",
-    "tv-the-leftovers",
-    "tv-better-call-saul",
-    "tv-game-of-thrones",
-    "tv-stranger-things",
-    "tv-atlanta",
-    "tv-derry-girls",
     "anime-cowboy-bebop",
     "anime-neon-genesis-evangelion",
     "anime-your-name",
     "anime-fullmetal-alchemist-brotherhood",
-    "anime-attack-on-titan",
-    "anime-mob-psycho-100",
-    "anime-a-silent-voice",
-    "anime-death-note",
-    "anime-haikyuu",
-    "anime-mushishi",
-    "anime-frieren",
-    "anime-princess-mononoke",
-    "anime-spy-x-family",
-    "anime-monster",
-    "anime-jujutsu-kaisen",
-    "anime-march-comes-in-like-a-lion",
-    "anime-hunter-x-hunter",
-    "anime-perfect-blue",
     "book-the-great-gatsby",
     "book-1984",
     "book-to-kill-a-mockingbird",
     "book-normal-people",
-    "book-a-little-life",
-    "book-the-road",
-    "book-harry-potter-1",
-    "book-beloved",
-    "book-never-let-me-go",
-    "book-the-remains-of-the-day",
-    "book-klara-and-the-sun",
-    "book-pride-and-prejudice",
-    "book-the-catcher-in-the-rye",
-    "book-the-year-of-magical-thinking",
-    "book-the-little-prince",
-    "book-dune",
-    "book-piranesi",
-    "book-crying-in-h-mart",
-    "book-the-alchemist",
-    "book-kafka-on-the-shore",
-    "book-educated",
-    "book-the-name-of-the-wind",
     "song-hallelujah-buckley",
     "song-bohemian-rhapsody",
     "song-motion-picture-soundtrack",
-    "song-holocene",
-    "song-both-sides-now",
-    "song-runaway-kanye",
-    "song-the-night-we-met",
-    "song-champagne-supernova",
-    "song-wide-open-spaces",
-    "song-nights-frank-ocean",
-    "song-teardrop",
-    "song-fast-car",
-    "song-motion-sickness",
-    "song-god-only-knows",
-    "song-seventeen-sharon-van-etten",
-    "song-clair-de-lune",
-    "song-all-too-well-10",
-    "song-blue-in-green",
-    "song-dancing-on-my-own",
-    "song-re-stacks",
-    "song-skinny-love",
-    "song-flume",
-    "song-everything-is-free",
-    "song-heroes",
-    "song-strange-fruit"
-  ],
-  "review_sample": []
+    "song-holocene"
+  ]
 }

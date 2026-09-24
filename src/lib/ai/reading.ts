@@ -33,16 +33,16 @@ const tag = (values: readonly string[]) => z.object({
  */
 const first = (values: readonly string[]): string => values[0];
 
-const READING_SHAPE_EXAMPLE = JSON.stringify(
+/** Exported so tests can assert the example matches the schema's actual shape. */
+export const READING_SHAPE_EXAMPLE = JSON.stringify(
   {
     story: {
       theme: [{ key: first(THEMES_V2), weight: 0.8 }],
       arc: [], conflict: [], cast: [], bond: [], world: [], setting: [], frame: [], structure: [],
       momentum: [], stakes: [], ending: [],
-      intensity: 0.6,
-      complexity: 0.5,
     },
-    feeling: { tone: [{ key: first(TONES), weight: 0.7 }], register: [], texture: [], aftertaste: [], ache: 0.6 },
+    feeling: { tone: [{ key: first(TONES), weight: 0.7 }], register: [], texture: [], aftertaste: [] },
+    scalars: { intensity: 0.6, ache: 0.6, pace: 0.4, "moral-complexity": 0.5, complexity: 0.5 },
     absent: [],
     didnt_work: { keys: [], phrases: [] },
     valued: [],
@@ -58,7 +58,7 @@ const READING_SHAPE_RULES = `
 JSON shape (the response is machine-parsed against a schema; violations are rejected):
 - Every tag is exactly {"key": <one listed value>, "weight": 0..1}. It is never a bare string, and the field is never called "value" or "name".
 - Every group is an array, even when it has one item or none ([]). "story", "feeling", "scalars", "absent", "didnt_work", "valued", "summary" and "quote" are always present as top-level keys.
-- Scalars are plain numbers 0..1 inside story (moral-complexity, complexity) and feeling (intensity, ache, pace).
+- Scalars are plain numbers 0..1 inside the top-level "scalars" object (intensity, ache, pace, moral-complexity, complexity) — never inside "story" or "feeling". Omit a scalar when the note gives no evidence.
 - Worked example of the exact top-level shape (values are illustrative; use only listed keys):
 ${READING_SHAPE_EXAMPLE}
 - Return only the JSON object: no prose, no code fences.`;

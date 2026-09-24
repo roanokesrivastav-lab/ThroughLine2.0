@@ -3,11 +3,35751 @@
 // model: nvidia/nemotron-3-super-120b-a12b
 // profileVersion: p1
 // vocabularyVersion: v2
-// promptHash: 5d4a12956aea
-// generatedAt: 2026-09-23T01:16:45.293Z
-// total: 0
-// failed: movie-spirited-away, movie-eternal-sunshine, movie-the-godfather, movie-parasite, movie-in-the-mood-for-love, movie-before-sunrise, movie-moonlight, movie-the-dark-knight, movie-lost-in-translation, movie-mad-max-fury-road, movie-the-shawshank-redemption, movie-pulp-fiction, movie-her, movie-inception, movie-paddington-2, movie-hereditary, movie-la-la-land, movie-everything-everywhere, movie-portrait-of-a-lady-on-fire, movie-no-country-for-old-men, movie-aftersun, movie-the-social-network, movie-amelie, movie-past-lives, tv-breaking-bad, tv-the-office-us, tv-fleabag, tv-the-bear, tv-succession, tv-the-sopranos, tv-severance, tv-mad-men, tv-ted-lasso, tv-twin-peaks, tv-the-wire, tv-station-eleven, tv-chernobyl, tv-normal-people, tv-the-leftovers, tv-better-call-saul, tv-game-of-thrones, tv-stranger-things, tv-atlanta, tv-derry-girls, anime-cowboy-bebop, anime-neon-genesis-evangelion, anime-your-name, anime-fullmetal-alchemist-brotherhood, anime-attack-on-titan, anime-mob-psycho-100, anime-a-silent-voice, anime-death-note, anime-haikyuu, anime-mushishi, anime-frieren, anime-princess-mononoke, anime-spy-x-family, anime-monster, anime-jujutsu-kaisen, anime-march-comes-in-like-a-lion, anime-hunter-x-hunter, anime-perfect-blue, book-the-great-gatsby, book-1984, book-to-kill-a-mockingbird, book-normal-people, book-a-little-life, book-the-road, book-harry-potter-1, book-the-hobbit, book-beloved, book-never-let-me-go, book-the-remains-of-the-day, book-klara-and-the-sun, book-pride-and-prejudice, book-the-catcher-in-the-rye, book-the-year-of-magical-thinking, book-the-little-prince, book-dune, book-piranesi, book-crying-in-h-mart, book-the-alchemist, book-kafka-on-the-shore, book-educated, book-the-name-of-the-wind, song-hallelujah-buckley, song-bohemian-rhapsody, song-motion-picture-soundtrack, song-holocene, song-both-sides-now, song-runaway-kanye, song-the-night-we-met, song-champagne-supernova, song-wide-open-spaces, song-nights-frank-ocean, song-teardrop, song-fast-car, song-motion-sickness, song-god-only-knows, song-seventeen-sharon-van-etten, song-clair-de-lune, song-all-too-well-10, song-blue-in-green, song-dancing-on-my-own, song-re-stacks, song-skinny-love, song-flume, song-everything-is-free, song-heroes, song-strange-fruit
+// promptHash: 1586263905ca
+// generatedAt: 2026-09-24T02:18:27.631Z
+// total: 109
+// failed: song-all-too-well-10
 
 import type { ItemProfile } from "@/lib/types";
 
-export const CANON_PROFILES: Readonly<Record<string, ItemProfile>> = {}
+export const CANON_PROFILES: Readonly<Record<string, ItemProfile>> = {
+  "anime-a-silent-voice": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 0,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.9,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 1,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 1
+        },
+        {
+          "confidence": 0.8,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 130
+    },
+    "premise": "A former bully seeks redemption by reconnecting with a deaf classmate he tormented in elementary school, navigating guilt, communication barriers, and the slow process of making amends.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.redemption",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.redemption-arc",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.romance",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.6,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.75
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.7225,
+        "aftertaste.haunting": 0.64,
+        "aftertaste.hopeful": 0.5625,
+        "aftertaste.lingering": 0.81,
+        "intensity": 0.6375,
+        "pace": 0.4,
+        "register.intimate": 0.81,
+        "register.meditative": 0.7225,
+        "register.quiet": 0.64,
+        "texture.hazy": 0.49,
+        "texture.polished": 0.7225,
+        "texture.spare": 0.64,
+        "tone.earnest": 0.81,
+        "tone.melancholy": 0.81,
+        "tone.warm": 0.49,
+        "tone.wistful": 0.7225
+      },
+      "story": {
+        "arc.redemption-arc": 0.9025,
+        "arc.transformation": 0.81,
+        "bond.found-family": 0.49,
+        "bond.friendship": 0.7225,
+        "cast.morally-grey": 0.64,
+        "cast.single-protagonist": 0.81,
+        "complexity": 0.6,
+        "conflict.vs-person": 0.7225,
+        "conflict.vs-self": 0.9025,
+        "ending.bittersweet": 0.7225,
+        "frame.realism": 0.81,
+        "frame.romance": 0.9,
+        "frame.slice-of-life": 0.7225,
+        "momentum.twisty": 0.36,
+        "momentum.unpredictable": 0.49,
+        "moral-complexity": 0.68,
+        "setting.contemporary": 0.9025,
+        "setting.school": 0.81,
+        "setting.urban": 0.64,
+        "stakes.personal": 0.81,
+        "structure.linear": 0.7225,
+        "theme.belonging": 0.7225,
+        "theme.friendship": 0.64,
+        "theme.loneliness": 0.81,
+        "theme.redemption": 0.9025,
+        "world.intimate-scale": 0.81,
+        "world.lived-in": 0.7225
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-attack-on-titan": {
+    "feeling": [
+      {
+        "confidence": 0.85,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.fierce",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.epic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.7,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.cathartic",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.75
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.7,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.8,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 2256
+    },
+    "premise": "In a world where humanity lives behind massive walls to escape giant humanoid Titans, a young soldier joins the fight to uncover the truth behind the Titans and reclaim freedom.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.freedom",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.survival",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.war",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.revenge",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.wartime",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.fantasy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.cliffhangers",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.world",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.8
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.64,
+        "aftertaste.cathartic": 0.5625,
+        "aftertaste.haunting": 0.64,
+        "aftertaste.lingering": 0.7225,
+        "intensity": 0.81,
+        "pace": 0.5625,
+        "register.epic": 0.81,
+        "register.intimate": 0.49,
+        "register.propulsive": 0.7225,
+        "texture.dense": 0.7225,
+        "texture.gritty": 0.64,
+        "texture.polished": 0.5625,
+        "tone.bleak": 0.7225,
+        "tone.earnest": 0.64,
+        "tone.fierce": 0.64,
+        "tone.melancholy": 0.5625
+      },
+      "story": {
+        "arc.quest": 0.7225,
+        "arc.transformation": 0.81,
+        "bond.found-family": 0.7225,
+        "bond.friendship": 0.64,
+        "cast.ensemble": 0.81,
+        "cast.single-protagonist": 0.64,
+        "cast.underdog": 0.7225,
+        "complexity": 0.7225,
+        "conflict.vs-self": 0.64,
+        "conflict.vs-society": 0.7225,
+        "ending.bittersweet": 0.7225,
+        "frame.adventure": 0.7225,
+        "frame.fantasy": 0.9,
+        "frame.thriller": 0.64,
+        "momentum.cliffhangers": 0.64,
+        "momentum.suspenseful": 0.81,
+        "momentum.unpredictable": 0.7225,
+        "moral-complexity": 0.64,
+        "setting.rural": 0.49,
+        "setting.secondary-world": 0.81,
+        "setting.wartime": 0.7225,
+        "stakes.world": 0.81,
+        "structure.linear": 0.49,
+        "structure.multiple-pov": 0.64,
+        "theme.freedom": 0.9025,
+        "theme.revenge": 0.64,
+        "theme.survival": 0.81,
+        "theme.war": 0.7225,
+        "world.lived-in": 0.81,
+        "world.systemic": 0.7225
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-cowboy-bebop": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.restless",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.75,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 624
+    },
+    "premise": "A ragtag crew of bounty hunters travels the solar system in 2071, chasing fugitives while haunted by their own pasts.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.destiny-vs-choice",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.isolation",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-fate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.rivals",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.far-future",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.space",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.sci-fi",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.crime",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.75
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.68,
+        "aftertaste.bittersweet": 0.68,
+        "aftertaste.haunting": 0.765,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.6375,
+        "pace": 0.42,
+        "register.meditative": 0.6,
+        "register.propulsive": 0.525,
+        "register.quiet": 0.68,
+        "texture.dense": 0.68,
+        "texture.gritty": 0.6,
+        "texture.polished": 0.525,
+        "tone.melancholy": 0.765,
+        "tone.restless": 0.525,
+        "tone.wistful": 0.855,
+        "tone.wry": 0.68
+      },
+      "story": {
+        "arc.coming-of-age": 0.42,
+        "arc.transformation": 0.56,
+        "bond.found-family": 0.765,
+        "bond.rivals": 0.525,
+        "cast.ensemble": 0.931,
+        "cast.morally-grey": 0.765,
+        "cast.underdog": 0.525,
+        "complexity": 0.6,
+        "conflict.vs-fate": 0.68,
+        "conflict.vs-self": 0.855,
+        "ending.bittersweet": 0.855,
+        "frame.adventure": 0.525,
+        "frame.crime": 0.9,
+        "frame.sci-fi": 0.931,
+        "momentum.suspenseful": 0.68,
+        "momentum.twisty": 0.525,
+        "momentum.unpredictable": 0.6,
+        "moral-complexity": 0.68,
+        "setting.far-future": 0.931,
+        "setting.space": 0.855,
+        "setting.urban": 0.525,
+        "stakes.personal": 0.855,
+        "structure.multiple-pov": 0.68,
+        "structure.unreliable-narrator": 0.39,
+        "theme.destiny-vs-choice": 0.68,
+        "theme.isolation": 0.6,
+        "theme.loneliness": 0.855,
+        "theme.memory": 0.765,
+        "world.lived-in": 0.855,
+        "world.systemic": 0.525
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-death-note": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.restless",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.85,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.98,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.95,
+          "key": "hook.immediate",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 851
+    },
+    "premise": "A brilliant high school student discovers a supernatural notebook that allows him to kill anyone by writing their name, and begins a crusade to create a utopian world free of crime, drawing the attention of a enigmatic detective determined to stop him.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.justice",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.power",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.obsession",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.madness",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.98,
+        "key": "bond.rivals",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.fantasy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.mystery",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.world",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.39,
+        "aftertaste.haunting": 0.6,
+        "aftertaste.lingering": 0.765,
+        "aftertaste.unsettling": 0.68,
+        "intensity": 0.855,
+        "pace": 0.765,
+        "register.cerebral": 0.855,
+        "register.intimate": 0.39,
+        "register.propulsive": 0.765,
+        "texture.dense": 0.765,
+        "texture.gritty": 0.6,
+        "texture.polished": 0.525,
+        "tone.earnest": 0.39,
+        "tone.eerie": 0.855,
+        "tone.restless": 0.6,
+        "tone.wry": 0.68
+      },
+      "story": {
+        "arc.quest": 0.525,
+        "arc.transformation": 0.68,
+        "bond.rivals": 0.931,
+        "cast.duo": 0.931,
+        "cast.morally-grey": 0.855,
+        "complexity": 0.765,
+        "conflict.vs-person": 0.855,
+        "conflict.vs-self": 0.525,
+        "ending.resolved": 0.855,
+        "frame.fantasy": 0.9,
+        "frame.mystery": 0.9,
+        "frame.thriller": 0.931,
+        "momentum.suspenseful": 0.931,
+        "momentum.twisty": 0.765,
+        "momentum.unpredictable": 0.855,
+        "moral-complexity": 0.855,
+        "setting.contemporary": 0.855,
+        "setting.school": 0.42,
+        "setting.urban": 0.68,
+        "stakes.world": 0.765,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.39,
+        "theme.justice": 0.931,
+        "theme.madness": 0.6,
+        "theme.obsession": 0.765,
+        "theme.power": 0.855,
+        "world.lived-in": 0.525,
+        "world.systemic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-frieren": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.75,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.9,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 672
+    },
+    "premise": "An elf mage reflects on time, memory, and loss after her adventuring party disbands, embarking on a quiet journey to understand the humans she once traveled with.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.time",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.grief",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "conflict.vs-fate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.adventure",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.fantasy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.55,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "ending.open",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.48,
+        "aftertaste.comforting": 0.525,
+        "aftertaste.hopeful": 0.39,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.32,
+        "pace": 0.24,
+        "register.intimate": 0.525,
+        "register.meditative": 0.765,
+        "register.quiet": 0.68,
+        "texture.hazy": 0.525,
+        "texture.ornate": 0.275,
+        "texture.polished": 0.39,
+        "tone.melancholy": 0.6,
+        "tone.serene": 0.68,
+        "tone.warm": 0.39,
+        "tone.wistful": 0.81
+      },
+      "story": {
+        "arc.coming-of-age": 0.42,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.765,
+        "bond.friendship": 0.68,
+        "cast.ensemble": 0.525,
+        "cast.single-protagonist": 0.68,
+        "complexity": 0.4,
+        "conflict.vs-fate": 0.39,
+        "conflict.vs-self": 0.68,
+        "ending.open": 0.6,
+        "frame.adventure": 0.9,
+        "frame.fantasy": 0.9,
+        "frame.slice-of-life": 0.525,
+        "momentum.episodic-arcs": 0.525,
+        "momentum.unpredictable": 0.275,
+        "moral-complexity": 0.24,
+        "setting.rural": 0.525,
+        "setting.secondary-world": 0.81,
+        "setting.timeless": 0.39,
+        "stakes.personal": 0.68,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.39,
+        "theme.belonging": 0.525,
+        "theme.grief": 0.7225,
+        "theme.memory": 0.9025,
+        "theme.time": 0.81,
+        "world.intimate-scale": 0.525,
+        "world.lived-in": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-fullmetal-alchemist-brotherhood": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.fierce",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.epic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.cathartic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.95,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.98,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.9,
+          "key": "hook.immediate",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 1536
+    },
+    "premise": "Two brothers seek the Philosopher's Stone to restore their bodies after a failed alchemical experiment, uncovering a vast conspiracy tied to their nation's military and ancient secrets.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.sacrifice",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.truth-and-lies",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.redemption",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "bond.siblings",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.wartime",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.adventure",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.world",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.98,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6,
+        "aftertaste.cathartic": 0.855,
+        "aftertaste.hopeful": 0.68,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.765,
+        "pace": 0.525,
+        "register.epic": 0.855,
+        "register.meditative": 0.39,
+        "register.propulsive": 0.765,
+        "texture.dense": 0.765,
+        "texture.gritty": 0.525,
+        "texture.polished": 0.68,
+        "tone.earnest": 0.855,
+        "tone.fierce": 0.68,
+        "tone.melancholy": 0.525,
+        "tone.wistful": 0.6
+      },
+      "story": {
+        "arc.quest": 0.765,
+        "arc.transformation": 0.855,
+        "bond.found-family": 0.765,
+        "bond.siblings": 0.931,
+        "cast.duo": 0.765,
+        "cast.ensemble": 0.855,
+        "cast.morally-grey": 0.525,
+        "complexity": 0.68,
+        "conflict.vs-self": 0.68,
+        "conflict.vs-system": 0.855,
+        "ending.resolved": 0.931,
+        "frame.adventure": 0.9,
+        "frame.fantasy": 0.931,
+        "frame.thriller": 0.525,
+        "momentum.suspenseful": 0.765,
+        "momentum.twisty": 0.525,
+        "momentum.unpredictable": 0.6,
+        "moral-complexity": 0.525,
+        "setting.historical": 0.525,
+        "setting.secondary-world": 0.765,
+        "setting.wartime": 0.39,
+        "stakes.world": 0.855,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.6,
+        "theme.family": 0.855,
+        "theme.redemption": 0.68,
+        "theme.sacrifice": 0.931,
+        "theme.truth-and-lies": 0.765,
+        "world.lived-in": 0.855,
+        "world.systemic": 0.765
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-haikyuu": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.restless",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.55,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.45,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.energized",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.45,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.75,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "hook.immediate",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 2040
+    },
+    "premise": "A high school student joins his school's volleyball team and strives to become a top player through relentless practice and teamwork.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.ambition",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.comedy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.15,
+        "key": "frame.sci-fi",
+        "source": "ai",
+        "weight": 0.1
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "ending.open",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.55,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.35,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.18,
+        "aftertaste.energized": 0.68,
+        "aftertaste.hopeful": 0.765,
+        "aftertaste.lingering": 0.525,
+        "intensity": 0.6,
+        "pace": 0.525,
+        "register.meditative": 0.18,
+        "register.propulsive": 0.68,
+        "register.quiet": 0.275,
+        "texture.dense": 0.525,
+        "texture.gritty": 0.39,
+        "texture.polished": 0.6,
+        "tone.earnest": 0.68,
+        "tone.playful": 0.6,
+        "tone.restless": 0.525,
+        "tone.warm": 0.765
+      },
+      "story": {
+        "arc.coming-of-age": 0.68,
+        "arc.transformation": 0.765,
+        "bond.found-family": 0.765,
+        "bond.mentor-student": 0.525,
+        "cast.ensemble": 0.855,
+        "cast.underdog": 0.765,
+        "complexity": 0.275,
+        "conflict.vs-person": 0.6,
+        "conflict.vs-self": 0.68,
+        "ending.open": 0.6,
+        "frame.comedy": 0.9,
+        "frame.slice-of-life": 0.68,
+        "momentum.episodic-arcs": 0.68,
+        "momentum.suspenseful": 0.6,
+        "momentum.unpredictable": 0.39,
+        "moral-complexity": 0.105,
+        "setting.contemporary": 0.931,
+        "setting.school": 0.855,
+        "setting.workplace": 0.39,
+        "stakes.personal": 0.68,
+        "structure.linear": 0.765,
+        "structure.multiple-pov": 0.525,
+        "theme.ambition": 0.855,
+        "theme.belonging": 0.765,
+        "theme.friendship": 0.855,
+        "theme.growing-up": 0.68,
+        "world.intimate-scale": 0.6,
+        "world.lived-in": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-hunter-x-hunter": {
+    "feeling": [
+      {
+        "confidence": 0.85,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.energized",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 3,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.65,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.6
+        },
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.75,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.7
+        }
+      ],
+      "minutes_to_finish": 3404
+    },
+    "premise": "A young boy sets out to find his missing father by becoming a Hunter, facing deadly trials and forming bonds with diverse companions along the way.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.ambition",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.adventure",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.fantasy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "ending.open",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.39,
+        "aftertaste.energized": 0.525,
+        "aftertaste.hopeful": 0.6,
+        "aftertaste.lingering": 0.68,
+        "intensity": 0.68,
+        "pace": 0.6,
+        "register.intimate": 0.455,
+        "register.meditative": 0.525,
+        "register.propulsive": 0.765,
+        "texture.dense": 0.68,
+        "texture.gritty": 0.6,
+        "texture.polished": 0.525,
+        "tone.earnest": 0.6,
+        "tone.playful": 0.525,
+        "tone.warm": 0.68,
+        "tone.wistful": 0.455
+      },
+      "story": {
+        "arc.coming-of-age": 0.765,
+        "arc.transformation": 0.855,
+        "bond.found-family": 0.855,
+        "bond.mentor-student": 0.68,
+        "cast.ensemble": 0.855,
+        "cast.single-protagonist": 0.68,
+        "cast.underdog": 0.6,
+        "complexity": 0.68,
+        "conflict.vs-person": 0.68,
+        "conflict.vs-self": 0.765,
+        "ending.open": 0.6,
+        "frame.adventure": 0.9,
+        "frame.fantasy": 0.9,
+        "frame.thriller": 0.6,
+        "momentum.suspenseful": 0.765,
+        "momentum.twisty": 0.6,
+        "momentum.unpredictable": 0.68,
+        "moral-complexity": 0.525,
+        "setting.contemporary": 0.525,
+        "setting.school": 0.39,
+        "setting.urban": 0.455,
+        "stakes.personal": 0.68,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.6,
+        "theme.ambition": 0.68,
+        "theme.belonging": 0.6,
+        "theme.friendship": 0.855,
+        "theme.growing-up": 0.765,
+        "world.lived-in": 0.765,
+        "world.systemic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-jujutsu-kaisen": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.fierce",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.cathartic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.75,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.98,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.95,
+          "key": "hook.immediate",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 1128
+    },
+    "premise": "A high school student becomes a jujutsu sorcerer after swallowing a cursed object, joining a secret world of sorcerers who battle malevolent spirits born from human negativity.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.death",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.sacrifice",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-the-unknown",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.fantasy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.world",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.open",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6,
+        "aftertaste.cathartic": 0.68,
+        "aftertaste.haunting": 0.6,
+        "aftertaste.lingering": 0.68,
+        "intensity": 0.855,
+        "pace": 0.765,
+        "register.intimate": 0.525,
+        "register.meditative": 0.39,
+        "register.propulsive": 0.855,
+        "texture.dense": 0.765,
+        "texture.gritty": 0.68,
+        "texture.polished": 0.6,
+        "tone.earnest": 0.68,
+        "tone.fierce": 0.765,
+        "tone.melancholy": 0.6,
+        "tone.warm": 0.56
+      },
+      "story": {
+        "arc.coming-of-age": 0.765,
+        "arc.transformation": 0.855,
+        "bond.found-family": 0.765,
+        "bond.friendship": 0.855,
+        "cast.ensemble": 0.855,
+        "cast.underdog": 0.68,
+        "complexity": 0.68,
+        "conflict.vs-self": 0.68,
+        "conflict.vs-the-unknown": 0.765,
+        "ending.open": 0.68,
+        "frame.adventure": 0.765,
+        "frame.fantasy": 0.9,
+        "frame.thriller": 0.68,
+        "momentum.suspenseful": 0.855,
+        "momentum.twisty": 0.68,
+        "momentum.unpredictable": 0.765,
+        "moral-complexity": 0.525,
+        "setting.contemporary": 0.855,
+        "setting.school": 0.68,
+        "setting.urban": 0.765,
+        "stakes.world": 0.765,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.6,
+        "theme.death": 0.855,
+        "theme.friendship": 0.765,
+        "theme.loneliness": 0.72,
+        "theme.sacrifice": 0.765,
+        "world.lived-in": 0.765,
+        "world.systemic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-march-comes-in-like-a-lion": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.75,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.98,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 1100
+    },
+    "premise": "A professional shogi player struggling with depression and isolation gradually rebuilds his life through connections with a warm-hearted family and friends who help him confront his past and find meaning beyond the game.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.7,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.6,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.4,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.6,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.595,
+        "aftertaste.bittersweet": 0.6,
+        "aftertaste.hopeful": 0.68,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.4,
+        "pace": 0.24,
+        "register.intimate": 0.855,
+        "register.meditative": 0.68,
+        "register.quiet": 0.6,
+        "texture.dreamlike": 0.525,
+        "texture.hazy": 0.68,
+        "texture.spare": 0.39,
+        "tone.earnest": 0.525,
+        "tone.melancholy": 0.68,
+        "tone.warm": 0.6,
+        "tone.wistful": 0.765
+      },
+      "story": {
+        "arc.coming-of-age": 0.68,
+        "arc.transformation": 0.855,
+        "bond.found-family": 0.855,
+        "bond.friendship": 0.68,
+        "cast.ensemble": 0.68,
+        "cast.morally-grey": 0.3,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.48,
+        "conflict.vs-self": 0.931,
+        "conflict.vs-society": 0.42,
+        "ending.resolved": 0.765,
+        "frame.adventure": 0.12,
+        "frame.realism": 0.68,
+        "frame.slice-of-life": 0.931,
+        "momentum.episodic-arcs": 0.68,
+        "momentum.suspenseful": 0.2,
+        "momentum.unpredictable": 0.3,
+        "moral-complexity": 0.32,
+        "setting.contemporary": 0.931,
+        "setting.school": 0.42,
+        "setting.urban": 0.68,
+        "stakes.personal": 0.855,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.42,
+        "theme.belonging": 0.68,
+        "theme.family": 0.765,
+        "theme.growing-up": 0.6,
+        "theme.loneliness": 0.855,
+        "world.intimate-scale": 0.855,
+        "world.lived-in": 0.765
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-mob-psycho-100": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.55
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.energized",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.45,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.75,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "hook.immediate",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 888
+    },
+    "premise": "A socially awkward middle schooler with immense psychic powers strives to live a normal life while navigating friendships, school, and the expectations of those who seek to exploit his abilities.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.comedy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.fantasy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.18,
+        "aftertaste.energized": 0.6,
+        "aftertaste.hopeful": 0.765,
+        "aftertaste.lingering": 0.525,
+        "intensity": 0.6,
+        "pace": 0.68,
+        "register.meditative": 0.33,
+        "register.propulsive": 0.68,
+        "register.quiet": 0.39,
+        "texture.dense": 0.6,
+        "texture.gritty": 0.39,
+        "texture.polished": 0.525,
+        "tone.earnest": 0.6,
+        "tone.playful": 0.855,
+        "tone.warm": 0.68,
+        "tone.wry": 0.525
+      },
+      "story": {
+        "arc.coming-of-age": 0.68,
+        "arc.transformation": 0.765,
+        "bond.found-family": 0.68,
+        "bond.friendship": 0.765,
+        "cast.ensemble": 0.68,
+        "cast.single-protagonist": 0.855,
+        "cast.underdog": 0.6,
+        "complexity": 0.39,
+        "conflict.vs-self": 0.855,
+        "conflict.vs-society": 0.525,
+        "ending.resolved": 0.68,
+        "frame.adventure": 0.6,
+        "frame.comedy": 0.9,
+        "frame.fantasy": 0.9,
+        "momentum.suspenseful": 0.455,
+        "momentum.twisty": 0.525,
+        "momentum.unpredictable": 0.68,
+        "moral-complexity": 0.275,
+        "setting.contemporary": 0.855,
+        "setting.school": 0.765,
+        "setting.urban": 0.525,
+        "stakes.personal": 0.765,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.39,
+        "theme.belonging": 0.765,
+        "theme.friendship": 0.68,
+        "theme.growing-up": 0.6,
+        "theme.identity": 0.855,
+        "world.lived-in": 0.6,
+        "world.systemic": 0.39
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-monster": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.75,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.98,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 1776
+    },
+    "premise": "A brilliant neurosurgeon's life unravels after he saves a young boy who later becomes a serial killer, forcing him to confront the consequences of his choice while pursuing the truth across Europe.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.humanitys-limits",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.obsession",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.justice",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.mystery",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.crime",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.9
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6,
+        "aftertaste.haunting": 0.765,
+        "aftertaste.lingering": 0.855,
+        "aftertaste.unsettling": 0.68,
+        "intensity": 0.765,
+        "pace": 0.39,
+        "register.cerebral": 0.855,
+        "register.meditative": 0.68,
+        "register.propulsive": 0.765,
+        "texture.dense": 0.765,
+        "texture.gritty": 0.68,
+        "texture.polished": 0.525,
+        "tone.bleak": 0.855,
+        "tone.earnest": 0.68,
+        "tone.melancholy": 0.6,
+        "tone.wry": 0.525
+      },
+      "story": {
+        "arc.quest": 0.68,
+        "arc.transformation": 0.765,
+        "bond.found-family": 0.39,
+        "bond.mentor-student": 0.525,
+        "cast.morally-grey": 0.68,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.855,
+        "conflict.vs-person": 0.765,
+        "conflict.vs-self": 0.855,
+        "ending.resolved": 0.765,
+        "frame.crime": 0.68,
+        "frame.mystery": 0.9,
+        "frame.thriller": 0.931,
+        "momentum.suspenseful": 0.931,
+        "momentum.twisty": 0.765,
+        "momentum.unpredictable": 0.855,
+        "moral-complexity": 0.855,
+        "setting.contemporary": 0.855,
+        "setting.urban": 0.765,
+        "setting.workplace": 0.525,
+        "stakes.personal": 0.855,
+        "structure.nonlinear": 0.68,
+        "structure.unreliable-narrator": 0.525,
+        "theme.humanitys-limits": 0.765,
+        "theme.identity": 0.855,
+        "theme.justice": 0.6,
+        "theme.obsession": 0.68,
+        "world.lived-in": 0.6,
+        "world.systemic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-mushishi": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.2
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.85,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.85,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 1104
+    },
+    "premise": "A wandering researcher studies ethereal life forms called Mushi, helping people affected by their subtle presence while seeking to understand the quiet boundaries between the seen and unseen world.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.nature",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.wonder",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-the-unknown",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "cast.every-character-a-lead",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.mythic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.fantasy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.mystery",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.slice-of-life",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.8,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.open",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.2
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.32,
+        "aftertaste.comforting": 0.6,
+        "aftertaste.haunting": 0.525,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.24,
+        "pace": 0.16,
+        "register.intimate": 0.56,
+        "register.meditative": 0.855,
+        "register.quiet": 0.765,
+        "texture.dreamlike": 0.6,
+        "texture.hazy": 0.68,
+        "texture.spare": 0.56,
+        "tone.earnest": 0.6,
+        "tone.melancholy": 0.42,
+        "tone.serene": 0.765,
+        "tone.wistful": 0.68
+      },
+      "story": {
+        "arc.quest": 0.595,
+        "arc.transformation": 0.48,
+        "cast.every-character-a-lead": 0.45,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.4,
+        "conflict.vs-self": 0.35,
+        "conflict.vs-the-unknown": 0.68,
+        "ending.open": 0.68,
+        "frame.fantasy": 0.9,
+        "frame.mystery": 0.9,
+        "frame.slice-of-life": 0.9,
+        "momentum.episodic-arcs": 0.855,
+        "momentum.unpredictable": 0.45,
+        "moral-complexity": 0.16,
+        "setting.historical": 0.56,
+        "setting.rural": 0.68,
+        "setting.timeless": 0.6,
+        "stakes.personal": 0.56,
+        "structure.linear": 0.56,
+        "structure.multiple-pov": 0.45,
+        "theme.belonging": 0.595,
+        "theme.loneliness": 0.72,
+        "theme.nature": 0.855,
+        "theme.wonder": 0.765,
+        "world.lived-in": 0.765,
+        "world.mythic": 0.56
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-neon-genesis-evangelion": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.8,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.7,
+          "key": "filler.moderate",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 624
+    },
+    "premise": "A teenage boy is recruited to pilot a giant bio-mechanical weapon to defend humanity against mysterious beings, while grappling with isolation, trauma, and the expectations placed upon him by distant adults and shadowy organizations.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.expectation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.humanitys-limits",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "cast.antihero",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.6,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.hostile",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.near-future",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "setting.wartime",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.sci-fi",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.mystery",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.world",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.85
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.81,
+        "aftertaste.haunting": 0.7225,
+        "aftertaste.lingering": 0.81,
+        "aftertaste.unsettling": 0.64,
+        "intensity": 0.7225,
+        "pace": 0.25,
+        "register.cerebral": 0.5625,
+        "register.intimate": 0.64,
+        "register.meditative": 0.7225,
+        "texture.dense": 0.7225,
+        "texture.dreamlike": 0.5625,
+        "texture.hazy": 0.49,
+        "tone.bleak": 0.81,
+        "tone.earnest": 0.5625,
+        "tone.melancholy": 0.49,
+        "tone.wistful": 0.64
+      },
+      "story": {
+        "arc.coming-of-age": 0.5625,
+        "arc.transformation": 0.64,
+        "bond.found-family": 0.36,
+        "bond.mentor-student": 0.25,
+        "cast.antihero": 0.49,
+        "cast.ensemble": 0.64,
+        "cast.morally-grey": 0.5625,
+        "complexity": 0.81,
+        "conflict.vs-self": 0.9025,
+        "conflict.vs-system": 0.7225,
+        "ending.ambiguous": 0.9025,
+        "frame.mystery": 0.5625,
+        "frame.sci-fi": 0.9025,
+        "frame.thriller": 0.64,
+        "momentum.suspenseful": 0.7225,
+        "momentum.twisty": 0.5625,
+        "momentum.unpredictable": 0.64,
+        "moral-complexity": 0.7225,
+        "setting.near-future": 0.81,
+        "setting.urban": 0.7225,
+        "setting.wartime": 0.64,
+        "stakes.world": 0.81,
+        "structure.nonlinear": 0.49,
+        "structure.unreliable-narrator": 0.4225,
+        "theme.expectation": 0.7225,
+        "theme.humanitys-limits": 0.64,
+        "theme.identity": 0.81,
+        "theme.loneliness": 0.9025,
+        "world.hostile": 0.7225,
+        "world.systemic": 0.81
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-perfect-blue": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "form": {
+      "band": 0,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.95,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 81
+    },
+    "premise": "A pop idol leaves her music career to pursue acting, only to find her reality unraveling as she is stalked by an obsessive fan and haunted by visions of her former self.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.obsession",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.madness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.descent",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.7,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "world.hostile",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.thriller",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.horror",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.mystery",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6,
+        "aftertaste.haunting": 0.855,
+        "aftertaste.lingering": 0.68,
+        "aftertaste.unsettling": 0.765,
+        "intensity": 0.765,
+        "pace": 0.525,
+        "register.cerebral": 0.6,
+        "register.intimate": 0.525,
+        "register.propulsive": 0.68,
+        "texture.dense": 0.68,
+        "texture.dreamlike": 0.6,
+        "texture.gritty": 0.525,
+        "tone.bleak": 0.765,
+        "tone.eerie": 0.68,
+        "tone.melancholy": 0.455,
+        "tone.wistful": 0.525
+      },
+      "story": {
+        "arc.descent": 0.6,
+        "arc.transformation": 0.68,
+        "cast.morally-grey": 0.42,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.68,
+        "conflict.vs-person": 0.68,
+        "conflict.vs-self": 0.855,
+        "ending.resolved": 0.765,
+        "frame.horror": 0.68,
+        "frame.mystery": 0.6,
+        "frame.thriller": 0.9,
+        "momentum.suspenseful": 0.855,
+        "momentum.twisty": 0.68,
+        "momentum.unpredictable": 0.765,
+        "moral-complexity": 0.39,
+        "setting.contemporary": 0.855,
+        "setting.urban": 0.765,
+        "setting.workplace": 0.525,
+        "stakes.personal": 0.931,
+        "structure.nonlinear": 0.765,
+        "structure.unreliable-narrator": 0.68,
+        "theme.identity": 0.855,
+        "theme.loneliness": 0.6,
+        "theme.madness": 0.68,
+        "theme.obsession": 0.765,
+        "world.hostile": 0.455,
+        "world.systemic": 0.525
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-princess-mononoke": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.fierce",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.epic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 0,
+      "craft": [
+        {
+          "confidence": 0.98,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.85,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.75,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.7
+        }
+      ],
+      "minutes_to_finish": 134
+    },
+    "premise": "A young prince cursed by a demonized boar god journeys west to find a cure, becoming entangled in a war between forest spirits and humans exploiting the land for iron.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.nature",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.war",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.destiny-vs-choice",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-nature",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.mythic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.adventure",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.65,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.world",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.8
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6,
+        "aftertaste.haunting": 0.68,
+        "aftertaste.hopeful": 0.525,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.765,
+        "pace": 0.39,
+        "register.epic": 0.855,
+        "register.meditative": 0.6,
+        "register.quiet": 0.39,
+        "texture.dense": 0.765,
+        "texture.hazy": 0.455,
+        "texture.ornate": 0.68,
+        "tone.earnest": 0.525,
+        "tone.fierce": 0.68,
+        "tone.melancholy": 0.6,
+        "tone.wistful": 0.765
+      },
+      "story": {
+        "arc.quest": 0.68,
+        "arc.transformation": 0.765,
+        "bond.found-family": 0.525,
+        "bond.mentor-student": 0.455,
+        "cast.ensemble": 0.68,
+        "cast.morally-grey": 0.6,
+        "complexity": 0.68,
+        "conflict.vs-nature": 0.855,
+        "conflict.vs-society": 0.765,
+        "ending.bittersweet": 0.765,
+        "frame.adventure": 0.9,
+        "frame.fantasy": 0.931,
+        "frame.realism": 0.39,
+        "momentum.episodic-arcs": 0.39,
+        "momentum.suspenseful": 0.68,
+        "momentum.unpredictable": 0.525,
+        "moral-complexity": 0.765,
+        "setting.historical": 0.68,
+        "setting.rural": 0.6,
+        "setting.secondary-world": 0.525,
+        "stakes.world": 0.855,
+        "structure.linear": 0.68,
+        "theme.belonging": 0.68,
+        "theme.destiny-vs-choice": 0.6,
+        "theme.nature": 0.931,
+        "theme.war": 0.855,
+        "world.lived-in": 0.765,
+        "world.mythic": 0.855
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-spy-x-family": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.6,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.4,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.75,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.immediate",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 888
+    },
+    "premise": "A spy, an assassin, and a telepath form a fake family to complete a mission, unaware of each other's true identities.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.truth-and-lies",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.characters-changing-each-other",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.every-character-a-lead",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.comedy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.open",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.12,
+        "aftertaste.comforting": 0.68,
+        "aftertaste.hopeful": 0.68,
+        "aftertaste.lingering": 0.525,
+        "intensity": 0.42,
+        "pace": 0.525,
+        "register.intimate": 0.68,
+        "register.meditative": 0.42,
+        "register.propulsive": 0.525,
+        "texture.dense": 0.525,
+        "texture.hazy": 0.3,
+        "texture.polished": 0.68,
+        "tone.earnest": 0.56,
+        "tone.playful": 0.68,
+        "tone.warm": 0.855,
+        "tone.wistful": 0.42
+      },
+      "story": {
+        "arc.characters-changing-each-other": 0.68,
+        "arc.transformation": 0.56,
+        "bond.found-family": 0.931,
+        "bond.friendship": 0.56,
+        "cast.ensemble": 0.855,
+        "cast.every-character-a-lead": 0.68,
+        "complexity": 0.39,
+        "conflict.vs-self": 0.42,
+        "conflict.vs-society": 0.3,
+        "ending.open": 0.68,
+        "frame.adventure": 0.56,
+        "frame.comedy": 0.9,
+        "frame.slice-of-life": 0.68,
+        "momentum.episodic-arcs": 0.68,
+        "momentum.twisty": 0.39,
+        "momentum.unpredictable": 0.525,
+        "moral-complexity": 0.275,
+        "setting.contemporary": 0.855,
+        "setting.school": 0.525,
+        "setting.urban": 0.68,
+        "stakes.personal": 0.68,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.525,
+        "theme.belonging": 0.72,
+        "theme.family": 0.855,
+        "theme.identity": 0.595,
+        "theme.truth-and-lies": 0.72,
+        "world.lived-in": 0.68,
+        "world.systemic": 0.525
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "anime-your-name": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.65
+      }
+    ],
+    "form": {
+      "band": 0,
+      "craft": [
+        {
+          "confidence": 0.98,
+          "key": "animation.detailed",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.95,
+          "key": "filler.light",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "hook.immediate",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 106
+    },
+    "premise": "Two teenagers begin inexplicably swapping bodies, leading to a connection that transcends time and distance as they seek to meet in person.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.destiny-vs-choice",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-fate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.romance",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.4875,
+        "aftertaste.haunting": 0.6,
+        "aftertaste.hopeful": 0.68,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.6375,
+        "pace": 0.56,
+        "register.intimate": 0.68,
+        "register.meditative": 0.525,
+        "register.propulsive": 0.6,
+        "texture.dreamlike": 0.855,
+        "texture.ornate": 0.525,
+        "texture.polished": 0.68,
+        "tone.melancholy": 0.525,
+        "tone.playful": 0.6,
+        "tone.warm": 0.765,
+        "tone.wistful": 0.68
+      },
+      "story": {
+        "arc.quest": 0.68,
+        "arc.transformation": 0.765,
+        "bond.found-family": 0.525,
+        "bond.friendship": 0.455,
+        "cast.duo": 0.931,
+        "complexity": 0.56,
+        "conflict.vs-fate": 0.855,
+        "conflict.vs-self": 0.525,
+        "ending.resolved": 0.765,
+        "frame.adventure": 0.525,
+        "frame.fantasy": 0.931,
+        "frame.romance": 0.9,
+        "momentum.suspenseful": 0.68,
+        "momentum.twisty": 0.525,
+        "momentum.unpredictable": 0.6,
+        "moral-complexity": 0.2,
+        "setting.contemporary": 0.855,
+        "setting.rural": 0.525,
+        "setting.urban": 0.68,
+        "stakes.personal": 0.765,
+        "structure.nonlinear": 0.765,
+        "structure.unreliable-narrator": 0.39,
+        "theme.destiny-vs-choice": 0.68,
+        "theme.growing-up": 0.6,
+        "theme.love": 0.855,
+        "theme.memory": 0.765,
+        "world.intimate-scale": 0.6,
+        "world.lived-in": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-1984": {
+    "feeling": [
+      {
+        "confidence": 0.98,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.restless",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.8,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.9,
+          "key": "difficulty.demanding",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "perspective.third",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 524.8000000000001
+    },
+    "premise": "In a totalitarian state where surveillance is omnipresent and truth is manipulated, a low-ranking party member begins to question the regime and seeks forbidden connection and rebellion.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.truth-and-lies",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.freedom",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.power",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.isolation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.descent",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.98,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.hostile",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.near-future",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "setting.wartime",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.sci-fi",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.satire",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.world",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.98,
+        "key": "ending.tragic",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.72,
+        "aftertaste.haunting": 0.931,
+        "aftertaste.lingering": 0.765,
+        "aftertaste.unsettling": 0.855,
+        "intensity": 0.765,
+        "pace": 0.4,
+        "register.cerebral": 0.855,
+        "register.meditative": 0.45,
+        "register.quiet": 0.595,
+        "texture.dense": 0.765,
+        "texture.gritty": 0.72,
+        "texture.spare": 0.56,
+        "tone.bleak": 0.931,
+        "tone.earnest": 0.72,
+        "tone.restless": 0.595,
+        "tone.wistful": 0.45
+      },
+      "story": {
+        "arc.descent": 0.595,
+        "arc.transformation": 0.72,
+        "bond.found-family": 0.35,
+        "bond.friendship": 0.48,
+        "cast.morally-grey": 0.48,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.72,
+        "conflict.vs-self": 0.595,
+        "conflict.vs-system": 0.931,
+        "ending.tragic": 0.931,
+        "frame.realism": 0.68,
+        "frame.satire": 0.56,
+        "frame.sci-fi": 0.9,
+        "momentum.suspenseful": 0.72,
+        "momentum.unpredictable": 0.45,
+        "moral-complexity": 0.595,
+        "setting.near-future": 0.68,
+        "setting.urban": 0.855,
+        "setting.wartime": 0.56,
+        "stakes.world": 0.855,
+        "structure.linear": 0.855,
+        "theme.freedom": 0.855,
+        "theme.isolation": 0.72,
+        "theme.power": 0.855,
+        "theme.truth-and-lies": 0.931,
+        "world.hostile": 0.855,
+        "world.systemic": 0.931
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-a-little-life": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.confessional",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.devastating",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "chapter-length.long",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.85,
+          "key": "difficulty.demanding",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.85,
+          "key": "perspective.third",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.9,
+          "key": "prose.ornate",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.8,
+          "key": "rereadability.low",
+          "source": "ai",
+          "weight": 0.75
+        }
+      ],
+      "minutes_to_finish": 1152
+    },
+    "premise": "Four college friends move to New York and build lives together, their bond tested by the enduring trauma of one among them.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.grief",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.descent",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.7,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.tragic",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.9025,
+        "aftertaste.devastating": 0.81,
+        "aftertaste.haunting": 0.9025,
+        "aftertaste.unsettling": 0.765,
+        "intensity": 0.855,
+        "pace": 0.34,
+        "register.confessional": 0.765,
+        "register.intimate": 0.855,
+        "register.meditative": 0.68,
+        "texture.dense": 0.855,
+        "texture.hazy": 0.39,
+        "texture.raw": 0.765,
+        "tone.bleak": 0.9025,
+        "tone.earnest": 0.765,
+        "tone.melancholy": 0.81,
+        "tone.wistful": 0.68
+      },
+      "story": {
+        "arc.descent": 0.765,
+        "arc.transformation": 0.56,
+        "bond.found-family": 0.855,
+        "bond.friendship": 0.9025,
+        "cast.ensemble": 0.765,
+        "cast.morally-grey": 0.42,
+        "cast.single-protagonist": 0.56,
+        "complexity": 0.68,
+        "conflict.vs-person": 0.68,
+        "conflict.vs-self": 0.855,
+        "ending.tragic": 0.9025,
+        "frame.realism": 0.9025,
+        "momentum.episodic-arcs": 0.39,
+        "momentum.unpredictable": 0.525,
+        "moral-complexity": 0.56,
+        "setting.contemporary": 0.855,
+        "setting.urban": 0.765,
+        "setting.workplace": 0.42,
+        "stakes.personal": 0.9025,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.525,
+        "theme.friendship": 0.855,
+        "theme.grief": 0.9025,
+        "theme.identity": 0.6375,
+        "theme.loneliness": 0.765,
+        "world.lived-in": 0.765,
+        "world.systemic": 0.42
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-beloved": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.8,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.9,
+          "key": "difficulty.demanding",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.9,
+          "key": "perspective.multiple",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.95,
+          "key": "prose.ornate",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.95,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 518.4
+    },
+    "premise": "A woman haunted by the ghost of her dead daughter confronts the trauma of slavery and the cost of freedom in post-Civil War Ohio.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.grief",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.freedom",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "bond.parent-child",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.mystery",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.855,
+        "aftertaste.bittersweet": 0.68,
+        "aftertaste.haunting": 0.931,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.765,
+        "pace": 0.34,
+        "register.intimate": 0.765,
+        "register.meditative": 0.855,
+        "register.quiet": 0.68,
+        "texture.dense": 0.855,
+        "texture.hazy": 0.525,
+        "texture.ornate": 0.68,
+        "tone.earnest": 0.6,
+        "tone.eerie": 0.68,
+        "tone.melancholy": 0.855,
+        "tone.wistful": 0.765
+      },
+      "story": {
+        "arc.coming-of-age": 0.525,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.525,
+        "bond.parent-child": 0.931,
+        "cast.morally-grey": 0.68,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.765,
+        "conflict.vs-self": 0.855,
+        "conflict.vs-society": 0.765,
+        "ending.bittersweet": 0.765,
+        "frame.mystery": 0.525,
+        "frame.realism": 0.855,
+        "momentum.episodic-arcs": 0.525,
+        "momentum.unpredictable": 0.68,
+        "moral-complexity": 0.855,
+        "setting.historical": 0.931,
+        "setting.rural": 0.68,
+        "setting.workplace": 0.42,
+        "stakes.personal": 0.855,
+        "structure.nonlinear": 0.855,
+        "structure.unreliable-narrator": 0.525,
+        "theme.freedom": 0.68,
+        "theme.grief": 0.855,
+        "theme.identity": 0.765,
+        "theme.memory": 0.931,
+        "world.lived-in": 0.765,
+        "world.systemic": 0.855
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-crying-in-h-mart": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.tender",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.6,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.75,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.85,
+          "key": "difficulty.easy",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.98,
+          "key": "perspective.first",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.75,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.75,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.7
+        }
+      ],
+      "minutes_to_finish": 409.6
+    },
+    "premise": "A daughter reflects on her relationship with her Korean mother through food, memory, and grief after her mother's cancer diagnosis and death.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.grief",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.88,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.82,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.98,
+        "key": "bond.parent-child",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.55,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.6,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.765,
+        "aftertaste.bittersweet": 0.6,
+        "aftertaste.haunting": 0.525,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.56,
+        "pace": 0.3,
+        "register.intimate": 0.855,
+        "register.meditative": 0.525,
+        "register.quiet": 0.68,
+        "texture.hazy": 0.39,
+        "texture.raw": 0.68,
+        "texture.spare": 0.525,
+        "tone.earnest": 0.6,
+        "tone.melancholy": 0.765,
+        "tone.tender": 0.68,
+        "tone.wistful": 0.855
+      },
+      "story": {
+        "arc.coming-of-age": 0.4875,
+        "arc.transformation": 0.56,
+        "bond.parent-child": 0.931,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.3,
+        "conflict.vs-person": 0.42,
+        "conflict.vs-self": 0.68,
+        "ending.bittersweet": 0.765,
+        "frame.realism": 0.855,
+        "frame.slice-of-life": 0.68,
+        "momentum.episodic-arcs": 0.275,
+        "momentum.unpredictable": 0.39,
+        "moral-complexity": 0.2,
+        "setting.contemporary": 0.68,
+        "setting.urban": 0.39,
+        "setting.workplace": 0.275,
+        "stakes.personal": 0.855,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.275,
+        "theme.family": 0.704,
+        "theme.grief": 0.931,
+        "theme.identity": 0.615,
+        "theme.memory": 0.765,
+        "world.intimate-scale": 0.765,
+        "world.lived-in": 0.525
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-dune": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.fierce",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.epic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.8,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.9,
+          "key": "difficulty.demanding",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.95,
+          "key": "perspective.third",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "prose.ornate",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.85,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 659.2
+    },
+    "premise": "A young nobleman's family is betrayed and destroyed on a desert planet, forcing him to survive among its fierce inhabitants and fulfill a destiny tied to the planet's most valuable resource.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.power",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.destiny-vs-choice",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.exploitation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.survival",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.98,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.far-future",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.wartime",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.sci-fi",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.world",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.85
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.39,
+        "aftertaste.haunting": 0.68,
+        "aftertaste.hopeful": 0.39,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.68,
+        "pace": 0.275,
+        "register.cerebral": 0.6,
+        "register.epic": 0.855,
+        "register.meditative": 0.68,
+        "texture.dense": 0.855,
+        "texture.hazy": 0.39,
+        "texture.ornate": 0.68,
+        "tone.earnest": 0.765,
+        "tone.fierce": 0.6,
+        "tone.wistful": 0.39,
+        "tone.wry": 0.525
+      },
+      "story": {
+        "arc.coming-of-age": 0.68,
+        "arc.transformation": 0.855,
+        "bond.found-family": 0.68,
+        "bond.mentor-student": 0.6,
+        "cast.ensemble": 0.525,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.855,
+        "conflict.vs-self": 0.525,
+        "conflict.vs-system": 0.855,
+        "ending.resolved": 0.765,
+        "frame.adventure": 0.68,
+        "frame.sci-fi": 0.931,
+        "frame.thriller": 0.525,
+        "momentum.suspenseful": 0.765,
+        "momentum.twisty": 0.39,
+        "momentum.unpredictable": 0.6,
+        "moral-complexity": 0.765,
+        "setting.far-future": 0.855,
+        "setting.secondary-world": 0.931,
+        "setting.wartime": 0.39,
+        "stakes.world": 0.855,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.525,
+        "theme.destiny-vs-choice": 0.765,
+        "theme.exploitation": 0.68,
+        "theme.power": 0.855,
+        "theme.survival": 0.6,
+        "world.lived-in": 0.855,
+        "world.systemic": 0.931
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-educated": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.confessional",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.75,
+          "key": "difficulty.moderate",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.98,
+          "key": "perspective.first",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.75,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.85,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 534.4
+    },
+    "premise": "A woman raised in a survivalist family in rural Idaho leaves home to pursue education, confronting the conflict between her upbringing and her growing understanding of the wider world.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.truth-and-lies",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.freedom",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.7,
+        "key": "cast.every-character-a-lead",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.parent-child",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.siblings",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6,
+        "aftertaste.haunting": 0.525,
+        "aftertaste.hopeful": 0.39,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.56,
+        "pace": 0.4,
+        "register.confessional": 0.68,
+        "register.intimate": 0.855,
+        "register.meditative": 0.525,
+        "texture.dense": 0.39,
+        "texture.polished": 0.275,
+        "texture.raw": 0.765,
+        "tone.earnest": 0.765,
+        "tone.melancholy": 0.525,
+        "tone.wistful": 0.68,
+        "tone.wry": 0.39
+      },
+      "story": {
+        "arc.coming-of-age": 0.765,
+        "arc.transformation": 0.855,
+        "bond.parent-child": 0.855,
+        "bond.siblings": 0.525,
+        "cast.every-character-a-lead": 0.42,
+        "cast.single-protagonist": 0.931,
+        "complexity": 0.56,
+        "conflict.vs-person": 0.68,
+        "conflict.vs-self": 0.765,
+        "ending.bittersweet": 0.765,
+        "frame.realism": 0.931,
+        "momentum.suspenseful": 0.39,
+        "momentum.unpredictable": 0.275,
+        "moral-complexity": 0.68,
+        "setting.contemporary": 0.68,
+        "setting.rural": 0.855,
+        "setting.school": 0.525,
+        "stakes.personal": 0.855,
+        "structure.linear": 0.765,
+        "structure.unreliable-narrator": 0.525,
+        "theme.family": 0.765,
+        "theme.freedom": 0.6,
+        "theme.identity": 0.855,
+        "theme.truth-and-lies": 0.68,
+        "world.intimate-scale": 0.68,
+        "world.systemic": 0.525
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-harry-potter-1": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.9,
+          "key": "difficulty.easy",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.95,
+          "key": "perspective.third",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.75,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.95,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 356.8
+    },
+    "premise": "An orphaned boy discovers he is a wizard and begins his first year at a magical school, where he uncovers a hidden plot involving a powerful artifact.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.mythic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.mystery",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.world",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.55,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.4,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.2,
+        "aftertaste.comforting": 0.6,
+        "aftertaste.hopeful": 0.765,
+        "aftertaste.lingering": 0.68,
+        "intensity": 0.42,
+        "pace": 0.525,
+        "register.intimate": 0.525,
+        "register.meditative": 0.39,
+        "texture.dense": 0.525,
+        "texture.ornate": 0.39,
+        "tone.earnest": 0.6,
+        "tone.playful": 0.68,
+        "tone.warm": 0.765,
+        "tone.wistful": 0.525
+      },
+      "story": {
+        "arc.coming-of-age": 0.855,
+        "arc.quest": 0.68,
+        "bond.found-family": 0.68,
+        "bond.friendship": 0.855,
+        "cast.ensemble": 0.765,
+        "cast.single-protagonist": 0.855,
+        "cast.underdog": 0.68,
+        "complexity": 0.275,
+        "conflict.vs-person": 0.68,
+        "conflict.vs-self": 0.56,
+        "ending.resolved": 0.855,
+        "frame.adventure": 0.765,
+        "frame.fantasy": 0.931,
+        "frame.mystery": 0.56,
+        "momentum.suspenseful": 0.6,
+        "momentum.unpredictable": 0.42,
+        "moral-complexity": 0.12,
+        "setting.contemporary": 0.42,
+        "setting.school": 0.855,
+        "setting.secondary-world": 0.931,
+        "stakes.world": 0.68,
+        "structure.linear": 0.765,
+        "theme.belonging": 0.765,
+        "theme.friendship": 0.855,
+        "theme.growing-up": 0.72,
+        "theme.love": 0.6375,
+        "world.lived-in": 0.855,
+        "world.mythic": 0.56
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-kafka-on-the-shore": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.8,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.85,
+          "key": "difficulty.moderate",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.9,
+          "key": "perspective.multiple",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.8,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.9,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 808
+    },
+    "premise": "A teenage boy runs away from home to escape an oedipal prophecy, while an elderly man searches for lost cats and confronts a mysterious wartime incident, their paths converging in a town where reality and myth intertwine.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.destiny-vs-choice",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-fate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.mythic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.fantasy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6375,
+        "aftertaste.bittersweet": 0.68,
+        "aftertaste.haunting": 0.765,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.595,
+        "pace": 0.4,
+        "register.intimate": 0.68,
+        "register.meditative": 0.765,
+        "register.quiet": 0.6,
+        "texture.dreamlike": 0.855,
+        "texture.hazy": 0.68,
+        "texture.ornate": 0.525,
+        "tone.earnest": 0.525,
+        "tone.melancholy": 0.68,
+        "tone.wistful": 0.765,
+        "tone.wry": 0.6
+      },
+      "story": {
+        "arc.coming-of-age": 0.68,
+        "arc.transformation": 0.765,
+        "bond.found-family": 0.525,
+        "bond.mentor-student": 0.6,
+        "cast.duo": 0.765,
+        "cast.single-protagonist": 0.68,
+        "complexity": 0.765,
+        "conflict.vs-fate": 0.68,
+        "conflict.vs-self": 0.855,
+        "ending.ambiguous": 0.765,
+        "frame.adventure": 0.525,
+        "frame.fantasy": 0.9,
+        "frame.realism": 0.68,
+        "momentum.suspenseful": 0.525,
+        "momentum.twisty": 0.6,
+        "momentum.unpredictable": 0.68,
+        "moral-complexity": 0.48,
+        "setting.contemporary": 0.765,
+        "setting.rural": 0.455,
+        "setting.secondary-world": 0.525,
+        "stakes.personal": 0.765,
+        "structure.multiple-pov": 0.68,
+        "structure.nonlinear": 0.765,
+        "theme.destiny-vs-choice": 0.6,
+        "theme.identity": 0.855,
+        "theme.loneliness": 0.68,
+        "theme.memory": 0.765,
+        "world.lived-in": 0.68,
+        "world.mythic": 0.855
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-klara-and-the-sun": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.75,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.8,
+          "key": "difficulty.moderate",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.95,
+          "key": "perspective.first",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.85,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 484.8
+    },
+    "premise": "An artificial friend with exceptional observational abilities narrates her experiences living with a sick teenager and her family, exploring what it means to love and be loved in a world where human value is increasingly measured.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.humanitys-limits",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.7,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.near-future",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.sci-fi",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.65
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.52,
+        "aftertaste.haunting": 0.6,
+        "aftertaste.hopeful": 0.525,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.4,
+        "pace": 0.32,
+        "register.intimate": 0.765,
+        "register.meditative": 0.68,
+        "register.quiet": 0.6,
+        "texture.hazy": 0.42,
+        "texture.polished": 0.525,
+        "texture.spare": 0.68,
+        "tone.earnest": 0.6,
+        "tone.melancholy": 0.68,
+        "tone.serene": 0.42,
+        "tone.wistful": 0.765
+      },
+      "story": {
+        "arc.quest": 0.6,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.56,
+        "bond.friendship": 0.68,
+        "cast.morally-grey": 0.42,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.52,
+        "conflict.vs-self": 0.56,
+        "conflict.vs-society": 0.68,
+        "ending.bittersweet": 0.765,
+        "frame.realism": 0.525,
+        "frame.sci-fi": 0.9,
+        "momentum.episodic-arcs": 0.3,
+        "momentum.unpredictable": 0.42,
+        "moral-complexity": 0.56,
+        "setting.contemporary": 0.42,
+        "setting.near-future": 0.855,
+        "setting.urban": 0.525,
+        "stakes.personal": 0.765,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.525,
+        "theme.belonging": 0.6375,
+        "theme.humanitys-limits": 0.765,
+        "theme.loneliness": 0.72,
+        "theme.love": 0.855,
+        "world.intimate-scale": 0.6,
+        "world.systemic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-never-let-me-go": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.8,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.75,
+          "key": "difficulty.moderate",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.95,
+          "key": "perspective.first",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.85,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 460.8
+    },
+    "premise": "At a secluded English boarding school, students grow up under a quiet, unsettling routine, gradually learning the truth about their purpose and the fragile bonds that define their brief lives.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.sci-fi",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6375,
+        "aftertaste.bittersweet": 0.6,
+        "aftertaste.haunting": 0.68,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.48,
+        "pace": 0.32,
+        "register.intimate": 0.765,
+        "register.meditative": 0.68,
+        "register.quiet": 0.6,
+        "texture.hazy": 0.455,
+        "texture.polished": 0.525,
+        "texture.spare": 0.68,
+        "tone.earnest": 0.6,
+        "tone.melancholy": 0.68,
+        "tone.wistful": 0.765,
+        "tone.wry": 0.39
+      },
+      "story": {
+        "arc.coming-of-age": 0.6,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.68,
+        "bond.friendship": 0.765,
+        "cast.ensemble": 0.525,
+        "cast.single-protagonist": 0.68,
+        "complexity": 0.525,
+        "conflict.vs-self": 0.765,
+        "conflict.vs-society": 0.68,
+        "ending.bittersweet": 0.765,
+        "frame.realism": 0.68,
+        "frame.sci-fi": 0.9,
+        "momentum.episodic-arcs": 0.275,
+        "momentum.unpredictable": 0.39,
+        "moral-complexity": 0.68,
+        "setting.historical": 0.525,
+        "setting.rural": 0.39,
+        "setting.school": 0.765,
+        "stakes.personal": 0.855,
+        "structure.linear": 0.765,
+        "structure.unreliable-narrator": 0.525,
+        "theme.belonging": 0.6,
+        "theme.identity": 0.855,
+        "theme.love": 0.68,
+        "theme.memory": 0.765,
+        "world.intimate-scale": 0.6,
+        "world.systemic": 0.765
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-normal-people": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.75,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.8,
+          "key": "difficulty.moderate",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.9,
+          "key": "perspective.multiple",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.95,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.85,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 425.6
+    },
+    "premise": "A quiet story about two people navigating love, class, and identity across years of on-again, off-again connection.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.class",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.every-character-a-lead",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.romance",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.56,
+        "aftertaste.bittersweet": 0.68,
+        "aftertaste.hopeful": 0.39,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.48,
+        "pace": 0.4,
+        "register.intimate": 0.855,
+        "register.meditative": 0.525,
+        "register.quiet": 0.765,
+        "texture.dense": 0.39,
+        "texture.raw": 0.525,
+        "texture.spare": 0.855,
+        "tone.earnest": 0.765,
+        "tone.melancholy": 0.6,
+        "tone.wistful": 0.68,
+        "tone.wry": 0.525
+      },
+      "story": {
+        "arc.coming-of-age": 0.6,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.42,
+        "bond.friendship": 0.525,
+        "cast.duo": 0.931,
+        "cast.every-character-a-lead": 0.68,
+        "complexity": 0.4,
+        "conflict.vs-self": 0.68,
+        "conflict.vs-society": 0.6,
+        "ending.ambiguous": 0.68,
+        "frame.realism": 0.931,
+        "frame.romance": 0.9,
+        "momentum.episodic-arcs": 0.525,
+        "momentum.unpredictable": 0.39,
+        "moral-complexity": 0.48,
+        "setting.contemporary": 0.855,
+        "setting.school": 0.39,
+        "setting.urban": 0.525,
+        "stakes.personal": 0.765,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.525,
+        "theme.class": 0.765,
+        "theme.identity": 0.68,
+        "theme.loneliness": 0.6,
+        "theme.love": 0.855,
+        "world.intimate-scale": 0.765,
+        "world.lived-in": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-piranesi": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.75,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.65,
+          "key": "difficulty.moderate",
+          "source": "ai",
+          "weight": 0.6
+        },
+        {
+          "confidence": 0.98,
+          "key": "perspective.first",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.9,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.85,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 392
+    },
+    "premise": "A man lives alone in a vast, labyrinthine house filled with statues and tides, recording his observations in journals as he seeks to understand the nature of his world and his place within it.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.wonder",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.self-determination",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-the-unknown",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.mythic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.fantasy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.mystery",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.4,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.48,
+        "aftertaste.haunting": 0.68,
+        "aftertaste.hopeful": 0.525,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.32,
+        "pace": 0.24,
+        "register.intimate": 0.765,
+        "register.meditative": 0.855,
+        "register.quiet": 0.68,
+        "texture.dreamlike": 0.765,
+        "texture.hazy": 0.6,
+        "texture.spare": 0.525,
+        "tone.eerie": 0.525,
+        "tone.melancholy": 0.455,
+        "tone.serene": 0.68,
+        "tone.wistful": 0.765
+      },
+      "story": {
+        "arc.self-determination": 0.6,
+        "arc.transformation": 0.68,
+        "cast.single-protagonist": 0.931,
+        "complexity": 0.48,
+        "conflict.vs-self": 0.765,
+        "conflict.vs-the-unknown": 0.6,
+        "ending.bittersweet": 0.68,
+        "frame.fantasy": 0.9,
+        "frame.mystery": 0.68,
+        "momentum.suspenseful": 0.39,
+        "momentum.unpredictable": 0.525,
+        "moral-complexity": 0.24,
+        "setting.secondary-world": 0.855,
+        "setting.timeless": 0.68,
+        "stakes.personal": 0.765,
+        "structure.multiple-pov": 0.12,
+        "structure.unreliable-narrator": 0.765,
+        "theme.identity": 0.765,
+        "theme.loneliness": 0.68,
+        "theme.memory": 0.855,
+        "theme.wonder": 0.6,
+        "world.lived-in": 0.765,
+        "world.mythic": 0.855
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-pride-and-prejudice": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "register.confessional",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.4,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.75,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.8,
+          "key": "difficulty.moderate",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.95,
+          "key": "perspective.third",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "prose.ornate",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.9,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 691.2
+    },
+    "premise": "A sharp social comedy follows the spirited Elizabeth Bennet as she navigates love, family expectations, and class tensions in Regency England, confronting her own prejudices and those of the proud Mr. Darcy.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.class",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.expectation",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.siblings",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.45,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.romance",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.satire",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.55
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.12,
+        "aftertaste.comforting": 0.39,
+        "aftertaste.hopeful": 0.6,
+        "aftertaste.lingering": 0.525,
+        "intensity": 0.3,
+        "pace": 0.2,
+        "register.confessional": 0.275,
+        "register.intimate": 0.525,
+        "register.meditative": 0.39,
+        "texture.ornate": 0.68,
+        "texture.polished": 0.6,
+        "tone.earnest": 0.39,
+        "tone.playful": 0.68,
+        "tone.warm": 0.525,
+        "tone.wry": 0.765
+      },
+      "story": {
+        "arc.coming-of-age": 0.525,
+        "arc.transformation": 0.765,
+        "bond.found-family": 0.39,
+        "bond.siblings": 0.525,
+        "cast.ensemble": 0.855,
+        "cast.single-protagonist": 0.68,
+        "complexity": 0.33,
+        "conflict.vs-self": 0.68,
+        "conflict.vs-society": 0.6,
+        "ending.resolved": 0.765,
+        "frame.realism": 0.855,
+        "frame.romance": 0.9,
+        "frame.satire": 0.68,
+        "momentum.episodic-arcs": 0.275,
+        "momentum.unpredictable": 0.39,
+        "moral-complexity": 0.39,
+        "setting.historical": 0.931,
+        "setting.rural": 0.525,
+        "setting.workplace": 0.18,
+        "stakes.personal": 0.68,
+        "structure.linear": 0.765,
+        "structure.multiple-pov": 0.39,
+        "theme.class": 0.765,
+        "theme.expectation": 0.6,
+        "theme.family": 0.68,
+        "theme.love": 0.855,
+        "world.lived-in": 0.765,
+        "world.systemic": 0.525
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-the-alchemist": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.confessional",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.8,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.9,
+          "key": "difficulty.easy",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "perspective.third",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.85,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.75
+        }
+      ],
+      "minutes_to_finish": 315.20000000000005
+    },
+    "premise": "A shepherd boy follows a recurring dream to find treasure near the Egyptian pyramids, learning to listen to his heart and recognize omens along the way.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.destiny-vs-choice",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.duty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.wonder",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-fate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.mythic",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.adventure",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.24,
+        "aftertaste.comforting": 0.45,
+        "aftertaste.hopeful": 0.765,
+        "aftertaste.lingering": 0.595,
+        "intensity": 0.425,
+        "pace": 0.51,
+        "register.confessional": 0.45,
+        "register.meditative": 0.72,
+        "register.quiet": 0.595,
+        "texture.dreamlike": 0.595,
+        "texture.hazy": 0.45,
+        "texture.spare": 0.72,
+        "tone.earnest": 0.765,
+        "tone.serene": 0.45,
+        "tone.warm": 0.72,
+        "tone.wistful": 0.56
+      },
+      "story": {
+        "arc.quest": 0.931,
+        "arc.transformation": 0.855,
+        "bond.friendship": 0.45,
+        "bond.mentor-student": 0.72,
+        "cast.single-protagonist": 0.931,
+        "cast.underdog": 0.595,
+        "complexity": 0.32,
+        "conflict.vs-fate": 0.595,
+        "conflict.vs-self": 0.72,
+        "ending.resolved": 0.765,
+        "frame.adventure": 0.9,
+        "frame.fantasy": 0.72,
+        "momentum.episodic-arcs": 0.595,
+        "momentum.unpredictable": 0.45,
+        "moral-complexity": 0.24,
+        "setting.historical": 0.45,
+        "setting.rural": 0.595,
+        "setting.secondary-world": 0.3,
+        "stakes.personal": 0.72,
+        "structure.linear": 0.855,
+        "theme.belonging": 0.595,
+        "theme.destiny-vs-choice": 0.855,
+        "theme.duty": 0.72,
+        "theme.wonder": 0.72,
+        "world.lived-in": 0.56,
+        "world.mythic": 0.765
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-the-catcher-in-the-rye": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "register.confessional",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.7,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.75,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.75,
+          "key": "difficulty.easy",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 1,
+          "key": "perspective.first",
+          "source": "ai",
+          "weight": 1
+        },
+        {
+          "confidence": 0.85,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.85,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 443.20000000000005
+    },
+    "premise": "A disaffected teenager wanders New York City after being expelled from prep school, searching for authenticity while grappling with alienation and the perceived phoniness of the adult world.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.expectation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.7,
+        "key": "arc.self-determination",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 1,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 1
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.siblings",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.6,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.7,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.595,
+        "aftertaste.hopeful": 0.275,
+        "aftertaste.lingering": 0.68,
+        "aftertaste.unsettling": 0.39,
+        "intensity": 0.48,
+        "pace": 0.35,
+        "register.confessional": 0.931,
+        "register.intimate": 0.855,
+        "register.quiet": 0.68,
+        "texture.raw": 0.525,
+        "texture.spare": 0.68,
+        "tone.earnest": 0.6,
+        "tone.melancholy": 0.765,
+        "tone.wistful": 0.68,
+        "tone.wry": 0.525
+      },
+      "story": {
+        "arc.coming-of-age": 0.931,
+        "arc.self-determination": 0.42,
+        "bond.friendship": 0.3,
+        "bond.siblings": 0.56,
+        "cast.single-protagonist": 1,
+        "complexity": 0.45,
+        "conflict.vs-self": 0.855,
+        "conflict.vs-society": 0.68,
+        "ending.ambiguous": 0.68,
+        "frame.realism": 0.855,
+        "momentum.episodic-arcs": 0.525,
+        "moral-complexity": 0.35,
+        "setting.contemporary": 0.855,
+        "setting.school": 0.525,
+        "setting.urban": 0.68,
+        "stakes.personal": 0.855,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.855,
+        "theme.expectation": 0.56,
+        "theme.growing-up": 0.931,
+        "theme.identity": 0.765,
+        "theme.loneliness": 0.855,
+        "world.intimate-scale": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-the-great-gatsby": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 0,
+      "craft": [
+        {
+          "confidence": 0.75,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.85,
+          "key": "difficulty.moderate",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.98,
+          "key": "perspective.first",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.95,
+          "key": "prose.ornate",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 288
+    },
+    "premise": "A young man moves to Long Island in the summer of 1922 and becomes entangled in the lives of his wealthy neighbor, who throws extravagant parties in pursuit of a lost love, and the cynical realities of the American Dream.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.obsession",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.class",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "theme.duty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.65,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.65,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.35,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.tragic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.56,
+        "aftertaste.bittersweet": 0.6,
+        "aftertaste.haunting": 0.68,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.48,
+        "pace": 0.4,
+        "register.intimate": 0.525,
+        "register.meditative": 0.68,
+        "register.quiet": 0.6,
+        "texture.hazy": 0.39,
+        "texture.ornate": 0.765,
+        "texture.polished": 0.525,
+        "tone.earnest": 0.39,
+        "tone.melancholy": 0.68,
+        "tone.wistful": 0.765,
+        "tone.wry": 0.525
+      },
+      "story": {
+        "arc.coming-of-age": 0.39,
+        "arc.transformation": 0.525,
+        "bond.found-family": 0.275,
+        "bond.friendship": 0.39,
+        "cast.duo": 0.39,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.48,
+        "conflict.vs-self": 0.68,
+        "conflict.vs-society": 0.765,
+        "ending.tragic": 0.855,
+        "frame.realism": 0.855,
+        "frame.thriller": 0.105,
+        "momentum.suspenseful": 0.39,
+        "momentum.unpredictable": 0.275,
+        "moral-complexity": 0.56,
+        "setting.historical": 0.931,
+        "setting.rural": 0.39,
+        "setting.urban": 0.525,
+        "stakes.personal": 0.68,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.525,
+        "theme.class": 0.765,
+        "theme.duty": 0.525,
+        "theme.identity": 0.68,
+        "theme.obsession": 0.855,
+        "world.lived-in": 0.68,
+        "world.systemic": 0.6
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-the-hobbit": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.7,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.85,
+          "key": "difficulty.easy",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "perspective.third",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.8,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.9,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 496
+    },
+    "premise": "A quiet hobbit leaves his home to join a quest for treasure guarded by a dragon, encountering trolls, elves, goblins, and a mysterious ring along the way.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.home",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.wonder",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-nature",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.mythic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.8,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.adventure",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.7,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.21,
+        "aftertaste.comforting": 0.72,
+        "aftertaste.hopeful": 0.56,
+        "intensity": 0.4,
+        "pace": 0.48,
+        "register.intimate": 0.56,
+        "register.meditative": 0.42,
+        "texture.ornate": 0.56,
+        "texture.polished": 0.42,
+        "tone.earnest": 0.6375,
+        "tone.playful": 0.56,
+        "tone.warm": 0.72,
+        "tone.wistful": 0.42
+      },
+      "story": {
+        "arc.coming-of-age": 0.72,
+        "arc.quest": 0.855,
+        "bond.found-family": 0.56,
+        "bond.friendship": 0.72,
+        "cast.ensemble": 0.68,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.4,
+        "conflict.vs-nature": 0.45,
+        "conflict.vs-person": 0.56,
+        "ending.resolved": 0.765,
+        "frame.adventure": 0.9,
+        "frame.fantasy": 0.931,
+        "momentum.episodic-arcs": 0.68,
+        "momentum.unpredictable": 0.56,
+        "moral-complexity": 0.21,
+        "setting.rural": 0.56,
+        "setting.secondary-world": 0.931,
+        "setting.timeless": 0.42,
+        "stakes.personal": 0.56,
+        "structure.linear": 0.68,
+        "theme.friendship": 0.72,
+        "theme.growing-up": 0.595,
+        "theme.home": 0.855,
+        "theme.wonder": 0.72,
+        "world.lived-in": 0.855,
+        "world.mythic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-the-little-prince": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 0,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "chapter-length.short",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.75,
+          "key": "difficulty.easy",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.95,
+          "key": "perspective.first",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.95,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 153.60000000000002
+    },
+    "premise": "A pilot stranded in the desert meets a mysterious young prince who shares stories of his travels across planets and reflections on love, loss, and what it means to see with the heart.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.mythic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.3,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.2
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.48,
+        "aftertaste.bittersweet": 0.6,
+        "aftertaste.haunting": 0.68,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.4,
+        "pace": 0.32,
+        "register.intimate": 0.855,
+        "register.meditative": 0.68,
+        "register.quiet": 0.525,
+        "texture.dreamlike": 0.6,
+        "texture.ornate": 0.39,
+        "texture.spare": 0.765,
+        "tone.earnest": 0.525,
+        "tone.melancholy": 0.68,
+        "tone.warm": 0.6,
+        "tone.wistful": 0.855
+      },
+      "story": {
+        "arc.coming-of-age": 0.525,
+        "arc.transformation": 0.68,
+        "bond.friendship": 0.855,
+        "bond.mentor-student": 0.525,
+        "cast.duo": 0.68,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.4,
+        "conflict.vs-self": 0.525,
+        "conflict.vs-society": 0.39,
+        "ending.bittersweet": 0.765,
+        "frame.adventure": 0.525,
+        "frame.fantasy": 0.855,
+        "frame.slice-of-life": 0.39,
+        "momentum.episodic-arcs": 0.39,
+        "momentum.unpredictable": 0.525,
+        "moral-complexity": 0.32,
+        "setting.rural": 0.525,
+        "setting.school": 0.06,
+        "setting.timeless": 0.765,
+        "stakes.personal": 0.68,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.39,
+        "theme.growing-up": 0.6,
+        "theme.loneliness": 0.765,
+        "theme.love": 0.855,
+        "theme.memory": 0.68,
+        "world.intimate-scale": 0.525,
+        "world.mythic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-the-name-of-the-wind": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.lush",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.confessional",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.75,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.8,
+          "key": "difficulty.demanding",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.98,
+          "key": "perspective.first",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.95,
+          "key": "prose.ornate",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 1059.2
+    },
+    "premise": "A gifted young man recounts his journey from a traveling troupe to a prestigious university, seeking knowledge and the truth behind a legendary name while navigating poverty, rivalry, and the pursuit of arcane mastery.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.ambition",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.mythic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.mystery",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "structure.frame-story",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.open",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.4875,
+        "aftertaste.haunting": 0.68,
+        "aftertaste.hopeful": 0.6,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.56,
+        "pace": 0.375,
+        "register.cerebral": 0.6,
+        "register.confessional": 0.68,
+        "register.meditative": 0.765,
+        "texture.dense": 0.765,
+        "texture.ornate": 0.68,
+        "texture.polished": 0.6,
+        "tone.earnest": 0.68,
+        "tone.lush": 0.6,
+        "tone.melancholy": 0.525,
+        "tone.wistful": 0.765
+      },
+      "story": {
+        "arc.coming-of-age": 0.765,
+        "arc.transformation": 0.855,
+        "bond.found-family": 0.525,
+        "bond.mentor-student": 0.455,
+        "cast.single-protagonist": 0.931,
+        "cast.underdog": 0.68,
+        "complexity": 0.765,
+        "conflict.vs-self": 0.68,
+        "conflict.vs-society": 0.525,
+        "ending.open": 0.855,
+        "frame.adventure": 0.68,
+        "frame.fantasy": 0.931,
+        "frame.mystery": 0.525,
+        "momentum.suspenseful": 0.6,
+        "momentum.twisty": 0.455,
+        "momentum.unpredictable": 0.525,
+        "moral-complexity": 0.45,
+        "setting.historical": 0.525,
+        "setting.school": 0.68,
+        "setting.secondary-world": 0.931,
+        "stakes.personal": 0.765,
+        "structure.frame-story": 0.931,
+        "structure.unreliable-narrator": 0.765,
+        "theme.ambition": 0.68,
+        "theme.belonging": 0.6,
+        "theme.identity": 0.765,
+        "theme.memory": 0.855,
+        "world.lived-in": 0.855,
+        "world.mythic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-the-remains-of-the-day": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.confessional",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.75,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.8,
+          "key": "difficulty.moderate",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.95,
+          "key": "perspective.first",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.85,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 412.8
+    },
+    "premise": "An aging butler reflects on his life of service during a road trip through the English countryside, confronting the choices he made and the dignity he clung to.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.duty",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.expectation",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.56,
+        "aftertaste.bittersweet": 0.6,
+        "aftertaste.haunting": 0.525,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.4,
+        "pace": 0.32,
+        "register.confessional": 0.525,
+        "register.meditative": 0.765,
+        "register.quiet": 0.68,
+        "texture.dense": 0.42,
+        "texture.polished": 0.525,
+        "texture.spare": 0.68,
+        "tone.earnest": 0.6,
+        "tone.melancholy": 0.68,
+        "tone.wistful": 0.765,
+        "tone.wry": 0.56
+      },
+      "story": {
+        "arc.coming-of-age": 0.42,
+        "arc.transformation": 0.56,
+        "bond.friendship": 0.3,
+        "bond.mentor-student": 0.42,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.56,
+        "conflict.vs-self": 0.765,
+        "conflict.vs-society": 0.56,
+        "ending.bittersweet": 0.765,
+        "frame.realism": 0.855,
+        "momentum.episodic-arcs": 0.42,
+        "moral-complexity": 0.6,
+        "setting.historical": 0.855,
+        "setting.rural": 0.56,
+        "setting.workplace": 0.68,
+        "stakes.personal": 0.68,
+        "structure.nonlinear": 0.68,
+        "structure.unreliable-narrator": 0.765,
+        "theme.duty": 0.855,
+        "theme.expectation": 0.6375,
+        "theme.loneliness": 0.72,
+        "theme.memory": 0.765,
+        "world.lived-in": 0.68,
+        "world.systemic": 0.525
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-the-road": {
+    "feeling": [
+      {
+        "confidence": 0.98,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.devastating",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.8,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.85,
+          "key": "difficulty.demanding",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "perspective.third",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.98,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.8,
+          "key": "rereadability.low",
+          "source": "ai",
+          "weight": 0.75
+        }
+      ],
+      "minutes_to_finish": 459.20000000000005
+    },
+    "premise": "A father and son journey south through a barren, ash-covered America, seeking safety while clinging to hope in a world stripped of civilization.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.grief",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.survival",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.home",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-nature",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.99,
+        "key": "bond.parent-child",
+        "source": "ai",
+        "weight": 0.98
+      },
+      {
+        "confidence": 0.98,
+        "key": "world.hostile",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.near-future",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.sci-fi",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.855,
+        "aftertaste.devastating": 0.68,
+        "aftertaste.haunting": 0.855,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.765,
+        "pace": 0.51,
+        "register.intimate": 0.855,
+        "register.meditative": 0.68,
+        "register.quiet": 0.765,
+        "texture.gritty": 0.765,
+        "texture.raw": 0.68,
+        "texture.spare": 0.855,
+        "tone.bleak": 0.931,
+        "tone.earnest": 0.68,
+        "tone.melancholy": 0.765,
+        "tone.wistful": 0.68
+      },
+      "story": {
+        "arc.coming-of-age": 0.56,
+        "arc.quest": 0.765,
+        "bond.parent-child": 0.9702,
+        "cast.duo": 0.931,
+        "cast.underdog": 0.765,
+        "complexity": 0.48,
+        "conflict.vs-nature": 0.855,
+        "conflict.vs-self": 0.68,
+        "ending.bittersweet": 0.855,
+        "frame.adventure": 0.525,
+        "frame.realism": 0.855,
+        "frame.sci-fi": 0.9,
+        "momentum.suspenseful": 0.68,
+        "momentum.unpredictable": 0.525,
+        "moral-complexity": 0.595,
+        "setting.contemporary": 0.525,
+        "setting.near-future": 0.68,
+        "setting.rural": 0.855,
+        "stakes.personal": 0.931,
+        "structure.linear": 0.765,
+        "theme.grief": 0.931,
+        "theme.home": 0.68,
+        "theme.love": 0.855,
+        "theme.survival": 0.855,
+        "world.hostile": 0.931,
+        "world.lived-in": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-the-year-of-magical-thinking": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.75,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.75,
+          "key": "difficulty.moderate",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.98,
+          "key": "perspective.first",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.95,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.85,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 363.20000000000005
+    },
+    "premise": "A memoir of the year following the sudden death of the author's husband, exploring grief, memory, and the attempt to make sense of loss through writing.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.grief",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.4,
+        "key": "bond.siblings",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.3,
+        "key": "bond.parent-child",
+        "source": "ai",
+        "weight": 0.2
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.4,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.765,
+        "aftertaste.bittersweet": 0.39,
+        "aftertaste.haunting": 0.525,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.56,
+        "pace": 0.2,
+        "register.intimate": 0.855,
+        "register.meditative": 0.765,
+        "register.quiet": 0.68,
+        "texture.dense": 0.39,
+        "texture.raw": 0.525,
+        "texture.spare": 0.765,
+        "tone.earnest": 0.6,
+        "tone.melancholy": 0.68,
+        "tone.wistful": 0.765,
+        "tone.wry": 0.39
+      },
+      "story": {
+        "arc.transformation": 0.525,
+        "bond.parent-child": 0.06,
+        "bond.siblings": 0.12,
+        "cast.single-protagonist": 0.931,
+        "complexity": 0.42,
+        "conflict.vs-self": 0.68,
+        "ending.ambiguous": 0.68,
+        "frame.realism": 0.931,
+        "momentum.episodic-arcs": 0.525,
+        "moral-complexity": 0.12,
+        "setting.contemporary": 0.855,
+        "setting.urban": 0.42,
+        "stakes.personal": 0.855,
+        "structure.nonlinear": 0.68,
+        "structure.unreliable-narrator": 0.42,
+        "theme.grief": 0.931,
+        "theme.identity": 0.525,
+        "theme.love": 0.68,
+        "theme.memory": 0.765,
+        "world.intimate-scale": 0.855
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "book-to-kill-a-mockingbird": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "chapter-length.medium",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.8,
+          "key": "difficulty.moderate",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.95,
+          "key": "perspective.first",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "prose.spare",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.9,
+          "key": "rereadability.high",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 449.6
+    },
+    "premise": "A young girl observes her father defend a Black man falsely accused of rape in a racially divided Southern town, learning about justice, empathy, and the loss of innocence.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.justice",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.class",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.humanitys-limits",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.7,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.parent-child",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.7,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.community",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.56,
+        "aftertaste.hopeful": 0.525,
+        "aftertaste.lingering": 0.765,
+        "aftertaste.unsettling": 0.6,
+        "intensity": 0.48,
+        "pace": 0.4,
+        "register.intimate": 0.68,
+        "register.meditative": 0.6,
+        "register.quiet": 0.525,
+        "texture.hazy": 0.455,
+        "texture.ornate": 0.42,
+        "texture.spare": 0.68,
+        "tone.earnest": 0.765,
+        "tone.melancholy": 0.525,
+        "tone.warm": 0.6,
+        "tone.wistful": 0.68
+      },
+      "story": {
+        "arc.coming-of-age": 0.855,
+        "arc.transformation": 0.56,
+        "bond.found-family": 0.56,
+        "bond.parent-child": 0.765,
+        "cast.ensemble": 0.56,
+        "cast.single-protagonist": 0.765,
+        "complexity": 0.56,
+        "conflict.vs-self": 0.42,
+        "conflict.vs-society": 0.855,
+        "ending.bittersweet": 0.765,
+        "frame.realism": 0.855,
+        "momentum.episodic-arcs": 0.56,
+        "momentum.suspenseful": 0.42,
+        "moral-complexity": 0.68,
+        "setting.historical": 0.855,
+        "setting.rural": 0.68,
+        "setting.school": 0.42,
+        "stakes.community": 0.765,
+        "structure.linear": 0.765,
+        "structure.unreliable-narrator": 0.42,
+        "theme.class": 0.68,
+        "theme.growing-up": 0.765,
+        "theme.humanitys-limits": 0.6,
+        "theme.justice": 0.855,
+        "world.lived-in": 0.68,
+        "world.systemic": 0.765
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-aftersun": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.85,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "dialogue.sparse",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.9,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.95,
+          "key": "visual.naturalistic",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 102
+    },
+    "premise": "A father and daughter share a quiet holiday at a Turkish resort, their days filled with simple moments and unspoken tensions.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.98,
+        "key": "bond.parent-child",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.675,
+        "aftertaste.bittersweet": 0.6,
+        "aftertaste.haunting": 0.68,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.34,
+        "pace": 0.255,
+        "register.intimate": 0.931,
+        "register.meditative": 0.68,
+        "register.quiet": 0.855,
+        "texture.dreamlike": 0.6,
+        "texture.hazy": 0.765,
+        "texture.spare": 0.42,
+        "tone.earnest": 0.42,
+        "tone.melancholy": 0.765,
+        "tone.warm": 0.56,
+        "tone.wistful": 0.855
+      },
+      "story": {
+        "arc.coming-of-age": 0.56,
+        "arc.transformation": 0.45,
+        "bond.parent-child": 0.931,
+        "cast.duo": 0.931,
+        "complexity": 0.51,
+        "conflict.vs-person": 0.42,
+        "conflict.vs-self": 0.68,
+        "ending.ambiguous": 0.855,
+        "frame.realism": 0.931,
+        "momentum.episodic-arcs": 0.39,
+        "momentum.unpredictable": 0.525,
+        "moral-complexity": 0.4,
+        "setting.contemporary": 0.855,
+        "setting.rural": 0.42,
+        "setting.workplace": 0.3,
+        "stakes.personal": 0.765,
+        "structure.nonlinear": 0.68,
+        "structure.unreliable-narrator": 0.525,
+        "theme.family": 0.675,
+        "theme.growing-up": 0.595,
+        "theme.loneliness": 0.72,
+        "theme.memory": 0.855,
+        "world.intimate-scale": 0.855,
+        "world.lived-in": 0.56
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-amelie": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.75,
+          "key": "dialogue.balanced",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.85,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "visual.lush",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 122
+    },
+    "premise": "A shy waitress in Paris discovers a hidden box of childhood treasures and decides to anonymously improve the lives of those around her, while navigating her own quiet longing for connection.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.wonder",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.7,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.comedy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.romance",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.4,
+        "aftertaste.comforting": 0.68,
+        "aftertaste.hopeful": 0.6,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.32,
+        "pace": 0.4,
+        "register.intimate": 0.765,
+        "register.meditative": 0.39,
+        "register.quiet": 0.525,
+        "texture.dense": 0.68,
+        "texture.dreamlike": 0.525,
+        "texture.ornate": 0.6,
+        "tone.earnest": 0.6,
+        "tone.playful": 0.765,
+        "tone.warm": 0.855,
+        "tone.wistful": 0.68
+      },
+      "story": {
+        "arc.coming-of-age": 0.525,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.525,
+        "bond.friendship": 0.455,
+        "cast.ensemble": 0.68,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.4,
+        "conflict.vs-self": 0.765,
+        "conflict.vs-society": 0.42,
+        "ending.resolved": 0.765,
+        "frame.comedy": 0.9,
+        "frame.fantasy": 0.765,
+        "frame.romance": 0.9,
+        "momentum.episodic-arcs": 0.525,
+        "momentum.unpredictable": 0.39,
+        "moral-complexity": 0.24,
+        "setting.contemporary": 0.931,
+        "setting.urban": 0.855,
+        "stakes.personal": 0.765,
+        "structure.linear": 0.525,
+        "structure.unreliable-narrator": 0.39,
+        "theme.belonging": 0.765,
+        "theme.loneliness": 0.855,
+        "theme.love": 0.68,
+        "theme.wonder": 0.6,
+        "world.intimate-scale": 0.765,
+        "world.lived-in": 0.855
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-before-sunrise": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.98,
+          "key": "dialogue.dialogue-heavy",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.85,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.9,
+          "key": "visual.naturalistic",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 101
+    },
+    "premise": "Two strangers meet on a train and spend a night walking through Vienna, talking about life, love, and the moments that define us.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.time",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "conflict.vs-fate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.55,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.romance",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.35,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.48,
+        "aftertaste.bittersweet": 0.525,
+        "aftertaste.hopeful": 0.6,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.4,
+        "pace": 0.32,
+        "register.intimate": 0.855,
+        "register.meditative": 0.68,
+        "register.quiet": 0.6,
+        "texture.hazy": 0.39,
+        "texture.polished": 0.275,
+        "texture.spare": 0.68,
+        "tone.earnest": 0.6,
+        "tone.playful": 0.525,
+        "tone.warm": 0.765,
+        "tone.wistful": 0.68
+      },
+      "story": {
+        "arc.coming-of-age": 0.525,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.275,
+        "bond.friendship": 0.68,
+        "cast.duo": 0.931,
+        "complexity": 0.4,
+        "conflict.vs-fate": 0.39,
+        "conflict.vs-self": 0.525,
+        "ending.ambiguous": 0.855,
+        "frame.realism": 0.855,
+        "frame.romance": 0.9,
+        "frame.slice-of-life": 0.68,
+        "momentum.episodic-arcs": 0.275,
+        "momentum.unpredictable": 0.39,
+        "moral-complexity": 0.24,
+        "setting.contemporary": 0.855,
+        "setting.urban": 0.765,
+        "stakes.personal": 0.765,
+        "structure.linear": 0.765,
+        "structure.unreliable-narrator": 0.105,
+        "theme.loneliness": 0.42,
+        "theme.love": 0.855,
+        "theme.memory": 0.6375,
+        "theme.time": 0.765,
+        "world.intimate-scale": 0.855,
+        "world.lived-in": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-eternal-sunshine": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "dialogue.balanced",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.9,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.98,
+          "key": "visual.stylised",
+          "source": "ai",
+          "weight": 0.95
+        }
+      ],
+      "minutes_to_finish": 108
+    },
+    "premise": "A couple undergoes a procedure to erase each other from their memories, only to rediscover their love as the process unfolds.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.expectation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.7,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.every-character-a-lead",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.partners",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.6,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.4,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.romance",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.sci-fi",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.8,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.68,
+        "aftertaste.haunting": 0.68,
+        "aftertaste.hopeful": 0.56,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.595,
+        "pace": 0.4,
+        "register.intimate": 0.855,
+        "register.meditative": 0.68,
+        "register.quiet": 0.56,
+        "texture.dreamlike": 0.855,
+        "texture.hazy": 0.68,
+        "texture.spare": 0.42,
+        "tone.earnest": 0.68,
+        "tone.melancholy": 0.765,
+        "tone.wistful": 0.855,
+        "tone.wry": 0.56
+      },
+      "story": {
+        "arc.coming-of-age": 0.42,
+        "arc.transformation": 0.765,
+        "bond.found-family": 0.3,
+        "bond.partners": 0.855,
+        "cast.duo": 0.931,
+        "cast.every-character-a-lead": 0.56,
+        "complexity": 0.68,
+        "conflict.vs-person": 0.68,
+        "conflict.vs-self": 0.855,
+        "ending.bittersweet": 0.855,
+        "frame.fantasy": 0.56,
+        "frame.romance": 0.9,
+        "frame.sci-fi": 0.9,
+        "momentum.suspenseful": 0.42,
+        "momentum.twisty": 0.525,
+        "momentum.unpredictable": 0.68,
+        "moral-complexity": 0.48,
+        "setting.contemporary": 0.855,
+        "setting.school": 0.12,
+        "setting.urban": 0.68,
+        "stakes.personal": 0.931,
+        "structure.nonlinear": 0.931,
+        "structure.unreliable-narrator": 0.56,
+        "theme.expectation": 0.56,
+        "theme.identity": 0.72,
+        "theme.love": 0.855,
+        "theme.memory": 0.931,
+        "world.intimate-scale": 0.855,
+        "world.lived-in": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-everything-everywhere": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.cathartic",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.75,
+          "key": "dialogue.balanced",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.85,
+          "key": "drive.plot-driven",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.98,
+          "key": "visual.stylised",
+          "source": "ai",
+          "weight": 0.95
+        }
+      ],
+      "minutes_to_finish": 139
+    },
+    "premise": "A laundromat owner is thrust into a multiversal adventure where she must harness the skills of her alternate selves to save reality from a chaotic force.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.characters-changing-each-other",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.parent-child",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.mythic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.35,
+        "key": "setting.far-future",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.comedy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.sci-fi",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.world",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.39,
+        "aftertaste.cathartic": 0.6,
+        "aftertaste.hopeful": 0.765,
+        "aftertaste.lingering": 0.68,
+        "intensity": 0.68,
+        "pace": 0.765,
+        "register.intimate": 0.525,
+        "register.meditative": 0.39,
+        "register.propulsive": 0.68,
+        "texture.dense": 0.765,
+        "texture.gritty": 0.39,
+        "texture.polished": 0.525,
+        "tone.earnest": 0.6,
+        "tone.playful": 0.765,
+        "tone.warm": 0.68,
+        "tone.wistful": 0.525
+      },
+      "story": {
+        "arc.characters-changing-each-other": 0.68,
+        "arc.transformation": 0.855,
+        "bond.found-family": 0.525,
+        "bond.parent-child": 0.765,
+        "cast.ensemble": 0.765,
+        "cast.morally-grey": 0.39,
+        "cast.single-protagonist": 0.68,
+        "complexity": 0.855,
+        "conflict.vs-person": 0.525,
+        "conflict.vs-self": 0.855,
+        "ending.resolved": 0.68,
+        "frame.comedy": 0.9,
+        "frame.fantasy": 0.765,
+        "frame.sci-fi": 0.9,
+        "momentum.suspenseful": 0.525,
+        "momentum.twisty": 0.765,
+        "momentum.unpredictable": 0.855,
+        "moral-complexity": 0.525,
+        "setting.contemporary": 0.855,
+        "setting.far-future": 0.105,
+        "setting.urban": 0.68,
+        "stakes.world": 0.765,
+        "structure.multiple-pov": 0.525,
+        "structure.nonlinear": 0.765,
+        "theme.belonging": 0.68,
+        "theme.family": 0.765,
+        "theme.identity": 0.855,
+        "theme.love": 0.6,
+        "world.mythic": 0.68,
+        "world.systemic": 0.525
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-her": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "dialogue.balanced",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "visual.stylised",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 126
+    },
+    "premise": "A lonely writer develops a deep emotional connection with an advanced artificial intelligence operating system, exploring intimacy and loneliness in a near-future Los Angeles.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.technology",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.6,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.near-future",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.romance",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.sci-fi",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.45,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.595,
+        "aftertaste.bittersweet": 0.68,
+        "aftertaste.hopeful": 0.39,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.4,
+        "pace": 0.32,
+        "register.intimate": 0.855,
+        "register.meditative": 0.68,
+        "register.quiet": 0.765,
+        "texture.dreamlike": 0.525,
+        "texture.hazy": 0.6,
+        "texture.polished": 0.39,
+        "tone.melancholy": 0.68,
+        "tone.playful": 0.39,
+        "tone.warm": 0.525,
+        "tone.wistful": 0.765
+      },
+      "story": {
+        "arc.coming-of-age": 0.42,
+        "arc.transformation": 0.68,
+        "bond.friendship": 0.525,
+        "bond.mentor-student": 0.3,
+        "cast.duo": 0.68,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.48,
+        "conflict.vs-self": 0.765,
+        "conflict.vs-system": 0.525,
+        "ending.bittersweet": 0.765,
+        "frame.realism": 0.525,
+        "frame.romance": 0.9,
+        "frame.sci-fi": 0.9,
+        "momentum.episodic-arcs": 0.275,
+        "momentum.unpredictable": 0.39,
+        "moral-complexity": 0.48,
+        "setting.contemporary": 0.39,
+        "setting.near-future": 0.931,
+        "setting.urban": 0.855,
+        "stakes.personal": 0.855,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.18,
+        "theme.identity": 0.56,
+        "theme.loneliness": 0.855,
+        "theme.love": 0.765,
+        "theme.technology": 0.68,
+        "world.intimate-scale": 0.855,
+        "world.lived-in": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-hereditary": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.75,
+          "key": "dialogue.sparse",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.95,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "visual.stylised",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 127
+    },
+    "premise": "A family grapples with grief and unsettling secrets after the death of their matriarch, uncovering a sinister legacy that threatens to consume them.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.grief",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.obsession",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.descent",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-fate",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.parent-child",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.siblings",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.6,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.horror",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.mystery",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.tragic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.68,
+        "aftertaste.haunting": 0.855,
+        "aftertaste.lingering": 0.68,
+        "aftertaste.unsettling": 0.765,
+        "intensity": 0.765,
+        "pace": 0.42,
+        "register.intimate": 0.56,
+        "register.meditative": 0.42,
+        "register.propulsive": 0.6,
+        "texture.dense": 0.68,
+        "texture.gritty": 0.525,
+        "texture.hazy": 0.42,
+        "tone.bleak": 0.855,
+        "tone.eerie": 0.765,
+        "tone.melancholy": 0.6,
+        "tone.wistful": 0.42
+      },
+      "story": {
+        "arc.descent": 0.765,
+        "arc.transformation": 0.68,
+        "bond.parent-child": 0.765,
+        "bond.siblings": 0.42,
+        "cast.ensemble": 0.56,
+        "cast.single-protagonist": 0.68,
+        "complexity": 0.525,
+        "conflict.vs-fate": 0.6,
+        "conflict.vs-self": 0.68,
+        "ending.tragic": 0.855,
+        "frame.horror": 0.931,
+        "frame.mystery": 0.525,
+        "frame.thriller": 0.6,
+        "momentum.suspenseful": 0.855,
+        "momentum.twisty": 0.525,
+        "momentum.unpredictable": 0.765,
+        "moral-complexity": 0.42,
+        "setting.contemporary": 0.855,
+        "setting.rural": 0.56,
+        "setting.urban": 0.3,
+        "stakes.personal": 0.855,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.42,
+        "theme.family": 0.765,
+        "theme.grief": 0.855,
+        "theme.loneliness": 0.56,
+        "theme.obsession": 0.6375,
+        "world.lived-in": 0.68,
+        "world.systemic": 0.42
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-in-the-mood-for-love": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "dialogue.sparse",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.95,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.98,
+          "key": "visual.lush",
+          "source": "ai",
+          "weight": 0.95
+        }
+      ],
+      "minutes_to_finish": 98
+    },
+    "premise": "Two neighbors in 1960s Hong Kong form a quiet bond as they suspect their spouses of infidelity, navigating restrained emotions and unspoken longing.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "arc.characters-changing-each-other",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.65,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.romance",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.55,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6375,
+        "aftertaste.bittersweet": 0.6,
+        "aftertaste.haunting": 0.68,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.32,
+        "pace": 0.24,
+        "register.intimate": 0.855,
+        "register.meditative": 0.68,
+        "register.quiet": 0.765,
+        "texture.dreamlike": 0.68,
+        "texture.hazy": 0.765,
+        "texture.ornate": 0.525,
+        "tone.melancholy": 0.765,
+        "tone.serene": 0.275,
+        "tone.wistful": 0.855,
+        "tone.wry": 0.39
+      },
+      "story": {
+        "arc.characters-changing-each-other": 0.455,
+        "arc.transformation": 0.525,
+        "bond.found-family": 0.39,
+        "bond.friendship": 0.525,
+        "cast.duo": 0.855,
+        "cast.morally-grey": 0.39,
+        "complexity": 0.56,
+        "conflict.vs-self": 0.68,
+        "conflict.vs-society": 0.525,
+        "ending.ambiguous": 0.765,
+        "frame.realism": 0.525,
+        "frame.romance": 0.9,
+        "frame.slice-of-life": 0.68,
+        "momentum.episodic-arcs": 0.275,
+        "momentum.unpredictable": 0.39,
+        "moral-complexity": 0.48,
+        "setting.historical": 0.855,
+        "setting.urban": 0.765,
+        "stakes.personal": 0.765,
+        "structure.nonlinear": 0.6,
+        "structure.unreliable-narrator": 0.275,
+        "theme.belonging": 0.525,
+        "theme.loneliness": 0.855,
+        "theme.love": 0.765,
+        "theme.memory": 0.68,
+        "world.intimate-scale": 0.855,
+        "world.lived-in": 0.765
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-inception": {
+    "feeling": [
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.8,
+          "key": "dialogue.balanced",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.85,
+          "key": "drive.plot-driven",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "visual.stylised",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 148
+    },
+    "premise": "A team of specialists enters dreams to plant an idea in a target's mind, navigating layered subconscious realities while confronting personal guilt and the blurred line between dream and waking life.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.grief",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.revenge",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.partners",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.sci-fi",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.thriller",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6375,
+        "aftertaste.haunting": 0.68,
+        "aftertaste.lingering": 0.855,
+        "aftertaste.unsettling": 0.6,
+        "intensity": 0.765,
+        "pace": 0.56,
+        "register.cerebral": 0.765,
+        "register.meditative": 0.56,
+        "register.propulsive": 0.68,
+        "texture.dense": 0.765,
+        "texture.hazy": 0.56,
+        "texture.polished": 0.68,
+        "tone.earnest": 0.56,
+        "tone.eerie": 0.6,
+        "tone.melancholy": 0.68,
+        "tone.wistful": 0.68
+      },
+      "story": {
+        "arc.quest": 0.6,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.56,
+        "bond.partners": 0.6,
+        "cast.ensemble": 0.765,
+        "cast.single-protagonist": 0.56,
+        "complexity": 0.855,
+        "conflict.vs-self": 0.855,
+        "conflict.vs-system": 0.56,
+        "ending.ambiguous": 0.855,
+        "frame.adventure": 0.56,
+        "frame.sci-fi": 0.9,
+        "frame.thriller": 0.9,
+        "momentum.suspenseful": 0.855,
+        "momentum.twisty": 0.68,
+        "momentum.unpredictable": 0.765,
+        "moral-complexity": 0.56,
+        "setting.contemporary": 0.68,
+        "setting.urban": 0.56,
+        "stakes.personal": 0.765,
+        "structure.nonlinear": 0.855,
+        "structure.unreliable-narrator": 0.68,
+        "theme.grief": 0.765,
+        "theme.identity": 0.68,
+        "theme.memory": 0.855,
+        "theme.revenge": 0.56,
+        "world.lived-in": 0.68,
+        "world.systemic": 0.6
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-la-la-land": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.65,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.75,
+          "key": "dialogue.balanced",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.85,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "visual.lush",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 128
+    },
+    "premise": "An aspiring actress and a jazz musician pursue their dreams in Los Angeles, navigating love and ambition as their careers pull them in different directions.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.ambition",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.sacrifice",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "theme.duty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.partners",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.romance",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.55,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.55
+      },
+      {
+        "confidence": 0.55,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.55,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.45,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.455,
+        "aftertaste.bittersweet": 0.765,
+        "aftertaste.haunting": 0.525,
+        "aftertaste.lingering": 0.68,
+        "intensity": 0.525,
+        "pace": 0.39,
+        "register.intimate": 0.525,
+        "register.meditative": 0.455,
+        "register.propulsive": 0.39,
+        "texture.dense": 0.525,
+        "texture.ornate": 0.6,
+        "texture.polished": 0.68,
+        "tone.melancholy": 0.525,
+        "tone.playful": 0.6,
+        "tone.warm": 0.68,
+        "tone.wistful": 0.765
+      },
+      "story": {
+        "arc.coming-of-age": 0.525,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.39,
+        "bond.partners": 0.765,
+        "cast.duo": 0.855,
+        "complexity": 0.275,
+        "conflict.vs-self": 0.6,
+        "conflict.vs-society": 0.455,
+        "ending.bittersweet": 0.855,
+        "frame.adventure": 0.39,
+        "frame.fantasy": 0.68,
+        "frame.romance": 0.9,
+        "momentum.suspenseful": 0.39,
+        "momentum.twisty": 0.275,
+        "momentum.unpredictable": 0.33,
+        "moral-complexity": 0.18,
+        "setting.contemporary": 0.855,
+        "setting.urban": 0.765,
+        "setting.workplace": 0.525,
+        "stakes.personal": 0.765,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.275,
+        "theme.ambition": 0.855,
+        "theme.duty": 0.525,
+        "theme.love": 0.765,
+        "theme.sacrifice": 0.68,
+        "world.intimate-scale": 0.525,
+        "world.lived-in": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-lost-in-translation": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.85,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "dialogue.sparse",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.95,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "visual.stylised",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 102
+    },
+    "premise": "Two lonely Americans in Tokyo form a quiet bond while navigating disconnection and cultural unfamiliarity.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.75,
+        "key": "theme.time",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.characters-changing-each-other",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.romance",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.51,
+        "aftertaste.bittersweet": 0.6375,
+        "aftertaste.hopeful": 0.35,
+        "aftertaste.lingering": 0.72,
+        "intensity": 0.34,
+        "pace": 0.255,
+        "register.intimate": 0.855,
+        "register.meditative": 0.595,
+        "register.quiet": 0.765,
+        "texture.hazy": 0.72,
+        "texture.polished": 0.595,
+        "texture.spare": 0.48,
+        "tone.melancholy": 0.6375,
+        "tone.serene": 0.35,
+        "tone.wistful": 0.765,
+        "tone.wry": 0.45
+      },
+      "story": {
+        "arc.characters-changing-each-other": 0.72,
+        "arc.transformation": 0.595,
+        "bond.friendship": 0.765,
+        "cast.duo": 0.855,
+        "complexity": 0.4,
+        "conflict.vs-self": 0.72,
+        "conflict.vs-society": 0.48,
+        "ending.ambiguous": 0.765,
+        "frame.realism": 0.72,
+        "frame.romance": 0.9,
+        "frame.slice-of-life": 0.595,
+        "momentum.episodic-arcs": 0.595,
+        "momentum.unpredictable": 0.35,
+        "moral-complexity": 0.24,
+        "setting.contemporary": 0.855,
+        "setting.secondary-world": 0.35,
+        "setting.urban": 0.72,
+        "stakes.personal": 0.72,
+        "structure.linear": 0.72,
+        "theme.belonging": 0.595,
+        "theme.identity": 0.48,
+        "theme.loneliness": 0.855,
+        "theme.time": 0.375,
+        "world.intimate-scale": 0.855,
+        "world.lived-in": 0.595
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-mad-max-fury-road": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.fierce",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.restless",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.epic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.loud",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.energized",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.cathartic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.65,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "dialogue.sparse",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.9,
+          "key": "drive.plot-driven",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.98,
+          "key": "visual.stylised",
+          "source": "ai",
+          "weight": 0.95
+        }
+      ],
+      "minutes_to_finish": 120
+    },
+    "premise": "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler and seeks her homeland with the aid of a group of female prisoners and a drifter.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.freedom",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.survival",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.exploitation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.characters-changing-each-other",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "bond.siblings",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "world.hostile",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.near-future",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.sci-fi",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.community",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.39,
+        "aftertaste.cathartic": 0.525,
+        "aftertaste.energized": 0.68,
+        "aftertaste.hopeful": 0.6,
+        "intensity": 0.931,
+        "pace": 0.855,
+        "register.epic": 0.855,
+        "register.loud": 0.68,
+        "register.propulsive": 0.931,
+        "texture.dense": 0.68,
+        "texture.gritty": 0.855,
+        "texture.polished": 0.39,
+        "tone.earnest": 0.525,
+        "tone.fierce": 0.855,
+        "tone.restless": 0.68,
+        "tone.wry": 0.39
+      },
+      "story": {
+        "arc.characters-changing-each-other": 0.6,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.68,
+        "bond.siblings": 0.39,
+        "cast.ensemble": 0.765,
+        "cast.morally-grey": 0.525,
+        "cast.underdog": 0.68,
+        "complexity": 0.39,
+        "conflict.vs-person": 0.68,
+        "conflict.vs-system": 0.855,
+        "ending.bittersweet": 0.68,
+        "frame.adventure": 0.765,
+        "frame.sci-fi": 0.9,
+        "frame.thriller": 0.68,
+        "momentum.episodic-arcs": 0.39,
+        "momentum.suspenseful": 0.855,
+        "momentum.unpredictable": 0.525,
+        "moral-complexity": 0.275,
+        "setting.near-future": 0.765,
+        "setting.rural": 0.525,
+        "setting.secondary-world": 0.68,
+        "stakes.community": 0.765,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.39,
+        "theme.belonging": 0.6,
+        "theme.exploitation": 0.68,
+        "theme.freedom": 0.855,
+        "theme.survival": 0.765,
+        "world.hostile": 0.931,
+        "world.systemic": 0.855
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-moonlight": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.tender",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "dialogue.sparse",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.9,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "visual.lush",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 111
+    },
+    "premise": "A young Black man navigates identity, love, and vulnerability across three defining chapters of his life in Miami.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6375,
+        "aftertaste.haunting": 0.64,
+        "aftertaste.hopeful": 0.49,
+        "aftertaste.lingering": 0.81,
+        "intensity": 0.51,
+        "pace": 0.34,
+        "register.intimate": 0.9025,
+        "register.meditative": 0.7225,
+        "register.quiet": 0.81,
+        "texture.dreamlike": 0.64,
+        "texture.hazy": 0.5625,
+        "texture.spare": 0.7225,
+        "tone.earnest": 0.5625,
+        "tone.melancholy": 0.64,
+        "tone.tender": 0.7225,
+        "tone.wistful": 0.81
+      },
+      "story": {
+        "arc.coming-of-age": 0.81,
+        "arc.transformation": 0.81,
+        "bond.found-family": 0.64,
+        "bond.mentor-student": 0.49,
+        "cast.single-protagonist": 0.9025,
+        "complexity": 0.595,
+        "conflict.vs-self": 0.81,
+        "conflict.vs-society": 0.64,
+        "ending.ambiguous": 0.7225,
+        "frame.realism": 0.9025,
+        "frame.slice-of-life": 0.7225,
+        "momentum.unpredictable": 0.49,
+        "moral-complexity": 0.51,
+        "setting.contemporary": 0.9025,
+        "setting.urban": 0.81,
+        "stakes.personal": 0.81,
+        "structure.linear": 0.64,
+        "structure.multiple-pov": 0.49,
+        "theme.belonging": 0.64,
+        "theme.identity": 0.9025,
+        "theme.loneliness": 0.7225,
+        "theme.love": 0.81,
+        "world.intimate-scale": 0.7225,
+        "world.lived-in": 0.81
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-no-country-for-old-men": {
+    "feeling": [
+      {
+        "confidence": 0.98,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.6,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.7,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "dialogue.sparse",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.85,
+          "key": "drive.plot-driven",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "visual.stark",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 122
+    },
+    "premise": "A hunter stumbles upon a drug deal gone wrong and averse and takes a case of money, setting off a relentless pursuit by a merciless killer while an aging sheriff struggles to make sense of the violence unfolding in his jurisdiction.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.violence",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.destiny-vs-choice",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.justice",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.2,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.1
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.descent",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-fate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.4,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.crime",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.thriller",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.4,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.98,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6375,
+        "aftertaste.haunting": 0.765,
+        "aftertaste.lingering": 0.855,
+        "aftertaste.unsettling": 0.68,
+        "intensity": 0.765,
+        "pace": 0.42,
+        "register.meditative": 0.56,
+        "register.propulsive": 0.56,
+        "register.quiet": 0.68,
+        "texture.gritty": 0.855,
+        "texture.hazy": 0.3,
+        "texture.spare": 0.68,
+        "tone.bleak": 0.931,
+        "tone.eerie": 0.68,
+        "tone.wistful": 0.42,
+        "tone.wry": 0.56
+      },
+      "story": {
+        "arc.descent": 0.68,
+        "arc.transformation": 0.42,
+        "cast.duo": 0.42,
+        "cast.morally-grey": 0.68,
+        "cast.single-protagonist": 0.56,
+        "complexity": 0.525,
+        "conflict.vs-fate": 0.68,
+        "conflict.vs-person": 0.855,
+        "ending.ambiguous": 0.855,
+        "frame.crime": 0.9,
+        "frame.realism": 0.931,
+        "frame.thriller": 0.9,
+        "momentum.suspenseful": 0.931,
+        "momentum.twisty": 0.42,
+        "momentum.unpredictable": 0.68,
+        "moral-complexity": 0.68,
+        "setting.contemporary": 0.68,
+        "setting.rural": 0.855,
+        "setting.workplace": 0.12,
+        "stakes.personal": 0.68,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.12,
+        "theme.destiny-vs-choice": 0.765,
+        "theme.justice": 0.56,
+        "theme.violence": 0.855,
+        "world.lived-in": 0.855,
+        "world.systemic": 0.56
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-paddington-2": {
+    "feeling": [
+      {
+        "confidence": 0.98,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "tone.tender",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.6,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.7,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.8,
+          "key": "dialogue.balanced",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.7,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.6
+        },
+        {
+          "confidence": 0.9,
+          "key": "visual.lush",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 103
+    },
+    "premise": "A kind-hearted bear seeks the perfect gift for his aunt's birthday, leading to unexpected adventures in London.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.wonder",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.humanitys-limits",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.characters-changing-each-other",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.4,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.adventure",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.comedy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.7,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.7,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.2
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.21,
+        "aftertaste.comforting": 0.855,
+        "aftertaste.hopeful": 0.765,
+        "aftertaste.lingering": 0.68,
+        "intensity": 0.32,
+        "pace": 0.48,
+        "register.intimate": 0.56,
+        "register.meditative": 0.3,
+        "register.quiet": 0.42,
+        "texture.hazy": 0.2,
+        "texture.polished": 0.68,
+        "texture.spare": 0.3,
+        "tone.earnest": 0.68,
+        "tone.playful": 0.765,
+        "tone.tender": 0.855,
+        "tone.warm": 0.931
+      },
+      "story": {
+        "arc.characters-changing-each-other": 0.68,
+        "arc.transformation": 0.56,
+        "bond.found-family": 0.855,
+        "bond.friendship": 0.68,
+        "cast.ensemble": 0.68,
+        "cast.single-protagonist": 0.855,
+        "cast.underdog": 0.56,
+        "complexity": 0.28,
+        "conflict.vs-person": 0.56,
+        "conflict.vs-self": 0.42,
+        "ending.resolved": 0.855,
+        "frame.adventure": 0.9,
+        "frame.comedy": 0.9,
+        "frame.fantasy": 0.56,
+        "momentum.twisty": 0.42,
+        "momentum.unpredictable": 0.56,
+        "moral-complexity": 0.14,
+        "setting.contemporary": 0.855,
+        "setting.school": 0.12,
+        "setting.urban": 0.68,
+        "stakes.personal": 0.68,
+        "structure.linear": 0.68,
+        "theme.belonging": 0.765,
+        "theme.family": 0.855,
+        "theme.humanitys-limits": 0.56,
+        "theme.wonder": 0.68,
+        "world.intimate-scale": 0.56,
+        "world.lived-in": 0.765
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-parasite": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "dialogue.balanced",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.9,
+          "key": "drive.plot-driven",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.9,
+          "key": "visual.stylised",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 132
+    },
+    "premise": "A poor family infiltrates the household of a wealthy one by posing as skilled workers, uncovering the fragile boundaries between their worlds.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.class",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.exploitation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.death",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "theme.revenge",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.rise-and-fall",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.parent-child",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.hostile",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.3,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.2
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.comedy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.thriller",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.satire",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.4,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.3,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.2
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.39,
+        "aftertaste.bittersweet": 0.525,
+        "aftertaste.lingering": 0.765,
+        "aftertaste.unsettling": 0.68,
+        "intensity": 0.68,
+        "pace": 0.525,
+        "register.meditative": 0.275,
+        "register.propulsive": 0.68,
+        "register.quiet": 0.39,
+        "texture.dense": 0.68,
+        "texture.gritty": 0.525,
+        "texture.polished": 0.525,
+        "tone.eerie": 0.525,
+        "tone.melancholy": 0.39,
+        "tone.playful": 0.39,
+        "tone.wry": 0.855
+      },
+      "story": {
+        "arc.rise-and-fall": 0.765,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.525,
+        "bond.parent-child": 0.68,
+        "cast.ensemble": 0.855,
+        "cast.morally-grey": 0.765,
+        "complexity": 0.765,
+        "conflict.vs-person": 0.68,
+        "conflict.vs-society": 0.855,
+        "ending.ambiguous": 0.765,
+        "frame.comedy": 0.9,
+        "frame.satire": 0.765,
+        "frame.thriller": 0.9,
+        "momentum.suspenseful": 0.855,
+        "momentum.twisty": 0.68,
+        "momentum.unpredictable": 0.765,
+        "moral-complexity": 0.855,
+        "setting.contemporary": 0.931,
+        "setting.school": 0.06,
+        "setting.urban": 0.855,
+        "stakes.personal": 0.68,
+        "structure.nonlinear": 0.12,
+        "structure.unreliable-narrator": 0.06,
+        "theme.class": 0.931,
+        "theme.death": 0.56,
+        "theme.exploitation": 0.855,
+        "theme.revenge": 0.42,
+        "world.hostile": 0.525,
+        "world.systemic": 0.855
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-past-lives": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "dialogue.balanced",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.85,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "visual.naturalistic",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 105
+    },
+    "premise": "A woman reflects on a childhood connection with a man from her past, exploring how time, distance, and cultural shifts shape identity and longing across years of separation.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.4,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.romance",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.595,
+        "aftertaste.bittersweet": 0.765,
+        "aftertaste.hopeful": 0.39,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.32,
+        "pace": 0.24,
+        "register.intimate": 0.931,
+        "register.meditative": 0.765,
+        "register.quiet": 0.855,
+        "texture.hazy": 0.525,
+        "texture.polished": 0.6,
+        "texture.spare": 0.765,
+        "tone.earnest": 0.68,
+        "tone.melancholy": 0.765,
+        "tone.serene": 0.525,
+        "tone.wistful": 0.855
+      },
+      "story": {
+        "arc.coming-of-age": 0.42,
+        "arc.transformation": 0.56,
+        "bond.friendship": 0.765,
+        "bond.mentor-student": 0.12,
+        "cast.duo": 0.68,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.4,
+        "conflict.vs-self": 0.68,
+        "conflict.vs-society": 0.42,
+        "ending.ambiguous": 0.765,
+        "frame.realism": 0.931,
+        "frame.romance": 0.9,
+        "frame.slice-of-life": 0.855,
+        "momentum.episodic-arcs": 0.42,
+        "momentum.unpredictable": 0.3,
+        "moral-complexity": 0.24,
+        "setting.contemporary": 0.931,
+        "setting.school": 0.2,
+        "setting.urban": 0.68,
+        "stakes.personal": 0.855,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.42,
+        "theme.belonging": 0.6,
+        "theme.identity": 0.765,
+        "theme.love": 0.68,
+        "theme.memory": 0.855,
+        "world.intimate-scale": 0.855,
+        "world.lived-in": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-portrait-of-a-lady-on-fire": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.98,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "dialogue.sparse",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.95,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.95,
+          "key": "visual.stylised",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 122
+    },
+    "premise": "A painter is commissioned to secretly create a wedding portrait of a young woman who refuses to sit for her portrait, leading to a quiet observation that deepens into a forbidden connection.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.desire",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.freedom",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.characters-changing-each-other",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.65,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.romance",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.55,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.98,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.65
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.72,
+        "aftertaste.bittersweet": 0.855,
+        "aftertaste.haunting": 0.765,
+        "aftertaste.lingering": 0.931,
+        "intensity": 0.51,
+        "pace": 0.255,
+        "register.intimate": 0.931,
+        "register.meditative": 0.765,
+        "register.quiet": 0.855,
+        "texture.hazy": 0.525,
+        "texture.polished": 0.6,
+        "texture.spare": 0.68,
+        "tone.earnest": 0.68,
+        "tone.melancholy": 0.765,
+        "tone.serene": 0.6,
+        "tone.wistful": 0.855
+      },
+      "story": {
+        "arc.characters-changing-each-other": 0.68,
+        "arc.transformation": 0.765,
+        "bond.found-family": 0.39,
+        "bond.mentor-student": 0.275,
+        "cast.duo": 0.931,
+        "complexity": 0.52,
+        "conflict.vs-self": 0.525,
+        "conflict.vs-society": 0.68,
+        "ending.bittersweet": 0.931,
+        "frame.realism": 0.855,
+        "frame.romance": 0.931,
+        "frame.slice-of-life": 0.525,
+        "momentum.episodic-arcs": 0.275,
+        "momentum.unpredictable": 0.39,
+        "moral-complexity": 0.595,
+        "setting.historical": 0.931,
+        "setting.rural": 0.68,
+        "stakes.personal": 0.855,
+        "structure.linear": 0.68,
+        "theme.desire": 0.855,
+        "theme.freedom": 0.765,
+        "theme.love": 0.931,
+        "theme.memory": 0.68,
+        "world.intimate-scale": 0.855,
+        "world.lived-in": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-pulp-fiction": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.loud",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "aftertaste.energized",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.6,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 3,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "dialogue.dialogue-heavy",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.85,
+          "key": "drive.plot-driven",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.95,
+          "key": "visual.stylised",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 154
+    },
+    "premise": "Interwoven stories follow hitmen, a boxer, a gangster's wife, and small-time criminals as their lives collide through violence, chance, and dark humor in Los Angeles.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.violence",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.destiny-vs-choice",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.redemption",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.breaking-expectations",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.partners",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.6,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.comedy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.crime",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.8
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.3,
+        "aftertaste.energized": 0.42,
+        "aftertaste.lingering": 0.68,
+        "aftertaste.unsettling": 0.56,
+        "intensity": 0.68,
+        "pace": 0.56,
+        "register.intimate": 0.42,
+        "register.loud": 0.68,
+        "register.propulsive": 0.56,
+        "texture.dense": 0.68,
+        "texture.gritty": 0.56,
+        "texture.polished": 0.42,
+        "tone.bleak": 0.3,
+        "tone.earnest": 0.42,
+        "tone.playful": 0.68,
+        "tone.wry": 0.855
+      },
+      "story": {
+        "arc.breaking-expectations": 0.68,
+        "arc.transformation": 0.56,
+        "bond.found-family": 0.42,
+        "bond.partners": 0.56,
+        "cast.ensemble": 0.855,
+        "cast.morally-grey": 0.68,
+        "complexity": 0.855,
+        "conflict.vs-person": 0.56,
+        "conflict.vs-self": 0.68,
+        "ending.ambiguous": 0.68,
+        "frame.comedy": 0.9,
+        "frame.crime": 0.9,
+        "frame.thriller": 0.56,
+        "momentum.suspenseful": 0.56,
+        "momentum.twisty": 0.68,
+        "momentum.unpredictable": 0.855,
+        "moral-complexity": 0.68,
+        "setting.contemporary": 0.855,
+        "setting.urban": 0.68,
+        "setting.workplace": 0.3,
+        "stakes.personal": 0.68,
+        "structure.multiple-pov": 0.68,
+        "structure.nonlinear": 0.931,
+        "theme.destiny-vs-choice": 0.72,
+        "theme.friendship": 0.48,
+        "theme.redemption": 0.595,
+        "theme.violence": 0.855,
+        "world.lived-in": 0.68,
+        "world.systemic": 0.42
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-spirited-away": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.7,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "dialogue.balanced",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.9,
+          "key": "drive.atmosphere-driven",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.98,
+          "key": "visual.lush",
+          "source": "ai",
+          "weight": 0.95
+        }
+      ],
+      "minutes_to_finish": 125
+    },
+    "premise": "A young girl enters a mysterious spirit world and must work in a bathhouse for gods to rescue her parents and find her way home.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.mythic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.4,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.28,
+        "aftertaste.haunting": 0.6,
+        "aftertaste.hopeful": 0.68,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.48,
+        "pace": 0.4,
+        "register.intimate": 0.68,
+        "register.meditative": 0.525,
+        "register.quiet": 0.455,
+        "texture.dense": 0.68,
+        "texture.dreamlike": 0.855,
+        "texture.polished": 0.6,
+        "tone.playful": 0.6,
+        "tone.serene": 0.525,
+        "tone.warm": 0.765,
+        "tone.wistful": 0.68
+      },
+      "story": {
+        "arc.coming-of-age": 0.765,
+        "arc.transformation": 0.855,
+        "bond.found-family": 0.68,
+        "bond.friendship": 0.6,
+        "cast.ensemble": 0.525,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.595,
+        "conflict.vs-self": 0.68,
+        "conflict.vs-system": 0.6,
+        "ending.resolved": 0.765,
+        "frame.adventure": 0.765,
+        "frame.fantasy": 0.931,
+        "frame.slice-of-life": 0.525,
+        "momentum.suspenseful": 0.525,
+        "momentum.twisty": 0.39,
+        "momentum.unpredictable": 0.68,
+        "moral-complexity": 0.4,
+        "setting.secondary-world": 0.855,
+        "setting.timeless": 0.68,
+        "setting.urban": 0.39,
+        "stakes.personal": 0.855,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.12,
+        "theme.belonging": 0.68,
+        "theme.growing-up": 0.855,
+        "theme.identity": 0.765,
+        "theme.memory": 0.6,
+        "world.lived-in": 0.765,
+        "world.mythic": 0.855
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-the-dark-knight": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.restless",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.epic",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      }
+    ],
+    "form": {
+      "band": 3,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "dialogue.balanced",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.9,
+          "key": "drive.plot-driven",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.95,
+          "key": "visual.stylised",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 152
+    },
+    "premise": "In Gotham City, a vigilante confronts a chaotic criminal mastermind whose crimes force him to question the limits of justice and sacrifice.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.justice",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.violence",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.sacrifice",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "theme.freedom",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.descent",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.rivals",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.hostile",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.crime",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.thriller",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.community",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.68,
+        "aftertaste.haunting": 0.855,
+        "aftertaste.lingering": 0.68,
+        "aftertaste.unsettling": 0.765,
+        "intensity": 0.855,
+        "pace": 0.765,
+        "register.cerebral": 0.68,
+        "register.epic": 0.765,
+        "register.propulsive": 0.855,
+        "texture.dense": 0.765,
+        "texture.gritty": 0.855,
+        "texture.polished": 0.6,
+        "tone.bleak": 0.855,
+        "tone.earnest": 0.68,
+        "tone.restless": 0.6,
+        "tone.wry": 0.525
+      },
+      "story": {
+        "arc.descent": 0.525,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.525,
+        "bond.rivals": 0.68,
+        "cast.ensemble": 0.855,
+        "cast.morally-grey": 0.765,
+        "complexity": 0.765,
+        "conflict.vs-self": 0.765,
+        "conflict.vs-system": 0.68,
+        "ending.bittersweet": 0.765,
+        "frame.crime": 0.9,
+        "frame.realism": 0.765,
+        "frame.thriller": 0.9,
+        "momentum.suspenseful": 0.931,
+        "momentum.twisty": 0.765,
+        "momentum.unpredictable": 0.855,
+        "moral-complexity": 0.855,
+        "setting.contemporary": 0.855,
+        "setting.urban": 0.931,
+        "stakes.community": 0.855,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.39,
+        "theme.freedom": 0.525,
+        "theme.justice": 0.855,
+        "theme.sacrifice": 0.68,
+        "theme.violence": 0.765,
+        "world.hostile": 0.765,
+        "world.systemic": 0.855
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-the-godfather": {
+    "feeling": [
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.epic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.55,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 3,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "dialogue.balanced",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.9,
+          "key": "drive.plot-driven",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.95,
+          "key": "visual.stylised",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 175
+    },
+    "premise": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant youngest son.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.power",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.rise-and-fall",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.parent-child",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.crime",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.community",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.525,
+        "aftertaste.haunting": 0.765,
+        "aftertaste.lingering": 0.855,
+        "aftertaste.unsettling": 0.525,
+        "intensity": 0.68,
+        "pace": 0.275,
+        "register.epic": 0.855,
+        "register.intimate": 0.68,
+        "register.meditative": 0.56,
+        "texture.dense": 0.855,
+        "texture.ornate": 0.68,
+        "texture.polished": 0.765,
+        "tone.eerie": 0.6,
+        "tone.melancholy": 0.68,
+        "tone.warm": 0.56,
+        "tone.wry": 0.42
+      },
+      "story": {
+        "arc.rise-and-fall": 0.68,
+        "arc.transformation": 0.855,
+        "bond.found-family": 0.68,
+        "bond.parent-child": 0.855,
+        "cast.ensemble": 0.931,
+        "cast.morally-grey": 0.855,
+        "cast.single-protagonist": 0.68,
+        "complexity": 0.765,
+        "conflict.vs-person": 0.68,
+        "conflict.vs-self": 0.765,
+        "ending.bittersweet": 0.765,
+        "frame.crime": 0.931,
+        "frame.realism": 0.855,
+        "momentum.episodic-arcs": 0.525,
+        "momentum.suspenseful": 0.765,
+        "momentum.unpredictable": 0.6,
+        "moral-complexity": 0.855,
+        "setting.historical": 0.68,
+        "setting.urban": 0.855,
+        "setting.workplace": 0.56,
+        "stakes.community": 0.765,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.56,
+        "theme.family": 0.931,
+        "theme.love": 0.56,
+        "theme.power": 0.855,
+        "world.lived-in": 0.855,
+        "world.systemic": 0.765
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-the-shawshank-redemption": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.7,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.75,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.85,
+          "key": "dialogue.balanced",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.75,
+          "key": "drive.plot-driven",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.9,
+          "key": "visual.naturalistic",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 142
+    },
+    "premise": "Two imprisoned men form a bond over years, finding hope and purpose through small acts of kindness and quiet resilience within the walls of a harsh penitentiary.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.freedom",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.home",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.redemption",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.characters-changing-each-other",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.75,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.65,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.75,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.35,
+        "aftertaste.comforting": 0.6,
+        "aftertaste.hopeful": 0.855,
+        "aftertaste.lingering": 0.68,
+        "intensity": 0.48,
+        "pace": 0.3,
+        "register.intimate": 0.68,
+        "register.meditative": 0.6,
+        "texture.dense": 0.39,
+        "texture.polished": 0.68,
+        "tone.earnest": 0.765,
+        "tone.serene": 0.6,
+        "tone.warm": 0.68,
+        "tone.wistful": 0.525
+      },
+      "story": {
+        "arc.characters-changing-each-other": 0.855,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.855,
+        "bond.friendship": 0.931,
+        "cast.duo": 0.931,
+        "cast.ensemble": 0.525,
+        "complexity": 0.375,
+        "conflict.vs-self": 0.525,
+        "conflict.vs-system": 0.765,
+        "ending.resolved": 0.855,
+        "frame.adventure": 0.39,
+        "frame.realism": 0.855,
+        "momentum.suspenseful": 0.525,
+        "momentum.unpredictable": 0.39,
+        "moral-complexity": 0.375,
+        "setting.historical": 0.525,
+        "setting.urban": 0.39,
+        "setting.workplace": 0.68,
+        "stakes.personal": 0.68,
+        "structure.linear": 0.765,
+        "theme.freedom": 0.855,
+        "theme.friendship": 0.931,
+        "theme.home": 0.855,
+        "theme.redemption": 0.765,
+        "world.lived-in": 0.68,
+        "world.systemic": 0.765
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "movie-the-social-network": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.restless",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.55,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.65
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "dialogue.dialogue-heavy",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "drive.plot-driven",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.9,
+          "key": "visual.stylised",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 120
+    },
+    "premise": "The founding of Facebook is depicted through legal depositions, tracing the ambitions, betrayals, and fractured friendships among Harvard students as the social network grows from a dorm-room idea into a global phenomenon.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.ambition",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "theme.exploitation",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.rise-and-fall",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.rivals",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.mystery",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.8
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.455,
+        "aftertaste.hopeful": 0.275,
+        "aftertaste.lingering": 0.68,
+        "aftertaste.unsettling": 0.525,
+        "intensity": 0.68,
+        "pace": 0.855,
+        "register.cerebral": 0.855,
+        "register.intimate": 0.39,
+        "register.propulsive": 0.765,
+        "texture.dense": 0.765,
+        "texture.gritty": 0.525,
+        "texture.polished": 0.6,
+        "tone.earnest": 0.39,
+        "tone.eerie": 0.525,
+        "tone.restless": 0.6,
+        "tone.wry": 0.765
+      },
+      "story": {
+        "arc.rise-and-fall": 0.6,
+        "arc.transformation": 0.68,
+        "bond.friendship": 0.6,
+        "bond.rivals": 0.525,
+        "cast.ensemble": 0.765,
+        "cast.morally-grey": 0.68,
+        "complexity": 0.68,
+        "conflict.vs-person": 0.855,
+        "conflict.vs-system": 0.56,
+        "ending.bittersweet": 0.6,
+        "frame.mystery": 0.525,
+        "frame.realism": 0.855,
+        "frame.thriller": 0.68,
+        "momentum.suspenseful": 0.765,
+        "momentum.twisty": 0.525,
+        "momentum.unpredictable": 0.6,
+        "moral-complexity": 0.765,
+        "setting.contemporary": 0.931,
+        "setting.school": 0.525,
+        "setting.urban": 0.765,
+        "stakes.personal": 0.68,
+        "structure.multiple-pov": 0.68,
+        "structure.nonlinear": 0.855,
+        "theme.ambition": 0.855,
+        "theme.belonging": 0.56,
+        "theme.exploitation": 0.4875,
+        "theme.friendship": 0.765,
+        "world.lived-in": 0.6,
+        "world.systemic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-blue-in-green": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.2
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.low",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.piano",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.spacious",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.slow",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.none",
+          "source": "ai",
+          "weight": 1
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A slow, meditative jazz ballad featuring sparse trumpet and piano interplay, evoking a contemplative and introspective mood.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.1
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.3,
+        "aftertaste.comforting": 0.375,
+        "aftertaste.haunting": 0.425,
+        "aftertaste.lingering": 0.45,
+        "intensity": 0.15,
+        "pace": 0.1,
+        "register.intimate": 0.475,
+        "register.meditative": 0.45,
+        "register.quiet": 0.425,
+        "texture.hazy": 0.4,
+        "texture.raw": 0.375,
+        "texture.spare": 0.45,
+        "tone.melancholy": 0.4,
+        "tone.serene": 0.425,
+        "tone.wistful": 0.45
+      },
+      "story": {
+        "complexity": 0.35,
+        "ending.ambiguous": 0.425,
+        "moral-complexity": 0.05,
+        "stakes.personal": 0.45
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-bohemian-rhapsody": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.fierce",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.epic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.high",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.orchestral",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.polished",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.mid",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.theatrical",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A multi-section rock suite blending ballad, operatic, and hard rock elements with shifting vocal styles and layered harmonies.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.death",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.desire",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.mythic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.35,
+        "aftertaste.haunting": 0.4,
+        "aftertaste.lingering": 0.45,
+        "intensity": 0.4,
+        "pace": 0.3,
+        "register.epic": 0.45,
+        "register.meditative": 0.35,
+        "texture.dense": 0.45,
+        "texture.ornate": 0.4,
+        "tone.fierce": 0.4,
+        "tone.melancholy": 0.35,
+        "tone.wistful": 0.4
+      },
+      "story": {
+        "arc.transformation": 0.4,
+        "cast.single-protagonist": 0.45,
+        "complexity": 0.45,
+        "conflict.vs-self": 0.4,
+        "ending.resolved": 0.35,
+        "frame.adventure": 0.35,
+        "frame.fantasy": 0.4,
+        "momentum.twisty": 0.4,
+        "momentum.unpredictable": 0.45,
+        "moral-complexity": 0.25,
+        "setting.timeless": 0.4,
+        "stakes.personal": 0.4,
+        "structure.nonlinear": 0.45,
+        "theme.death": 0.35,
+        "theme.desire": 0.35,
+        "theme.identity": 0.4,
+        "world.mythic": 0.35
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-both-sides-now": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.low",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.guitar",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.spacious",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.slow",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A reflective folk song exploring the shifting perspectives on love and life through poetic imagery and personal experience.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.wonder",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.open",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.3,
+        "aftertaste.bittersweet": 0.4,
+        "aftertaste.hopeful": 0.35,
+        "aftertaste.lingering": 0.425,
+        "intensity": 0.25,
+        "pace": 0.2,
+        "register.intimate": 0.45,
+        "register.meditative": 0.425,
+        "texture.hazy": 0.35,
+        "texture.spare": 0.4,
+        "tone.earnest": 0.4,
+        "tone.melancholy": 0.425,
+        "tone.wistful": 0.45
+      },
+      "story": {
+        "arc.transformation": 0.4,
+        "cast.single-protagonist": 0.45,
+        "complexity": 0.3,
+        "conflict.vs-self": 0.375,
+        "ending.open": 0.4,
+        "frame.realism": 0.4,
+        "momentum.unpredictable": 0.3,
+        "moral-complexity": 0.15,
+        "setting.timeless": 0.4,
+        "stakes.personal": 0.425,
+        "structure.linear": 0.35,
+        "theme.identity": 0.4,
+        "theme.love": 0.425,
+        "theme.memory": 0.45,
+        "theme.wonder": 0.375,
+        "world.intimate-scale": 0.425
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-champagne-supernova": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.lush",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.romantic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.high",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.guitar",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.spacious",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.mid",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.7
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A sprawling, dreamlike anthem blending swirling guitars and hazy vocals to evoke a sense of longing and transcendence.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.wonder",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.freedom",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.time",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.3,
+        "aftertaste.haunting": 0.35,
+        "aftertaste.hopeful": 0.3,
+        "aftertaste.lingering": 0.45,
+        "intensity": 0.35,
+        "pace": 0.25,
+        "register.meditative": 0.4,
+        "register.propulsive": 0.35,
+        "texture.dreamlike": 0.45,
+        "texture.hazy": 0.4,
+        "texture.ornate": 0.35,
+        "tone.lush": 0.4,
+        "tone.melancholy": 0.3,
+        "tone.romantic": 0.35,
+        "tone.wistful": 0.45
+      },
+      "story": {
+        "complexity": 0.3,
+        "ending.ambiguous": 0.4,
+        "moral-complexity": 0.15,
+        "stakes.personal": 0.35,
+        "theme.freedom": 0.35,
+        "theme.memory": 0.4,
+        "theme.time": 0.3,
+        "theme.wonder": 0.45
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-clair-de-lune": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.2
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.low",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.piano",
+          "source": "ai",
+          "weight": 1
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.atmospheric",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.slow",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.none",
+          "source": "ai",
+          "weight": 1
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A piano piece evoking moonlight and quiet reflection through delicate, flowing harmonies.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.wonder",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.1
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.2,
+        "aftertaste.comforting": 0.35,
+        "aftertaste.haunting": 0.35,
+        "aftertaste.lingering": 0.4,
+        "intensity": 0.15,
+        "pace": 0.1,
+        "register.intimate": 0.45,
+        "register.meditative": 0.4,
+        "texture.hazy": 0.35,
+        "texture.spare": 0.4,
+        "tone.melancholy": 0.35,
+        "tone.serene": 0.4,
+        "tone.wistful": 0.4
+      },
+      "story": {
+        "complexity": 0.3,
+        "ending.resolved": 0.4,
+        "frame.fantasy": 0.35,
+        "moral-complexity": 0.05,
+        "setting.timeless": 0.45,
+        "stakes.personal": 0.4,
+        "theme.loneliness": 0.35,
+        "theme.memory": 0.4,
+        "theme.wonder": 0.35
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-dancing-on-my-own": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.high",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.synth",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.polished",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.fast",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.confessional",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A person watches their ex dance with someone else at a club, choosing to keep dancing alone despite the heartache.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.desire",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.425,
+        "aftertaste.bittersweet": 0.45,
+        "aftertaste.lingering": 0.4,
+        "intensity": 0.4,
+        "pace": 0.35,
+        "register.intimate": 0.4,
+        "register.propulsive": 0.45,
+        "texture.dense": 0.4,
+        "texture.polished": 0.45,
+        "tone.earnest": 0.35,
+        "tone.melancholy": 0.4,
+        "tone.wistful": 0.45
+      },
+      "story": {
+        "arc.transformation": 0.3,
+        "cast.single-protagonist": 0.45,
+        "complexity": 0.3,
+        "conflict.vs-person": 0.35,
+        "conflict.vs-self": 0.4,
+        "ending.ambiguous": 0.4,
+        "frame.realism": 0.4,
+        "momentum.unpredictable": 0.3,
+        "moral-complexity": 0.15,
+        "setting.contemporary": 0.45,
+        "setting.urban": 0.4,
+        "stakes.personal": 0.45,
+        "structure.linear": 0.45,
+        "theme.desire": 0.4,
+        "theme.identity": 0.35,
+        "theme.loneliness": 0.45,
+        "world.intimate-scale": 0.4
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-everything-is-free": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.low",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.guitar",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.raw",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.slow",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A folk song reflecting on artistic value and economic exchange in a changing world.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.art",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.exploitation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.freedom",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.3,
+        "aftertaste.lingering": 0.375,
+        "intensity": 0.25,
+        "pace": 0.2,
+        "register.intimate": 0.45,
+        "texture.spare": 0.425,
+        "tone.earnest": 0.425,
+        "tone.wistful": 0.4
+      },
+      "story": {
+        "complexity": 0.25,
+        "conflict.vs-system": 0.425,
+        "ending.resolved": 0.4,
+        "frame.realism": 0.45,
+        "moral-complexity": 0.3,
+        "setting.contemporary": 0.35,
+        "stakes.personal": 0.375,
+        "theme.art": 0.45,
+        "theme.exploitation": 0.4,
+        "theme.freedom": 0.35,
+        "world.systemic": 0.4
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-fast-car": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.guitar",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.raw",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.mid",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.confessional",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A narrative about escaping hardship through a fleeting promise of freedom and movement, centered on a journey toward a better life that confronts the limits of hope and repetition.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.desire",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.survival",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.home",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.class",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.5,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "bond.siblings",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.grounded",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.375,
+        "aftertaste.haunting": 0.35,
+        "aftertaste.hopeful": 0.35,
+        "aftertaste.lingering": 0.425,
+        "intensity": 0.3,
+        "pace": 0.25,
+        "register.intimate": 0.475,
+        "register.meditative": 0.35,
+        "register.quiet": 0.4,
+        "texture.hazy": 0.3,
+        "texture.raw": 0.375,
+        "texture.spare": 0.425,
+        "tone.earnest": 0.45,
+        "tone.melancholy": 0.4,
+        "tone.wistful": 0.425,
+        "tone.wry": 0.3
+      },
+      "story": {
+        "arc.coming-of-age": 0.35,
+        "arc.quest": 0.425,
+        "bond.found-family": 0.3,
+        "bond.siblings": 0.25,
+        "cast.single-protagonist": 0.475,
+        "complexity": 0.2,
+        "conflict.vs-self": 0.35,
+        "conflict.vs-society": 0.4,
+        "ending.ambiguous": 0.4,
+        "frame.realism": 0.45,
+        "frame.slice-of-life": 0.4,
+        "momentum.twisty": 0.25,
+        "momentum.unpredictable": 0.3,
+        "moral-complexity": 0.25,
+        "setting.contemporary": 0.45,
+        "setting.rural": 0.3,
+        "setting.urban": 0.35,
+        "stakes.personal": 0.425,
+        "structure.linear": 0.425,
+        "structure.unreliable-narrator": 0.25,
+        "theme.class": 0.375,
+        "theme.desire": 0.45,
+        "theme.home": 0.4,
+        "theme.survival": 0.425,
+        "world.grounded": 0.425,
+        "world.systemic": 0.35
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-flume": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.low",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.piano",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.raw",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.slow",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": null,
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.isolation",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.2
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.35,
+        "aftertaste.haunting": 0.35,
+        "aftertaste.lingering": 0.4,
+        "intensity": 0.2,
+        "pace": 0.15,
+        "register.intimate": 0.45,
+        "register.meditative": 0.4,
+        "texture.hazy": 0.35,
+        "texture.spare": 0.4,
+        "tone.earnest": 0.35,
+        "tone.melancholy": 0.375,
+        "tone.wistful": 0.4
+      },
+      "story": {
+        "cast.single-protagonist": 0.45,
+        "complexity": 0.25,
+        "conflict.vs-self": 0.35,
+        "ending.ambiguous": 0.375,
+        "frame.realism": 0.4,
+        "momentum.unpredictable": 0.3,
+        "moral-complexity": 0.1,
+        "setting.rural": 0.35,
+        "stakes.personal": 0.4,
+        "structure.linear": 0.35,
+        "theme.isolation": 0.375,
+        "theme.loneliness": 0.4,
+        "theme.memory": 0.35,
+        "world.intimate-scale": 0.4
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-god-only-knows": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.tender",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.medium",
+          "source": "ai",
+          "weight": 0.6
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.orchestral",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.spacious",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.mid",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A tender exploration of love and devotion framed through intricate vocal harmonies and lush orchestration.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.2
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.15,
+        "aftertaste.comforting": 0.375,
+        "aftertaste.lingering": 0.4,
+        "intensity": 0.2,
+        "pace": 0.25,
+        "register.intimate": 0.4,
+        "register.meditative": 0.35,
+        "texture.ornate": 0.425,
+        "texture.polished": 0.4,
+        "tone.serene": 0.35,
+        "tone.tender": 0.425,
+        "tone.warm": 0.45
+      },
+      "story": {
+        "complexity": 0.35,
+        "ending.resolved": 0.4,
+        "moral-complexity": 0.1,
+        "stakes.personal": 0.425,
+        "theme.belonging": 0.4,
+        "theme.love": 0.45
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-hallelujah-buckley": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.guitar",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.raw",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.slow",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A haunting, intimate rendition of Leonard Cohen's song, featuring Jeff Buckley's soaring vocals and sparse guitar accompaniment.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.faith",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.desire",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.4,
+        "aftertaste.bittersweet": 0.35,
+        "aftertaste.haunting": 0.4,
+        "aftertaste.lingering": 0.45,
+        "intensity": 0.35,
+        "pace": 0.2,
+        "register.intimate": 0.45,
+        "register.meditative": 0.4,
+        "texture.hazy": 0.35,
+        "texture.spare": 0.4,
+        "tone.earnest": 0.4,
+        "tone.melancholy": 0.4,
+        "tone.serene": 0.35,
+        "tone.wistful": 0.45
+      },
+      "story": {
+        "arc.transformation": 0.35,
+        "cast.single-protagonist": 0.45,
+        "complexity": 0.3,
+        "conflict.vs-self": 0.4,
+        "ending.ambiguous": 0.4,
+        "frame.realism": 0.4,
+        "momentum.unpredictable": 0.35,
+        "moral-complexity": 0.15,
+        "setting.timeless": 0.4,
+        "stakes.personal": 0.45,
+        "structure.linear": 0.45,
+        "theme.desire": 0.35,
+        "theme.faith": 0.45,
+        "theme.loneliness": 0.3,
+        "theme.love": 0.4,
+        "world.intimate-scale": 0.45
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-heroes": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.fierce",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.high",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.guitar",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.spacious",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.mid",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.theatrical",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A song about two lovers meeting by the Berlin Wall, expressing fleeting connection and defiance amid division.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.freedom",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.isolation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "bond.partners",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.hostile",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.wartime",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.romance",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.325,
+        "aftertaste.hopeful": 0.35,
+        "aftertaste.lingering": 0.4,
+        "aftertaste.unsettling": 0.25,
+        "intensity": 0.35,
+        "pace": 0.3,
+        "register.intimate": 0.4,
+        "register.meditative": 0.3,
+        "register.propulsive": 0.25,
+        "texture.dense": 0.35,
+        "texture.hazy": 0.3,
+        "texture.ornate": 0.25,
+        "tone.earnest": 0.35,
+        "tone.fierce": 0.3,
+        "tone.melancholy": 0.375,
+        "tone.wistful": 0.425
+      },
+      "story": {
+        "arc.coming-of-age": 0.25,
+        "arc.transformation": 0.35,
+        "bond.found-family": 0.25,
+        "bond.partners": 0.425,
+        "cast.duo": 0.45,
+        "complexity": 0.3,
+        "conflict.vs-self": 0.3,
+        "conflict.vs-society": 0.4,
+        "ending.bittersweet": 0.425,
+        "frame.adventure": 0.25,
+        "frame.realism": 0.35,
+        "frame.romance": 0.3,
+        "momentum.suspenseful": 0.3,
+        "momentum.twisty": 0.2,
+        "momentum.unpredictable": 0.25,
+        "moral-complexity": 0.25,
+        "setting.historical": 0.4,
+        "setting.urban": 0.35,
+        "setting.wartime": 0.3,
+        "stakes.personal": 0.4,
+        "structure.linear": 0.4,
+        "theme.belonging": 0.3,
+        "theme.freedom": 0.4,
+        "theme.isolation": 0.35,
+        "theme.love": 0.45,
+        "world.hostile": 0.3,
+        "world.systemic": 0.35
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-holocene": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.low",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.strings",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.atmospheric",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.slow",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A reflective song about personal growth and the quiet moments that shape a life, set against a vast natural landscape.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.nature",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-nature",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.open",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.2
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.3,
+        "aftertaste.haunting": 0.4,
+        "aftertaste.hopeful": 0.35,
+        "aftertaste.lingering": 0.45,
+        "intensity": 0.2,
+        "pace": 0.15,
+        "register.intimate": 0.45,
+        "register.meditative": 0.425,
+        "register.quiet": 0.4,
+        "texture.dreamlike": 0.375,
+        "texture.hazy": 0.425,
+        "texture.spare": 0.4,
+        "tone.earnest": 0.375,
+        "tone.melancholy": 0.425,
+        "tone.serene": 0.4,
+        "tone.wistful": 0.45
+      },
+      "story": {
+        "arc.coming-of-age": 0.375,
+        "arc.transformation": 0.4,
+        "cast.single-protagonist": 0.45,
+        "complexity": 0.35,
+        "conflict.vs-nature": 0.3,
+        "conflict.vs-self": 0.35,
+        "ending.open": 0.4,
+        "frame.adventure": 0.3,
+        "frame.slice-of-life": 0.4,
+        "momentum.episodic-arcs": 0.3,
+        "momentum.unpredictable": 0.35,
+        "moral-complexity": 0.1,
+        "setting.rural": 0.425,
+        "setting.timeless": 0.35,
+        "stakes.personal": 0.425,
+        "structure.nonlinear": 0.375,
+        "structure.unreliable-narrator": 0.3,
+        "theme.growing-up": 0.425,
+        "theme.identity": 0.4,
+        "theme.memory": 0.45,
+        "theme.nature": 0.375,
+        "world.intimate-scale": 0.4,
+        "world.lived-in": 0.35
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-motion-picture-soundtrack": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.low",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.piano",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.atmospheric",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.slow",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": null,
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.death",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.wonder",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.35,
+        "aftertaste.bittersweet": 0.375,
+        "aftertaste.haunting": 0.4,
+        "aftertaste.lingering": 0.425,
+        "intensity": 0.2,
+        "pace": 0.15,
+        "register.intimate": 0.35,
+        "register.meditative": 0.4,
+        "register.quiet": 0.375,
+        "texture.dreamlike": 0.325,
+        "texture.hazy": 0.4,
+        "texture.spare": 0.35,
+        "tone.eerie": 0.325,
+        "tone.melancholy": 0.4,
+        "tone.serene": 0.35,
+        "tone.wistful": 0.425
+      },
+      "story": {
+        "arc.transformation": 0.325,
+        "cast.single-protagonist": 0.4,
+        "complexity": 0.3,
+        "conflict.vs-self": 0.35,
+        "ending.ambiguous": 0.375,
+        "frame.fantasy": 0.35,
+        "frame.slice-of-life": 0.3,
+        "momentum.twisty": 0.3,
+        "momentum.unpredictable": 0.325,
+        "moral-complexity": 0.25,
+        "setting.timeless": 0.375,
+        "stakes.personal": 0.4,
+        "structure.linear": 0.35,
+        "theme.death": 0.375,
+        "theme.loneliness": 0.4,
+        "theme.memory": 0.35,
+        "theme.wonder": 0.3,
+        "world.intimate-scale": 0.4
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-motion-sickness": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.confessional",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.guitar",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.raw",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.mid",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.confessional",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A raw, confessional song about emotional aftermath and lingering pain after a turbulent relationship.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.grief",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.desire",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.4,
+        "aftertaste.haunting": 0.35,
+        "aftertaste.lingering": 0.4,
+        "aftertaste.unsettling": 0.3,
+        "intensity": 0.35,
+        "pace": 0.25,
+        "register.confessional": 0.45,
+        "register.intimate": 0.45,
+        "register.quiet": 0.35,
+        "texture.hazy": 0.3,
+        "texture.raw": 0.4,
+        "texture.spare": 0.35,
+        "tone.earnest": 0.45,
+        "tone.melancholy": 0.4,
+        "tone.wistful": 0.4,
+        "tone.wry": 0.3
+      },
+      "story": {
+        "cast.single-protagonist": 0.45,
+        "complexity": 0.25,
+        "conflict.vs-person": 0.4,
+        "conflict.vs-self": 0.35,
+        "ending.bittersweet": 0.4,
+        "frame.realism": 0.45,
+        "momentum.twisty": 0.25,
+        "momentum.unpredictable": 0.3,
+        "moral-complexity": 0.2,
+        "setting.contemporary": 0.45,
+        "stakes.personal": 0.45,
+        "structure.linear": 0.4,
+        "theme.desire": 0.3,
+        "theme.grief": 0.4,
+        "theme.loneliness": 0.35,
+        "theme.memory": 0.35,
+        "world.intimate-scale": 0.45
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-nights-frank-ocean": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.confessional",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.medium",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.synth",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.atmospheric",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.mid",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.confessional",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A two-part R&B track exploring duality, identity, and the tension between desire and self-awareness through shifting moods and vocal delivery.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.desire",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.time",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 1
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.mythic",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.375,
+        "aftertaste.bittersweet": 0.4,
+        "aftertaste.haunting": 0.375,
+        "aftertaste.lingering": 0.45,
+        "intensity": 0.35,
+        "pace": 0.25,
+        "register.confessional": 0.425,
+        "register.intimate": 0.45,
+        "register.meditative": 0.4,
+        "texture.hazy": 0.425,
+        "texture.ornate": 0.3,
+        "texture.spare": 0.35,
+        "tone.melancholy": 0.4,
+        "tone.playful": 0.3,
+        "tone.wistful": 0.425,
+        "tone.wry": 0.35
+      },
+      "story": {
+        "arc.coming-of-age": 0.35,
+        "arc.transformation": 0.4,
+        "cast.single-protagonist": 0.5,
+        "complexity": 0.4,
+        "conflict.vs-self": 0.45,
+        "conflict.vs-society": 0.3,
+        "ending.ambiguous": 0.425,
+        "frame.fantasy": 0.2,
+        "frame.realism": 0.4,
+        "momentum.suspenseful": 0.35,
+        "momentum.twisty": 0.4,
+        "momentum.unpredictable": 0.45,
+        "moral-complexity": 0.3,
+        "setting.contemporary": 0.45,
+        "setting.urban": 0.4,
+        "stakes.personal": 0.475,
+        "structure.multiple-pov": 0.3,
+        "structure.nonlinear": 0.425,
+        "theme.desire": 0.425,
+        "theme.identity": 0.45,
+        "theme.loneliness": 0.375,
+        "theme.time": 0.35,
+        "world.intimate-scale": 0.45,
+        "world.mythic": 0.25
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-re-stacks": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.low",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.guitar",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.atmospheric",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.slow",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A layered folk song built around acoustic guitar loops and falsetto vocals, exploring themes of connection and emotional distance through repetitive, meditative phrasing.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.2
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.3,
+        "aftertaste.haunting": 0.35,
+        "aftertaste.hopeful": 0.25,
+        "aftertaste.lingering": 0.4,
+        "intensity": 0.2,
+        "pace": 0.15,
+        "register.intimate": 0.45,
+        "register.meditative": 0.4,
+        "texture.hazy": 0.4,
+        "texture.ornate": 0.3,
+        "texture.spare": 0.25,
+        "tone.melancholy": 0.35,
+        "tone.serene": 0.3,
+        "tone.wistful": 0.4
+      },
+      "story": {
+        "complexity": 0.3,
+        "ending.ambiguous": 0.375,
+        "moral-complexity": 0.1,
+        "stakes.personal": 0.4,
+        "theme.loneliness": 0.35,
+        "theme.love": 0.3,
+        "theme.memory": 0.25
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-runaway-kanye": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.confessional",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.high",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.orchestral",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.spacious",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.mid",
+          "source": "ai",
+          "weight": 0.6
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.confessional",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A nine-minute reflection on fame, relationships, and self-awareness, blending orchestral hip hop with raw vocal confession and extended instrumental passages.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.madness",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 1
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.4,
+        "aftertaste.bittersweet": 0.35,
+        "aftertaste.haunting": 0.4,
+        "aftertaste.lingering": 0.45,
+        "intensity": 0.35,
+        "pace": 0.2,
+        "register.confessional": 0.4,
+        "register.intimate": 0.45,
+        "register.meditative": 0.4,
+        "texture.dense": 0.4,
+        "texture.hazy": 0.35,
+        "texture.ornate": 0.3,
+        "tone.earnest": 0.35,
+        "tone.melancholy": 0.4,
+        "tone.wistful": 0.45,
+        "tone.wry": 0.3
+      },
+      "story": {
+        "arc.quest": 0.3,
+        "arc.transformation": 0.4,
+        "cast.single-protagonist": 0.5,
+        "complexity": 0.4,
+        "conflict.vs-person": 0.35,
+        "conflict.vs-self": 0.45,
+        "ending.ambiguous": 0.4,
+        "frame.adventure": 0.25,
+        "frame.fantasy": 0.3,
+        "momentum.twisty": 0.35,
+        "momentum.unpredictable": 0.4,
+        "moral-complexity": 0.3,
+        "setting.contemporary": 0.45,
+        "setting.urban": 0.4,
+        "stakes.personal": 0.45,
+        "structure.nonlinear": 0.4,
+        "theme.identity": 0.45,
+        "theme.loneliness": 0.35,
+        "theme.love": 0.4,
+        "theme.madness": 0.3,
+        "world.systemic": 0.35
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-seventeen-sharon-van-etten": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.medium",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.guitar",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.atmospheric",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.mid",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.confessional",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A reflective song about youthful longing and the passage of time, framed through a memory of being seventeen.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.325,
+        "aftertaste.bittersweet": 0.35,
+        "aftertaste.lingering": 0.4,
+        "intensity": 0.25,
+        "pace": 0.2,
+        "register.intimate": 0.4,
+        "register.meditative": 0.35,
+        "texture.hazy": 0.375,
+        "texture.spare": 0.3,
+        "tone.melancholy": 0.375,
+        "tone.warm": 0.3,
+        "tone.wistful": 0.425
+      },
+      "story": {
+        "arc.transformation": 0.35,
+        "cast.single-protagonist": 0.45,
+        "complexity": 0.25,
+        "conflict.vs-self": 0.325,
+        "ending.bittersweet": 0.4,
+        "frame.slice-of-life": 0.4,
+        "momentum.episodic-arcs": 0.3,
+        "moral-complexity": 0.15,
+        "setting.timeless": 0.35,
+        "stakes.personal": 0.425,
+        "structure.linear": 0.4,
+        "theme.growing-up": 0.425,
+        "theme.loneliness": 0.35,
+        "theme.love": 0.3,
+        "theme.memory": 0.45,
+        "world.intimate-scale": 0.4
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-skinny-love": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.low",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.guitar",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.raw",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.slow",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A sparse, intimate song about a fragile relationship unraveling, sung in a fragile falsetto over minimal acoustic guitar.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.isolation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.descent",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.2,
+        "key": "bond.siblings",
+        "source": "ai",
+        "weight": 0.1
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.4,
+        "aftertaste.bittersweet": 0.35,
+        "aftertaste.haunting": 0.4,
+        "aftertaste.lingering": 0.45,
+        "intensity": 0.35,
+        "pace": 0.15,
+        "register.intimate": 0.45,
+        "register.quiet": 0.4,
+        "texture.raw": 0.4,
+        "texture.spare": 0.45,
+        "tone.melancholy": 0.4,
+        "tone.wistful": 0.45,
+        "tone.wry": 0.3
+      },
+      "story": {
+        "arc.descent": 0.4,
+        "cast.single-protagonist": 0.45,
+        "complexity": 0.25,
+        "conflict.vs-person": 0.3,
+        "conflict.vs-self": 0.35,
+        "ending.ambiguous": 0.4,
+        "frame.realism": 0.4,
+        "momentum.unpredictable": 0.3,
+        "moral-complexity": 0.2,
+        "setting.rural": 0.4,
+        "stakes.personal": 0.45,
+        "structure.linear": 0.45,
+        "theme.isolation": 0.35,
+        "theme.loneliness": 0.45,
+        "theme.love": 0.4,
+        "world.intimate-scale": 0.45
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-strange-fruit": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.low",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.strings",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.raw",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.slow",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.95
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A haunting protest song depicting racial violence in the American South through stark, poetic imagery.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.violence",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.justice",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.death",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.community",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.open",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.45,
+        "aftertaste.haunting": 0.475,
+        "aftertaste.lingering": 0.425,
+        "aftertaste.unsettling": 0.45,
+        "intensity": 0.425,
+        "pace": 0.15,
+        "register.intimate": 0.45,
+        "register.meditative": 0.425,
+        "texture.raw": 0.45,
+        "texture.spare": 0.4,
+        "tone.bleak": 0.475,
+        "tone.earnest": 0.425,
+        "tone.melancholy": 0.45,
+        "tone.wistful": 0.4
+      },
+      "story": {
+        "cast.single-protagonist": 0.45,
+        "complexity": 0.3,
+        "conflict.vs-society": 0.475,
+        "ending.open": 0.4,
+        "frame.realism": 0.45,
+        "moral-complexity": 0.35,
+        "setting.historical": 0.475,
+        "setting.rural": 0.35,
+        "stakes.community": 0.425,
+        "theme.death": 0.425,
+        "theme.justice": 0.45,
+        "theme.loneliness": 0.35,
+        "theme.violence": 0.475,
+        "world.systemic": 0.45
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-teardrop": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.low",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.percussion",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.atmospheric",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.slow",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A haunting trip hop track featuring Elizabeth Fraser's ethereal vocals over a slow, pulsing beat and minimalist instrumentation.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.grief",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.2
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.425,
+        "aftertaste.haunting": 0.45,
+        "aftertaste.lingering": 0.475,
+        "aftertaste.unsettling": 0.35,
+        "intensity": 0.3,
+        "pace": 0.15,
+        "register.intimate": 0.45,
+        "register.meditative": 0.4,
+        "texture.hazy": 0.45,
+        "texture.ornate": 0.3,
+        "texture.spare": 0.35,
+        "tone.eerie": 0.425,
+        "tone.melancholy": 0.475,
+        "tone.wistful": 0.4
+      },
+      "story": {
+        "complexity": 0.35,
+        "ending.ambiguous": 0.4,
+        "moral-complexity": 0.1,
+        "stakes.personal": 0.425,
+        "theme.grief": 0.45,
+        "theme.loneliness": 0.4,
+        "theme.memory": 0.35
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-the-night-we-met": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.low",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.guitar",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.atmospheric",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.slow",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": "A reflective song about longing for a past moment and the wish to change how a relationship began.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.timeless",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.romance",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.4,
+        "aftertaste.bittersweet": 0.35,
+        "aftertaste.haunting": 0.4,
+        "aftertaste.lingering": 0.45,
+        "intensity": 0.25,
+        "pace": 0.2,
+        "register.intimate": 0.45,
+        "register.meditative": 0.4,
+        "texture.hazy": 0.4,
+        "texture.ornate": 0.3,
+        "tone.melancholy": 0.45,
+        "tone.warm": 0.35,
+        "tone.wistful": 0.4
+      },
+      "story": {
+        "cast.single-protagonist": 0.45,
+        "complexity": 0.25,
+        "conflict.vs-self": 0.35,
+        "ending.ambiguous": 0.4,
+        "frame.realism": 0.4,
+        "frame.romance": 0.35,
+        "moral-complexity": 0.15,
+        "setting.timeless": 0.35,
+        "stakes.personal": 0.45,
+        "structure.linear": 0.4,
+        "theme.belonging": 0.3,
+        "theme.loneliness": 0.4,
+        "theme.love": 0.35,
+        "theme.memory": 0.45,
+        "world.intimate-scale": 0.4
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "song-wide-open-spaces": {
+    "feeling": [
+      {
+        "confidence": 0.5,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "tone.serene",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": null,
+      "craft": [
+        {
+          "confidence": 0.5,
+          "key": "energy.high",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.5,
+          "key": "instrumentation.strings",
+          "source": "ai",
+          "weight": 0.75
+        },
+        {
+          "confidence": 0.5,
+          "key": "production.polished",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "tempo.mid",
+          "source": "ai",
+          "weight": 0.8
+        },
+        {
+          "confidence": 0.5,
+          "key": "vocal.intimate",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": null
+    },
+    "premise": null,
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.5,
+        "key": "theme.freedom",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.5,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.5,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.5,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.5,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.2,
+        "aftertaste.comforting": 0.35,
+        "aftertaste.hopeful": 0.425,
+        "aftertaste.lingering": 0.375,
+        "intensity": 0.25,
+        "pace": 0.3,
+        "register.intimate": 0.4,
+        "register.meditative": 0.35,
+        "texture.ornate": 0.3,
+        "texture.polished": 0.425,
+        "tone.earnest": 0.4,
+        "tone.serene": 0.35,
+        "tone.warm": 0.425,
+        "tone.wistful": 0.375
+      },
+      "story": {
+        "arc.coming-of-age": 0.375,
+        "arc.transformation": 0.425,
+        "bond.found-family": 0.375,
+        "bond.friendship": 0.35,
+        "cast.ensemble": 0.4,
+        "complexity": 0.25,
+        "conflict.vs-self": 0.35,
+        "conflict.vs-society": 0.3,
+        "ending.resolved": 0.4,
+        "frame.adventure": 0.35,
+        "frame.realism": 0.425,
+        "momentum.episodic-arcs": 0.25,
+        "momentum.unpredictable": 0.3,
+        "moral-complexity": 0.15,
+        "setting.contemporary": 0.45,
+        "setting.rural": 0.4,
+        "stakes.personal": 0.425,
+        "structure.linear": 0.4,
+        "theme.belonging": 0.35,
+        "theme.freedom": 0.45,
+        "theme.identity": 0.4,
+        "world.intimate-scale": 0.35,
+        "world.lived-in": 0.4
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-atlanta": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.75,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.55
+      },
+      {
+        "confidence": 0.75,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 1230
+    },
+    "premise": "Two cousins navigate the Atlanta rap scene while confronting personal ambitions, systemic pressures, and surreal moments of everyday life.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.ambition",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.exploitation",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.breaking-expectations",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.self-determination",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.comedy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.satire",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.8
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.4125,
+        "aftertaste.hopeful": 0.39,
+        "aftertaste.lingering": 0.765,
+        "aftertaste.unsettling": 0.6,
+        "intensity": 0.48,
+        "pace": 0.375,
+        "register.cerebral": 0.525,
+        "register.meditative": 0.6,
+        "register.quiet": 0.68,
+        "texture.dreamlike": 0.68,
+        "texture.hazy": 0.455,
+        "texture.spare": 0.525,
+        "tone.earnest": 0.455,
+        "tone.melancholy": 0.6,
+        "tone.playful": 0.525,
+        "tone.wry": 0.855
+      },
+      "story": {
+        "arc.breaking-expectations": 0.81,
+        "arc.self-determination": 0.68,
+        "bond.found-family": 0.68,
+        "bond.friendship": 0.6,
+        "cast.ensemble": 0.765,
+        "cast.morally-grey": 0.6,
+        "complexity": 0.765,
+        "conflict.vs-self": 0.765,
+        "conflict.vs-society": 0.68,
+        "ending.ambiguous": 0.68,
+        "frame.comedy": 0.9,
+        "frame.realism": 0.525,
+        "frame.satire": 0.68,
+        "momentum.episodic-arcs": 0.765,
+        "momentum.twisty": 0.6,
+        "momentum.unpredictable": 0.855,
+        "moral-complexity": 0.68,
+        "setting.contemporary": 0.931,
+        "setting.urban": 0.855,
+        "setting.workplace": 0.42,
+        "stakes.personal": 0.765,
+        "structure.nonlinear": 0.68,
+        "structure.unreliable-narrator": 0.525,
+        "theme.ambition": 0.765,
+        "theme.belonging": 0.68,
+        "theme.exploitation": 0.6,
+        "theme.identity": 0.855,
+        "world.lived-in": 0.855,
+        "world.systemic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-better-call-saul": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 3,
+      "craft": [
+        {
+          "confidence": 0.98,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 2898
+    },
+    "premise": "A skilled lawyer navigates moral compromises and personal ambition while building a criminal practice in Albuquerque, tracing his transformation from Jimmy McGill to Saul Goodman.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.ambition",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.legacy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.madness",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.descent",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.crime",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6,
+        "aftertaste.bittersweet": 0.68,
+        "aftertaste.haunting": 0.6,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.56,
+        "pace": 0.4,
+        "register.intimate": 0.68,
+        "register.meditative": 0.6,
+        "register.quiet": 0.525,
+        "texture.dense": 0.68,
+        "texture.hazy": 0.39,
+        "texture.polished": 0.765,
+        "tone.earnest": 0.525,
+        "tone.melancholy": 0.68,
+        "tone.wistful": 0.6,
+        "tone.wry": 0.765
+      },
+      "story": {
+        "arc.descent": 0.765,
+        "arc.transformation": 0.931,
+        "bond.found-family": 0.525,
+        "bond.mentor-student": 0.39,
+        "cast.morally-grey": 0.765,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.765,
+        "conflict.vs-self": 0.855,
+        "conflict.vs-system": 0.68,
+        "ending.resolved": 0.855,
+        "frame.crime": 0.9,
+        "frame.slice-of-life": 0.39,
+        "frame.thriller": 0.68,
+        "momentum.suspenseful": 0.68,
+        "momentum.twisty": 0.525,
+        "momentum.unpredictable": 0.6,
+        "moral-complexity": 0.855,
+        "setting.contemporary": 0.855,
+        "setting.urban": 0.765,
+        "setting.workplace": 0.525,
+        "stakes.personal": 0.765,
+        "structure.linear": 0.525,
+        "structure.unreliable-narrator": 0.39,
+        "theme.ambition": 0.855,
+        "theme.identity": 0.765,
+        "theme.legacy": 0.6375,
+        "theme.madness": 0.56,
+        "world.lived-in": 0.765,
+        "world.systemic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-breaking-bad": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.fierce",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.cathartic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "form": {
+      "band": 3,
+      "craft": [
+        {
+          "confidence": 0.98,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.75,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.7
+        }
+      ],
+      "minutes_to_finish": 2914
+    },
+    "premise": "A high school chemistry teacher diagnosed with terminal cancer turns to manufacturing methamphetamine to secure his family's financial future.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.desire",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.power",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.corruption",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.98,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.rise-and-fall",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.partners",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.hostile",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.crime",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.thriller",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.5,
+        "key": "frame.satire",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.6,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.525,
+        "aftertaste.cathartic": 0.525,
+        "aftertaste.haunting": 0.68,
+        "aftertaste.unsettling": 0.6,
+        "intensity": 0.765,
+        "pace": 0.6,
+        "register.cerebral": 0.39,
+        "register.intimate": 0.525,
+        "register.propulsive": 0.68,
+        "texture.dense": 0.525,
+        "texture.gritty": 0.765,
+        "texture.polished": 0.39,
+        "tone.bleak": 0.765,
+        "tone.earnest": 0.39,
+        "tone.fierce": 0.525,
+        "tone.wry": 0.525
+      },
+      "story": {
+        "arc.rise-and-fall": 0.855,
+        "arc.transformation": 0.931,
+        "bond.found-family": 0.42,
+        "bond.partners": 0.68,
+        "cast.morally-grey": 0.765,
+        "cast.single-protagonist": 0.855,
+        "complexity": 0.765,
+        "conflict.vs-self": 0.855,
+        "conflict.vs-society": 0.525,
+        "ending.resolved": 0.765,
+        "frame.crime": 0.931,
+        "frame.satire": 0.2,
+        "frame.thriller": 0.9,
+        "momentum.suspenseful": 0.855,
+        "momentum.twisty": 0.68,
+        "momentum.unpredictable": 0.765,
+        "moral-complexity": 0.855,
+        "setting.contemporary": 0.855,
+        "setting.rural": 0.39,
+        "setting.urban": 0.525,
+        "stakes.personal": 0.855,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.3,
+        "theme.corruption": 0.6,
+        "theme.desire": 0.855,
+        "theme.identity": 0.68,
+        "theme.power": 0.765,
+        "world.hostile": 0.525,
+        "world.systemic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-chernobyl": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.6,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.8,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 325
+    },
+    "premise": "A dramatization of the 1986 Chernobyl nuclear disaster, focusing on the human and systemic failures that led to the catastrophe and the efforts to contain it.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.truth-and-lies",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.sacrifice",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.corruption",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.humanitys-limits",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.6,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.7,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.6,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.8,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "frame.mystery",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.6,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.community",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.68,
+        "aftertaste.haunting": 0.9025,
+        "aftertaste.lingering": 0.7225,
+        "aftertaste.unsettling": 0.81,
+        "intensity": 0.765,
+        "pace": 0.48,
+        "register.cerebral": 0.7225,
+        "register.meditative": 0.64,
+        "register.quiet": 0.49,
+        "texture.dense": 0.81,
+        "texture.gritty": 0.7225,
+        "texture.hazy": 0.36,
+        "tone.bleak": 0.9025,
+        "tone.earnest": 0.81,
+        "tone.melancholy": 0.64,
+        "tone.wistful": 0.49
+      },
+      "story": {
+        "arc.coming-of-age": 0.36,
+        "arc.transformation": 0.64,
+        "bond.found-family": 0.49,
+        "bond.mentor-student": 0.36,
+        "cast.ensemble": 0.81,
+        "cast.morally-grey": 0.64,
+        "complexity": 0.7225,
+        "conflict.vs-self": 0.49,
+        "conflict.vs-system": 0.9025,
+        "ending.resolved": 0.9025,
+        "frame.mystery": 0.49,
+        "frame.realism": 0.9025,
+        "frame.thriller": 0.64,
+        "momentum.suspenseful": 0.81,
+        "momentum.twisty": 0.49,
+        "momentum.unpredictable": 0.64,
+        "moral-complexity": 0.81,
+        "setting.historical": 0.9025,
+        "setting.urban": 0.64,
+        "setting.workplace": 0.49,
+        "stakes.community": 0.81,
+        "structure.linear": 0.81,
+        "structure.unreliable-narrator": 0.36,
+        "theme.corruption": 0.7225,
+        "theme.humanitys-limits": 0.64,
+        "theme.sacrifice": 0.81,
+        "theme.truth-and-lies": 0.9025,
+        "world.lived-in": 0.81,
+        "world.systemic": 0.9025
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-derry-girls": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.95,
+          "key": "hook.immediate",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 437
+    },
+    "premise": "A group of teenage girls navigate school, family, and friendship in 1990s Derry during the Troubles, finding humor and connection amid political tension.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.characters-changing-each-other",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.every-character-a-lead",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.comedy",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.55,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.5,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.3,
+        "aftertaste.comforting": 0.525,
+        "aftertaste.hopeful": 0.6,
+        "aftertaste.lingering": 0.68,
+        "intensity": 0.42,
+        "pace": 0.525,
+        "register.intimate": 0.68,
+        "register.propulsive": 0.6,
+        "register.quiet": 0.39,
+        "texture.dense": 0.455,
+        "texture.polished": 0.39,
+        "texture.raw": 0.525,
+        "tone.earnest": 0.6,
+        "tone.playful": 0.765,
+        "tone.warm": 0.855,
+        "tone.wistful": 0.68
+      },
+      "story": {
+        "arc.characters-changing-each-other": 0.68,
+        "arc.coming-of-age": 0.855,
+        "bond.found-family": 0.765,
+        "bond.friendship": 0.855,
+        "cast.ensemble": 0.931,
+        "cast.every-character-a-lead": 0.765,
+        "complexity": 0.275,
+        "conflict.vs-self": 0.42,
+        "conflict.vs-society": 0.56,
+        "ending.bittersweet": 0.765,
+        "frame.comedy": 0.931,
+        "frame.slice-of-life": 0.765,
+        "momentum.episodic-arcs": 0.68,
+        "momentum.unpredictable": 0.6,
+        "moral-complexity": 0.2,
+        "setting.historical": 0.931,
+        "setting.school": 0.855,
+        "setting.urban": 0.765,
+        "stakes.personal": 0.68,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.525,
+        "theme.belonging": 0.68,
+        "theme.family": 0.6,
+        "theme.friendship": 0.855,
+        "theme.growing-up": 0.765,
+        "world.intimate-scale": 0.68,
+        "world.lived-in": 0.855
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-fleabag": {
+    "feeling": [
+      {
+        "confidence": 0.98,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.confessional",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.cathartic",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.98,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.95,
+          "key": "hook.immediate",
+          "source": "ai",
+          "weight": 0.9
+        }
+      ],
+      "minutes_to_finish": 324
+    },
+    "premise": "A woman navigates grief, family dysfunction, and modern relationships while breaking the fourth wall to share her inner thoughts with the audience.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.grief",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.single-protagonist",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.siblings",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.comedy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.romance",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "frame.satire",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.8
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.765,
+        "aftertaste.bittersweet": 0.855,
+        "aftertaste.cathartic": 0.6,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.72,
+        "pace": 0.56,
+        "register.confessional": 0.855,
+        "register.intimate": 0.931,
+        "register.quiet": 0.525,
+        "texture.dense": 0.525,
+        "texture.raw": 0.855,
+        "texture.spare": 0.68,
+        "tone.earnest": 0.525,
+        "tone.melancholy": 0.68,
+        "tone.playful": 0.765,
+        "tone.wry": 0.931
+      },
+      "story": {
+        "arc.coming-of-age": 0.525,
+        "arc.transformation": 0.765,
+        "bond.found-family": 0.39,
+        "bond.siblings": 0.525,
+        "cast.morally-grey": 0.765,
+        "cast.single-protagonist": 0.931,
+        "complexity": 0.68,
+        "conflict.vs-person": 0.68,
+        "conflict.vs-self": 0.855,
+        "ending.resolved": 0.765,
+        "frame.comedy": 0.9,
+        "frame.romance": 0.525,
+        "frame.satire": 0.39,
+        "momentum.suspenseful": 0.39,
+        "momentum.twisty": 0.525,
+        "momentum.unpredictable": 0.765,
+        "moral-complexity": 0.765,
+        "setting.contemporary": 0.931,
+        "setting.urban": 0.855,
+        "setting.workplace": 0.39,
+        "stakes.personal": 0.855,
+        "structure.linear": 0.68,
+        "structure.unreliable-narrator": 0.931,
+        "theme.belonging": 0.525,
+        "theme.family": 0.68,
+        "theme.grief": 0.855,
+        "theme.loneliness": 0.765,
+        "world.intimate-scale": 0.855,
+        "world.lived-in": 0.765
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-game-of-thrones": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.epic",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "form": {
+      "band": 3,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 4161
+    },
+    "premise": "Nine noble families vie for control of the Iron Throne in the Seven Kingdoms of Westeros, while an ancient threat awakens beyond the Wall.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.power",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.war",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.legacy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.rise-and-fall",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.sprawling-cast",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.siblings",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.secondary-world",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.world",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.9
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6375,
+        "aftertaste.haunting": 0.68,
+        "aftertaste.lingering": 0.765,
+        "aftertaste.unsettling": 0.6,
+        "intensity": 0.765,
+        "pace": 0.56,
+        "register.epic": 0.9025,
+        "register.meditative": 0.39,
+        "register.propulsive": 0.765,
+        "texture.dense": 0.81,
+        "texture.gritty": 0.765,
+        "texture.ornate": 0.68,
+        "tone.bleak": 0.81,
+        "tone.earnest": 0.525,
+        "tone.wistful": 0.455,
+        "tone.wry": 0.6
+      },
+      "story": {
+        "arc.rise-and-fall": 0.765,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.525,
+        "bond.siblings": 0.68,
+        "cast.ensemble": 0.9025,
+        "cast.morally-grey": 0.81,
+        "cast.sprawling-cast": 0.81,
+        "complexity": 0.9025,
+        "conflict.vs-person": 0.81,
+        "conflict.vs-society": 0.765,
+        "ending.ambiguous": 0.68,
+        "frame.adventure": 0.68,
+        "frame.fantasy": 0.9025,
+        "frame.thriller": 0.6,
+        "momentum.suspenseful": 0.81,
+        "momentum.twisty": 0.68,
+        "momentum.unpredictable": 0.765,
+        "moral-complexity": 0.81,
+        "setting.historical": 0.68,
+        "setting.rural": 0.525,
+        "setting.secondary-world": 0.9025,
+        "stakes.world": 0.81,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.81,
+        "theme.family": 0.81,
+        "theme.legacy": 0.68,
+        "theme.power": 0.9025,
+        "theme.war": 0.765,
+        "world.lived-in": 0.9025,
+        "world.systemic": 0.81
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-mad-men": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 3,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 4324
+    },
+    "premise": "Set in the 1960s advertising world of Madison Avenue, the series follows the personal and professional lives of employees at Sterling Cooper as they navigate shifting social norms, identity, and ambition.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.ambition",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.historical",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.8
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.56,
+        "aftertaste.bittersweet": 0.525,
+        "aftertaste.haunting": 0.6,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.48,
+        "pace": 0.32,
+        "register.cerebral": 0.525,
+        "register.meditative": 0.68,
+        "register.quiet": 0.6,
+        "texture.dense": 0.68,
+        "texture.hazy": 0.525,
+        "texture.ornate": 0.6,
+        "tone.earnest": 0.525,
+        "tone.melancholy": 0.68,
+        "tone.wistful": 0.765,
+        "tone.wry": 0.6
+      },
+      "story": {
+        "arc.coming-of-age": 0.525,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.455,
+        "bond.mentor-student": 0.525,
+        "cast.ensemble": 0.931,
+        "cast.morally-grey": 0.68,
+        "complexity": 0.765,
+        "conflict.vs-self": 0.855,
+        "conflict.vs-society": 0.765,
+        "ending.ambiguous": 0.68,
+        "frame.realism": 0.855,
+        "frame.slice-of-life": 0.68,
+        "momentum.episodic-arcs": 0.68,
+        "momentum.unpredictable": 0.525,
+        "moral-complexity": 0.68,
+        "setting.historical": 0.931,
+        "setting.urban": 0.855,
+        "setting.workplace": 0.765,
+        "stakes.personal": 0.765,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.525,
+        "theme.ambition": 0.765,
+        "theme.belonging": 0.6,
+        "theme.identity": 0.855,
+        "theme.loneliness": 0.68,
+        "world.lived-in": 0.855,
+        "world.systemic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-normal-people": {
+    "feeling": [
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 360
+    },
+    "premise": "A quiet story about two people navigating intimacy, class, and personal growth through years of on-again, off-again connection.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.love",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.class",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.characters-changing-each-other",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.duo",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.7,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.6,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.romance",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6,
+        "aftertaste.bittersweet": 0.68,
+        "aftertaste.hopeful": 0.39,
+        "aftertaste.lingering": 0.765,
+        "intensity": 0.56,
+        "pace": 0.4,
+        "register.intimate": 0.855,
+        "register.meditative": 0.525,
+        "register.quiet": 0.765,
+        "texture.hazy": 0.39,
+        "texture.raw": 0.6,
+        "texture.spare": 0.68,
+        "tone.earnest": 0.68,
+        "tone.melancholy": 0.6,
+        "tone.warm": 0.68,
+        "tone.wistful": 0.525
+      },
+      "story": {
+        "arc.characters-changing-each-other": 0.68,
+        "arc.transformation": 0.765,
+        "bond.found-family": 0.3,
+        "bond.friendship": 0.525,
+        "cast.duo": 0.931,
+        "cast.morally-grey": 0.42,
+        "complexity": 0.52,
+        "conflict.vs-self": 0.68,
+        "conflict.vs-society": 0.6,
+        "ending.ambiguous": 0.68,
+        "frame.realism": 0.855,
+        "frame.romance": 0.9,
+        "frame.slice-of-life": 0.68,
+        "momentum.episodic-arcs": 0.68,
+        "momentum.unpredictable": 0.525,
+        "moral-complexity": 0.48,
+        "setting.contemporary": 0.931,
+        "setting.school": 0.525,
+        "setting.urban": 0.39,
+        "stakes.personal": 0.765,
+        "structure.linear": 0.765,
+        "structure.multiple-pov": 0.525,
+        "theme.class": 0.765,
+        "theme.growing-up": 0.68,
+        "theme.loneliness": 0.6,
+        "theme.love": 0.855,
+        "world.intimate-scale": 0.855,
+        "world.systemic": 0.525
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-severance": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.restless",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.65,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.98,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 950
+    },
+    "premise": "Employees at a mysterious corporation undergo a procedure that separates their work memories from their personal lives, leading to unsettling discoveries about identity and control.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.freedom",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.exploitation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.truth-and-lies",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.self-determination",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.hostile",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.sci-fi",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.thriller",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.mystery",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.85
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.525,
+        "aftertaste.hopeful": 0.39,
+        "aftertaste.lingering": 0.855,
+        "aftertaste.unsettling": 0.765,
+        "intensity": 0.68,
+        "pace": 0.39,
+        "register.cerebral": 0.765,
+        "register.meditative": 0.68,
+        "register.propulsive": 0.525,
+        "texture.hazy": 0.525,
+        "texture.polished": 0.6,
+        "texture.spare": 0.765,
+        "tone.eerie": 0.855,
+        "tone.restless": 0.6,
+        "tone.wistful": 0.525,
+        "tone.wry": 0.68
+      },
+      "story": {
+        "arc.self-determination": 0.6,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.525,
+        "bond.mentor-student": 0.39,
+        "cast.ensemble": 0.855,
+        "cast.morally-grey": 0.68,
+        "complexity": 0.855,
+        "conflict.vs-self": 0.855,
+        "conflict.vs-system": 0.765,
+        "ending.ambiguous": 0.68,
+        "frame.mystery": 0.68,
+        "frame.sci-fi": 0.9,
+        "frame.thriller": 0.9,
+        "momentum.suspenseful": 0.855,
+        "momentum.twisty": 0.68,
+        "momentum.unpredictable": 0.765,
+        "moral-complexity": 0.765,
+        "setting.contemporary": 0.525,
+        "setting.urban": 0.68,
+        "setting.workplace": 0.931,
+        "stakes.personal": 0.765,
+        "structure.nonlinear": 0.525,
+        "structure.unreliable-narrator": 0.39,
+        "theme.exploitation": 0.68,
+        "theme.freedom": 0.765,
+        "theme.identity": 0.855,
+        "theme.truth-and-lies": 0.6,
+        "world.hostile": 0.68,
+        "world.systemic": 0.931
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-station-eleven": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 1,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 500
+    },
+    "premise": "A traveling symphony performs Shakespeare in the Great Lakes region years after a flu pandemic collapses civilization, while flashbacks trace the lives of those connected to a famous actor on the night the outbreak began.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.art",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.survival",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.every-character-a-lead",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.near-future",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.sci-fi",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.community",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.595,
+        "aftertaste.bittersweet": 0.6,
+        "aftertaste.hopeful": 0.68,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.48,
+        "pace": 0.4,
+        "register.intimate": 0.525,
+        "register.meditative": 0.765,
+        "register.quiet": 0.68,
+        "texture.dreamlike": 0.6,
+        "texture.hazy": 0.68,
+        "texture.spare": 0.39,
+        "tone.earnest": 0.525,
+        "tone.melancholy": 0.68,
+        "tone.warm": 0.6,
+        "tone.wistful": 0.765
+      },
+      "story": {
+        "arc.coming-of-age": 0.525,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.765,
+        "bond.mentor-student": 0.525,
+        "cast.ensemble": 0.855,
+        "cast.every-character-a-lead": 0.68,
+        "complexity": 0.595,
+        "conflict.vs-self": 0.765,
+        "conflict.vs-society": 0.6,
+        "ending.bittersweet": 0.765,
+        "frame.adventure": 0.39,
+        "frame.realism": 0.68,
+        "frame.sci-fi": 0.9,
+        "momentum.episodic-arcs": 0.525,
+        "momentum.suspenseful": 0.39,
+        "momentum.unpredictable": 0.68,
+        "moral-complexity": 0.48,
+        "setting.contemporary": 0.68,
+        "setting.near-future": 0.855,
+        "setting.rural": 0.525,
+        "stakes.community": 0.68,
+        "structure.multiple-pov": 0.765,
+        "structure.nonlinear": 0.855,
+        "theme.art": 0.765,
+        "theme.belonging": 0.6,
+        "theme.memory": 0.855,
+        "theme.survival": 0.68,
+        "world.lived-in": 0.855,
+        "world.systemic": 0.525
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-stranger-things": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.98,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.65,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.6
+        }
+      ],
+      "minutes_to_finish": 2142
+    },
+    "premise": "A group of kids in a small town investigates supernatural mysteries and government conspiracies after a friend vanishes into a dark alternate dimension.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.growing-up",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-the-unknown",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "frame.sci-fi",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.horror",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.cliffhangers",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.world",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "ending.open",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.55,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.39,
+        "aftertaste.haunting": 0.525,
+        "aftertaste.hopeful": 0.6,
+        "aftertaste.lingering": 0.68,
+        "intensity": 0.68,
+        "pace": 0.6,
+        "register.intimate": 0.525,
+        "register.propulsive": 0.68,
+        "texture.dense": 0.525,
+        "texture.gritty": 0.39,
+        "texture.polished": 0.455,
+        "tone.eerie": 0.765,
+        "tone.playful": 0.525,
+        "tone.warm": 0.68,
+        "tone.wistful": 0.6
+      },
+      "story": {
+        "arc.coming-of-age": 0.765,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.855,
+        "bond.friendship": 0.931,
+        "cast.ensemble": 0.931,
+        "cast.underdog": 0.68,
+        "complexity": 0.525,
+        "conflict.vs-system": 0.765,
+        "conflict.vs-the-unknown": 0.855,
+        "ending.open": 0.525,
+        "frame.adventure": 0.68,
+        "frame.horror": 0.9,
+        "frame.sci-fi": 0.931,
+        "momentum.cliffhangers": 0.765,
+        "momentum.suspenseful": 0.855,
+        "momentum.unpredictable": 0.6,
+        "moral-complexity": 0.275,
+        "setting.contemporary": 0.68,
+        "setting.rural": 0.525,
+        "setting.school": 0.39,
+        "stakes.world": 0.765,
+        "structure.linear": 0.525,
+        "structure.multiple-pov": 0.68,
+        "theme.belonging": 0.72,
+        "theme.friendship": 0.855,
+        "theme.growing-up": 0.765,
+        "theme.loneliness": 0.56,
+        "world.lived-in": 0.765,
+        "world.systemic": 0.525
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-succession": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.restless",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.fierce",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.98,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 2340
+    },
+    "premise": "A powerful media dynasty fractures as aging patriarch Logan Roy's declining health triggers a brutal succession battle among his four adult children, each vying for control of Waystar RoyCo while navigating shifting alliances, betrayals, and the corrosive weight of family expectation.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.power",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.expectation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.legacy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.rise-and-fall",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.every-character-a-lead",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.siblings",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.4,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.3
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.satire",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.525,
+        "aftertaste.bittersweet": 0.525,
+        "aftertaste.lingering": 0.765,
+        "aftertaste.unsettling": 0.68,
+        "intensity": 0.765,
+        "pace": 0.6,
+        "register.intimate": 0.525,
+        "register.meditative": 0.39,
+        "register.propulsive": 0.68,
+        "texture.dense": 0.765,
+        "texture.gritty": 0.6,
+        "texture.polished": 0.525,
+        "tone.bleak": 0.56,
+        "tone.fierce": 0.455,
+        "tone.restless": 0.6,
+        "tone.wry": 0.855
+      },
+      "story": {
+        "arc.rise-and-fall": 0.68,
+        "arc.transformation": 0.56,
+        "bond.found-family": 0.12,
+        "bond.siblings": 0.855,
+        "cast.ensemble": 0.931,
+        "cast.every-character-a-lead": 0.68,
+        "cast.morally-grey": 0.855,
+        "complexity": 0.765,
+        "conflict.vs-person": 0.855,
+        "conflict.vs-self": 0.68,
+        "ending.ambiguous": 0.765,
+        "frame.realism": 0.855,
+        "frame.satire": 0.68,
+        "momentum.suspenseful": 0.765,
+        "momentum.twisty": 0.6,
+        "momentum.unpredictable": 0.68,
+        "moral-complexity": 0.855,
+        "setting.contemporary": 0.931,
+        "setting.urban": 0.855,
+        "setting.workplace": 0.765,
+        "stakes.personal": 0.855,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.525,
+        "theme.expectation": 0.765,
+        "theme.family": 0.855,
+        "theme.legacy": 0.68,
+        "theme.power": 0.931,
+        "world.lived-in": 0.855,
+        "world.systemic": 0.765
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-ted-lasso": {
+    "feeling": [
+      {
+        "confidence": 0.98,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.tender",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.confessional",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.98,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.85
+        },
+        {
+          "confidence": 0.75,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.7
+        }
+      ],
+      "minutes_to_finish": 1360
+    },
+    "premise": "An American college football coach moves to England to manage a struggling soccer team, bringing relentless optimism and unconventional methods to win over skeptical players, fans, and management.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.redemption",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.expectation",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.characters-changing-each-other",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.every-character-a-lead",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.comedy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.cliffhangers",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.community",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.32,
+        "aftertaste.comforting": 0.855,
+        "aftertaste.hopeful": 0.931,
+        "aftertaste.lingering": 0.6,
+        "intensity": 0.4,
+        "pace": 0.48,
+        "register.confessional": 0.6,
+        "register.intimate": 0.68,
+        "register.meditative": 0.525,
+        "texture.hazy": 0.39,
+        "texture.polished": 0.765,
+        "texture.spare": 0.455,
+        "tone.earnest": 0.855,
+        "tone.playful": 0.68,
+        "tone.tender": 0.765,
+        "tone.warm": 0.931
+      },
+      "story": {
+        "arc.characters-changing-each-other": 0.765,
+        "arc.transformation": 0.855,
+        "bond.found-family": 0.855,
+        "bond.mentor-student": 0.6,
+        "cast.ensemble": 0.855,
+        "cast.every-character-a-lead": 0.68,
+        "complexity": 0.4,
+        "conflict.vs-self": 0.68,
+        "conflict.vs-society": 0.525,
+        "ending.resolved": 0.765,
+        "frame.adventure": 0.39,
+        "frame.comedy": 0.9,
+        "frame.slice-of-life": 0.68,
+        "momentum.cliffhangers": 0.39,
+        "momentum.episodic-arcs": 0.68,
+        "momentum.unpredictable": 0.525,
+        "moral-complexity": 0.32,
+        "setting.contemporary": 0.931,
+        "setting.urban": 0.68,
+        "setting.workplace": 0.855,
+        "stakes.community": 0.68,
+        "structure.linear": 0.765,
+        "structure.multiple-pov": 0.525,
+        "theme.belonging": 0.855,
+        "theme.expectation": 0.6,
+        "theme.friendship": 0.765,
+        "theme.redemption": 0.68,
+        "world.intimate-scale": 0.6,
+        "world.lived-in": 0.765
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-the-bear": {
+    "feeling": [
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "aftertaste.cathartic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.9,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.75
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "hook.immediate",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 1216
+    },
+    "premise": "A young chef returns home to run his family's sandwich shop after a personal tragedy, navigating the chaos of the kitchen and his own grief while trying to honor his brother's legacy.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.grief",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.obsession",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.65,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.siblings",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.98,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.comedy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.55,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "ending.open",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.6
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.6,
+        "aftertaste.cathartic": 0.525,
+        "aftertaste.haunting": 0.455,
+        "aftertaste.lingering": 0.68,
+        "intensity": 0.765,
+        "pace": 0.68,
+        "register.intimate": 0.765,
+        "register.meditative": 0.39,
+        "register.propulsive": 0.68,
+        "texture.dense": 0.525,
+        "texture.gritty": 0.765,
+        "texture.raw": 0.68,
+        "tone.bleak": 0.455,
+        "tone.earnest": 0.68,
+        "tone.warm": 0.525,
+        "tone.wry": 0.525
+      },
+      "story": {
+        "arc.coming-of-age": 0.525,
+        "arc.transformation": 0.765,
+        "bond.found-family": 0.765,
+        "bond.siblings": 0.525,
+        "cast.ensemble": 0.855,
+        "cast.morally-grey": 0.39,
+        "complexity": 0.525,
+        "conflict.vs-person": 0.525,
+        "conflict.vs-self": 0.855,
+        "ending.open": 0.6,
+        "frame.comedy": 0.9,
+        "frame.realism": 0.855,
+        "frame.slice-of-life": 0.68,
+        "momentum.episodic-arcs": 0.525,
+        "momentum.suspenseful": 0.68,
+        "momentum.unpredictable": 0.6,
+        "moral-complexity": 0.39,
+        "setting.contemporary": 0.931,
+        "setting.urban": 0.855,
+        "setting.workplace": 0.765,
+        "stakes.personal": 0.765,
+        "structure.linear": 0.525,
+        "structure.unreliable-narrator": 0.275,
+        "theme.belonging": 0.68,
+        "theme.family": 0.765,
+        "theme.grief": 0.855,
+        "theme.obsession": 0.6,
+        "world.lived-in": 0.855,
+        "world.systemic": 0.525
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-the-leftovers": {
+    "feeling": [
+      {
+        "confidence": 0.95,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.9,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.4
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.98,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.95
+        },
+        {
+          "confidence": 0.9,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 1540
+    },
+    "premise": "After 2% of the world's population vanishes without explanation, those left behind struggle to find meaning in a world where the rules of life have changed.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.98,
+        "key": "theme.grief",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "theme.faith",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "arc.characters-changing-each-other",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.98,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.mystery",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.8
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.765,
+        "aftertaste.haunting": 0.765,
+        "aftertaste.hopeful": 0.6,
+        "aftertaste.lingering": 0.855,
+        "intensity": 0.595,
+        "pace": 0.32,
+        "register.intimate": 0.68,
+        "register.meditative": 0.855,
+        "register.quiet": 0.765,
+        "texture.dense": 0.68,
+        "texture.hazy": 0.765,
+        "texture.raw": 0.6,
+        "tone.earnest": 0.68,
+        "tone.melancholy": 0.765,
+        "tone.wistful": 0.855,
+        "tone.wry": 0.525
+      },
+      "story": {
+        "arc.characters-changing-each-other": 0.765,
+        "arc.transformation": 0.855,
+        "bond.found-family": 0.68,
+        "bond.mentor-student": 0.525,
+        "cast.ensemble": 0.931,
+        "cast.morally-grey": 0.68,
+        "complexity": 0.765,
+        "conflict.vs-self": 0.855,
+        "conflict.vs-society": 0.68,
+        "ending.resolved": 0.765,
+        "frame.mystery": 0.9,
+        "frame.realism": 0.68,
+        "frame.thriller": 0.525,
+        "momentum.suspenseful": 0.68,
+        "momentum.twisty": 0.6,
+        "momentum.unpredictable": 0.765,
+        "moral-complexity": 0.68,
+        "setting.contemporary": 0.855,
+        "setting.rural": 0.525,
+        "setting.school": 0.39,
+        "stakes.personal": 0.855,
+        "structure.nonlinear": 0.765,
+        "structure.unreliable-narrator": 0.525,
+        "theme.belonging": 0.68,
+        "theme.faith": 0.855,
+        "theme.grief": 0.931,
+        "theme.loneliness": 0.765,
+        "world.lived-in": 0.855,
+        "world.systemic": 0.765
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-the-office-us": {
+    "feeling": [
+      {
+        "confidence": 0.85,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.warm",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.6,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.spare",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.raw",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.comforting",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "aftertaste.hopeful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.7,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "form": {
+      "band": 3,
+      "craft": [
+        {
+          "confidence": 0.8,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.7
+        },
+        {
+          "confidence": 0.85,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 4422
+    },
+    "premise": "A mockumentary-style comedy following the everyday lives of employees at a paper company branch, capturing their awkward interactions, personal quirks, and workplace dynamics through a documentary lens.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.9,
+        "key": "theme.belonging",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.friendship",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "theme.expectation",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.7,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.7,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.8,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.every-character-a-lead",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "cast.underdog",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "bond.friendship",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.intimate-scale",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.comedy",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.85,
+        "key": "frame.slice-of-life",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.satire",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.5,
+        "key": "momentum.cliffhangers",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.85,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "ending.resolved",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.4
+      },
+      {
+        "confidence": 0.7,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.3
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.21,
+        "aftertaste.comforting": 0.68,
+        "aftertaste.hopeful": 0.42,
+        "aftertaste.lingering": 0.56,
+        "intensity": 0.32,
+        "pace": 0.4,
+        "register.intimate": 0.68,
+        "register.meditative": 0.3,
+        "register.quiet": 0.56,
+        "texture.hazy": 0.42,
+        "texture.raw": 0.42,
+        "texture.spare": 0.56,
+        "tone.earnest": 0.42,
+        "tone.playful": 0.68,
+        "tone.warm": 0.68,
+        "tone.wry": 0.56
+      },
+      "story": {
+        "arc.coming-of-age": 0.42,
+        "arc.transformation": 0.3,
+        "bond.found-family": 0.68,
+        "bond.friendship": 0.56,
+        "cast.ensemble": 0.855,
+        "cast.every-character-a-lead": 0.68,
+        "cast.underdog": 0.42,
+        "complexity": 0.28,
+        "conflict.vs-person": 0.42,
+        "conflict.vs-self": 0.56,
+        "ending.resolved": 0.68,
+        "frame.comedy": 0.9,
+        "frame.satire": 0.56,
+        "frame.slice-of-life": 0.68,
+        "momentum.cliffhangers": 0.2,
+        "momentum.episodic-arcs": 0.68,
+        "momentum.unpredictable": 0.56,
+        "moral-complexity": 0.21,
+        "setting.contemporary": 0.855,
+        "setting.urban": 0.56,
+        "setting.workplace": 0.855,
+        "stakes.personal": 0.68,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.56,
+        "theme.belonging": 0.72,
+        "theme.expectation": 0.42,
+        "theme.friendship": 0.56,
+        "theme.loneliness": 0.42,
+        "world.intimate-scale": 0.68,
+        "world.lived-in": 0.855
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-the-sopranos": {
+    "feeling": [
+      {
+        "confidence": 0.85,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.restless",
+        "source": "ai",
+        "weight": 0.65
+      },
+      {
+        "confidence": 0.85,
+        "key": "register.intimate",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "register.propulsive",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "texture.polished",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.65,
+        "key": "aftertaste.bittersweet",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.55,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 3,
+      "craft": [
+        {
+          "confidence": 0.95,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.75,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.7
+        }
+      ],
+      "minutes_to_finish": 4730
+    },
+    "premise": "A New Jersey mob boss struggles to balance his criminal empire with his personal life while seeking therapy for anxiety and depression.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.identity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.family",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.violence",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.power",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "arc.coming-of-age",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "conflict.vs-person",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "cast.antihero",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.crime",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "frame.thriller",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.75,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.85,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.65,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.personal",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.95,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.85
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.525,
+        "aftertaste.bittersweet": 0.39,
+        "aftertaste.lingering": 0.765,
+        "aftertaste.unsettling": 0.6,
+        "intensity": 0.6,
+        "pace": 0.275,
+        "register.intimate": 0.68,
+        "register.meditative": 0.525,
+        "register.propulsive": 0.39,
+        "texture.dense": 0.68,
+        "texture.gritty": 0.6,
+        "texture.polished": 0.39,
+        "tone.earnest": 0.525,
+        "tone.melancholy": 0.6,
+        "tone.restless": 0.455,
+        "tone.wry": 0.68
+      },
+      "story": {
+        "arc.coming-of-age": 0.42,
+        "arc.transformation": 0.56,
+        "bond.found-family": 0.525,
+        "bond.mentor-student": 0.39,
+        "cast.antihero": 0.68,
+        "cast.ensemble": 0.855,
+        "cast.morally-grey": 0.765,
+        "complexity": 0.765,
+        "conflict.vs-person": 0.68,
+        "conflict.vs-self": 0.855,
+        "ending.ambiguous": 0.855,
+        "frame.crime": 0.9,
+        "frame.realism": 0.765,
+        "frame.thriller": 0.525,
+        "momentum.episodic-arcs": 0.39,
+        "momentum.suspenseful": 0.68,
+        "momentum.unpredictable": 0.525,
+        "moral-complexity": 0.855,
+        "setting.contemporary": 0.855,
+        "setting.urban": 0.765,
+        "setting.workplace": 0.525,
+        "stakes.personal": 0.765,
+        "structure.linear": 0.525,
+        "structure.multiple-pov": 0.39,
+        "theme.family": 0.765,
+        "theme.identity": 0.855,
+        "theme.power": 0.6,
+        "theme.violence": 0.68,
+        "world.lived-in": 0.855,
+        "world.systemic": 0.68
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-the-wire": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.bleak",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.9,
+        "key": "tone.earnest",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "tone.wry",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.epic",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.75,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dense",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.gritty",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.85,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 3,
+      "craft": [
+        {
+          "confidence": 1,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 1
+        },
+        {
+          "confidence": 0.9,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.85
+        }
+      ],
+      "minutes_to_finish": 3600
+    },
+    "premise": "A detailed examination of Baltimore's institutions through the interconnected lives of police, drug dealers, politicians, dockworkers, teachers, and journalists.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.95,
+        "key": "theme.class",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.corruption",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "theme.violence",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "theme.humanitys-limits",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.85,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.characters-changing-each-other",
+        "source": "ai",
+        "weight": 0.75
+      },
+      {
+        "confidence": 0.95,
+        "key": "conflict.vs-system",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-society",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 1,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 1
+      },
+      {
+        "confidence": 0.95,
+        "key": "cast.sprawling-cast",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.every-character-a-lead",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "bond.partners",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.75,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.95,
+        "key": "setting.urban",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.workplace",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.crime",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.65,
+        "key": "frame.adventure",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.multiple-pov",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.85,
+        "key": "structure.linear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.episodic-arcs",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.75,
+        "key": "momentum.cliffhangers",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.community",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.bittersweet",
+        "source": "ai",
+        "weight": 0.85
+      },
+      {
+        "confidence": 0.95,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.95
+      },
+      {
+        "confidence": 0.9,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.9
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.68,
+        "aftertaste.haunting": 0.765,
+        "aftertaste.lingering": 0.81,
+        "aftertaste.unsettling": 0.68,
+        "intensity": 0.6375,
+        "pace": 0.4,
+        "register.epic": 0.81,
+        "register.meditative": 0.6,
+        "register.quiet": 0.525,
+        "texture.dense": 0.81,
+        "texture.gritty": 0.765,
+        "texture.ornate": 0.525,
+        "tone.bleak": 0.765,
+        "tone.earnest": 0.765,
+        "tone.wistful": 0.525,
+        "tone.wry": 0.68
+      },
+      "story": {
+        "arc.characters-changing-each-other": 0.6,
+        "arc.transformation": 0.68,
+        "bond.found-family": 0.525,
+        "bond.partners": 0.68,
+        "cast.ensemble": 1,
+        "cast.every-character-a-lead": 0.81,
+        "cast.sprawling-cast": 0.9025,
+        "complexity": 0.9025,
+        "conflict.vs-society": 0.81,
+        "conflict.vs-system": 0.9025,
+        "ending.bittersweet": 0.765,
+        "frame.adventure": 0.39,
+        "frame.crime": 0.9,
+        "frame.realism": 0.9025,
+        "momentum.cliffhangers": 0.525,
+        "momentum.episodic-arcs": 0.81,
+        "momentum.unpredictable": 0.765,
+        "moral-complexity": 0.81,
+        "setting.contemporary": 0.81,
+        "setting.urban": 0.9025,
+        "setting.workplace": 0.765,
+        "stakes.community": 0.81,
+        "structure.linear": 0.68,
+        "structure.multiple-pov": 0.81,
+        "theme.class": 0.9025,
+        "theme.corruption": 0.81,
+        "theme.humanitys-limits": 0.7225,
+        "theme.violence": 0.81,
+        "world.lived-in": 0.9025,
+        "world.systemic": 0.9025
+      }
+    },
+    "vocabulary_version": "v2"
+  },
+  "tv-twin-peaks": {
+    "feeling": [
+      {
+        "confidence": 0.9,
+        "key": "tone.eerie",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.melancholy",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "tone.wistful",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "tone.playful",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "register.meditative",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "register.cerebral",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "register.quiet",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.dreamlike",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "texture.hazy",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "texture.ornate",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.haunting",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "aftertaste.lingering",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "aftertaste.unsettling",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "intensity",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "ache",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "pace",
+        "source": "ai",
+        "weight": 0.5
+      }
+    ],
+    "form": {
+      "band": 2,
+      "craft": [
+        {
+          "confidence": 0.9,
+          "key": "format.serialized",
+          "source": "ai",
+          "weight": 0.9
+        },
+        {
+          "confidence": 0.9,
+          "key": "hook.slow",
+          "source": "ai",
+          "weight": 0.8
+        }
+      ],
+      "minutes_to_finish": 2256
+    },
+    "premise": "An FBI agent investigates the murder of a homecoming queen in a small town where everyone has secrets and the supernatural lurks beneath the surface.",
+    "profile_version": "p1",
+    "story": [
+      {
+        "confidence": 0.9,
+        "key": "theme.loneliness",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.madness",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.8,
+        "key": "theme.memory",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "theme.wonder",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.8,
+        "key": "arc.transformation",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "arc.quest",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-self",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "conflict.vs-the-unknown",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.ensemble",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "cast.morally-grey",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.7,
+        "key": "bond.found-family",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.6,
+        "key": "bond.mentor-student",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "world.lived-in",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.8,
+        "key": "world.systemic",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.contemporary",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "setting.rural",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.6,
+        "key": "setting.school",
+        "source": "ai",
+        "weight": 0.5
+      },
+      {
+        "confidence": 0.9,
+        "key": "frame.mystery",
+        "source": "catalog",
+        "weight": 1
+      },
+      {
+        "confidence": 0.8,
+        "key": "frame.realism",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.7,
+        "key": "frame.fantasy",
+        "source": "ai",
+        "weight": 0.6
+      },
+      {
+        "confidence": 0.9,
+        "key": "structure.nonlinear",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.8,
+        "key": "structure.unreliable-narrator",
+        "source": "ai",
+        "weight": 0.7
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.suspenseful",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.unpredictable",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "momentum.twisty",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "stakes.community",
+        "source": "ai",
+        "weight": 0.8
+      },
+      {
+        "confidence": 0.9,
+        "key": "ending.ambiguous",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "complexity",
+        "source": "ai",
+        "weight": 0.9
+      },
+      {
+        "confidence": 0.9,
+        "key": "moral-complexity",
+        "source": "ai",
+        "weight": 0.8
+      }
+    ],
+    "vector": {
+      "feeling": {
+        "ache": 0.48,
+        "aftertaste.haunting": 0.81,
+        "aftertaste.lingering": 0.72,
+        "aftertaste.unsettling": 0.56,
+        "intensity": 0.56,
+        "pace": 0.4,
+        "register.cerebral": 0.56,
+        "register.meditative": 0.72,
+        "register.quiet": 0.42,
+        "texture.dreamlike": 0.81,
+        "texture.hazy": 0.72,
+        "texture.ornate": 0.42,
+        "tone.eerie": 0.81,
+        "tone.melancholy": 0.56,
+        "tone.playful": 0.42,
+        "tone.wistful": 0.56
+      },
+      "story": {
+        "arc.quest": 0.42,
+        "arc.transformation": 0.56,
+        "bond.found-family": 0.42,
+        "bond.mentor-student": 0.3,
+        "cast.ensemble": 0.81,
+        "cast.morally-grey": 0.72,
+        "complexity": 0.81,
+        "conflict.vs-self": 0.72,
+        "conflict.vs-the-unknown": 0.72,
+        "ending.ambiguous": 0.81,
+        "frame.fantasy": 0.42,
+        "frame.mystery": 0.9,
+        "frame.realism": 0.56,
+        "momentum.suspenseful": 0.81,
+        "momentum.twisty": 0.72,
+        "momentum.unpredictable": 0.81,
+        "moral-complexity": 0.72,
+        "setting.contemporary": 0.72,
+        "setting.rural": 0.72,
+        "setting.school": 0.3,
+        "stakes.community": 0.72,
+        "structure.nonlinear": 0.72,
+        "structure.unreliable-narrator": 0.56,
+        "theme.loneliness": 0.72,
+        "theme.madness": 0.56,
+        "theme.memory": 0.56,
+        "theme.wonder": 0.42,
+        "world.lived-in": 0.81,
+        "world.systemic": 0.56
+      }
+    },
+    "vocabulary_version": "v2"
+  }
+}

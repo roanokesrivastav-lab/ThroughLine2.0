@@ -1,6 +1,486 @@
 # Canon profile hand-review sheet
 
-Generated 2026-09-23 from the committed canon profiles (model nvidia/nemotron-3-super-120b-a12b, p1).
-Sample: the first 4 canon items of each category in CANON order (0 items).
+Generated 2026-09-24 from the committed canon profiles (model nvidia/nemotron-3-super-120b-a12b, p1).
+Sample: the first 4 canon items of each category in CANON order (20 items).
 
 For each item: does the profile read like the work? Mark Verdict and add notes.
+
+## Spirited Away (movie)
+- Creator: Hayao Miyazaki · Year: 2001 · Genres: animation, fantasy, family
+- Premise: A young girl enters a mysterious spirit world and must work in a bathhouse for gods to rescue her parents and find her way home.
+- Story (top 8, endings omitted):
+  - frame.fantasy 0.93
+  - arc.transformation 0.85
+  - cast.single-protagonist 0.85
+  - setting.secondary-world 0.85
+  - stakes.personal 0.85
+  - theme.growing-up 0.85
+  - world.mythic 0.85
+  - arc.coming-of-age 0.77
+- Feeling (top 6):
+  - texture.dreamlike 0.85
+  - aftertaste.lingering 0.77
+  - tone.warm 0.77
+  - aftertaste.hopeful 0.68
+  - register.intimate 0.68
+  - texture.dense 0.68
+- Band: 2 · minutes: 125 · craft: dialogue.balanced, drive.atmosphere-driven, visual.lush
+- (scalars: complexity=0.595, moral-complexity=0.4, intensity=0.48, pace=0.4, ache=0.28)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## Eternal Sunshine of the Spotless Mind (movie)
+- Creator: Michel Gondry · Year: 2004 · Genres: romance, sci-fi, drama
+- Premise: A couple undergoes a procedure to erase each other from their memories, only to rediscover their love as the process unfolds.
+- Story (top 8, endings omitted):
+  - cast.duo 0.93
+  - stakes.personal 0.93
+  - structure.nonlinear 0.93
+  - theme.memory 0.93
+  - frame.romance 0.90
+  - frame.sci-fi 0.90
+  - bond.partners 0.85
+  - conflict.vs-self 0.85
+- Feeling (top 6):
+  - aftertaste.lingering 0.85
+  - register.intimate 0.85
+  - texture.dreamlike 0.85
+  - tone.wistful 0.85
+  - tone.melancholy 0.77
+  - ache 0.68
+- Band: 1 · minutes: 108 · craft: dialogue.balanced, drive.atmosphere-driven, visual.stylised
+- (scalars: complexity=0.68, moral-complexity=0.48, ache=0.68, intensity=0.595, pace=0.4)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## The Godfather (movie)
+- Creator: Francis Ford Coppola · Year: 1972 · Genres: crime, drama
+- Premise: The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant youngest son.
+- Story (top 8, endings omitted):
+  - cast.ensemble 0.93
+  - frame.crime 0.93
+  - theme.family 0.93
+  - arc.transformation 0.85
+  - bond.parent-child 0.85
+  - cast.morally-grey 0.85
+  - frame.realism 0.85
+  - moral-complexity 0.85
+- Feeling (top 6):
+  - aftertaste.lingering 0.85
+  - register.epic 0.85
+  - texture.dense 0.85
+  - aftertaste.haunting 0.77
+  - texture.polished 0.77
+  - intensity 0.68
+- Band: 3 · minutes: 175 · craft: dialogue.balanced, drive.plot-driven, visual.stylised
+- (scalars: moral-complexity=0.855, complexity=0.765, intensity=0.68, ache=0.525, pace=0.275)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## Parasite (movie)
+- Creator: Bong Joon-ho · Year: 2019 · Genres: thriller, drama, comedy
+- Premise: A poor family infiltrates the household of a wealthy one by posing as skilled workers, uncovering the fragile boundaries between their worlds.
+- Story (top 8, endings omitted):
+  - setting.contemporary 0.93
+  - theme.class 0.93
+  - frame.comedy 0.90
+  - frame.thriller 0.90
+  - cast.ensemble 0.85
+  - conflict.vs-society 0.85
+  - momentum.suspenseful 0.85
+  - moral-complexity 0.85
+- Feeling (top 6):
+  - tone.wry 0.85
+  - aftertaste.lingering 0.77
+  - aftertaste.unsettling 0.68
+  - intensity 0.68
+  - register.propulsive 0.68
+  - texture.dense 0.68
+- Band: 2 · minutes: 132 · craft: dialogue.balanced, drive.plot-driven, visual.stylised
+- (scalars: moral-complexity=0.855, complexity=0.765, intensity=0.68, pace=0.525, ache=0.39)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## Breaking Bad (tv)
+- Creator: Vince Gilligan · Year: 2008 · Genres: crime, drama, thriller
+- Premise: A high school chemistry teacher diagnosed with terminal cancer turns to manufacturing methamphetamine to secure his family's financial future.
+- Story (top 8, endings omitted):
+  - arc.transformation 0.93
+  - frame.crime 0.93
+  - frame.thriller 0.90
+  - arc.rise-and-fall 0.85
+  - cast.single-protagonist 0.85
+  - conflict.vs-self 0.85
+  - momentum.suspenseful 0.85
+  - moral-complexity 0.85
+- Feeling (top 6):
+  - intensity 0.77
+  - texture.gritty 0.77
+  - tone.bleak 0.77
+  - aftertaste.haunting 0.68
+  - register.propulsive 0.68
+  - aftertaste.unsettling 0.60
+- Band: 3 · minutes: 2914 · craft: format.serialized, hook.slow
+- (scalars: moral-complexity=0.855, complexity=0.765, intensity=0.765, pace=0.6, ache=0.525)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## The Office (tv)
+- Creator: Greg Daniels · Year: 2005 · Genres: comedy
+- Premise: A mockumentary-style comedy following the everyday lives of employees at a paper company branch, capturing their awkward interactions, personal quirks, and workplace dynamics through a documentary lens.
+- Story (top 8, endings omitted):
+  - frame.comedy 0.90
+  - cast.ensemble 0.85
+  - setting.contemporary 0.85
+  - setting.workplace 0.85
+  - world.lived-in 0.85
+  - theme.belonging 0.72
+  - bond.found-family 0.68
+  - cast.every-character-a-lead 0.68
+- Feeling (top 6):
+  - aftertaste.comforting 0.68
+  - register.intimate 0.68
+  - tone.playful 0.68
+  - tone.warm 0.68
+  - aftertaste.lingering 0.56
+  - register.quiet 0.56
+- Band: 3 · minutes: 4422 · craft: format.serialized, hook.slow
+- (scalars: complexity=0.28, moral-complexity=0.21, pace=0.4, intensity=0.32, ache=0.21)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## Fleabag (tv)
+- Creator: Phoebe Waller-Bridge · Year: 2016 · Genres: comedy, drama
+- Premise: A woman navigates grief, family dysfunction, and modern relationships while breaking the fourth wall to share her inner thoughts with the audience.
+- Story (top 8, endings omitted):
+  - cast.single-protagonist 0.93
+  - setting.contemporary 0.93
+  - structure.unreliable-narrator 0.93
+  - frame.comedy 0.90
+  - conflict.vs-self 0.85
+  - setting.urban 0.85
+  - stakes.personal 0.85
+  - theme.grief 0.85
+- Feeling (top 6):
+  - register.intimate 0.93
+  - tone.wry 0.93
+  - aftertaste.bittersweet 0.85
+  - register.confessional 0.85
+  - texture.raw 0.85
+  - ache 0.77
+- Band: 1 · minutes: 324 · craft: format.serialized, hook.immediate
+- (scalars: moral-complexity=0.765, complexity=0.68, ache=0.765, intensity=0.72, pace=0.56)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## The Bear (tv)
+- Creator: Christopher Storer · Year: 2022 · Genres: drama, comedy
+- Premise: A young chef returns home to run his family's sandwich shop after a personal tragedy, navigating the chaos of the kitchen and his own grief while trying to honor his brother's legacy.
+- Story (top 8, endings omitted):
+  - setting.contemporary 0.93
+  - frame.comedy 0.90
+  - cast.ensemble 0.85
+  - conflict.vs-self 0.85
+  - frame.realism 0.85
+  - setting.urban 0.85
+  - theme.grief 0.85
+  - world.lived-in 0.85
+- Feeling (top 6):
+  - intensity 0.77
+  - register.intimate 0.77
+  - texture.gritty 0.77
+  - aftertaste.lingering 0.68
+  - pace 0.68
+  - register.propulsive 0.68
+- Band: 2 · minutes: 1216 · craft: format.serialized, hook.immediate
+- (scalars: complexity=0.525, moral-complexity=0.39, intensity=0.765, pace=0.68, ache=0.6)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## Cowboy Bebop (anime)
+- Creator: Shinichirō Watanabe · Year: 1998 · Genres: sci-fi, action, noir
+- Premise: A ragtag crew of bounty hunters travels the solar system in 2071, chasing fugitives while haunted by their own pasts.
+- Story (top 8, endings omitted):
+  - cast.ensemble 0.93
+  - frame.sci-fi 0.93
+  - setting.far-future 0.93
+  - frame.crime 0.90
+  - conflict.vs-self 0.85
+  - setting.space 0.85
+  - stakes.personal 0.85
+  - theme.loneliness 0.85
+- Feeling (top 6):
+  - aftertaste.lingering 0.85
+  - tone.wistful 0.85
+  - aftertaste.haunting 0.77
+  - tone.melancholy 0.77
+  - ache 0.68
+  - aftertaste.bittersweet 0.68
+- Band: 1 · minutes: 624 · craft: animation.detailed, filler.light, format.serialized, hook.slow
+- (scalars: moral-complexity=0.68, complexity=0.6, ache=0.68, intensity=0.6375, pace=0.42)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## Neon Genesis Evangelion (anime)
+- Creator: Hideaki Anno · Year: 1995 · Genres: sci-fi, mecha, drama
+- Premise: A teenage boy is recruited to pilot a giant bio-mechanical weapon to defend humanity against mysterious beings, while grappling with isolation, trauma, and the expectations placed upon him by distant adults and shadowy organizations.
+- Story (top 8, endings omitted):
+  - conflict.vs-self 0.90
+  - frame.sci-fi 0.90
+  - theme.loneliness 0.90
+  - complexity 0.81
+  - setting.near-future 0.81
+  - stakes.world 0.81
+  - theme.identity 0.81
+  - world.systemic 0.81
+- Feeling (top 6):
+  - ache 0.81
+  - aftertaste.lingering 0.81
+  - tone.bleak 0.81
+  - aftertaste.haunting 0.72
+  - intensity 0.72
+  - register.meditative 0.72
+- Band: 1 · minutes: 624 · craft: animation.detailed, filler.moderate, format.serialized, hook.slow
+- (scalars: complexity=0.81, moral-complexity=0.7225, ache=0.81, intensity=0.7225, pace=0.25)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## Your Name (anime)
+- Creator: Makoto Shinkai · Year: 2016 · Genres: romance, fantasy, drama
+- Premise: Two teenagers begin inexplicably swapping bodies, leading to a connection that transcends time and distance as they seek to meet in person.
+- Story (top 8, endings omitted):
+  - cast.duo 0.93
+  - frame.fantasy 0.93
+  - frame.romance 0.90
+  - conflict.vs-fate 0.85
+  - setting.contemporary 0.85
+  - theme.love 0.85
+  - arc.transformation 0.77
+  - stakes.personal 0.77
+- Feeling (top 6):
+  - aftertaste.lingering 0.85
+  - texture.dreamlike 0.85
+  - tone.warm 0.77
+  - aftertaste.hopeful 0.68
+  - register.intimate 0.68
+  - texture.polished 0.68
+- Band: 0 · minutes: 106 · craft: animation.detailed, filler.light, format.serialized, hook.immediate
+- (scalars: complexity=0.56, moral-complexity=0.2, intensity=0.6375, pace=0.56, ache=0.4875)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## Fullmetal Alchemist: Brotherhood (anime)
+- Creator: Yasuhiro Irie · Year: 2009 · Genres: fantasy, adventure, action
+- Premise: Two brothers seek the Philosopher's Stone to restore their bodies after a failed alchemical experiment, uncovering a vast conspiracy tied to their nation's military and ancient secrets.
+- Story (top 8, endings omitted):
+  - bond.siblings 0.93
+  - frame.fantasy 0.93
+  - theme.sacrifice 0.93
+  - frame.adventure 0.90
+  - arc.transformation 0.85
+  - cast.ensemble 0.85
+  - conflict.vs-system 0.85
+  - stakes.world 0.85
+- Feeling (top 6):
+  - aftertaste.cathartic 0.85
+  - register.epic 0.85
+  - tone.earnest 0.85
+  - aftertaste.lingering 0.77
+  - intensity 0.77
+  - register.propulsive 0.77
+- Band: 2 · minutes: 1536 · craft: animation.detailed, filler.light, format.serialized, hook.immediate
+- (scalars: complexity=0.68, moral-complexity=0.525, intensity=0.765, ache=0.6, pace=0.525)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## The Great Gatsby (book)
+- Creator: F. Scott Fitzgerald · Year: 1925 · Genres: literary, classic
+- Premise: A young man moves to Long Island in the summer of 1922 and becomes entangled in the lives of his wealthy neighbor, who throws extravagant parties in pursuit of a lost love, and the cynical realities of the American Dream.
+- Story (top 8, endings omitted):
+  - setting.historical 0.93
+  - cast.single-protagonist 0.85
+  - frame.realism 0.85
+  - theme.obsession 0.85
+  - conflict.vs-society 0.77
+  - theme.class 0.77
+  - conflict.vs-self 0.68
+  - stakes.personal 0.68
+- Feeling (top 6):
+  - aftertaste.lingering 0.77
+  - texture.ornate 0.77
+  - tone.wistful 0.77
+  - aftertaste.haunting 0.68
+  - register.meditative 0.68
+  - tone.melancholy 0.68
+- Band: 0 · minutes: 288 · craft: chapter-length.medium, difficulty.moderate, perspective.first, prose.ornate, rereadability.high
+- (scalars: moral-complexity=0.56, complexity=0.48, ache=0.56, intensity=0.48, pace=0.4)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## 1984 (book)
+- Creator: George Orwell · Year: 1949 · Genres: dystopia, sci-fi, classic
+- Premise: In a totalitarian state where surveillance is omnipresent and truth is manipulated, a low-ranking party member begins to question the regime and seeks forbidden connection and rebellion.
+- Story (top 8, endings omitted):
+  - conflict.vs-system 0.93
+  - theme.truth-and-lies 0.93
+  - world.systemic 0.93
+  - frame.sci-fi 0.90
+  - cast.single-protagonist 0.85
+  - setting.urban 0.85
+  - stakes.world 0.85
+  - structure.linear 0.85
+- Feeling (top 6):
+  - aftertaste.haunting 0.93
+  - tone.bleak 0.93
+  - aftertaste.unsettling 0.85
+  - register.cerebral 0.85
+  - aftertaste.lingering 0.77
+  - intensity 0.77
+- Band: 1 · minutes: 524.8000000000001 · craft: chapter-length.medium, difficulty.demanding, perspective.third, prose.spare, rereadability.high
+- (scalars: complexity=0.72, moral-complexity=0.595, intensity=0.765, ache=0.72, pace=0.4)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## To Kill a Mockingbird (book)
+- Creator: Harper Lee · Year: 1960 · Genres: literary, classic, coming-of-age
+- Premise: A young girl observes her father defend a Black man falsely accused of rape in a racially divided Southern town, learning about justice, empathy, and the loss of innocence.
+- Story (top 8, endings omitted):
+  - arc.coming-of-age 0.85
+  - conflict.vs-society 0.85
+  - frame.realism 0.85
+  - setting.historical 0.85
+  - theme.justice 0.85
+  - bond.parent-child 0.77
+  - cast.single-protagonist 0.77
+  - stakes.community 0.77
+- Feeling (top 6):
+  - aftertaste.lingering 0.77
+  - tone.earnest 0.77
+  - register.intimate 0.68
+  - texture.spare 0.68
+  - tone.wistful 0.68
+  - aftertaste.unsettling 0.60
+- Band: 1 · minutes: 449.6 · craft: chapter-length.medium, difficulty.moderate, perspective.first, prose.spare, rereadability.high
+- (scalars: moral-complexity=0.68, complexity=0.56, ache=0.56, intensity=0.48, pace=0.4)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## Normal People (book)
+- Creator: Sally Rooney · Year: 2018 · Genres: literary, romance
+- Premise: A quiet story about two people navigating love, class, and identity across years of on-again, off-again connection.
+- Story (top 8, endings omitted):
+  - cast.duo 0.93
+  - frame.realism 0.93
+  - frame.romance 0.90
+  - setting.contemporary 0.85
+  - theme.love 0.85
+  - stakes.personal 0.77
+  - theme.class 0.77
+  - world.intimate-scale 0.77
+- Feeling (top 6):
+  - register.intimate 0.85
+  - texture.spare 0.85
+  - aftertaste.lingering 0.77
+  - register.quiet 0.77
+  - tone.earnest 0.77
+  - aftertaste.bittersweet 0.68
+- Band: 1 · minutes: 425.6 · craft: chapter-length.medium, difficulty.moderate, perspective.multiple, prose.spare, rereadability.high
+- (scalars: moral-complexity=0.48, complexity=0.4, ache=0.56, intensity=0.48, pace=0.4)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## Hallelujah (music)
+- Creator: Jeff Buckley · Year: 1994 · Genres: folk, singer-songwriter
+- Premise: A haunting, intimate rendition of Leonard Cohen's song, featuring Jeff Buckley's soaring vocals and sparse guitar accompaniment.
+- Story (top 8, endings omitted):
+  - cast.single-protagonist 0.45
+  - stakes.personal 0.45
+  - structure.linear 0.45
+  - theme.faith 0.45
+  - world.intimate-scale 0.45
+  - conflict.vs-self 0.40
+  - frame.realism 0.40
+  - setting.timeless 0.40
+- Feeling (top 6):
+  - aftertaste.lingering 0.45
+  - register.intimate 0.45
+  - tone.wistful 0.45
+  - ache 0.40
+  - aftertaste.haunting 0.40
+  - register.meditative 0.40
+- Band: null · minutes: null · craft: energy.medium, instrumentation.guitar, production.raw, tempo.slow, vocal.intimate
+- (scalars: complexity=0.3, moral-complexity=0.15, ache=0.4, intensity=0.35, pace=0.2)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## Bohemian Rhapsody (music)
+- Creator: Queen · Year: 1975 · Genres: rock
+- Premise: A multi-section rock suite blending ballad, operatic, and hard rock elements with shifting vocal styles and layered harmonies.
+- Story (top 8, endings omitted):
+  - cast.single-protagonist 0.45
+  - complexity 0.45
+  - momentum.unpredictable 0.45
+  - structure.nonlinear 0.45
+  - arc.transformation 0.40
+  - conflict.vs-self 0.40
+  - frame.fantasy 0.40
+  - momentum.twisty 0.40
+- Feeling (top 6):
+  - aftertaste.lingering 0.45
+  - register.epic 0.45
+  - texture.dense 0.45
+  - aftertaste.haunting 0.40
+  - intensity 0.40
+  - texture.ornate 0.40
+- Band: null · minutes: null · craft: energy.high, instrumentation.orchestral, production.polished, tempo.mid, vocal.theatrical
+- (scalars: complexity=0.45, moral-complexity=0.25, intensity=0.4, ache=0.35, pace=0.3)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## Motion Picture Soundtrack (music)
+- Creator: Radiohead · Year: 2000 · Genres: art rock, electronic
+- Premise: (null)
+- Story (top 8, endings omitted):
+  - cast.single-protagonist 0.40
+  - stakes.personal 0.40
+  - theme.loneliness 0.40
+  - world.intimate-scale 0.40
+  - setting.timeless 0.38
+  - theme.death 0.38
+  - conflict.vs-self 0.35
+  - frame.fantasy 0.35
+- Feeling (top 6):
+  - aftertaste.lingering 0.42
+  - tone.wistful 0.42
+  - aftertaste.haunting 0.40
+  - register.meditative 0.40
+  - texture.hazy 0.40
+  - tone.melancholy 0.40
+- Band: null · minutes: null · craft: energy.low, instrumentation.piano, production.atmospheric, tempo.slow, vocal.intimate
+- (scalars: complexity=0.3, moral-complexity=0.25, ache=0.35, intensity=0.2, pace=0.15)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:
+
+## Holocene (music)
+- Creator: Bon Iver · Year: 2011 · Genres: indie folk
+- Premise: A reflective song about personal growth and the quiet moments that shape a life, set against a vast natural landscape.
+- Story (top 8, endings omitted):
+  - cast.single-protagonist 0.45
+  - theme.memory 0.45
+  - setting.rural 0.42
+  - stakes.personal 0.42
+  - theme.growing-up 0.42
+  - arc.transformation 0.40
+  - frame.slice-of-life 0.40
+  - theme.identity 0.40
+- Feeling (top 6):
+  - aftertaste.lingering 0.45
+  - register.intimate 0.45
+  - tone.wistful 0.45
+  - register.meditative 0.42
+  - texture.hazy 0.42
+  - tone.melancholy 0.42
+- Band: null · minutes: null · craft: energy.low, instrumentation.strings, production.atmospheric, tempo.slow, vocal.intimate
+- (scalars: complexity=0.35, moral-complexity=0.1, ache=0.3, intensity=0.2, pace=0.15)
+- Verdict: [ ] right  [ ] partly  [ ] wrong
+- Notes:

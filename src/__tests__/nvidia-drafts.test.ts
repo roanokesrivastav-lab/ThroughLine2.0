@@ -2,10 +2,9 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("server-only", () => ({}));
 
-import { NVIDIA_JSON_MODE, nvidiaProfileDraft, nvidiaReadingDraft } from "@/lib/ai/nvidia";
-import { buildItemProfile } from "@/lib/ai/profile-contract";
-import { finalizeReading, READING_SYSTEM_PROMPT } from "@/lib/ai/reading";
-import { PROFILE_SYSTEM_PROMPT } from "@/lib/ai/profile-contract";
+import { jsonMode, nvidiaProfileDraft, nvidiaReadingDraft } from "@/lib/ai/nvidia";
+import { buildItemProfile, PROFILE_SHAPE_EXAMPLE, PROFILE_SYSTEM_PROMPT } from "@/lib/ai/profile-contract";
+import { finalizeReading, READING_SHAPE_EXAMPLE, READING_SYSTEM_PROMPT } from "@/lib/ai/reading";
 import type { MediaItem } from "@/lib/types";
 
 const item: MediaItem = {
@@ -75,22 +74,46 @@ describe("nvidia draft helpers with constrained output (amendment 1, test J)", (
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
-  it("every request body carries the schema in the selected mode (amendment acceptance)", async () => {
+  it("every constrained request body carries the schema in the selected mode (amendment acceptance)", async () => {
+    // One case per mode: the mode is read per call from the env, so a single test covers
+    // every mode regardless of which one the probe picked.
+    const cases: Array<{ mode: "response_format" | "guided_json" | "none"; expectInBody: boolean }> = [
+      { mode: "response_format", expectInBody: true },
+      { mode: "guided_json", expectInBody: true },
+      { mode: "none", expectInBody: false },
+    ];
+    for (const { mode, expectInBody } of cases) {
+      fetchMock.mockClear();
+      vi.stubEnv("NVIDIA_JSON_MODE", mode);
+      respond(JSON.stringify(profileDraft));
+      await nvidiaProfileDraft(item);
+      const body = requestBody();
+      if (mode === "response_format") {
+        const rf = body.response_format as { type: string; json_schema?: { name?: string; schema?: unknown; strict?: boolean } };
+        expect(rf.type).toBe("json_schema");
+        expect(rf.json_schema?.strict).toBe(true);
+        expect(rf.json_schema?.schema).toBeTruthy();
+      } else if (mode === "guided_json") {
+        expect((body.nvext as { guided_json?: unknown }).guided_json).toBeTruthy();
+      } else {
+        expect(body.response_format).toBeUndefined();
+        expect(body.nvext).toBeUndefined();
+        expect(body.chat_template_kwargs).toBeUndefined();
+      }
+      if (!expectInBody) continue;
+      // Thinking-off bodies carry the toggle next to the schema; thinking-on bodies don't.
+      expect(body.chat_template_kwargs).toBeUndefined();
+    }
+  });
+
+  it("with NVIDIA_DISABLE_THINKING=1 the body carries chat_template_kwargs.enable_thinking=false", async () => {
+    vi.stubEnv("NVIDIA_JSON_MODE", "guided_json");
+    vi.stubEnv("NVIDIA_DISABLE_THINKING", "1");
     respond(JSON.stringify(profileDraft));
     await nvidiaProfileDraft(item);
     const body = requestBody();
-    if (NVIDIA_JSON_MODE === "response_format") {
-      const rf = body.response_format as { type: string; json_schema?: { name?: string; schema?: unknown; strict?: boolean } };
-      expect(rf.type).toBe("json_schema");
-      expect(rf.json_schema?.strict).toBe(true);
-      expect(rf.json_schema?.schema).toBeTruthy();
-    } else if (NVIDIA_JSON_MODE === "guided_json") {
-      expect((body.nvext as { guided_json?: unknown }).guided_json).toBeTruthy();
-    } else {
-      expect(body.response_format).toBeUndefined();
-      expect(body.nvext).toBeUndefined();
-      expect(body.chat_template_kwargs).toBeUndefined();
-    }
+    expect((body.chat_template_kwargs as { enable_thinking?: boolean } | undefined)?.enable_thinking).toBe(false);
+    expect((body.nvext as { guided_json?: unknown }).guided_json).toBeTruthy();
   });
 
   it("malformed drafts are rejected, never repaired: a `value`-dialect tag still fails", async () => {
@@ -111,5 +134,26 @@ describe("prompt shape sections (amendment §B)", () => {
     // The worked example uses listed keys only.
     expect(PROFILE_SYSTEM_PROMPT).toContain('"theme"');
     expect(READING_SYSTEM_PROMPT).toContain('"theme"');
+  });
+
+  it("the worked examples put scalars under the top-level scalars key, matching the schemas", () => {
+    // Amendment §B: the example is generated from constants, and the profile schema
+    // demands a top-level "scalars" — the first probe run's drafts put moral-complexity
+    // inside story (unrecognized_keys) because the example showed it there.
+    const profileExample = JSON.parse(PROFILE_SHAPE_EXAMPLE) as {
+      scalars?: Record<string, unknown>; story?: Record<string, unknown>;
+    };
+    expect(Object.keys(profileExample.scalars ?? {})).toEqual(
+      expect.arrayContaining(["intensity", "ache", "pace", "moral-complexity", "complexity"]),
+    );
+    expect("moral-complexity" in (profileExample.story ?? {})).toBe(false);
+    const readingExample = JSON.parse(READING_SHAPE_EXAMPLE) as { scalars?: Record<string, unknown> };
+    expect(Object.keys(readingExample.scalars ?? {})).toEqual(
+      expect.arrayContaining(["intensity", "ache", "pace", "moral-complexity", "complexity"]),
+    );
+  });
+
+  it("JSON mode defaults to none until the probe sets it", () => {
+    expect(jsonMode()).toBe("none");
   });
 });

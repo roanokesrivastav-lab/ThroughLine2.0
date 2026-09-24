@@ -508,3 +508,58 @@ entries; nothing is committed.** Full evidence in `docs/qa/session3-smoke-findin
 ### Next
 1. Founder picks a fix for the dialect problem (findings doc §"Founder decision needed"), then Session 3 re-runs from the smoke gate.
 2. Session 4 (profile runtime) and Session 5 (fixtures → canon profiles; pure scorer) unchanged.
+
+## 2026-09-23 — Session 3, Amendment 1: constrained JSON output (GLM, uncommitted)
+
+Implemented the founder-approved amendment to the S3 handoff: NVIDIA profile and reading calls are
+constrained at decoding time to the same Zod schema that validates them locally. Both §D live runs
+completed. Working tree uncommitted; no Supabase access; nothing phone-verified.
+
+### Probe (§C) — `docs/qa/nvidia-constrained-probe.md`
+
+| Variant | Request accepted | HTTP | Profile / Reading validate |
+|---|---|---|---|
+| response_format json_schema (thinking on) | profile yes, reading 503 | 200/503 | ✅ / — (server error) |
+| guided_json (thinking on) | no, no | 400/400 | ❌ endpoint rejects `nvext` field |
+| response_format json_schema (thinking off) | yes, yes | 200/200 | ✅ / ✅ — **winner** |
+
+Winner set in `.env.local`: `NVIDIA_JSON_MODE=response_format`, `NVIDIA_DISABLE_THINKING=1`.
+guided_json is conclusively unsupported (HTTP 400 on both paths), which made variant 4 unreachable.
+Re-probe: 7 calls (6 content + 1 503 retry) of the ≤8 cap.
+
+### Built
+- `src/lib/ai/nvidia.ts` — optional `format` argument on `complete()` sends `z.toJSONSchema(schema)` in the chosen mode, with a strip-caps fallback (maxItems/minItems only; local schemas still enforce every cap); per-call env read for mode/thinking (the import-time constants were a real bug — see deviations); `nvidiaProfileDraft`/`nvidiaReadingDraft` pass their schema; `normalizeDraftDialect` removed; parsing stays strict `json(raw, Schema)`.
+- `src/lib/ai/profile-contract.ts` / `src/lib/ai/reading.ts` — §B shape rules + worked example generated from the constants; example constants exported and tested to parse against their own schemas. No word list, cap, weight or completeness rule changed.
+- `scripts/probe-nvidia.mts` — one variant per invocation (background runs are reaped by the session harness), per-attempt ledger lines, pacing, honest request-acceptance labels, checkpoint/resume across variants.
+- `src/__tests__/nvidia-drafts.test.ts` — normalizer-only tests deleted; schema-carried-in-body tests (both modes, stubbed fetch), worked examples parse against their schemas, strip-caps fallback.
+- `scripts/repeat-eval.mts` — operational only: per-item checkpoint/resume + 450 s deadline so the ~2 h run survives bounded tool windows; fixed two pre-existing latent crashes reached for the first time (`require()` in ESM under Node 24); reading calls now ledgered per §2.6 "live, budgeted" (take+record, future runs only).
+- `src/lib/catalog/canon-profiles.ts` (generated) — 109 profiles under p1/v2; header lists the one failure.
+
+### Live runs (ledger `scripts/out/calls.jsonl` = 273/500 lines)
+- Smoke `--only movie-spirited-away,book-the-hobbit` after the probe: first run failed both items on craft-key format (bare group names, not dotted `group.value`) → §B prompt gained the explicit dotted-form rule (no word-list change; prompt hash invalidates the entries) → second smoke: **both items valid on attempt 1**.
+- Full `npm run profile:canon`: **109/110 profiled, 216 calls used**. §7 first-20 gate passed (first-attempt failures: 14, of which 13 recovered within retries — mostly 503 "Service temporarily overloaded" — and 1 true failure: `song-all-too-well-10`, rejected 3× for more than one `instrumentation.*` value for a music item, left out per #74). Ledger census this session: 173 profile-canon, 85 repeat-eval profile, 15 probe lines.
+- `qa:profiles` → `qa:repeat` → `qa:profiles` completed; budget check before the full run was 426 ≥ 200.
+
+### QA
+- `canon-profiles-report`: committedStrict **PASS** (1.0); firstPassStrict **FAIL** (0.881 < 0.90 — 13 of the 14 first-attempt failures were provider 503s, one true schema failure); prevalenceFlag **FAIL** (flagged keys incl. ache, complexity, intensity, moral-complexity, pace — reported, not tuned, per #73); agreement rows null here, filled by repeat-eval.
+- `repeatability-report` (20 items × 3 runs; 35 notes × 3 runs): profile agreement story 0.502 **PASS**, feeling 0.529 **PASS**, scalar MAE 0.032 **PASS**; topK story 0.535 / feeling 0.571; readings (diagnostic): story J 0.713, feeling J 0.789, verbatim guard drops 2/132, schema-failure rate 21/105. Latency p50 13.7 s / p95 81.5 s, 7 timeouts.
+- `--write-only` regeneration is byte-identical except the generatedAt timestamp comment.
+
+### Verified
+- `npm run typecheck` clean; `npm test` **210/210** (168 pre-existing unedited); `npx eslint src` clean; `npm run build` succeeds; `git diff --check` clean; `git grep normalizeDraftDialect` finds nothing in code (amendment doc mentions only). **AI-verified only; no database access; nothing phone-verified.**
+
+### Deviations (process, recorded honestly)
+1. **The first probe run measured nothing** (8 calls, ledger 51→59): the adapter read the mode/thinking env once at import, so every probe call went out unconstrained, and the §B worked examples put scalars inside story/feeling — the probe's own first error (`unrecognized_keys: moral-complexity` inside story) showed the model copying the broken example. Both defects fixed before the re-probe; calls counted against the same ledger.
+2. **The 51-call smoke overrun**: repeat-eval calls were made in Session 3 *before* a passing smoke — violating the amendment's strict gates — and again after this session's first failed smoke (17 calls, nothing checkpointed) before the per-item checkpoint/resume existed. Report generation semantics (§2.6 metrics) were unchanged by the harness fixes.
+3. **Session-harness kills destroyed two whole-run invocations** (a 600 s timeout mid-`qa:repeat` and a reaped background run) — zero ledger calls lost thanks to per-attempt ledger writes; led to the one-variant-per-invocation probe and checkpoint/resume repeat-eval.
+4. **105 reading calls in repeat-eval ran unledgered** (pre-existing script behaviour discovered after the run; §2.6 says "live, budgeted"). The script now takes+records ledger budget for readings, but the already-spent 105 were not back-filled (fabricating ledger lines would be worse than the gap). True provider spend this session ≈ 273 ledgered + 105 ≈ 378 ≤ 500.
+5. `repeat-eval` pre-existing crashes fixed as reached: `require()` in ESM (Node 24 refuses) and a reading-loop budget stop the §2.6 text placed only in section A (recorded in Session 3's entry too).
+
+### STOPs
+1. **evaluate() FAIL rows go to the founder** (#73): firstPassStrict 0.881 (dominated by provider 503s, but below the 0.90 gate) and prevalenceFlag (flagged keys are near-universal model defaults). Fixes would touch frozen ground — prompt/word lists (a PROFILE_VERSION decision) or thresholds (founder-owned) — so nothing was tuned.
+2. `song-all-too-well-10` remains unprofiled (strict validation, #72/#74). Re-running just that item is a founder call: a third fresh attempt costs a few calls and may pass under constrained decoding.
+3. Prevalence FAIL interpretation: whether "ache/complexity/intensity… near-universal" is acceptable model behaviour or needs prompt work is a founder decision, not a session one.
+
+### Next
+1. Founder rules on the two FAIL rows (or accepts them as reported); optional: single-item re-run for `song-all-too-well-10`.
+2. Session 4 (profile runtime) unchanged; Session 5 consumes these committed profiles.

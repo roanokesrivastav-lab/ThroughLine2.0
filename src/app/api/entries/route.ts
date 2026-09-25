@@ -4,6 +4,7 @@ import { route, requireUser, HttpError } from "@/lib/server/auth";
 import { createEntrySchema } from "@/lib/server/schemas";
 import { enrichMediaItem, loadLibrary, upsertMediaItem } from "@/lib/server/entries";
 import { queueExtraction, runPendingExtractions } from "@/lib/server/extraction";
+import { profileItemsNow } from "@/lib/server/profiles";
 import { syncPhases } from "@/lib/server/phases";
 import { serializeEntry } from "@/lib/server/dto";
 import { CATEGORIES, ENTRY_STATUSES } from "@/lib/types";
@@ -67,13 +68,29 @@ export const POST = route(async (req: Request) => {
   const body = createEntrySchema.parse(await req.json());
 
   let mediaItemId = body.media_item_id;
+  let pendingEnrich: { itemId: string; result: CatalogResult } | null = null;
   if (!mediaItemId && body.result) {
     const result = body.result.source === "manual" ? manualResult(body.result, user.id) : body.result;
     const item = await upsertMediaItem(result);
     mediaItemId = item.id;
-    if (result.source !== "manual") after(() => enrichMediaItem(item.id, result));
+    if (result.source !== "manual") pendingEnrich = { itemId: item.id, result };
   }
   if (!mediaItemId) throw new HttpError(400, "No media item");
+  const itemId = mediaItemId;
+
+  // Profile on log (founder, 2026-09-23): after metadata enrichment, in one after(),
+  // bounded by PROFILE_INLINE_LIMIT. Manual items are profiled from title, creators and
+  // book kind only. Canon items resolve from the committed profile file with no model
+  // call, and an existing media_item_id is profiled too — the store only picks rows that
+  // still need a profile. A save never waits on, or fails because of, profiling.
+  after(async () => {
+    try {
+      if (pendingEnrich) await enrichMediaItem(pendingEnrich.itemId, pendingEnrich.result);
+      await profileItemsNow([itemId]);
+    } catch (err) {
+      console.error("[entries] post-save enrich/profile failed:", err);
+    }
+  });
 
   // Say nothing about when unless the user did, or this is an ordinary "just finished" log.
   // Onboarding picks stay undated rather than being stamped with today (migration 0002).

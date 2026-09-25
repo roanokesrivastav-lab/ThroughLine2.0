@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin, adminConfigured } from "@/lib/supabase/admin";
 import { runPendingExtractions } from "@/lib/server/extraction";
+import { runPendingProfiles, supabaseProfileStore, activeProfiler, PROFILE_CRON_LIMIT } from "@/lib/server/profiles";
 import { syncPhases } from "@/lib/server/phases";
 import { loadLibrary, rowToResurface } from "@/lib/server/entries";
 import { pickResurfaceCandidate, pushIsDue } from "@/lib/taste/resurface";
@@ -8,14 +9,26 @@ import { sendPush } from "@/lib/server/push";
 import type { NotificationPrefs } from "@/lib/types";
 
 /**
- * Daily sweep (Vercel Cron): retry failed extractions, refresh phases, and send
- * one resurfacing push to each user whose cadence says it is due.
+ * Daily sweep (Vercel Cron): profile pending items, retry failed extractions, refresh
+ * phases, and send one resurfacing push to each user whose cadence says it is due.
  */
+// Checked against the Vercel plan at deploy time: 300 s needs a plan that allows it.
+export const maxDuration = 300;
+
 export async function GET(req: Request) {
+  const start = Date.now();
   const auth = req.headers.get("authorization");
   if (!process.env.CRON_SECRET || auth !== `Bearer ${process.env.CRON_SECRET}`) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (!adminConfigured()) return NextResponse.json({ error: "SUPABASE_SERVICE_ROLE_KEY missing" }, { status: 500 });
   const admin = supabaseAdmin();
+
+  // Profile pass first, before the per-user loop: bounded to 20 rows, with a 150 s
+  // start-deadline so no model call is started that could still be running at the
+  // function's 300 s limit (NVIDIA p95 latency is ~80 s — Session 3 QA).
+  const profiles = await runPendingProfiles(supabaseProfileStore(admin), activeProfiler(), {
+    limit: PROFILE_CRON_LIMIT,
+    deadlineAt: start + 150_000,
+  });
 
   const extraction = await runPendingExtractions(admin, { limit: 100 });
 
@@ -44,5 +57,5 @@ export async function GET(req: Request) {
       console.error(`[cron] user ${u.id} failed:`, err);
     }
   }
-  return NextResponse.json({ ok: true, extraction, phasesSynced: phases, pushesSent: pushes });
+  return NextResponse.json({ ok: true, extraction, profiles, phasesSynced: phases, pushesSent: pushes });
 }

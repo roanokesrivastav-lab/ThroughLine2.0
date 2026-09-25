@@ -3,6 +3,7 @@ import { route, requireUser, HttpError } from "@/lib/server/auth";
 import { canonReactSchema } from "@/lib/server/schemas";
 import { upsertMediaItem } from "@/lib/server/entries";
 import { runPendingExtractions, queueExtraction } from "@/lib/server/extraction";
+import { profileItemsNow } from "@/lib/server/profiles";
 import { syncPhases } from "@/lib/server/phases";
 import type { ReactionsRow } from "@/lib/db/types";
 
@@ -37,6 +38,15 @@ export const POST = route(async (req: Request) => {
   if (body.response === "loved") {
     const { data: reaction } = await supabase.from("reactions").insert({ entry_id: entry.id, user_id: user.id, dimensions: { loved: true } as ReactionsRow["dimensions"], raw_note: null, source: "onboarding" }).select("id").single();
     if (reaction) await queueExtraction(supabase, { reactionId: reaction.id, entryId: entry.id, userId: user.id });
+  }
+  // Profile the tapped item (founder ruling 1): every response that created an entry, not
+  // just "loved". Canon items resolve from the committed profile file with no model call;
+  // the store only picks rows that still need a profile. Runs in the existing after(),
+  // so the tap never waits on it. The "loved" extraction pass stays in its own after().
+  after(async () => {
+    await profileItemsNow([item.id]).catch((err) => console.error("[onboarding] profile failed:", err));
+  });
+  if (body.response === "loved") {
     after(async () => {
       await runPendingExtractions(supabase, { userId: user.id, limit: 5 }).catch(console.error);
       await syncPhases(supabase, user.id).catch(console.error);

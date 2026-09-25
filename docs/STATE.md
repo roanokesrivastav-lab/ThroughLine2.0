@@ -563,3 +563,35 @@ Re-probe: 7 calls (6 content + 1 503 retry) of the ≤8 cap.
 ### Next
 1. Founder rules on the two FAIL rows (or accepts them as reported); optional: single-item re-run for `song-all-too-well-10`.
 2. Session 4 (profile runtime) unchanged; Session 5 consumes these committed profiles.
+
+## 2026-09-24 — Session 4: profile runtime (GLM, uncommitted)
+
+### Built
+- `src/lib/server/profiles.ts` (new) — profile queue: `PROFILE_MAX_ATTEMPTS/INLINE/CRON/CALL_TIMEOUT` constants (§2.1, runtime limits only, not in weights.ts/FEATURE_VERSION); `ProfileStore` interface + `supabaseProfileStore` (service-role only; column-list selects; CAS claim on `profile_attempts`); `resolveProfile` (canon → committed file, no call; null profiler → skip untouched, #72); `runPendingProfiles` (sequential, claim before any call, per-row deadline check at `deadlineAt − 120 s`, one failure never stops the loop); `profileItemsNow` (inline, swallows errors, never throws into `after()`); `ensureProfiles` (materialises `source:external_id` ids via `upsertMediaItem`, reports ids needing profiles, no model calls — tested but not wired until Session 7).
+- `src/app/api/cron/daily/route.ts` — `maxDuration = 300` (deploy-plan comment included); profile pass right after auth, before extractions: 20 rows, 150 s start-deadline; `profiles` added to the JSON response. Nothing else changed.
+- `src/app/api/entries/route.ts` — POST chains enrich → `profileItemsNow([itemId])` in one `after()`; manual items profiled without enrichment; an existing `media_item_id` is profiled too (the store only picks rows that need one). The save never waits on profiling.
+- `src/app/api/onboarding/route.ts` — every entry-creating tap profiles the item in a new `after()`; the "loved" extraction/phase `after()` is unchanged.
+- `src/lib/ai/nvidia.ts` — §2.7: `jsonMode()` defaults to `response_format`, thinking disabled unless `NVIDIA_DISABLE_THINKING=0`; env vars remain overrides (`none` restores freeform).
+- `.env.example` — both NVIDIA mode/thinking vars documented with their defaults.
+- `src/__tests__/profile-queue.test.ts` (new) — tests A–L plus a constants test and a mixed-run counting test, offline with an in-memory store and fake profilers.
+
+### Verified
+- `npm run typecheck` clean; `npm test` **224 passed (16 files)** — 210 baseline unedited except the §2.7 default assertions; `npx eslint src` clean (0 problems); `npm run build` succeeds; `git diff --check` clean.
+- `git diff --stat` lists only §1 files (+ the two new files §1 specifies): `.env.example`, `src/app/api/cron/daily/route.ts`, `src/app/api/entries/route.ts`, `src/app/api/onboarding/route.ts`, `src/lib/ai/nvidia.ts`, `src/__tests__/nvidia-drafts.test.ts`, `src/lib/server/profiles.ts` (new), `src/__tests__/profile-queue.test.ts` (new).
+- `git grep -n supabaseAdmin src/app` shows only the pre-existing cron and `dev/confirm` uses — no new use outside the cron route; `profiles.ts` reaches the admin client only through `supabaseProfileStore(supabaseAdmin())`.
+- No migration, no `db/types.ts` change, no prompt/schema/PROFILE_VERSION/canon-profile change.
+- **AI-verified only. No live database call; nothing phone-verified.**
+
+### Notes
+1. Session 3 + Amendment 1 was committed before this session started (`0ba27ab`, founder-authorized), per the prerequisite.
+2. Session 5 (pure scorer + snapshots) switches fixtures to the committed canon profiles. Session 9 performs the first live profiling run of the 24 existing items with the founder present — at that point, check that canon-source rows resolve with no model calls (the store only claims rows whose status/version is behind).
+
+### Review round (2026-09-24, same session): three queue fixes, still uncommitted
+
+The reviewer found three defects in the queue; all three were real and are fixed. Tests +2 (M, N) → **226 passed (16 files)**; typecheck, eslint, build, `git diff --check` all green; no migration, no `db/types.ts` change, no live call.
+
+1. **[P1] Claim could not prevent duplicate model calls** — the CAS on `profile_attempts` alone cannot distinguish "bumped by a claim" from "bumped by a failure", so worker B could load worker A's claimed-but-still-`pending` row and pay for a second call. Fixed with a **lease on `profiled_at`** (the schema's own field, no migration): `claim` writes a fresh `profiled_at`, `loadNeeding` and `claim` ignore rows with a fresh lease (`PROFILE_LEASE_MS = 2×` call timeout), `markDone` overwrites it with its real meaning, `markFailed` clears it so failed rows retry immediately, and a crashed worker's lease expires on its own. #78 corrected; overlap now exercised offline by test M (the fake store mirrors the Supabase lease logic).
+2. **[P1] Unprofiled canon item could exhaust attempts without a model call** — `song-all-too-well-10` has no committed profile, and the old pre-claim skip only checked `source !== "canon"`, so five no-op runs under a mock provider would have made it permanently ineligible. Fixed: `canonResolvable()` runs **before** claim — a row with neither a committed canon profile nor a real profiler is skipped unclaimed, attempts untouched. Test N pins exactly that item, including that a provider configured later still profiles it.
+3. **[P2] A version change could not refresh rows at five attempts** — `loadNeeding` applied `attempts < 5` to old `done` rows too, so a profile that succeeded on its fifth attempt under p0 would never refresh at p1. Fixed: the attempts cap now scopes to **non-done rows only** (`and(status≠done, attempts<max) or version≠current`); a done row at an old version is always refresh-eligible. Test E now uses a done-at-p0 row with `attempts = 5`.
+
+Reviewer note acknowledged: the offline tests did not exercise the overlap sequence or an attempts-at-cap version refresh — M, N and the extended E close exactly that gap.

@@ -16,20 +16,22 @@ export const nvidiaModel = () => process.env.NVIDIA_MODEL?.trim() || "nvidia/nem
 const supportsReasoningEffort = (m: string) => /gpt-oss/i.test(m);
 
 /**
- * How decoding is constrained (Amendment 1 §A). The probe (scripts/probe-nvidia.mts)
- * picks the mode and writes it into .env.local; "none" keeps the historical freeform call.
- * The schema sent over the wire is generated from the same Zod schema that validates the
- * response locally, so the model and the validator can never disagree about the shape.
+ * How decoding is constrained (Amendment 1 §A, Session 4 §2.7). The probe
+ * (scripts/probe-nvidia.mts) picked the mode: response_format json_schema with thinking
+ * off is the proven default (docs/qa/nvidia-constrained-probe.md), so a deployed server
+ * without these env vars uses it. The env vars remain overrides: NVIDIA_JSON_MODE=none
+ * restores the historical freeform call.
  *
  * Read per call, not at import time: the probe switches the env between variants, and a
  * module constant froze the first value for every call (the first probe run measured
  * nothing because of exactly this bug).
  */
 export type NvidiaJsonMode = "response_format" | "guided_json" | "none";
-export const jsonMode = (): NvidiaJsonMode => (process.env.NVIDIA_JSON_MODE?.trim() || "none") as NvidiaJsonMode;
+export const jsonMode = (): NvidiaJsonMode =>
+  (process.env.NVIDIA_JSON_MODE?.trim() || "response_format") as NvidiaJsonMode;
 
-/** Whether thinking is disabled for the constrained calls (set by the probe, Amendment 1 §A). Read per call. */
-const thinkingDisabled = () => process.env.NVIDIA_DISABLE_THINKING?.trim() === "1";
+/** Thinking is off for the profile/reading calls unless NVIDIA_DISABLE_THINKING=0 (Amendment 1 probe; Session 4 §2.7). Read per call. */
+const thinkingDisabled = () => process.env.NVIDIA_DISABLE_THINKING?.trim() !== "0";
 
 async function complete(
   system: string,

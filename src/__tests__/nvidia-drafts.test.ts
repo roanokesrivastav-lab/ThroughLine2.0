@@ -77,12 +77,12 @@ describe("nvidia draft helpers with constrained output (amendment 1, test J)", (
   it("every constrained request body carries the schema in the selected mode (amendment acceptance)", async () => {
     // One case per mode: the mode is read per call from the env, so a single test covers
     // every mode regardless of which one the probe picked.
-    const cases: Array<{ mode: "response_format" | "guided_json" | "none"; expectInBody: boolean }> = [
-      { mode: "response_format", expectInBody: true },
-      { mode: "guided_json", expectInBody: true },
-      { mode: "none", expectInBody: false },
+    const cases: Array<{ mode: "response_format" | "guided_json" | "none" }> = [
+      { mode: "response_format" },
+      { mode: "guided_json" },
+      { mode: "none" },
     ];
-    for (const { mode, expectInBody } of cases) {
+    for (const { mode } of cases) {
       fetchMock.mockClear();
       vi.stubEnv("NVIDIA_JSON_MODE", mode);
       respond(JSON.stringify(profileDraft));
@@ -98,11 +98,10 @@ describe("nvidia draft helpers with constrained output (amendment 1, test J)", (
       } else {
         expect(body.response_format).toBeUndefined();
         expect(body.nvext).toBeUndefined();
-        expect(body.chat_template_kwargs).toBeUndefined();
       }
-      if (!expectInBody) continue;
-      // Thinking-off bodies carry the toggle next to the schema; thinking-on bodies don't.
-      expect(body.chat_template_kwargs).toBeUndefined();
+      // Thinking is off by default (Session 4 §2.7): the toggle rides along on every
+      // profile/reading call, whatever the mode. NVIDIA_DISABLE_THINKING=0 is covered below.
+      expect((body.chat_template_kwargs as { enable_thinking?: boolean }).enable_thinking).toBe(false);
     }
   });
 
@@ -153,7 +152,9 @@ describe("prompt shape sections (amendment §B)", () => {
     );
   });
 
-  it("JSON mode defaults to none until the probe sets it", () => {
+  it("JSON mode defaults to the probe winner (response_format) when unset; env overrides (Session 4 §2.7)", () => {
+    expect(jsonMode()).toBe("response_format");
+    vi.stubEnv("NVIDIA_JSON_MODE", "none");
     expect(jsonMode()).toBe("none");
   });
 });

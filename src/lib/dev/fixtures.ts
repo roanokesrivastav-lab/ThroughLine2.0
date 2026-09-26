@@ -1,7 +1,7 @@
 // Builds a full in-memory library from the demo seeds, running the mock extractor,
 // so the engines can be exercised (tests, previews) without a database.
 import { CANON_BY_SLUG } from "@/lib/catalog/canon-data";
-import { canonToResult } from "@/lib/catalog/canon";
+import { canonProfile, canonToResult } from "@/lib/catalog/canon";
 import { mockExtract } from "@/lib/ai/mock-extractor";
 import { SEEDS } from "@/lib/server/demo-seeds";
 import { PROFILE_VERSION } from "@/lib/taste/weights";
@@ -40,7 +40,12 @@ export function fixtureProfile(item: MediaItem): ItemProfile {
   };
 }
 
-export function buildFixtureLibrary(now = Date.now()): EntryWithContext[] {
+/**
+ * profiles: "placeholder" (default) derives the feel_prior-routed placeholder as before, so
+ * every existing test is unaffected. "canon" attaches the committed NVIDIA-written profile
+ * for the slug (canonProfile) and falls back to the placeholder for the one unprofiled slug.
+ */
+export function buildFixtureLibrary(now = Date.now(), opts: { profiles?: "placeholder" | "canon" } = {}): EntryWithContext[] {
   const seen = new Set<string>();
   const out: EntryWithContext[] = [];
   for (const s of SEEDS) {
@@ -49,7 +54,8 @@ export function buildFixtureLibrary(now = Date.now()): EntryWithContext[] {
     const canon = CANON_BY_SLUG.get(s.slug);
     if (!canon) continue;
     const r = canonToResult(canon);
-    const item: MediaItem = { ...r, id: `item-${s.slug}`, feel_prior: r.feel_prior ?? null, profile: fixtureProfile(r as MediaItem) };
+    const profile = opts.profiles === "canon" ? canonProfile(s.slug) ?? fixtureProfile(r as MediaItem) : fixtureProfile(r as MediaItem);
+    const item: MediaItem = { ...r, id: `item-${s.slug}`, feel_prior: r.feel_prior ?? null, profile };
     const entryId = `entry-${s.slug}`;
     const created = iso(s.daysAgo, now);
     const e: EntryWithContext = {

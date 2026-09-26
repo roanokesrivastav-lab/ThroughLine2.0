@@ -595,3 +595,68 @@ The reviewer found three defects in the queue; all three were real and are fixed
 3. **[P2] A version change could not refresh rows at five attempts** — `loadNeeding` applied `attempts < 5` to old `done` rows too, so a profile that succeeded on its fifth attempt under p0 would never refresh at p1. Fixed: the attempts cap now scopes to **non-done rows only** (`and(status≠done, attempts<max) or version≠current`); a done row at an old version is always refresh-eligible. Test E now uses a done-at-p0 row with `attempts = 5`.
 
 Reviewer note acknowledged: the offline tests did not exercise the overlap sequence or an attempts-at-cap version refresh — M, N and the extended E close exactly that gap.
+
+## 2026-09-25 — Session 5: pure scorer + snapshots (GLM, uncommitted)
+
+Implemented `docs/handoff/S5-scorer-snapshots.md` in full. Pure and additive: no database, no
+network, no route, no UI; the live app keeps running the legacy scorer in `recommend.ts`
+untouched until Session 7 switches it over. Nothing committed; the diff awaits Codex review
+and the founder's authorization.
+
+### Built
+- `src/lib/taste/score.ts` (new) — `Source`/`SOURCE_ORDER`, `StageCandidate`, `scoreCandidate`
+  (§2.2–§2.8: story/feeling as 0.5·cal(centroid) + 0.5·cal(best anchor) with the anchor
+  self-skip and the affinity-then-entryId tie order, form's neighbour-smoothed band share,
+  creator with no fallback, the three phase branches exactly — genre_run scores 0.6 when a
+  tag's *parent* equals the run key, anti as the mean calibrated similarity over non-null
+  families), `scoreCandidates` (unprofiled → `deferred`, never a partial score), `orderScored`
+  (score desc, candidate key asc; surprise blends `0.5·score + 0.5·daySeed` without touching
+  the stored score), `sharedForFamily` (ending dropped, first 3).
+- `src/lib/taste/explain.ts` (new) — `routeOf` (§8.1: backlog when forced and logged, else
+  argmax over the five non-anti contributions with the story→feeling→creator→phase→form tie
+  order, `anti` never a route), `anchorOf` (§8.2), `sharedFor` (§8.3), `explainFields`
+  (§8.4/§9.1 explain block — valued only on story/feeling routes with `ownWords`), and
+  `explanationFromSnapshot` (§8.5 deterministic sentence per route, reading only snapshot
+  fields; the feeling/backlog wording ports the legacy sentences; forbidden evidence §8.6
+  never enters).
+- `src/lib/taste/snapshot.ts` (new) — `ImpressionSnapshot` with every §9.1 field in key order
+  (explanation built last from the finished snapshot-minus-explanation), `indicators` all 0/1,
+  `versions` carrying f1/p1/v2/cal-provisional; `buildContext` (§9.2: w0, learned null,
+  calibration ranges, thresholds with `recency_days: 14`, profile summary tops ≤ 20, anchors
+  ≤ 40, creators ≥ 0.4, anti tops ≤ 10; pools/policy null until Session 6/7 fill them);
+  `snapshotTotal` = Σ contributions; `trainingEligible` (§12.2/§12.8).
+- `src/lib/taste/recommend.ts` — `export daySeed` only. Byte-identical otherwise.
+- `src/lib/dev/fixtures.ts` — additive `opts.profiles: "placeholder" | "canon"`; default
+  unchanged so all pre-existing tests pass unedited (DECISIONS #84).
+- `src/__tests__/score.test.ts`, `src/__tests__/explain.test.ts`, `src/__tests__/snapshot.test.ts`
+  (new) — handoff tests A–R: fixed denominator and the exact 0.05 creator delta (A), deferred
+  unprofiled/p0 candidates (B), null-family ranking equals a zero weight (C), creator feature
+  ≥ 0.5 from three loved Ishiguro books (D), the phase 1/0.6 branches (E), anti lowering S by
+  exactly 0.15·Δ (F), cross-media prefix (G), route ties (H), forbidden evidence incl. digit
+  stripping around anchor titles (I), verbatim valued phrases (J), snapshot reconstruction
+  (K), §9.1 completeness and recency 14 (L), training ineligibility at f0/surprise (M), empty
+  library (N), single-loved-entry centroid identity (O), anchor self-skip (P), determinism and
+  surprise stability (Q), ending keys never in shared (R).
+
+### Verified
+- `npm run typecheck` clean; `npx eslint src` clean (0 errors, 0 warnings); `npm test`
+  **251 passed (19 files)** — the 226 pre-existing tests unedited; `npm run build` succeeds.
+- `git diff --stat` lists only §1 files; `git diff src/lib/taste/recommend.ts` shows only the
+  `export` keyword; `git diff --check` clean.
+- **AI-verified only; no database, no network, nothing phone-verified; the live app still
+  uses the legacy scorer.**
+
+### Deviations
+- `buildSnapshot` takes `phaseLabel` as an explicit caller argument instead of reading the
+  active phase: the profile's `activePhase` is not passed to the snapshot layer, and
+  inventing a label is worse than requiring the caller (Session 7) to supply the user's own
+  phase label. Recorded in DECISIONS #85.
+- The test C ranking comparison runs against the full profile with `weights.feeling = 0`
+  (the spec's phrasing), not against a profile with the feeling family nulled — nulling the
+  family also removes evidence-based anti interactions, which the spec's case does not cover.
+
+### Next
+1. Session 6: candidate generation, the nine hard filters, and the band/quota/cap/bridge
+   re-ranker that produces `RerankInfo`.
+2. Session 7: server pipeline switch-over, rec-card and explainer reading snapshots, and
+   deletion of the legacy scorer.

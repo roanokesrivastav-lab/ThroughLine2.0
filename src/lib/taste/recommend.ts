@@ -83,7 +83,7 @@ export function fitsTime(item: MediaItem, minutes: TimeBudget): { ok: boolean; n
 }
 
 /** Deterministic hash for "surprise me": stable within a day so refreshes do not thrash. */
-function daySeed(userSalt: string): number {
+export function daySeed(userSalt: string): number {
   const s = `${userSalt}:${new Date().toISOString().slice(0, 10)}`;
   let h = 2166136261;
   for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }

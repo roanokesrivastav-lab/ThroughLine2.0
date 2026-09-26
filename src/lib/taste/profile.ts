@@ -6,13 +6,13 @@
 
 import type { AttributeVector, Category, EntryWithContext, Phase } from "@/lib/types";
 import { LOVED, MAX_ANCHORS, PHASE_ACTIVE_DAYS, ANTI_MIN_EVIDENCE } from "./weights";
-import { usableProfile, entryVectorFamily, hasOwnWordsV2, affinity } from "./affinity";
+import { usableProfile, entryVectorFamily, hasOwnWordsV2, affinity, latestExtractionV2 } from "./affinity";
 import { blend, type Family } from "./vector";
 import { familyOf } from "./vocabulary";
 import { buildTagProfile, EMPTY_TASTE_PREFS, type CreatorAffinity, type TastePrefs } from "./tags";
 
-/** A family profile, or null when the user has no loved profiled entry (§1.5): the component is 0 for every candidate. */
-export type FamilyProfile = { centroid: AttributeVector; anchors: Anchor[] } | null;
+/** A family profile, or null when the user has no loved profiled entry (§1.5): the component is 0 for every candidate. n_loved = loved entries with a family vector (all of them, not just retained anchors). */
+export type FamilyProfile = { centroid: AttributeVector; anchors: Anchor[]; n_loved: number } | null;
 
 export type Anchor = {
   entryId: string;
@@ -89,7 +89,9 @@ export function buildUserProfile(
       affinity: aff.get(e.entry.id)!,
       ownWords: hasOwnWordsV2(e),
     }));
-    return { centroid, anchors };
+    // n_loved is every loved entry with a family vector, not the anchor cap (§9.2;
+    // review round: anchors truncate at MAX_ANCHORS and understated the count).
+    return { centroid, anchors, n_loved: loved.length };
   };
 
   // §4.4: form distribution per category over loved entries with a known band.
@@ -231,7 +233,7 @@ export function pickActivePhase(phases: Phase[], now: Date = new Date()): Active
 }
 
 /** Re-exported so the engine session has one import surface for the whole profile layer. */
-export { usableProfile, entryVectorFamily, hasOwnWordsV2, affinity as entryAffinity };
+export { usableProfile, entryVectorFamily, hasOwnWordsV2, affinity as entryAffinity, latestExtractionV2 };
 /** All five media get profiled (DECISIONS #50); only the four below are matched in Stage 3 (§E Q1, #61). */
 export const PROFILED_CATEGORIES = ["movie", "tv", "anime", "book", "music"] as const satisfies readonly Category[];
 export const MATCHED_CATEGORIES = ["movie", "tv", "anime", "book"] as const satisfies readonly Category[];

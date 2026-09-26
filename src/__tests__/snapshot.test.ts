@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 
 import { CANON_BY_SLUG } from "@/lib/catalog/canon-data";
 import { canonProfile, canonToResult } from "@/lib/catalog/canon";
+import { mockExtract } from "@/lib/ai/mock-extractor";
 import { buildFixtureLibrary } from "@/lib/dev/fixtures";
 import { buildUserProfile } from "@/lib/taste/profile";
 import { scoreCandidate, type StageCandidate } from "@/lib/taste/score";
@@ -116,4 +117,57 @@ describe("trainingEligible (§12.2, §12.8; §C39)", () => {
     const surpriseCtx = buildContext({ filters: { listOnly: false, surprise: true }, profile: profile() });
     expect(trainingEligible(snapshot, surpriseCtx)).toBe(false);
   });
+
+  // Review round: n_loved counts loved entries, not retained anchors. A library with more
+  // loved entries than MAX_ANCHORS (40) must not report 40.
+  it("n_loved counts every loved entry even when anchors cap at MAX_ANCHORS", () => {
+    const library = lib();
+    // The first fixture entry (completed, tapped, noted, profiled) is loved at aff ≈ 0.83.
+    const loved = library.find((e) => e.entry.status === "completed" && e.reactions.length > 0 && e.extractions.length > 0);
+    expect(loved).toBeDefined();
+    for (let i = 0; i < 45; i++) {
+      library.push({
+        ...loved!,
+        entry: { ...loved!.entry, id: `e-clone-${i}` },
+        item: { ...loved!.item, id: `item-clone-${i}` },
+        reactions: loved!.reactions.map((r) => ({ ...r, id: `r-clone-${i}`, entry_id: `e-clone-${i}` })),
+        extractions: loved!.extractions.map((x) => ({ ...x, id: `x-clone-${i}`, reaction_id: `r-clone-${i}`, entry_id: `e-clone-${i}` })),
+      });
+    }
+    const P = buildUserProfile(library, [], EMPTY_TASTE_PREFS, new Date(NOW));
+    expect(P.story).not.toBeNull();
+    expect(P.story!.anchors.length).toBeLessThanOrEqual(40);
+    const ctx = buildContext({ filters: { listOnly: false, surprise: false }, profile: P });
+    expect(ctx.profile.story!.n_loved).toBeGreaterThan(40);
+  });
+
+  // Review round: an entry with neither a v2 reading nor a usable profile supplies no
+  // anchor evidence (§4.3). A done v1 row must not be misread as a v2 family vector.
+  it("a loved entry whose only reading is v1, on an unprofiled item, is excluded from anchors", () => {
+    const item = { ...makeItem("book-the-road"), profile: null };
+    const created = new Date(NOW - 5 * 86_400_000).toISOString();
+    const x = mockExtract({ note: "Cold and heavy, devastating.", dimensions: { loved: true }, category: item.category, title: item.title, subtitle: item.subtitle });
+    const library = [{
+      entry: { id: "e-road", user_id: "u", media_item_id: item.id, status: "completed" as const, private_score: null, consumed_at: created.slice(0, 10), consumed_until: null, consumed_precision: "day" as const, origin: "demo" as const, created_at: created, updated_at: created },
+      item,
+      reactions: [{ id: "r-road", entry_id: "e-road", user_id: "u", dimensions: { loved: true }, raw_note: "Cold and heavy, devastating.", source: "demo" as const, created_at: created }],
+      extractions: [{ ...mockRow(x), vocabulary_version: "v1" as const }],
+      resurfaces: [],
+    }];
+    const P = buildUserProfile(library, [], EMPTY_TASTE_PREFS, new Date(NOW));
+    expect(P.story).toBeNull();
+    expect(P.feeling).toBeNull();
+
+    // The same entry with a v2 row does anchor — the exclusion is version-specific.
+    const x2 = mockExtract({ note: "A quiet meditation on memory and grief, tender and devastating.", dimensions: { loved: true }, category: item.category, title: item.title, subtitle: item.subtitle });
+    const libraryV2 = [{ ...library[0]!, extractions: [mockRow(x2)] }];
+    const P2 = buildUserProfile(libraryV2, [], EMPTY_TASTE_PREFS, new Date(NOW));
+    expect(P2.story).not.toBeNull();
+    expect(P2.story!.anchors).toHaveLength(1);
+  });
 });
+
+function mockRow(x: ReturnType<typeof mockExtract>) {
+  const created = new Date().toISOString();
+  return { id: "x-road", reaction_id: "r-road", entry_id: "e-road", user_id: "u", status: "done" as const, attributes: x.extraction, vector: x.vector, vocabulary_version: "v2" as const, extractor: "mock" as const, attempts: 1, last_error: null, extracted_at: created, created_at: created };
+};

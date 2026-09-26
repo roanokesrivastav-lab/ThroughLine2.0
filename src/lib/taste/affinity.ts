@@ -1,4 +1,4 @@
-import type { AttributeVector, EntryWithContext, ExtractionPayload, ItemProfile, ReadingVector } from "@/lib/types";
+import type { AttributeVector, EntryWithContext, ExtractionPayload, ItemProfile, Reading, ReadingVector } from "@/lib/types";
 import { PROFILE_VERSION } from "@/lib/taste/weights";
 import { VOCABULARY_V2_VERSION } from "./vocabulary";
 import { entrySpan } from "./when";
@@ -40,6 +40,20 @@ export function latestExtraction(e: EntryWithContext): ExtractionPayload | null 
     .filter((x) => x.status === "done" && x.attributes)
     .sort((x, y) => (y.extracted_at ?? "").localeCompare(x.extracted_at ?? ""));
   return done[0]?.attributes ?? null;
+}
+
+/**
+ * The latest completed **v2** reading (§8.4, review round): summary, quote and valued
+ * phrases come from the current vocabulary only. A v1 row never supplies them, no matter
+ * how new it is — its Extraction shape happens to carry summary/quote, but its `valued`,
+ * `absent` and `didnt_work` do not exist and its word keys are the old vocabulary.
+ */
+export function latestExtractionV2(e: EntryWithContext): Reading | null {
+  const done = e.extractions
+    .filter((x) => x.status === "done" && x.vocabulary_version === VOCABULARY_V2_VERSION && x.attributes)
+    .sort((x, y) => (y.extracted_at ?? "").localeCompare(x.extracted_at ?? ""));
+  const r = done[0]?.attributes;
+  return r && "scalars" in r ? (r as Reading) : null;
 }
 
 /** Temporary projection that keeps the v1 engines useful while v2 rows coexist. */

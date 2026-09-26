@@ -166,7 +166,9 @@ export function buildContext(args: {
   const familySummary = (f: "story" | "feeling") => {
     const fp = P[f];
     if (!fp) return null;
-    return { top: topKeys(fp.centroid, 20), n_loved: fp.anchors.length };
+    // n_loved is every loved entry with a family vector (§9.2); the anchors array caps at
+    // MAX_ANCHORS and would understate it (review round).
+    return { top: topKeys(fp.centroid, 20), n_loved: fp.n_loved };
   };
   return {
     filters,

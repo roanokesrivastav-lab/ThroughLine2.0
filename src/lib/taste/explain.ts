@@ -8,7 +8,7 @@ import type { ScoredCandidate, AnchorPick } from "./score";
 import { sharedForFamily } from "./score";
 import type { ImpressionSnapshot, RouteV3, Filters } from "./snapshot";
 import { describeKey } from "./vocabulary";
-import { latestExtraction } from "./affinity";
+import { latestExtractionV2 } from "./affinity";
 
 const TIE = 1e-9;
 const NON_ANTI: Array<{ key: keyof ScoredCandidate["contributions"]; route: Exclude<RouteV3, "backlog" | "anti"> }> = [
@@ -56,28 +56,18 @@ export function explainFields(args: {
   item: { category: Category; creators: Array<{ name: string }> };
 }): ImpressionSnapshot["explain"] {
   const { route, anchor, anchorEntry, item } = args;
-  if (!anchor || !anchorEntry) {
-    return { summary: null, quote: null, valued: null, creator: null, phase_label: null, fits: null };
-  }
-  const anchorName = (entry: EntryWithContext): string | null => {
-    const x = latestExtraction(entry);
-    return x && "summary" in x && x.summary ? x.summary : null;
-  };
-  const quote = (entry: EntryWithContext): string | null => {
-    const x = latestExtraction(entry);
-    return x && "quote" in x ? x.quote ?? null : null;
-  };
-  const valued = (entry: EntryWithContext): string | null => {
-    if (route !== "story" && route !== "feeling") return null;
-    if (!anchor.anchor.ownWords) return null;
-    const x = latestExtraction(entry);
-    const first = x && "valued" in x ? x.valued?.[0] : undefined;
-    return first ?? null;
-  };
+  // The creator name rides on the item, not the anchor: a creator route with no
+  // anchor yet still names its creator (review round). Summary/quote/valued are
+  // anchor-entry fields and need the entry; the newest **v2** reading supplies them.
+  const x = anchorEntry ? latestExtractionV2(anchorEntry) : null;
+  const valued =
+    anchor && anchorEntry && (route === "story" || route === "feeling") && anchor.anchor.ownWords
+      ? x?.valued?.[0] ?? null
+      : null;
   return {
-    summary: anchorName(anchorEntry),
-    quote: quote(anchorEntry),
-    valued: valued(anchorEntry),
+    summary: x?.summary ?? null,
+    quote: x?.quote ?? null,
+    valued,
     creator: route === "creator" ? item.creators[0]?.name ?? null : null,
     phase_label: null, // filled by buildSnapshot from the active phase
     fits: null,        // filled by buildSnapshot from the caller's fits note
@@ -103,9 +93,10 @@ function feelingSentence(snap: ImpressionSnapshot): string {
   const anchor = snap.anchor;
   if (!anchor) return "It sits close to the centre of what you tend to love.";
   const what = snap.explain.summary ? `the ${snap.explain.summary} in ${anchor.title}` : anchor.title;
-  const quote = snap.explain.quote ? ` You wrote “${snap.explain.quote}”` : "";
+  // The quote keeps the legacy conditional period; period() alone closes the lead sentence.
+  const quote = snap.explain.quote ? ` You wrote “${snap.explain.quote}”${/[.!?…]$/.test(snap.explain.quote) ? "" : "."}` : "";
   const cross = snap.indicators.is_cross_media ? "This connects to something you loved in another medium: " : "This connects to something you loved: ";
-  return `${cross}${period(what)}.${quote} The same ${phrase(snap.shared)} is here.`;
+  return `${cross}${period(what)}${quote} The same ${phrase(snap.shared)} is here.`;
 }
 
 /** The story sentence (§8.5 story), with the cross-media prefix and valued/quote fallbacks. */
@@ -115,7 +106,8 @@ function storySentence(snap: ImpressionSnapshot): string {
   const lead = snap.indicators.is_cross_media ? "This connects to something you loved in another medium: " : "This connects to ";
   const keys = snap.shared.map((s) => describeKey(s.key));
   const sharedPart = keys.length >= 2 ? `the same ${keys[0]} and ${keys[1]}` : keys.length === 1 ? `the same ${keys[0]}` : "";
-  const tail = sharedPart ? `${period(`${lead}${anchor.title}: ${sharedPart}`)}.` : `${period(`${lead}${anchor.title}`)}.`;
+  // One sentence, one terminal period — period() alone closes it (review round).
+  const tail = period(`${lead}${anchor.title}${sharedPart ? `: ${sharedPart}` : ""}`);
   if (snap.explain.valued) return `${tail} What I valued: “${snap.explain.valued}”.`;
   if (snap.explain.quote) return `${tail} You wrote “${snap.explain.quote}”${/[.!?…]$/.test(snap.explain.quote) ? "" : "."}`;
   return tail;

@@ -4,6 +4,7 @@
 import { describe, expect, it } from "vitest";
 
 import { CANON_BY_SLUG } from "@/lib/catalog/canon-data";
+import type { EntryWithContext, Extraction } from "@/lib/types";
 import { canonProfile, canonToResult } from "@/lib/catalog/canon";
 import { buildFixtureLibrary } from "@/lib/dev/fixtures";
 import { buildUserProfile } from "@/lib/taste/profile";
@@ -278,4 +279,102 @@ describe("explainFields and the creator/phase/form/backlog sentences (§8.5)", (
     expect(bSnapshot.route).toBe("backlog");
     expect(bSnapshot.explanation.startsWith("From your own list.")).toBe(true);
   });
+
+  // Review round: a creator route needs no anchor. explainFields returned early when the
+  // anchor was null, so the sentence lost the name ("Same hands as something you loved: .").
+  // The snapshot layer must carry the creator name on its own.
+  it("creator route keeps the creator name when no anchor exists", () => {
+    const P = profile();
+    const item = makeItem("book-klara-and-the-sun");
+    const s = scoreCandidate(P, candidate(item), { story: 0.01, feeling: 0.01, form: 0, creator: 0.1, phase: 0, anti: -0.15 });
+    expect(s).not.toBeNull();
+    expect(routeOf(s!, { listOnly: false, surprise: false })).toBe("creator");
+    const snapshot = buildSnapshot({
+      position: 1, scored: s!, library: lib(), filters: { listOnly: false, surprise: false },
+      fits: null, rerank: { band: "familiar", closeness: 0.7, pass: 1, bridge_repair: false },
+      route: "creator", anchor: null, shared: [], anchorEntry: null,
+    });
+    expect(snapshot.explain.creator).toBe("Kazuo Ishiguro");
+    expect(snapshot.explain.summary).toBeNull();
+    expect(explanationFromSnapshot(snapshot)).toBe("Same hands as something you loved: Kazuo Ishiguro.");
+  });
+
+  // Review round: summary and quote come from the newest v2 reading. A done v1 row is the
+  // wrong format and must never supply them, even when it is newer than the v2 row.
+  it("explain.summary and quote read only v2 rows, never a newer v1 extraction", () => {
+    const library = lib();
+    const P = profile();
+    const item = makeItem("book-never-let-me-go");
+    const s = scoreCandidate(P, candidate(item));
+    expect(s).not.toBeNull();
+    const route = routeOf(s!, { listOnly: false, surprise: false });
+    const anchor = anchorOf(s!, route)!;
+    expect(anchor).not.toBeNull();
+    const entry = library.find((e) => e.entry.id === anchor.anchor.entryId);
+    expect(entry).toBeDefined();
+    // Append a newer, done v1 row with a distinctive summary and quote.
+    const v1: Extraction = {
+      tones: [] as Array<{ key: string; weight: number }>, registers: [], textures: [], aftertastes: [], themes: [],
+      intensity: 0.5, ache: 0.5, pace: 0.5,
+      summary: "v1 summary must never appear",
+      quote: "v1 quote must never appear",
+    };
+    const newer: EntryWithContext["extractions"][number] = {
+      id: "x-newer-v1", reaction_id: entry!.reactions[0]!.id, entry_id: entry!.entry.id, user_id: "u",
+      status: "done", attributes: v1, vector: { intensity: 0.5, ache: 0.5, pace: 0.5 },
+      vocabulary_version: "v1", extractor: "mock", attempts: 1, last_error: null,
+      extracted_at: new Date(NOW + 86_400_000).toISOString(), created_at: new Date(NOW + 86_400_000).toISOString(),
+    };
+    entry!.extractions.push(newer);
+    const snapshot = buildSnapshot({
+      position: 1, scored: s!, library, filters: { listOnly: false, surprise: false },
+      fits: null, rerank: { band: "familiar", closeness: 0.7, pass: 1, bridge_repair: false },
+      route, anchor, shared: sharedFor(s!, route, anchor), anchorEntry: entry!,
+    });
+    expect(snapshot.explain.summary).not.toContain("v1 summary must never appear");
+    expect(snapshot.explain.quote).not.toContain("v1 quote must never appear");
+    expect(snapshot.explain.summary).toBe(anchorNameOf(entry!));
+    expect(snapshot.explain.quote).toBe(anchorQuoteOf(entry!));
+  });
+
+  // Review round: the story tail is punctuated once, and the feeling quote keeps the
+  // legacy conditional period before " The same … is here."
+  it("sentences are punctuated once, with the legacy quote handling on the feeling route", () => {
+    const withQuote = {
+      ...snap("book-never-let-me-go"),
+      route: "feeling" as const,
+      explain: { summary: null, quote: "I sat in the dark for a long time after", valued: null, creator: null, phase_label: null, fits: null },
+      shared: [{ key: "theme.memory", weight: 0.7 }],
+      anchor: snap("book-never-let-me-go").anchor,
+    };
+    const sentence = explanationFromSnapshot(withQuote);
+    expect(sentence).toBe(
+      "This connects to something you loved: Klara and the Sun. You wrote “I sat in the dark for a long time after”. The same memory is here.",
+    );
+    // A quote that already ends in a sentence mark gets no extra period.
+    const withEnded = { ...withQuote, explain: { ...withQuote.explain, quote: "I sat in the dark." } };
+    expect(explanationFromSnapshot(withEnded)).toBe(
+      "This connects to something you loved: Klara and the Sun. You wrote “I sat in the dark.” The same memory is here.",
+    );
+    // The story tail ends with exactly one period even when the lead sentence is built by period().
+    const story = snap("book-never-let-me-go");
+    if (story.route === "story" && story.anchor) {
+      expect(story.explanation).not.toContain("..”");
+      expect(story.explanation).not.toContain(".. ");
+    }
+  });
 });
+
+/** v2-only summary of an entry's newest reading (mirrors the fix under test). */
+function anchorNameOf(e: EntryWithContext): string | null {
+  const rows = e.extractions.filter((x) => x.status === "done" && x.vocabulary_version === "v2").sort((a, b) => (b.extracted_at ?? "").localeCompare(a.extracted_at ?? ""));
+  const r = rows[0]?.attributes as { summary?: string } | undefined;
+  return r && typeof r.summary === "string" && r.summary ? r.summary : null;
+}
+
+/** v2-only quote of an entry's newest reading. */
+function anchorQuoteOf(e: EntryWithContext): string | null {
+  const rows = e.extractions.filter((x) => x.status === "done" && x.vocabulary_version === "v2").sort((a, b) => (b.extracted_at ?? "").localeCompare(a.extracted_at ?? ""));
+  const r = rows[0]?.attributes as { quote?: string | null } | undefined;
+  return r && typeof r.quote === "string" && r.quote ? r.quote : null;
+}

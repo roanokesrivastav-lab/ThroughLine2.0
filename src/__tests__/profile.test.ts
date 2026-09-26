@@ -436,3 +436,33 @@ describe("form helpers agree with the profile layer", () => {
     expect(formBand("book", minutesToFinish(item({ category: "book", metadata: { pages: 200 } })))).toBe(1); // 320 min
   });
 });
+
+// Review round (Session 5): a done extraction row stamped with the wrong vocabulary
+// version contributes no reading. entryVectorFamily filters on v2; a v1 row's nested
+// { story, feeling } shape must never be read as a family vector, even when it is newer.
+describe("entryVectorFamily ignores rows from another vocabulary version (review round)", () => {
+  it("a newer done v1 row with an object vector contributes nothing", () => {
+    const e = entryFrom({ key: "v1only", note: "a quiet, devastating read", profileVec: { story: { "theme.grief": 1 }, feeling: {} } }, 0);
+    e.extractions.length = 0; // drop the seed's v2 row; keep the note
+    const created = new Date(Date.UTC(2026, 7, 5)).toISOString();
+    e.reactions.push({ id: "reaction-v1only-2", entry_id: e.entry.id, user_id: "u", dimensions: { loved: true }, raw_note: "a quiet, devastating read", source: "log", created_at: created });
+    e.extractions.push({
+      id: "x-v1only-v1", reaction_id: "reaction-v1only-2", entry_id: e.entry.id, user_id: "u", status: "done",
+      attributes: { tones: [], registers: [], textures: [], aftertastes: [], themes: [], intensity: 0.5, ache: 0.5, pace: 0.5, summary: "old", quote: null } as never,
+      vector: { story: { "theme.loss": 1 }, feeling: { "tone.cold": 1 } } as never, // the shape a naive reader would misread
+      vocabulary_version: "v1", extractor: "mock", attempts: 1, last_error: null, extracted_at: created, created_at: created,
+    });
+    // The profile alone carries the vector; the v1 row's story/feeling object is ignored.
+    const v = entryVectorFamily(e, "story")!;
+    expect(v).toEqual({ "theme.grief": 1 });
+    expect(v["theme.loss"]).toBeUndefined();
+  });
+
+  it("a v2 row is still read, so the filter is not over-broad", () => {
+    // Reading and profile carry different keys, so the 0.8/0.2 blend proves the v2 row was read.
+    const e = entryFrom({ key: "v2ok", note: "a quiet, devastating read", reading: { vector: { story: { "theme.grief": 1 }, feeling: {} } }, profileVec: { story: { "theme.memory": 1 }, feeling: {} } }, 0);
+    const v = entryVectorFamily(e, "story")!;
+    expect(v["theme.grief"]).toBeCloseTo(0.8, 10);
+    expect(v["theme.memory"]).toBeCloseTo(0.2, 10);
+  });
+});

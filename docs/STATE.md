@@ -660,3 +660,80 @@ and the founder's authorization.
    re-ranker that produces `RerankInfo`.
 2. Session 7: server pipeline switch-over, rec-card and explainer reading snapshots, and
    deletion of the legacy scorer.
+
+## 2026-09-26 — Session 5 re-verified against the commit (documents only)
+
+The Session 5 work that the 2026-09-25 entry describes as uncommitted was found committed at
+`3074a4a` ("Add Stage 3 pure scorer, explanation layer, and impression snapshot") with a clean
+working tree. No code changed this session; this entry records the re-verification only.
+
+### Verified (AI-verified, all commands re-run today against `3074a4a`)
+- `npm run typecheck` clean; `npx eslint src` clean; `npm run build` succeeds;
+  `npm test` **251 passed (19 files)** — matching the 2026-09-25 entry's numbers.
+- `git show --stat 3074a4a` lists exactly the §1 files (score.ts, explain.ts, snapshot.ts,
+  recommend.ts, fixtures.ts, the three new test files, DECISIONS/STATE);
+  `git show 3074a4a -- src/lib/taste/recommend.ts` shows only the `export` keyword on `daySeed`.
+- Spec conformance re-read from the committed source: §2.2–§2.8 formulas (anchor self-skip,
+  affinity→entryId ties, band smoothing, genre_run 1/0.6, anti mean), §8.1–§8.3 (backlog forcing,
+  1e-9 tie order, anti never a route, ending.* dropped, first 3), §9.1 key order with the
+  explanation built last from the finished snapshot, §9.3/§8.6 forbidden-evidence absence
+  (`raw_note`/`premise`/`feel_prior` never serialized; tests I and R).
+- Not verified: nothing new ran against a database, the network, or a phone — none of this
+  session's checks touch them. The live app still uses the legacy scorer.
+
+### Noted for review (no action taken)
+- `buildSnapshot` accepts `route`, `anchor`, `shared` and `anchorEntry` as caller arguments
+  rather than computing them via `routeOf`/`anchorOf`/`sharedFor` as §2.4's signature describes
+  (Session 7's pipeline is that caller). The 2026-09-25 Deviations section records only the
+  `phaseLabel` argument; the signature shape itself is unrecorded. Left as-is for the founder's
+  review of the already-committed work.
+
+## 2026-09-26 — Session 5 review round: four fixes (GLM, uncommitted)
+
+Codex review of the committed Session 5 code surfaced four defects. Each was reproduced as a
+failing test before the fix (review-round convention). Uncommitted; the diff awaits re-review
+and the founder's authorization.
+
+### Fixed
+1. **Creator explanations could lose the name** (`explain.ts`): `explainFields` returned early
+   when no anchor existed, so a creator route with no anchor produced "Same hands as something
+   you loved: .". The creator name now rides on the item and is filled regardless of the anchor.
+2. **Explanations read the newest extraction regardless of vocabulary version** (`explain.ts`,
+   `affinity.ts`): `latestExtraction` accepts any version, and a v1 `Extraction` happens to carry
+   `summary`/`quote`, so a newer v1 row could supply them. New `latestExtractionV2` filters on
+   `vocabulary_version === v2` and narrows to the v2 `Reading`; the explain block reads only it.
+   `profile.ts` re-exports it. The anti-profile's `didnt_work` loop already version-checked and
+   is unchanged.
+3. **Story and feeling sentence punctuation** (`explain.ts`): the story tail appended `.` after
+   `period()` had already closed the sentence ("…: the same memory.." / "…Sun.."), and the
+   feeling quote had lost the legacy conditional period before " The same … is here.". Both fixed;
+   test pins exact strings for a quote ending with and without sentence punctuation.
+4. **`n_loved` was capped at 40** (`profile.ts`, `snapshot.ts`): the §9.2 context read
+   `fp.anchors.length`, which truncates at MAX_ANCHORS. `FamilyProfile` gains `n_loved`
+   (loved entries with a family vector; no external consumers of the type existed) and the
+   context uses it. A 45-loved-entry synthetic library pins the count above 40.
+
+### Tests added (7)
+- explain.test.ts: creator name survives a null anchor; a newer done v1 row never supplies
+  summary/quote (checked against a v2-only helper); exact story/feeling punctuation strings
+  for both quote endings.
+- snapshot.test.ts: n_loved > 40 while anchors ≤ 40 on a 45-clone library; a loved entry whose
+  only reading is v1 on an unprofiled item anchors neither family, while the v2 control does.
+- profile.test.ts: a done v1 row's nested `{ story, feeling }` vector contributes nothing to
+  `entryVectorFamily`; a v2 row still reads (0.8/0.2 blend with a differing profile vector).
+
+### Verified
+- **AI-verified (final sequential run):** `npm run typecheck` clean; `npm test` **258/258**
+  (251 pre-existing unedited + 7 new); `npx eslint src` clean; `npm run build` succeeds;
+  `git diff --check` clean.
+- **AI-verified only; no database, no network, nothing phone-verified; the live app still
+  uses the legacy scorer.**
+
+### Deviations
+- None to scope. One process correction recorded: an initial edit added a false "version was
+  never checked" comment to profile.ts's anti loop before re-reading showed the check already
+  existed; the comment was reverted the same session.
+
+### Next
+1. Re-review of this diff (Codex), then founder authorizes the commit.
+2. Session 6 unchanged: candidate generation, nine filters, and the RerankInfo re-ranker.

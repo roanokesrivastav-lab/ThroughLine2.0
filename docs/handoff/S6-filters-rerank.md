@@ -7,7 +7,7 @@ The diff goes to review; the founder authorizes the commit.
 
 **Still pure and additive.** The live app keeps using the legacy scorer until Session 7. Candidate *generation* (the six sources) and every database read or write are Session 7.
 
-**Prerequisite:** Session 5 is committed (`3074a4a` or later). `git status` should be clean apart from `CLAUDE.md`, `.codex/`, `.freebuff/`. If not, **STOP**.
+**Prerequisite:** Session 5 is committed (`3074a4a` or later). `git status` should be clean apart from `CLAUDE.md`, `.codex/`, `.freebuff/`, and the reviewer's 2026-09-26 re-verification entry in `docs/STATE.md`. If anything else is uncommitted, **STOP**.
 
 ---
 
@@ -130,7 +130,16 @@ The steps, in order:
 2. `scoreCandidates(P, kept)`. Its `deferred` must be empty here, because step 8 already removed the unprofiled; if it isn't, throw.
 3. `orderScored(scored, { surprise, userId })`.
 4. `rerank`.
-5. For each output row, in display order: `buildSnapshot({ position: i + 1, scored, library, filters, fits: fitsTime(item, filters.minutes).note, rerank })`.
+5. For each output row, in display order, compute the explanation inputs **with the Session 5 helpers**, then call `buildSnapshot` with its committed signature:
+   - `route = routeOf(scored, filters)`
+   - `anchor = anchorOf(scored, route)`
+   - `shared = sharedFor(scored, route, anchor)`
+   - `anchorEntry` = the library entry whose `entry.id === anchor?.anchor.entryId`, or null
+   - `phaseLabel = route === "phase" ? P.activePhase?.label ?? null : null`
+   - `fits = fitsTime(item, filters.minutes).note`
+   - then `buildSnapshot({ position: i + 1, scored, library, filters, fits, rerank, route, anchor, shared, anchorEntry, phaseLabel })`
+
+   Don't change `buildSnapshot` to compute these itself. The pipeline is its intended caller (STATE 2026-09-26 review note).
 6. `buildContext`, with:
    - `limit`
    - `pools` = `{ ...sourceCounts, merged, removed, deferred: deferred.length, scored: scored.length }`

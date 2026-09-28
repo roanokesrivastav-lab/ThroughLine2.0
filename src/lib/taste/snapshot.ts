@@ -152,11 +152,14 @@ const base_ownWords = (anchor: ScoredCandidate["anchors"]["story"]): 0 | 1 =>
 export function buildContext(args: {
   filters: Filters;
   profile: UserProfile;
+  /** The list length the caps are computed from (§7.3). Default 6 keeps the Session 5 shape (ceil(6/2) = 3). */
+  limit?: number;
   versions?: ImpressionSnapshot["versions"];
   pools?: SessionContext["pools"];
   policy?: Partial<SessionContext["policy"]>;
 }): SessionContext {
   const { filters, profile: P } = args;
+  const cap = Math.ceil((args.limit ?? 6) / 2);
   const versions = args.versions ?? {
     feature_version: FEATURE_VERSION,
     profile_version: "n/a",
@@ -181,8 +184,8 @@ export function buildContext(args: {
       band_familiar: BAND.familiar,
       band_adjacent: BAND.adjacent,
       creator_cap: CREATOR_CAP,
-      category_cap: 3,
-      theme_cap: 3,
+      category_cap: cap,
+      theme_cap: cap,
       recency_days: RECENCY_DAYS,
     },
     profile: {

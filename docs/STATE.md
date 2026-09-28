@@ -737,3 +737,61 @@ and the founder's authorization.
 ### Next
 1. Re-review of this diff (Codex), then founder authorizes the commit.
 2. Session 6 unchanged: candidate generation, nine filters, and the RerankInfo re-ranker.
+
+## 2026-09-28 — Session 6: filters + re-rank + pure pipeline (GLM, uncommitted)
+
+Per `docs/handoff/S6-filters-rerank.md`. The founder's amendment to the baseline check was
+confirmed: the only red baseline item was `src/__tests__/filters.test.ts`, a draft committed
+without `filters.ts` (import error); nothing else failed, so the session proceeded. The draft
+was rewritten (it predated the committed code and two of its scenarios could not pass: it muted
+"drama", which the tag stoplist drops, and expected seed-slug candidates to survive the `logged`
+step). Uncommitted; the diff awaits review and the founder's authorization.
+
+### Built
+- `src/lib/taste/filters.ts` (new): `PipelineFilters`, `RecentImpression`, `RemovedCounts` and
+  `filterCandidates` — the fixed nine steps in §6 order (category → listOnly → logged → hidden →
+  muted → known no-op → time/shortRead/returnable → unprofiled→deferred → recency). Tag profile
+  built once; recency re-admits oldest-impression-first (ties by key) when kept < limit.
+- `src/lib/taste/rerank.ts` (new): `quotasFor` (table for L 1–5, formula for L ≥ 6), `closeness`
+  (mean of the calibrated anchor sims, never recomputed), `bandOf`, `isBridge`, `rerank` —
+  quota pass, fill pass, theme-relax then category-relax passes, creator cap never relaxed,
+  `caps_relaxed` honest (only when a relaxation admitted someone), bridge repair replacing the
+  last same-band result (records `pass: 3, bridge_repair: true`), output re-sorted score desc /
+  key asc, a short list stays short.
+- `src/lib/taste/pipeline.ts` (new): `rankPipeline` composing filter → scoreCandidates (its
+  deferred must be empty, else throw) → orderScored → rerank → buildSnapshot rows with the
+  Session 5 explainer helpers (routeOf/anchorOf/sharedFor/fitsTime note, anchorEntry and
+  phaseLabel resolved here) → buildContext with limit, pools and policy. Returns `deferred` for
+  Session 7's ensureProfiles.
+- `src/lib/taste/snapshot.ts`: `buildContext` gains an optional `limit`; `category_cap` and
+  `theme_cap` are now `ceil(limit/2)` instead of hard-coded 3 (§2.4). Default limit 6 keeps
+  ceil = 3, so Session 5's call sites and tests are unchanged. No other edits to Session 5
+  code; no Session 5 test needed the cap assertion updated (verified by search).
+- Tests: `src/__tests__/filters.test.ts` rewritten (draft → 14 tests), `src/__tests__/rerank.test.ts`
+  (11, hand-built scored candidates), `src/__tests__/pipeline.test.ts` (6, fixture library) —
+  31 new tests covering handoff §3 A–O.
+- Docs: DECISIONS #87–91.
+
+### Verified
+- **AI-verified:** baseline before any edit: typecheck failed only in the draft filters.test.ts
+  (TS2307/TS7006), `npx vitest run --exclude src/__tests__/filters.test.ts` → 258/258, full run
+  → 258 passed / 1 file failed (the draft import), eslint → 1 warning (draft's unused import),
+  build failed only on the draft — matching the founder's amendment, no STOP.
+- **AI-verified (final):** `npm run typecheck` clean; `npm test` **289/289** (258 pre-existing
+  unedited + 31 new); `npx eslint src` clean; `npm run build` succeeds.
+- **AI-verified only; no database, no network, nothing phone-verified; the live app still uses
+  the legacy scorer.**
+
+### Deviations
+- None to scope. `buildContext`'s `limit` is optional (default 6) where the handoff says "accept
+  limit"; this keeps the committed Session 5 signature backward-compatible and its tests
+  untouched, per the handoff's own rule that existing tests stay unedited. `book-piranesi`
+  carries a committed profile (the only unprofiled canon slug is `song-all-too-well-10`, music,
+  which never reaches the filter), so the deferred test stamps a committed profile `p0` instead.
+
+### Next
+1. Review of this diff (Codex), then founder authorizes the commit.
+2. Session 7: six candidate sources with provenance and title dedupe, `recent` loaded from
+   query_sessions with the legacy `id` fallback, `ensureProfiles` on `deferred`, persistence of
+   results/answers.context, the explainer and rec-card on snapshots, and deleting the legacy
+   scorer.

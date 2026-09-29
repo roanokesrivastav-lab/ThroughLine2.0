@@ -23,7 +23,8 @@ export function canonToResult(c: CanonItem): CatalogResult {
   };
 }
 
-const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
+/** Lowercase, strip diacritics and punctuation, collapse spaces. Exported for Session 7's title dedupe (§5). */
+export const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
 
 /** Local, key-free fallback catalog. Also used as the onboarding canon. */
 export const canonAdapter: CatalogAdapter = {

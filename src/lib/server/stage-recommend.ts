@@ -18,7 +18,7 @@ import { buildUserProfile, MATCHED_CATEGORIES, type UserProfile } from "@/lib/ta
 import { rankPipeline } from "@/lib/taste/pipeline";
 import type { PipelineFilters, RecentImpression } from "@/lib/taste/filters";
 import type { ImpressionSnapshot, SessionContext } from "@/lib/taste/snapshot";
-import type { Source, StageCandidate } from "@/lib/taste/score";
+import type { StageCandidate } from "@/lib/taste/score";
 import { CREATOR_RESULTS_EACH, POOL_SIZE, PROFILE_VERSION, RECENCY_DAYS } from "@/lib/taste/weights";
 import { candidateKey, type TastePrefs } from "@/lib/taste/tags";
 
@@ -65,7 +65,11 @@ export function supabaseRecommendStore(db: Db): RecommendStore {
       // loadPhases adds entryIds (phase_members); buildUserProfile reads the Phase shape,
       // which has no entryIds, so drop it.
       const rows = await loadPhases(db, userId);
-      return rows.map(({ entryIds: _entryIds, ...phase }) => phase);
+      return rows.map((p) => ({
+        id: p.id, user_id: p.user_id, kind: p.kind, fingerprint: p.fingerprint, label: p.label, user_label: p.user_label,
+        start_at: p.start_at, end_at: p.end_at, category: p.category, confidence: p.confidence,
+        evidence: p.evidence, dismissed: p.dismissed, detected_at: p.detected_at,
+      }));
     },
     async loadPool(categories, limit) {
       const { data, error } = await db

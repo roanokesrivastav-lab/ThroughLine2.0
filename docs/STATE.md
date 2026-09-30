@@ -795,3 +795,53 @@ step). Uncommitted; the diff awaits review and the founder's authorization.
    query_sessions with the legacy `id` fallback, `ensureProfiles` on `deferred`, persistence of
    results/answers.context, the explainer and rec-card on snapshots, and deleting the legacy
    scorer.
+
+## 2026-09-28 — Session 7A: candidate generation + server pipeline (GLM, uncommitted)
+
+Session 7 split into 7A (this) and 7B (switch-over) per DECISIONS #92; the live app keeps the
+legacy scorer until 7B.
+
+### Built
+- `src/lib/taste/candidates.ts` (new, pure): `creatorQueries` (weight ≥ 0.4, category-scoped,
+  never music, top 3 by weight then key, off for listOnly/surprise) and `generateCandidates`
+  — the six sources of SPEC §5 (backlog, canon, creator first-5-each, story/feeling_neighbour
+  top-30 by raw family similarity with key tie-breaks, phase top-20 with the feeling_cluster
+  ≥ 0.5 gate and genre_run via `normaliseTags`), music excluded everywhere, both merges (by
+  key, then by category + `norm(title)` with backlog-wins per DECISIONS #95), sources unioned
+  in SOURCE_ORDER, output key-sorted, `sourceCounts` before merging and `merged` after.
+- `src/lib/server/stage-recommend.ts` (new, `server-only`): `RecommendStore` +
+  `supabaseRecommendStore` (signed-in client only, every select names columns, pool loads
+  POOL_SIZE + library.length rows and excludes library items before the cut),
+  `loadRecentImpressions` (kinds home/recommend/time over 14 days, v3 `key` + legacy `id`
+  rows, one batched `keysForIds` for uuids, never throws on junk), and
+  `buildStageRecommendations` (library/prefs/phases → profile → canon as profiled items →
+  pool + parallel creator calls with one-failure-tolerant `console.warn` → one batched
+  `findByKeys` hydration → `generateCandidates` → `rankPipeline` → one `insertSession`
+  with `results` = snapshots and `answers` = {filters, context}). No `ensureProfiles`, no
+  model calls; `deferred` is returned for 7B. Nothing is wired to any route.
+- `src/lib/catalog/canon.ts`: `norm` exported (one-word change, used for title dedupe).
+- Tests: `src/__tests__/candidates.test.ts` (10, handoff §3 A–I + counts) and
+  `src/__tests__/stage-recommend.test.ts` (8, §3 J–O + server-side listOnly/surprise/music)
+  against an in-memory store and fake adapters — 18 new tests.
+- Docs: DECISIONS #92–97.
+
+### Verified
+- **AI-verified (final):** `npm test` → **308/308** (24 files; 290 pre-existing, unedited, plus
+  18 new); `npm run typecheck` clean (0 errors); `npx eslint src` clean (0 problems);
+  `npm run build` → Compiled successfully; `git diff --check` clean; `grep -rn
+  "stage-recommend\|buildStageRecommendations" src/app` prints nothing.
+- **AI-verified only; no database, no network, nothing phone-verified; nothing is wired to a
+  route; the live app still uses the legacy scorer.**
+
+### Deviations
+- None to scope. One implementation bug was caught by the new counts test before any verify
+  run: `generateCandidates` initially returned `merged` as the pre-merge total; it now returns
+  the post-merge candidate count. An interim commit of the working tree (`75aa680`) was made
+  by the founder mid-session; the reviewed delta is the uncommitted changes on top of it.
+
+### Next
+1. Review of this diff (Codex), then founder authorizes the commit.
+2. Session 7B: the switch-over — types per §1.8, `/api/recommend` and `home.ts` on
+   `buildStageRecommendations`, `after()` runs `ensureProfiles(deferred)` then
+   `profileItemsNow`, the explainer and `rec-card.tsx` on snapshots, and deleting the legacy
+   scorer.

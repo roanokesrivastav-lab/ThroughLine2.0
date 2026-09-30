@@ -12,7 +12,7 @@ import { scoreCandidate } from "@/lib/taste/score";
 import type { Source } from "@/lib/taste/score";
 import { simFamily } from "@/lib/taste/vector";
 import type { PipelineFilters } from "@/lib/taste/filters";
-import { CREATOR_EXPAND_MIN_WEIGHT, CREATOR_RESULTS_EACH, CREATOR_TOP, NEIGHBOUR_TOP, PHASE_TOP } from "@/lib/taste/weights";
+import { CREATOR_EXPAND_MIN_WEIGHT, CREATOR_TOP, NEIGHBOUR_TOP, PHASE_TOP } from "@/lib/taste/weights";
 import { EMPTY_TASTE_PREFS } from "@/lib/taste/tags";
 import type { Category, MediaItem, Phase } from "@/lib/types";
 

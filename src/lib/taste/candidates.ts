@@ -86,7 +86,7 @@ export function generateCandidates(args: {
     // Creator expansion: the first CREATOR_RESULTS_EACH of each query's hydrated results,
     // minus library matches by key or by title. An adapter result and an existing row
     // share the same key after hydration, so the key check covers both.
-    for (const [ck, results] of creatorResults) {
+    for (const results of creatorResults.values()) {
       for (const item of results.slice(0, CREATOR_RESULTS_EACH)) {
         if (item.category === "music") continue;
         if (libraryKeys.has(candidateKey(item)) || titles.has(norm(item.title))) continue;

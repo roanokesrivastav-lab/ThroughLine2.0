@@ -11,9 +11,7 @@ import { buildFixtureLibrary } from "@/lib/dev/fixtures";
 import { buildStageRecommendations, loadRecentImpressions, type RecommendStore, type StageDeps } from "@/lib/server/stage-recommend";
 import type { PipelineFilters } from "@/lib/taste/filters";
 import type { ImpressionSnapshot, SessionContext } from "@/lib/taste/snapshot";
-import type { StageCandidate } from "@/lib/taste/score";
 import { POOL_SIZE } from "@/lib/taste/weights";
-import { candidateKey } from "@/lib/taste/tags";
 import type { Category, EntryWithContext, MediaItem, Phase } from "@/lib/types";
 import type { QuerySessionsRow } from "@/lib/db/types";
 
@@ -48,9 +46,11 @@ function memStore(library: EntryWithContext[], opts: { pool?: MediaItem[]; rows?
       return (opts.rows ?? []).filter((r) => wanted.has(`${r.source}:${r.external_id}`));
     },
     async loadSessions(_userId, kinds, since) {
-      return (opts.sessions ?? [])
-        .filter((s) => kinds.includes(s.kind) && s.created_at >= since)
-        .map((s) => ({ created_at: s.created_at, results: s.results }));
+      const picked: Array<Pick<QuerySessionsRow, "created_at" | "results">> = [];
+      for (const s of opts.sessions ?? []) {
+        if (kinds.includes(s.kind) && s.created_at >= since) picked.push({ created_at: s.created_at, results: s.results as QuerySessionsRow["results"] });
+      }
+      return picked;
     },
     async keysForIds(ids) {
       calls.keysForIds++;
@@ -73,8 +73,7 @@ const adapterCalls: Array<{ name: string; category: Category }> = [];
 
 function fakeDeps(byCreator: Map<string, MediaItem[]> = new Map(), opts: { fail?: (name: string) => boolean } = {}): StageDeps {
   adapterCalls.length = 0;
-  return {
-    adapterFor: (_c: Category) => ({
+  return {      adapterFor: () => ({
       source: "fake",
       categories: ["movie", "tv", "anime", "book", "music"],
       available: () => true,
@@ -89,22 +88,29 @@ function fakeDeps(byCreator: Map<string, MediaItem[]> = new Map(), opts: { fail?
   };
 }
 
-/** The fixture library's canon items as profiled pool rows (uuid ids, profiles attached). */
+/** The fixture library's canon items as profiled pool rows (uuid ids, profiles attached), excluding what the library holds. */
 function poolFromLibrary(library: EntryWithContext[]): MediaItem[] {
-  return CANON_BY_SLUG
-    .entries()
-    .filter(([slug]) => canonProfile(slug) !== null && !library.some((e) => e.item.external_id === slug))
-    .map(([slug]) => {
-      const c = CANON_BY_SLUG.get(slug)!;
-      const r = canonToResult(c);
-      return { ...r, id: `row-${slug}`, feel_prior: r.feel_prior ?? null, profile: canonProfile(slug) } as MediaItem;
-    })
-    .toArray();
+  const inLibrary = new Set(library.map((e) => e.item.external_id));
+  const rows: MediaItem[] = [];
+  for (const [slug, c] of CANON_BY_SLUG) {
+    if (inLibrary.has(slug) || canonProfile(slug) === null) continue;
+    const r = canonToResult(c);
+    rows.push({ ...r, id: `row-${slug}`, feel_prior: r.feel_prior ?? null, profile: canonProfile(slug) });
+  }
+  return rows;
 }
 
 const USER = "test-user";
 
 const library = () => buildFixtureLibrary(NOW_MS, { profiles: "canon" });
+
+/** A canon item with any id/source override, the way adapters and rows would carry it. */
+function canonItem(slug: string, over: Partial<MediaItem> = {}): MediaItem {
+  const c = CANON_BY_SLUG.get(slug);
+  if (!c) throw new Error(`no canon item ${slug}`);
+  const r = canonToResult(c);
+  return { ...r, id: `canon:${slug}`, feel_prior: r.feel_prior ?? null, profile: canonProfile(slug), ...over };
+}
 
 beforeEach(() => {
   vi.spyOn(console, "warn").mockImplementation(() => {});
@@ -115,40 +121,46 @@ afterEach(() => {
 
 describe("hydration and recency (§2.3–§2.4)", () => {
   it("J: a creator result whose key has a profiled row is scored; an unknown one is deferred", async () => {
-    // Two adapter hits for a fixture creator: one already a profiled row, one brand new.
-    const creator = "Barry Jenkins"; // primary creator of the loved movie-moonlight
-    const known = CANON_BY_SLUG.get("movie-in-the-mood-for-love")!;
-    const kr = canonToResult(known);
-    const knownRow: MediaItem = { ...kr, id: "row-known", feel_prior: kr.feel_prior ?? null, profile: canonProfile("movie-in-the-mood-for-love") };
-    const novel = CANON_BY_SLUG.get("movie-before-sunrise")!;
-    const nr = canonToResult(novel);
-    const novelItem: MediaItem = { ...nr, id: "tmdb:bs", source: "tmdb", external_id: "bs", feel_prior: nr.feel_prior ?? null, profile: null };
+    // Two adapter hits for a fixture creator (Kazuo Ishiguro, loved via three books):
+    // one whose (source, external_id) already has a profiled row, one brand new. The
+    // known one must NOT collide with the library by key or title, or the creator
+    // source would skip it before hydration ever ran.
+    const creator = "Kazuo Ishiguro";
+    const adapterHit = canonItem("book-1984", { id: "openlibrary:1984-real", source: "openlibrary", external_id: "1984-real" });
+    const knownRow = canonItem("book-1984", { id: "row-1984", source: "openlibrary", external_id: "1984-real", profile: canonProfile("book-1984") }); // same pair, uuid id, profiled
+    const novel = canonItem("book-beloved", { id: "openlibrary:beloved-new", source: "openlibrary", external_id: "beloved-new", profile: null }); // no row anywhere
 
     const lib = library();
-    const { store, calls } = memStore(lib, { pool: [], rows: [knownRow] });
-    const result = await buildStageRecommendations(store, fakeDeps(new Map([[creator, [nr, knownRow]]])), USER, base, { kind: "recommend" });
+    const { store, calls } = memStore(lib, { pool: poolFromLibrary(lib), rows: [knownRow] });
+    const result = await buildStageRecommendations(
+      store,
+      fakeDeps(new Map([[creator, [adapterHit, novel]]])),
+      USER,
+      { ...base, limit: 60, minutes: 60 }, // books pass any budget ≥ 40 (§D.4); a wide window so the assertion is about scored-vs-deferred, not ranking
+      { kind: "recommend" },
+    );
 
-    // Hydration swapped the known hit for its row (uuid id, profile); the unknown one stays a key.
-    const deferredKeys = result.deferred.map((d) => d.key);
-    expect(deferredKeys).toContain("tmdb:bs");
-    expect(result.deferred.find((d) => d.key === "tmdb:bs")!.item.profile ?? null).toBeNull();
-    // The known row scored: it appears among the snapshots under its row id, not deferred.
-    expect(deferredKeys).not.toContain("row-known");
-    expect(result.snapshots.some((s) => s.item.id === "row-known")).toBe(true);
-    // One batched findByKeys for all creator results.
-    expect(calls.findByKeys).toHaveLength(1);
+    // Hydration swapped the known hit for its row (uuid id, profile): it is scored.
+    expect(calls.findByKeys).toHaveLength(1); // one batched read for all creator results
+    expect(calls.findByKeys[0]!.sort()).toEqual(["openlibrary:1984-real", "openlibrary:beloved-new"]);
+    expect(result.deferred.map((d) => d.key)).not.toContain("row-1984");
+    expect(result.snapshots.some((s) => s.item.id === "row-1984" && s.item.profile_version === "p1")).toBe(true);
+    // The unknown hit stays a key with no profile and lands in deferred for 7B to queue.
+    const unknown = result.deferred.find((d) => d.key === "openlibrary:beloved-new");
+    expect(unknown).toBeDefined();
+    expect(unknown!.item.profile ?? null).toBeNull();
   });
 
   it("K: recency reads v3 keys, legacy ids-with-colon, and legacy uuids via one batched keysForIds call; old, surprise and unresolvable rows are ignored", async () => {
-    const fresh = (kind: QuerySessionsRow["kind"]) => new Date(NOW_MS - 2 * DAY).toISOString();
+    const fresh = () => new Date(NOW_MS - 2 * DAY).toISOString();
     const sessions: Session[] = [
-      { user_id: USER, kind: "recommend", category: null, answers: {}, results: [{ key: "canon:book-dune" }], created_at: fresh("recommend") },
-      { user_id: USER, kind: "home", category: null, answers: {}, results: [{ id: "tmdb:legacy" }], created_at: fresh("home") },
-      { user_id: USER, kind: "time", category: null, answers: {}, results: [{ id: "row-uuid-9" }], created_at: fresh("time") },
-      { user_id: USER, kind: "recommend", category: null, answers: {}, results: [{ id: "row-gone" }], created_at: fresh("recommend") }, // unresolvable
+      { user_id: USER, kind: "recommend", category: null, answers: {}, results: [{ key: "canon:book-dune" }], created_at: fresh() },
+      { user_id: USER, kind: "home", category: null, answers: {}, results: [{ id: "tmdb:legacy" }], created_at: fresh() },
+      { user_id: USER, kind: "time", category: null, answers: {}, results: [{ id: "row-uuid-9" }], created_at: fresh() },
+      { user_id: USER, kind: "recommend", category: null, answers: {}, results: [{ id: "row-gone" }], created_at: fresh() }, // unresolvable
       { user_id: USER, kind: "recommend", category: null, answers: {}, results: [{ key: "canon:book-beloved" }], created_at: new Date(NOW_MS - 20 * DAY).toISOString() }, // too old
-      { user_id: USER, kind: "surprise", category: null, answers: {}, results: [{ key: "canon:book-1984" }], created_at: fresh("surprise") }, // wrong kind
-      { user_id: USER, kind: "recommend", category: null, answers: {}, results: [42, null, { nope: true }], created_at: fresh("recommend") }, // skipped, not thrown
+      { user_id: USER, kind: "surprise", category: null, answers: {}, results: [{ key: "canon:book-1984" }], created_at: fresh() }, // wrong kind
+      { user_id: USER, kind: "recommend", category: null, answers: {}, results: [42, null, { nope: true }], created_at: fresh() }, // skipped, not thrown
     ];
     const { store, calls } = memStore(library(), {
       sessions,
@@ -157,9 +169,9 @@ describe("hydration and recency (§2.3–§2.4)", () => {
 
     const impressions = await loadRecentImpressions(store, USER, NOW);
     const got = new Map(impressions.map((i) => [i.key, i.shownAt]));
-    expect(got.get("canon:book-dune")).toBe(fresh("recommend"));
-    expect(got.get("tmdb:legacy")).toBe(fresh("home"));
-    expect(got.get("canon:anime-frieren")).toBe(fresh("time"));
+    expect(got.get("canon:book-dune")).toBe(fresh());
+    expect(got.get("tmdb:legacy")).toBe(fresh());
+    expect(got.get("canon:anime-frieren")).toBe(fresh());
     expect(got.has("row-gone")).toBe(false);
     expect(got.has("row-uuid-9")).toBe(false);
     expect(got.has("canon:book-beloved")).toBe(false);
@@ -169,8 +181,8 @@ describe("hydration and recency (§2.3–§2.4)", () => {
     // Duplicate impressions are fine; the loader returns every one of them.
     const dupe = await loadRecentImpressions(
       memStore(library(), { sessions: [
-        { user_id: USER, kind: "home", category: null, answers: {}, results: [{ key: "canon:book-dune" }], created_at: fresh("home") },
-        { user_id: USER, kind: "recommend", category: null, answers: {}, results: [{ key: "canon:book-dune" }], created_at: fresh("recommend") },
+        { user_id: USER, kind: "home", category: null, answers: {}, results: [{ key: "canon:book-dune" }], created_at: fresh() },
+        { user_id: USER, kind: "recommend", category: null, answers: {}, results: [{ key: "canon:book-dune" }], created_at: fresh() },
       ] }).store,
       USER,
       NOW,
@@ -212,7 +224,10 @@ describe("end to end against the in-memory store (§C43, §9.3)", () => {
     const pools = result.context.pools as Record<string, unknown>;
     expect(result.snapshots).toHaveLength(5);
     expect(result.snapshots.map((s) => s.position)).toEqual([1, 2, 3, 4, 5]);
-    expect(pools.merged).toBe(pools.scored === undefined ? (pools as Record<string, unknown>).merged : (pools as Record<string, unknown>).merged);
+    // The honest pool arithmetic (§9.2): merged = scored + deferred + every removed.
+    const removed = (pools.removed ?? {}) as Record<string, number>;
+    const removedSum = Object.values(removed).reduce((a: number, b) => a + b, 0);
+    expect(pools.merged).toBe((pools.scored as number) + (pools.deferred as number) + removedSum);
     expect(result.snapshots.every((s) => typeof s.explanation === "string" && s.explanation.length > 0)).toBe(true);
     expect(result.snapshots.every((s) => s.score === s.contributions.story + s.contributions.feeling + s.contributions.form + s.contributions.creator + s.contributions.phase + s.contributions.anti)).toBe(true);
   });
@@ -242,6 +257,7 @@ describe("end to end against the in-memory store (§C43, §9.3)", () => {
     const storedKeys = JSON.stringify(row.results).match(/"key":"([^"]+)"/g) ?? [];
     for (const raw of storedKeys) {
       const k = raw.slice(7, -1);
+      if (!k.includes(":")) continue; // shared-attribute vocabulary keys ("theme.memory") are not candidates
       expect(shown.has(k)).toBe(true);
     }
     // The context's pools counts must reconcile with what generation reported.
@@ -253,23 +269,36 @@ describe("end to end against the in-memory store (§C43, §9.3)", () => {
 
   it("N: one adapter throwing never fails the request; that creator contributes zero", async () => {
     const lib = library();
-    const creator = "Barry Jenkins";
-    const novel = canonToResult(CANON_BY_SLUG.get("movie-before-sunrise")!);
-    const { store, calls } = memStore(lib, { pool: poolFromLibrary(lib) });
-    const result = await buildStageRecommendations(
-      store,
-      fakeDeps(new Map([[creator, [novel]]]), { fail: (name) => name === creator }),
+    const creator = "Kazuo Ishiguro";
+    // The hit is adapter-namespaced, so its absence can only mean the creator contributed nothing.
+    const hit = canonItem("book-1984", { id: "openlibrary:1984-x", source: "openlibrary", external_id: "1984-x", profile: null });
+    const results = new Map([[creator, [hit]]]);
+
+    const failed = await buildStageRecommendations(
+      memStore(lib, { pool: poolFromLibrary(lib) }).store,
+      fakeDeps(results, { fail: (name) => name === creator }),
       USER,
-      base,
+      { ...base, limit: 12 },
       { kind: "recommend" },
     );
-
     expect(adapterCalls.map((c) => c.name)).toContain(creator);
     expect(vi.mocked(console.warn).mock.calls.some((args) => String(args[0]).includes("creator expansion skipped"))).toBe(true);
-    expect(result.snapshots).toHaveLength(5); // the request still succeeds
-    expect(result.snapshots.some((s) => s.key === "tmdb:bs")).toBe(false);
-    expect(result.deferred.some((d) => d.key === "tmdb:bs")).toBe(false);
-    expect(calls.inserts).toHaveLength(1);
+    expect(failed.snapshots).toHaveLength(12); // the request still succeeds, at the limit it was given
+    expect(failed.snapshots.some((s) => s.key === "openlibrary:1984-x")).toBe(false);
+    expect(failed.deferred.some((d) => d.key === "openlibrary:1984-x")).toBe(false);
+
+    // Control: the same setup with a healthy creator does surface the hit — so the
+    // assertions above mean something.
+    const healthy = await buildStageRecommendations(
+      memStore(lib, { pool: poolFromLibrary(lib) }).store,
+      fakeDeps(results),
+      USER,
+      { ...base, limit: 12, minutes: 60 },
+      { kind: "recommend" },
+    );
+    expect(
+      healthy.snapshots.some((s) => s.key === "openlibrary:1984-x") || healthy.deferred.some((d) => d.key === "openlibrary:1984-x"),
+    ).toBe(true);
   });
 
   it("E (server side): listOnly and surprise skip the pool and every adapter call", async () => {

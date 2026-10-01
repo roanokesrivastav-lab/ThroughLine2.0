@@ -1,7 +1,9 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { z } from "zod";
 import { route, requireUser } from "@/lib/server/auth";
-import { buildRecommendations } from "@/lib/server/recommend";
+import { buildStageRecommendations, queueDeferredProfiles, supabaseRecommendStore } from "@/lib/server/stage-recommend";
+import { adapterFor } from "@/lib/catalog";
+import { getExplainer } from "@/lib/ai/explainer";
 import { CATEGORIES } from "@/lib/types";
 
 const schema = z.object({
@@ -27,6 +29,13 @@ export const GET = route(async (req: Request) => {
     limit: 5,
   };
   const kind = p.surprise ? "surprise" : p.minutes ? "time" : "recommend";
-  const recommendations = await buildRecommendations(supabase, user.id, filters, { kind });
+  const { recommendations, deferred } = await buildStageRecommendations(
+    supabaseRecommendStore(supabase),
+    { adapterFor, now: () => new Date(), explain: (s) => getExplainer().explain(s) },
+    user.id,
+    filters,
+    { kind },
+  );
+  after(() => queueDeferredProfiles(deferred));
   return NextResponse.json({ recommendations, filters });
 });

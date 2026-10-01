@@ -1,10 +1,11 @@
-// The server side of the Stage 3 recommend path (SPEC-STAGE3 §5–§6, §9; Session 7A).
-// Nothing is wired to a route yet: 7A builds the candidate list, runs Session 6's
-// rankPipeline, and persists the session exactly as §9 describes. The live app keeps
-// using the legacy scorer in server/recommend.ts until 7B switches over.
+// The server side of the Stage 3 recommend path (SPEC-STAGE3 §5–§6, §9; Sessions 7A–7B).
+// 7A built the candidate list, Session 6's rankPipeline, and the §9 persist; 7B wires the
+// live app to it: the AI explainer runs over the snapshots, the stored snapshot holds the
+// sentence actually shown (§9.1), recommendations are built for the client with profiles
+// stripped (§9.3), and unprofiled candidates are queued for profiling after the response.
 import "server-only";
 
-import type { Category, MediaItem, Phase } from "@/lib/types";
+import type { Category, MediaItem, Phase, Recommendation } from "@/lib/types";
 import type { CatalogAdapter, CatalogResult } from "@/lib/catalog/types";
 import type { QuerySessionsRow } from "@/lib/db/types";
 import { CANON } from "@/lib/catalog/canon-data";
@@ -12,6 +13,7 @@ import { canonProfile, canonToResult } from "@/lib/catalog/canon";
 import { loadLibrary, rowToItem, type Db } from "./entries";
 import { loadPhases } from "./phases";
 import { loadTastePrefs } from "./recommend";
+import { PROFILE_INLINE_LIMIT, ensureProfiles, profileItemsNow } from "./profiles";
 import type { EntryWithContext } from "@/lib/types";
 import { creatorQueries, generateCandidates } from "@/lib/taste/candidates";
 import { buildUserProfile, MATCHED_CATEGORIES, type UserProfile } from "@/lib/taste/profile";
@@ -187,11 +189,16 @@ export async function loadRecentImpressions(store: RecommendStore, userId: strin
 
 // ---------------------------------------------------------------------------
 // buildStageRecommendations (§2.4): the six-source candidate list, Session 6's
-// rankPipeline, and one insertSession. No ensureProfiles, no model calls — 7A
-// returns deferred for 7B to queue.
+// rankPipeline, the AI explanation, and one insertSession. Unprofiled candidates
+// come back as `deferred` for the route's after() to queue (§6 step 8).
 // ---------------------------------------------------------------------------
 
-export type StageDeps = { adapterFor: (c: Category) => CatalogAdapter; now: () => Date };
+export type StageDeps = {
+  adapterFor: (c: Category) => CatalogAdapter;
+  now: () => Date;
+  /** Optional AI rewrite. Returns one string per snapshot, or null to keep the deterministic sentence. Never throws (handoff §2.4). */
+  explain?: (snapshots: ImpressionSnapshot[]) => Promise<Array<string | null>>;
+};
 
 /** CANON as profiled items (§2.4 step 2): id `canon:<slug>`, committed profile stamped exactly as rowToItem would. */
 function canonItems(): MediaItem[] {
@@ -225,8 +232,8 @@ export async function buildStageRecommendations(
   deps: StageDeps,
   userId: string,
   filters: PipelineFilters,
-  opts: { kind: QuerySessionsRow["kind"] },
-): Promise<{ snapshots: ImpressionSnapshot[]; context: SessionContext; deferred: StageCandidate[] }> {
+  opts: { kind: QuerySessionsRow["kind"]; cache?: { entryCount: number } },
+): Promise<{ snapshots: ImpressionSnapshot[]; context: SessionContext; deferred: StageCandidate[]; recommendations: Recommendation[] }> {
   const now = deps.now();
 
   // 1. Library, prefs, phases → the Stage 3 user profile.
@@ -301,15 +308,108 @@ export async function buildStageRecommendations(
     merged,
   });
 
-  // 8. Persist exactly the SPEC §9.1/§9.2 arrays; §9.3 lists what never goes in.
+  // 8. Explain. One call for all snapshots; a non-null string replaces the
+  // deterministic sentence, so the stored snapshot holds the sentence actually
+  // shown (§9.1). The explainer never throws (handoff §2.4), and a null keeps
+  // the deterministic sentence.
+  if (deps.explain && snapshots.length > 0) {
+    const texts = await deps.explain(snapshots);
+    snapshots.forEach((s, i) => {
+      const text = texts[i];
+      if (typeof text === "string" && text.length > 0) s.explanation = text;
+    });
+  }
+
+  // 9. Build the display rows. Every shown key must resolve to the candidate we
+  // generated, or the session is wrong and fails loudly rather than rendering
+  // something half-true.
+  const byKey = new Map(candidates.map((c) => [c.key, c.item]));
+  const recommendations = snapshots.map((s) => {
+    const item = byKey.get(s.key);
+    if (!item) throw new Error(`[stage] shown key ${s.key} not found in generated candidates`);
+    return toRecommendation(s, item);
+  });
+
+  // 10. Persist exactly the SPEC §9.1/§9.2 arrays; §9.3 lists what never goes in.
+  // With opts.cache, answers also carries the Home day cache: the full display rows
+  // (already profile-stripped by toRecommendation), keyed to the library size so
+  // the cache is dropped the moment the library changes.
+  const answers: Record<string, unknown> = opts.cache
+    ? { filters, context, entryCount: opts.cache.entryCount, full: recommendations }
+    : { filters, context };
   await store.insertSession({
     user_id: userId,
     kind: opts.kind,
     category: filters.category,
-    answers: { filters, context },
+    answers,
     results: snapshots,
   });
 
-  // 9.
-  return { snapshots, context, deferred };
+  // 11.
+  return { snapshots, context, deferred, recommendations };
+}
+
+/**
+ * The §1.8 Recommendation for one snapshot: display fields mirrored from the snapshot,
+ * and the client's item copy stripped of its profile (§9.3 — the client never receives
+ * item profiles; they are also never stored in the Home cache's `full`).
+ */
+export function toRecommendation(snapshot: ImpressionSnapshot, item: MediaItem): Recommendation {
+  const rec: Recommendation = {
+    item: { ...item, profile: null },
+    score: snapshot.score,
+    route: snapshot.route,
+    snapshot,
+    explanation: snapshot.explanation,
+    fits: snapshot.explain.fits,
+  };
+  if (snapshot.entryId) rec.entryId = snapshot.entryId;
+  return rec;
+}
+
+/**
+ * Home's day cache (handoff §2.3): reuse the stored full set only when the library has
+ * not changed and every row is the new snapshot shape. A legacy cache row (old card
+ * shape, no snapshot) returns null and forces one rebuild — old-shape data must never
+ * reach the new card. Pure, and never throws on malformed JSON.
+ *
+ * `hiddenKeys` (review P2) filters rows the user has dismissed since the row was
+ * cached: "Not for me" must survive navigating away and back for the 24h the cache
+ * lives. If that empties the set, null forces a rebuild rather than an empty Home.
+ */
+export function readHomeCache(answers: unknown, entryCount: number, hiddenKeys?: ReadonlySet<string>): Recommendation[] | null {
+  if (!answers || typeof answers !== "object" || Array.isArray(answers)) return null;
+  const a = answers as { entryCount?: unknown; full?: unknown };
+  if (a.entryCount !== entryCount) return null;
+  if (!Array.isArray(a.full) || a.full.length === 0) return null;
+  const rows: Recommendation[] = [];
+  for (const el of a.full) {
+    if (!el || typeof el !== "object" || Array.isArray(el)) return null;
+    if (!("snapshot" in el) || !(el as { snapshot?: unknown }).snapshot || typeof (el as { snapshot?: unknown }).snapshot !== "object") return null;
+    const rec = el as Recommendation;
+    if (hiddenKeys?.has(rec.snapshot.key)) continue;
+    rows.push(rec);
+  }
+  if (hiddenKeys && rows.length === 0) return null;
+  return rows;
+}
+
+/**
+ * The profiling queue for after() (handoff §2.2): materialise and profile the deferred
+ * candidates, at most PROFILE_INLINE_LIMIT inline. Best-effort by design — a profiling
+ * failure must never fail the response that already went out.
+ */
+export async function queueDeferredProfiles(
+  deferred: StageCandidate[],
+  deps?: { ensure?: typeof ensureProfiles; profileNow?: typeof profileItemsNow },
+): Promise<void> {
+  if (deferred.length === 0) return;
+  const ensure = deps?.ensure ?? ensureProfiles;
+  const profileNow = deps?.profileNow ?? profileItemsNow;
+  try {
+    const { needing } = await ensure(deferred.map((c) => c.item));
+    await profileNow(needing.slice(0, PROFILE_INLINE_LIMIT));
+  } catch (err) {
+    console.error("[stage] deferred profiling failed:", err);
+  }
 }

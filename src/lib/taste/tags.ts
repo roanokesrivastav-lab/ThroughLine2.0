@@ -28,7 +28,7 @@ export type TagAffinity = {
   tag: string;
   /** 0..1, saturating in accumulated evidence. */
   weight: number;
-  /** Raw accumulated evidence before saturation, kept so the breakdown can be argued with. */
+  /** Raw accumulated evidence before saturation, kept so the arithmetic can be argued with. */
   raw: number;
   categories: Category[];
   entryIds: string[];

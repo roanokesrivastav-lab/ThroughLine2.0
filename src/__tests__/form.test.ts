@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { band, minutesToFinish } from "@/lib/taste/form";
+import { band, minutesToFinish, fitsTime } from "@/lib/taste/form";
 import type { MediaItem } from "@/lib/types";
 
 const item = (over: Partial<MediaItem>): MediaItem => ({
@@ -70,5 +70,22 @@ describe("band (SPEC §1.4)", () => {
     for (const c of ["movie", "tv", "anime", "book", "music"] as const) {
       expect(band(c, null)).toBeNull();
     }
+  });
+});
+
+// Moved from scoring.test.ts (Session 7B §2.7): the legacy scorer is gone, so the
+// regression runs against the moved fitsTime, unchanged apart from the import.
+describe("fitsTime regressions (moved from scoring.test.ts)", () => {
+  const bare = (id: string, genres: string[]): MediaItem => ({
+    id: `canon:${id}`, category: "movie", title: `Title ${id}`, subtitle: `Maker ${id}`,
+    source: "canon", external_id: id, image_url: null, release_year: 2020,
+    creators: [{ name: `Maker ${id}`, role: "director" }], genre_tags: genres,
+    metadata: { runtime_minutes: 100 }, feel_prior: null,
+  });
+
+  it("treats an anime feature as a film for time budgets, not as one episode", () => {
+    const feature: MediaItem = { ...bare("anime-feature", ["animation", "drama"]), category: "anime", metadata: { runtime_minutes: 125 } };
+    expect(fitsTime(feature, 40).ok).toBe(false);
+    expect(fitsTime(feature, 150)).toEqual({ ok: true, note: "125 min" });
   });
 });

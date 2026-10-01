@@ -5,6 +5,7 @@ import { readingToVector } from "@/lib/taste/vector";
 import { VOCABULARY_VERSION } from "@/lib/taste/vocabulary";
 import type { ExtractionInput, ExtractionResult, Extractor } from "./mock-extractor";
 import type { Explainer } from "./explainer";
+import { EXPLAINER_PROMPT, explanationsByIndex, explainerPayload, guarded } from "./explainer";
 import { emptyReading, finalizeReading, READING_SYSTEM_PROMPT, ReadingSchema } from "./reading";
 import { buildItemProfile, PROFILE_SYSTEM_PROMPT, ProfileDraftSchema, profilerInput, type ProfileDraft } from "./profile-contract";
 
@@ -163,14 +164,26 @@ export function nvidiaProfiler(): import("./profiler").ItemProfiler {
   };
 }
 
+/**
+ * The Stage 3 explainer (handoff §2.4): same payload and prompt as Claude, same
+ * per-item guard, and never throws — the legacy version could propagate a network
+ * or JSON error into a live recommendation request, which is exactly what a model
+ * failure must not do (DECISIONS, Session 7B).
+ */
 export function nvidiaExplainer(): Explainer {
   const schema = z.object({ explanations: z.array(z.object({ index: z.number().int(), text: z.string().max(320) })) });
-  return { name: "nvidia", async explain(recs) {
-    if (!recs.length) return recs;
-    const system = "Return only valid JSON in the form {\"explanations\":[{\"index\":0,\"text\":\"...\"}]}. Write one or two short, warm, specific sentences per recommendation using only the supplied evidence. Never invent facts, popularity, reviews, or plot. Do not alter quoted user words.";
-    const payload = recs.map((r, index) => ({ index, title: r.item.title, category: r.item.category, creator: r.item.subtitle, route: r.route, matched_tags: r.breakdown.matchedTags.slice(0, 3).map((m) => m.tag), bridge: r.bridge ? { title: r.bridge.title, summary: r.bridge.summary, quote: r.bridge.quote } : null }));
-    const parsed = json(await complete(system, JSON.stringify(payload), 8192), schema);
-    const byIndex = new Map(parsed.explanations.map((item) => [item.index, item.text.trim()]));
-    return recs.map((r, index) => ({ ...r, explanation: byIndex.get(index) || r.explanation }));
+  return { name: "nvidia", async explain(snapshots) {
+    if (!snapshots.length) return snapshots.map(() => null);
+    try {
+      const payload = snapshots.map(explainerPayload);
+      const system = `${EXPLAINER_PROMPT}\n\nReturn only valid JSON in the form {"explanations":[{"index":0,"text":"..."}]}, one entry per item, indices 0..${snapshots.length - 1}.`;
+      const parsed = json(await complete(system, JSON.stringify(payload), 8192), schema);
+      const byIndex = explanationsByIndex(parsed.explanations, snapshots.length);
+      if (!byIndex) return snapshots.map(() => null);
+      return snapshots.map((s, i) => guarded(byIndex[i], s));
+    } catch (err) {
+      console.error("[explainer] nvidia failed, keeping deterministic sentences:", err);
+      return snapshots.map(() => null);
+    }
   } };
 }

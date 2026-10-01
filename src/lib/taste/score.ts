@@ -1,13 +1,12 @@
 // The Stage 3 scorer, one candidate at a time (SPEC-STAGE3 §2). Pure: no database,
-// no network, no clock. The legacy scorer in recommend.ts keeps serving the live app
-// until Session 7 switches over (DECISIONS #80); nothing here imports it except the
-// exported daySeed used for surprise ordering (§2.8).
+// no network, no clock. The legacy scorer that used to live in recommend.ts was
+// deleted in the Session 7B switch-over (DECISIONS #80); daySeed moved here for
+// surprise ordering (§2.8), byte-identical.
 import type { AttributeVector, Category, MediaItem, WeightedTag } from "@/lib/types";
 import { usableProfile, type Anchor, type UserProfile } from "./profile";
 import { calStory, calFeeling } from "./calibration";
 import { simFamily, sharedFamily, type Family } from "./vector";
 import { COMPONENTS, W0, type Component } from "./weights";
-import { daySeed } from "./recommend";
 import { normaliseTags, tagFamily } from "./tag-lexicon";
 
 export type Source = "backlog" | "canon" | "creator" | "story_neighbour" | "feeling_neighbour" | "phase";
@@ -188,4 +187,12 @@ export function orderScored(scored: ScoredCandidate[], opts: { surprise: boolean
 /** Shared attributes for one family, ending dropped (§8.3). Exported for explain.ts. */
 export function sharedForFamily(family: Family, u: AttributeVector, v: AttributeVector, limit = 3): WeightedTag[] {
   return sharedFamily(family, u, v).filter((s) => !s.key.startsWith("ending.")).slice(0, limit);
+}
+
+/** Deterministic hash for "surprise me": stable within a day so refreshes do not thrash. */
+export function daySeed(userSalt: string): number {
+  const s = `${userSalt}:${new Date().toISOString().slice(0, 10)}`;
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return (h >>> 0) / 4294967295;
 }

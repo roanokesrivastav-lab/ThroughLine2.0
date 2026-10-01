@@ -7,23 +7,25 @@ import { CategoryChip } from "@/components/media/category-chip";
 import { Button } from "@/components/ui/button";
 import type { Recommendation } from "@/lib/types";
 import { describeKey } from "@/lib/taste/vocabulary";
-import { ROUTE_LABEL } from "@/lib/taste/recommend";
-import { listTags } from "@/lib/taste/tag-lexicon";
+import { COMPONENTS } from "@/lib/taste/weights";
+import { ROUTE_LABEL, BAND_LABEL } from "@/lib/taste/labels";
 import { useHideRecommendation } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 /**
  * A recommendation always shows its explanation, the route that produced it, and
- * on request the whole arithmetic behind it. The breakdown is the point: you
- * should be able to open it and decide for yourself whether the engine is right.
+ * on request the whole arithmetic behind it. Everything reads the impression
+ * snapshot (SPEC-STAGE3 §1.8): the arithmetic is the point — you should be able to
+ * open it and decide for yourself whether the engine is right.
  */
 export function RecCard({ rec, onAdd, className, style }: { rec: Recommendation; onAdd?: (rec: Recommendation) => void; className?: string; style?: React.CSSProperties }) {
   const [debug, setDebug] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const hide = useHideRecommendation();
   const item = rec.item;
-  const b = rec.breakdown;
-  const matched = b.matchedTags.map((m) => m.tag);
+  const snap = rec.snapshot;
+  const anchor = snap.anchor;
+  const band = snap.rerank.band;
 
   if (dismissed) {
     return (
@@ -32,7 +34,7 @@ export function RecCard({ rec, onAdd, className, style }: { rec: Recommendation;
         <button
           type="button"
           className="ml-2 underline underline-offset-4 hover:text-ink"
-          onClick={() => { setDismissed(false); hide.mutate({ candidate_key: candidateKeyOf(item), undo: true }); }}
+          onClick={() => { setDismissed(false); hide.mutate({ candidate_key: snap.key, undo: true }); }}
         >
           Undo
         </button>
@@ -58,14 +60,11 @@ export function RecCard({ rec, onAdd, className, style }: { rec: Recommendation;
 
       <p className="mt-3 text-pretty text-[15px] leading-relaxed">{rec.explanation}</p>
 
-      {rec.bridge && (
+      {anchor && (
         <p className="mt-2 text-xs text-ink-soft">
-          Connects to <Link href={`/entry/${rec.bridge.entryId}`} className="font-medium underline-offset-4 hover:underline">{rec.bridge.title}</Link>
-          {rec.bridge.shared.length > 0 && <> · {rec.bridge.shared.slice(0, 3).map((s) => describeKey(s.key)).join(", ")}</>}
+          Connects to <Link href={`/entry/${anchor.entryId}`} className="font-medium underline-offset-4 hover:underline">{anchor.title}</Link>
+          {snap.shared.length > 0 && <> · {snap.shared.slice(0, 3).map((s) => describeKey(s.key)).join(", ")}</>}
         </p>
-      )}
-      {matched.length > 0 && rec.route !== "feeling" && (
-        <p className="mt-1 text-xs text-ink-faint">Matched on {listTags(matched.slice(0, 3))}</p>
       )}
 
       <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -73,7 +72,7 @@ export function RecCard({ rec, onAdd, className, style }: { rec: Recommendation;
         {rec.entryId && <Button size="sm" variant="outline" render={<Link href={`/entry/${rec.entryId}`} />}>Open</Button>}
         <button
           type="button"
-          onClick={() => { setDismissed(true); hide.mutate({ candidate_key: candidateKeyOf(item) }); }}
+          onClick={() => { setDismissed(true); hide.mutate({ candidate_key: snap.key }); }}
           className="inline-flex items-center gap-1 rounded-full px-2 py-1 text-[11px] text-ink-faint hover:bg-paper-2 hover:text-ink-soft focus-visible:outline-2 focus-visible:outline-ring"
         >
           <X className="size-3" aria-hidden /> Not for me
@@ -89,31 +88,21 @@ export function RecCard({ rec, onAdd, className, style }: { rec: Recommendation;
             <dt className="text-ink-faint">signal</dt>
             <dd className="text-right text-ink-faint">reading × weight</dd>
             <dd className="text-right text-ink-faint">adds</dd>
-            {b.components.map((c) => (
-              <Fragmentish key={c.key}>
-                <dt className="truncate">{c.label}</dt>
-                <dd className="text-right tabular-nums">{c.value === null ? "no evidence" : `${c.value.toFixed(2)} × ${c.weight.toFixed(2)}`}</dd>
-                <dd className="text-right tabular-nums">{c.value === null ? "—" : c.contribution.toFixed(3)}</dd>
-              </Fragmentish>
-            ))}
-            {b.adjustments.map((a) => (
-              <Fragmentish key={a.key}>
-                <dt className="truncate">{a.label}</dt>
-                <dd className="text-right tabular-nums text-ink-faint">adjustment</dd>
-                <dd className="text-right tabular-nums">{a.delta > 0 ? "+" : ""}{a.delta.toFixed(3)}</dd>
+            {COMPONENTS.map((k) => (
+              <Fragmentish key={k}>
+                <dt className="truncate">{k}</dt>
+                <dd className="text-right tabular-nums">{snap.has_evidence[k] ? `${snap.features[k].toFixed(2)} × ${snap.weights[k].toFixed(2)}` : "no evidence"}</dd>
+                <dd className="text-right tabular-nums">{snap.has_evidence[k] ? snap.contributions[k].toFixed(3) : "—"}</dd>
               </Fragmentish>
             ))}
             <dt className="font-medium text-ink">Total</dt>
             <dd />
             <dd className="text-right font-medium tabular-nums text-ink">{rec.score.toFixed(3)}</dd>
           </dl>
-          {b.matchedTags.length > 0 && (
-            <p className="border-t border-line pt-2">
-              Tags: {b.matchedTags.map((m) => `${m.tag} ${m.profileWeight.toFixed(2)}${m.via !== m.tag ? ` (via ${m.via})` : ""}`).join(" · ")}
-              {" · "}coverage {b.tagCoverage.toFixed(2)}
-            </p>
-          )}
-          {b.creator && <p>Creator: {b.creator.name}, {b.creator.entryIds.length} in your history.</p>}
+          <p className="border-t border-line pt-2">
+            {BAND_LABEL[band]}
+            {snap.rerank.bridge_repair && <> · added to include a cross-media pick</>}
+          </p>
         </div>
       )}
     </article>
@@ -123,8 +112,4 @@ export function RecCard({ rec, onAdd, className, style }: { rec: Recommendation;
 /** `<>` inside a `<dl>` grid, without needing a key-bearing wrapper element. */
 function Fragmentish({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
-}
-
-function candidateKeyOf(item: Recommendation["item"]): string {
-  return item.id.includes(":") ? item.id : `${item.source}:${item.external_id}`;
 }

@@ -115,3 +115,23 @@ Judgment calls not settled by the brief, one line of reasoning each. Newest at t
 95. **A backlog copy always wins a title merge.** §5's "prefer the live row" rule was written for canon vs adapter rows; dropping a list entry would break `listOnly` and the backlog route.
 96. **The recency loader reads v3 `key` and legacy `id` rows.** Legacy rows hold either a `source:external_id` key or a media_items uuid, and the uuids are resolved in one batched read.
 97. **The stage store uses the signed-in client, never the service role.** Existing RLS covers every read and the one insert.
+
+98. **The stored snapshot's explanation is the sentence shown, AI or deterministic (Session 7B).** The explainer's non-null output is written back into `snapshot.explanation` before the insert, so `query_sessions.results` holds exactly what the user saw (§9.1). A deterministic row is one where `explanationFromSnapshot(s) === s.explanation`, so no extra field is needed to tell them apart.
+
+99. **Every AI explanation must pass `checkAiExplanation` or fall back per item (Session 7B).** The guard (explain.ts) enforces §8.6 on model text: length ≤ 320, no digit outside the snapshot's own allowed strings, no `ending` word, no reception words, and every double-quoted fragment verbatim from the anchor's quote or valued phrase. It runs per item, so one bad sentence cannot sink good ones. The Claude path checks each item after the single parse; a refusal, a wrong-length answer, or a throw returns all nulls.
+
+100. **The explainer never throws, and the NVIDIA explainer is fixed to match (Session 7B).** The legacy NVIDIA path could propagate a network or JSON error into a live recommendation request; both providers now catch everything and return all nulls, which keeps the deterministic sentences. A model failure must not fail a recommendation request.
+
+101. **Recommendations sent to the client and the Home day cache carry `item.profile = null` (Session 7B, §9.3).** `toRecommendation` copies the item and strips the profile; the client never receives item profiles and the cache stores none. The snapshot itself keeps only the §9.1 summary fields.
+
+102. **Legacy Home cache rows are ignored, not migrated (Session 7B).** `readHomeCache` accepts a stored `answers.full` only when `entryCount` matches the current library and every row carries a snapshot object; anything else (including old-shape rows) returns null and forces one rebuild. Their shape cannot be rendered by the new card; one rebuild per user is the cost.
+
+103. **Route and band labels are placeholder copy in `labels.ts` (Session 7B).** `ROUTE_LABEL` and `BAND_LABEL` live in one client-safe module for the founder to change freely; they never affect scoring or snapshots.
+
+104. **Creator adapter calls still have no timeout, matching legacy behaviour (Session 7B).** The switch-over does not add one; Session 9 watches real latency before choosing a limit.
+
+105. **One-word doc-comment edit in `tags.ts` (Session 7B judgment call, outside §1 scope).** The §3L verify grep bans the word "breakdown" anywhere in `src`, and `TagAffinity.raw`'s doc comment used it. The comment now says "arithmetic"; no code, types or behaviour changed. This is the only file touched outside §1, forced by the spec's own grep.
+
+106. **AI explanations are aligned by the index each entry names, never by array position (Session 7B review, P1).** The prompt pays each entry an `index`, but both providers read the response by position, so a model returning valid entries out of order could attach a sentence to the wrong card — stored in `query_sessions.results` and shown. `explanationsByIndex` (explainer.ts, shared by Claude and NVIDIA) requires every index 0..n-1 exactly once: a wrong length, a missing index, a duplicate or an out-of-range index returns null, and the whole batch keeps the deterministic sentences. Misattribution is worse than fallback.
+
+107. **The Home day cache is filtered against the user's hidden keys (Session 7B review, P2).** "Not for me" writes the candidate key to `users.onboarding_prefs.taste.hidden`, but the cache was accepted on library count alone, so the just-hidden card reappeared for up to 24h. `readHomeCache` now takes the hidden set (from `loadTastePrefs`) and drops matching rows, returning null if that empties the set so Home rebuilds instead of showing nothing. The rebuild path needs no change — the pipeline already excludes hidden candidates from prefs. Hiding stays item-scoped and never widens (#32); the legacy path had the same flaw and is gone anyway.

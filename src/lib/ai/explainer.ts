@@ -2,76 +2,118 @@ import "server-only";
 import Anthropic from "@anthropic-ai/sdk";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import { z } from "zod";
-import type { Recommendation } from "@/lib/types";
-import { fallbackExplanation } from "@/lib/taste/recommend";
+import type { ImpressionSnapshot } from "@/lib/taste/snapshot";
+import { checkAiExplanation } from "@/lib/taste/explain";
 import { describeKey } from "@/lib/taste/vocabulary";
 import { aiProvider, anthropicModel } from "./extractor";
 import { nvidiaExplainer } from "./nvidia";
 
 export interface Explainer {
   readonly name: "mock" | "claude" | "nvidia";
-  /** Adds a plain-language explanation to each recommendation. Never invents metadata; only uses what it is handed. */
-  explain(recs: Recommendation[], portraitLine: string): Promise<Recommendation[]>;
+  /** One string per snapshot, or null to keep the deterministic sentence. Never throws (§8, handoff §2.4). */
+  explain(snapshots: ImpressionSnapshot[]): Promise<Array<string | null>>;
 }
 
+/** Null means "keep the deterministic sentence" — the one already stored in the snapshot. */
 export const mockExplainer: Explainer = {
   name: "mock",
-  async explain(recs) {
-    return recs.map((r) => ({ ...r, explanation: r.explanation || fallbackExplanation(r) }));
+  async explain(snapshots) {
+    return snapshots.map(() => null);
   },
 };
 
-const Out = z.object({ explanations: z.array(z.object({ index: z.number().int(), text: z.string().max(320) })) });
+/**
+ * Exactly what the model sees for one item (§9.1 `explain` + route/band). Nothing else
+ * goes to the model: no scores, no weights, no features, no raw notes beyond `quote`
+ * and `valued`, no keys, no ids.
+ */
+export function explainerPayload(snapshot: ImpressionSnapshot) {
+  const anchor = snapshot.anchor;
+  return {
+    index: snapshot.position - 1,
+    title: snapshot.item.title,
+    category: snapshot.item.category,
+    creator: snapshot.item.creator,
+    route: snapshot.route,
+    band: snapshot.rerank.band,
+    anchor: anchor && { title: anchor.title, category: anchor.category, ownWords: anchor.ownWords },
+    shared: snapshot.shared.map((s) => describeKey(s.key)),
+    summary: snapshot.explain.summary,
+    quote: snapshot.explain.quote,
+    valued: snapshot.explain.valued,
+    creator_they_return_to: snapshot.explain.creator,
+    phase_label: snapshot.explain.phase_label,
+    fits: snapshot.explain.fits,
+    draft: snapshot.explanation,
+  };
+}
 
-const SYSTEM = `You write one or two short sentences explaining why a recommendation connects to something a person already loves, using only the facts you are given. The person is private and allergic to hype.
+/** One prompt for both providers (handoff §2.4): the six routes plus the legacy evidence rules. */
+export const EXPLAINER_PROMPT = `You write one or two short sentences explaining why a recommendation connects to something a person already loves, using only the facts you are given. The person is private and allergic to hype.
 
 Rules:
 - Each item names the "route" that actually produced it. Your first clause must match that route and nothing else:
-  · "feeling" — ground it in the bridge: the thing they loved, the feeling they described, the shared attributes. Say plainly "This connects to …".
-  · "tag_overlap" — ground it in "matched_tags", the kinds of thing they keep returning to. Do not claim they described a feeling.
-  · "creator" — lead with the person in "creator_they_return_to" and how many of their things are already in the library.
-  · "backlog" — it is already on their own list; say so, and use "fits" if it is present.
-- When "evidence" is "catalogue_prior" the person has written nothing about the thing you are comparing to. Say it "sits close to what you tend to love", never "you loved" or "you wrote".
+  · "story" — ground it in the anchor: the thing they loved and the shared attributes. Say plainly "This connects to ...".
+  · "feeling" — ground it in the anchor and the feeling they described. Say plainly "This connects to ...".
+  · "form" — it matches the length they tend to love; use "fits" when present.
+  · "creator" — lead with the person in "creator_they_return_to".
+  · "phase" — lead with "phase_label": it fits what they are into right now.
+  · "backlog" — it is already on their own list; say so, and use "fits" when present.
+- When there is no "anchor", or "anchor"."ownWords" is false, the person has written nothing about the thing you are comparing to. Say it "sits close to what you tend to love", never "you loved" or "you wrote".
 - Never invent plot, awards, reviews, popularity, or facts about the recommended work. You know nothing about it beyond its title, creator and the attributes listed.
-- Never compare to other people. Never say "critics", "fans", "everyone", "acclaimed", "classic".
+- Never compare to other people. Never say "popular", "critics", "fans", "everyone", "acclaimed", "classic", "rated".
+- Never mention a number, score, rating or percentage.
 - Warm, specific, unshowy. British-neutral English. No exclamation marks. No emojis.
-- Quote the person's own words when a quote is provided, using curly quotes.`;
+- Quote the person's own words when a quote is provided, using curly quotes.
+- "draft" is the safe sentence to improve, never to contradict.`;
+
+const Out = z.object({ explanations: z.array(z.object({ index: z.number().int(), text: z.string().max(320) })) });
+
+/** Per-item guard: anything §8.6 forbids falls back to the deterministic sentence for that item only. */
+export const guarded = (text: string | undefined, s: ImpressionSnapshot): string | null => {
+  const t = text?.trim();
+  return t && checkAiExplanation(t, s) ? t : null;
+};
+
+/**
+ * Align the model's entries with the snapshots by the `index` each entry names, never by
+ * array position (review P1): a model may return valid entries out of order, and reading
+ * them by position would attach an explanation to the wrong card. Every index 0..count-1
+ * must appear exactly once — a wrong length, a duplicated index or an out-of-range index
+ * (which is also a missing one) returns null, and the caller keeps the deterministic
+ * sentences for the whole batch rather than risk misattribution.
+ */
+export function explanationsByIndex(entries: Array<{ index: number; text: string }>, count: number): Array<string | undefined> | null {
+  if (entries.length !== count) return null;
+  const texts: Array<string | undefined> = new Array(count);
+  for (const e of entries) {
+    if (!Number.isInteger(e.index) || e.index < 0 || e.index >= count || texts[e.index] !== undefined) return null;
+    texts[e.index] = e.text;
+  }
+  return texts;
+}
 
 export function claudeExplainer(client: Anthropic, model: string): Explainer {
   return {
     name: "claude",
-    async explain(recs, portraitLine) {
-      if (recs.length === 0) return recs;
-      // The evidence the scorer actually used, so the sentence can never claim a
-      // reason the arithmetic did not support.
-      const payload = recs.map((r, index) => ({
-        index,
-        title: r.item.title,
-        category: r.item.category,
-        creator: r.item.subtitle,
-        route: r.route,
-        matched_tags: r.breakdown.matchedTags.slice(0, 3).map((m) => m.tag),
-        shared_attributes: (r.bridge?.shared ?? []).slice(0, 4).map((s) => describeKey(s.key)),
-        bridge: r.bridge ? { title: r.bridge.title, category: r.bridge.category, their_summary: r.bridge.summary, their_words: r.bridge.quote } : null,
-        creator_they_return_to: r.breakdown.creator ? { name: r.breakdown.creator.name, count: r.breakdown.creator.entryIds.length } : null,
-        /** Whether the feeling layer had anything to read, or this is a catalogue prior. */
-        evidence: r.bridge?.quote ? "their_words" : "catalogue_prior",
-        fits: r.fits,
-      }));
+    async explain(snapshots) {
+      if (snapshots.length === 0) return [];
       try {
+        const payload = snapshots.map(explainerPayload);
         const response = await client.messages.parse({
           model,
           max_tokens: 4096,
-          system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } }],
-          messages: [{ role: "user", content: `Their taste right now: ${portraitLine}\n\nShortlist (JSON):\n${JSON.stringify(payload, null, 2)}` }],
+          system: [{ type: "text", text: EXPLAINER_PROMPT, cache_control: { type: "ephemeral" } }],
+          messages: [{ role: "user", content: `Shortlist (JSON):\n${JSON.stringify(payload, null, 2)}` }],
           output_config: { format: zodOutputFormat(Out), effort: "low" },
         });
         const parsed = response.stop_reason === "refusal" ? null : response.parsed_output;
-        const map = new Map(parsed?.explanations.map((e) => [e.index, e.text]) ?? []);
-        return recs.map((r, i) => ({ ...r, explanation: map.get(i)?.trim() || fallbackExplanation(r) }));
+        const byIndex = parsed ? explanationsByIndex(parsed.explanations, snapshots.length) : null;
+        if (!byIndex) return snapshots.map(() => null);
+        return snapshots.map((s, i) => guarded(byIndex[i], s));
       } catch (err) {
         console.error("[explainer] falling back to deterministic explanations:", err);
-        return mockExplainer.explain(recs, portraitLine);
+        return snapshots.map(() => null);
       }
     },
   };

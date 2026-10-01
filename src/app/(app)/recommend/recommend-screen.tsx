@@ -54,7 +54,7 @@ export function RecommendScreen({ category }: { category?: Category }) {
         {q.isPending ? <div className="space-y-3"><CardSkeleton /><CardSkeleton /><CardSkeleton /></div> : q.isError ? <ErrorState message={q.error.message} retry={() => q.refetch()} /> : q.data.recommendations.length === 0 ? (
           <EmptyState title={mode !== "new" ? "Your list is empty for that" : "Nothing fits yet"} body={mode !== "new" ? "Add a few things you want to get to, then come back." : "Loosen the time filter, or write a few words about things you loved so there is more to go on."} action={<Button variant="outline" render={<Link href="/add" />}>Add something</Button>} />
         ) : (
-          <div className="space-y-3">{q.data.recommendations.map((r, i) => <RecCard key={r.item.id} rec={r} onAdd={setAdding} className={cn("rise", i < 4 && `rise-${i + 1}`)} />)}</div>
+          <div className="space-y-3">{q.data.recommendations.map((r, i) => <RecCard key={r.snapshot.key} rec={r} onAdd={setAdding} className={cn("rise", i < 4 && `rise-${i + 1}`)} />)}</div>
         )}
       </section>
 

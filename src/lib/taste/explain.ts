@@ -2,16 +2,17 @@
 // snapshot, so any stored sentence can be rebuilt byte-identically from its stored
 // fields (§C37). The legacy wording in recommend.ts is ported, not imported, except
 // the sharedPhrase shape. Forbidden evidence (§8.6) never enters a sentence.
-import type { Category, WeightedTag } from "@/lib/types";
+import type { Category, Route, WeightedTag } from "@/lib/types";
 import type { Anchor, EntryWithContext } from "./profile";
 import type { ScoredCandidate, AnchorPick } from "./score";
 import { sharedForFamily } from "./score";
-import type { ImpressionSnapshot, RouteV3, Filters } from "./snapshot";
+import type { ImpressionSnapshot, Filters } from "./snapshot";
 import { describeKey } from "./vocabulary";
 import { latestExtractionV2 } from "./affinity";
+import { ENDINGS } from "./vocabulary";
 
 const TIE = 1e-9;
-const NON_ANTI: Array<{ key: keyof ScoredCandidate["contributions"]; route: Exclude<RouteV3, "backlog" | "anti"> }> = [
+const NON_ANTI: Array<{ key: keyof ScoredCandidate["contributions"]; route: Exclude<Route, "backlog" | "anti"> }> = [
   { key: "story", route: "story" },
   { key: "feeling", route: "feeling" },
   { key: "creator", route: "creator" },
@@ -20,7 +21,7 @@ const NON_ANTI: Array<{ key: keyof ScoredCandidate["contributions"]; route: Excl
 ];
 
 /** The route (§8.1): backlog when forced and the item is logged, else the argmax contribution; anti is never a route. */
-export function routeOf(s: ScoredCandidate, filters: Filters): RouteV3 {
+export function routeOf(s: ScoredCandidate, filters: Filters): Route {
   if ((filters.listOnly || filters.surprise) && s.candidate.entryId) return "backlog";
   let best = NON_ANTI[0];
   for (const entry of NON_ANTI) {
@@ -31,7 +32,7 @@ export function routeOf(s: ScoredCandidate, filters: Filters): RouteV3 {
 }
 
 /** The anchor (§8.2): the route family's pick, else the higher calibrated similarity, story on ties. */
-export function anchorOf(s: ScoredCandidate, route: RouteV3): AnchorPick | null {
+export function anchorOf(s: ScoredCandidate, route: Route): AnchorPick | null {
   if (route === "story") return s.anchors.story;
   if (route === "feeling") return s.anchors.feeling;
   const { story, feeling } = s.anchors;
@@ -41,7 +42,7 @@ export function anchorOf(s: ScoredCandidate, route: RouteV3): AnchorPick | null 
 }
 
 /** Shared attributes for the route family (§8.3): ending dropped, first 3. */
-export function sharedFor(s: ScoredCandidate, route: RouteV3, anchor: AnchorPick | null): WeightedTag[] {
+export function sharedFor(s: ScoredCandidate, route: Route, anchor: AnchorPick | null): WeightedTag[] {
   if (!anchor) return [];
   const family = route === "story" || route === "feeling" ? route : anchor.family;
   const vec = s.candidate.item.profile?.vector[family] ?? {};
@@ -50,7 +51,7 @@ export function sharedFor(s: ScoredCandidate, route: RouteV3, anchor: AnchorPick
 
 /** The §9.1 explain block: only these fields may ever reach a sentence (§8.4). */
 export function explainFields(args: {
-  route: RouteV3;
+  route: Route;
   anchor: AnchorPick | null;
   anchorEntry: EntryWithContext | null;
   item: { category: Category; creators: Array<{ name: string }> };
@@ -157,4 +158,54 @@ export function anchorBlock(anchor: AnchorPick | null, library: EntryWithContext
     ownWords: a.ownWords,
     family: anchor.family,
   };
+}
+
+// ---------------------------------------------------------------------------
+// The AI-output guard (§8.6, handoff §2.4). The model cannot be trusted to follow
+// the evidence rules unaided, so every AI sentence is checked here and anything
+// that fails falls back to the deterministic sentence for that item only.
+// ---------------------------------------------------------------------------
+
+const BANNED_WORDS = ["popular", "critics", "acclaimed", "rated", "fans", "everyone", "classic"];
+const MAX_AI_EXPLANATION = 320;
+
+const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/**
+ * True only when the AI sentence obeys §8.6: length cap, no digit outside the
+ * allowed strings, no ending value, no reception words, and every double-quoted
+ * fragment verbatim from the anchor's own quote or valued phrase.
+ */
+export function checkAiExplanation(text: string, snapshot: ImpressionSnapshot): boolean {
+  if (text.length === 0 || text.length > MAX_AI_EXPLANATION) return false;
+
+  // Quotation guard: every curly- or straight-quoted fragment must be verbatim.
+  const allowedQuotes = [snapshot.explain.quote, snapshot.explain.valued].filter((q): q is string => q != null && q.length > 0);
+  const quoted = [
+    ...text.matchAll(/[“]([^”]*)[”]/g),
+    ...text.matchAll(/"([^"]*)"/g),
+  ].map((m) => m[1]);
+  for (const fragment of quoted) {
+    if (!allowedQuotes.some((q) => q.includes(fragment))) return false;
+  }
+
+  // Digits are forbidden outside the strings the snapshot itself supplies (titles,
+  // creator, phase label, valued, quote, fits) — §8.6 forbids every number the
+  // engine computes, and the model has been given none.
+  const allowed = [
+    snapshot.anchor?.title,
+    snapshot.explain.creator,
+    snapshot.explain.phase_label,
+    snapshot.explain.valued,
+    snapshot.explain.quote,
+    snapshot.explain.fits,
+  ].filter((s): s is string => s != null && s.length > 0);
+  let stripped = text;
+  if (allowed.length > 0) stripped = text.replace(new RegExp(allowed.map(escapeRegExp).join("|"), "g"), "");
+  if (/\d/.test(stripped)) return false;
+
+  const wholeWord = (words: readonly string[]) => new RegExp(`\\b(?:${words.map(escapeRegExp).join("|")})\\b`, "i");
+  if (wholeWord(ENDINGS).test(text)) return false;
+  if (wholeWord(BANNED_WORDS).test(text)) return false;
+  return true;
 }

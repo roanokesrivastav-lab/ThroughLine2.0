@@ -1,8 +1,10 @@
 // Form: length, and nothing else in Stage 3 (SPEC-STAGE3 §1.4). The 0.15 form
 // component scores the length band; craft words are stored but not scored.
 //
-// fitsTime and estimatedMinutes stay in recommend.ts (DECISIONS #60): moving them
-// would edit a protected file. This module holds only the new §1.4 functions.
+// fitsTime, estimatedMinutes and TimeBudget moved here from recommend.ts in the
+// Session 7B switch-over (byte-identical; SPEC-STAGE3 §B row 10), so the legacy
+// scorer module could be deleted. This module holds only the §1.4 functions plus
+// those moved ones.
 //
 // The spec's minutes table covers movie, tv, anime and book — the four Stage 3
 // media. Music is profiled but never matched in Stage 3 (DECISIONS #59, Q1), so
@@ -66,4 +68,39 @@ export function band(category: Category, minutes: number | null): 0 | 1 | 2 | 3 
     return 3;
   }
   return null; // music, as above
+}
+
+// ---------------------------------------------------------------------------
+// Moved from recommend.ts (Session 7B, SPEC-STAGE3 §B row 10), byte-identical.
+// ---------------------------------------------------------------------------
+
+export type TimeBudget = 20 | 40 | 60 | 150 | null;
+
+/** Estimated minutes to finish (or to make a satisfying dent in) this item. */
+export function estimatedMinutes(item: MediaItem): number | null {
+  const m = item.metadata;
+  switch (item.category) {
+    case "movie": return m.runtime_minutes ?? null;
+    case "tv":
+    case "anime": return m.episode_runtime_minutes ?? m.runtime_minutes ?? null; // an anime feature carries runtime_minutes
+    case "music": return m.duration_seconds ? Math.max(1, Math.round(m.duration_seconds / 60)) : 4;
+    case "book": return m.pages ? Math.round(m.pages * 1.6) : null; // ~1.6 min/page, used only for "short read"
+  }
+}
+
+export function fitsTime(item: MediaItem, minutes: TimeBudget): { ok: boolean; note: string | null } {
+  if (!minutes) return { ok: true, note: null };
+  const est = estimatedMinutes(item);
+  if (item.category === "book") {
+    // A reading session is flexible; only very short budgets exclude books.
+    if (minutes < 40) return { ok: false, note: null };
+    return { ok: true, note: est && est <= 240 ? "Short enough to finish in a few sittings" : "A chapter or two" };
+  }
+  const isSeries = (item.category === "tv" || item.category === "anime") && !(item.metadata.episode_runtime_minutes == null && item.metadata.runtime_minutes != null);
+  if (isSeries) {
+    if (est == null) return { ok: minutes >= 40, note: "One episode" };
+    return est <= minutes ? { ok: true, note: `One episode, about ${est} min` } : { ok: false, note: null };
+  }
+  if (est == null) return { ok: minutes >= 150, note: null };
+  return est <= minutes ? { ok: true, note: `${est} min` } : { ok: false, note: null };
 }

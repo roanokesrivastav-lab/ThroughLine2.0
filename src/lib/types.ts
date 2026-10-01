@@ -2,6 +2,7 @@
 import type { Precision } from "@/lib/taste/when";
 import type { FeelingGroup, StoryGroup } from "@/lib/taste/vocabulary";
 import { READING_SCALARS } from "@/lib/taste/vocabulary";
+import type { ImpressionSnapshot } from "@/lib/taste/snapshot";
 
 export const CATEGORIES = ["movie", "tv", "anime", "book", "music"] as const;
 export type Category = (typeof CATEGORIES)[number];
@@ -253,46 +254,19 @@ export type Connection = {
   explanation: string;
 };
 
-/** Which signal produced a recommendation. Derived from the arithmetic, never chosen by hand. */
-export type Route = "tag_overlap" | "creator" | "feeling" | "backlog";
-
-/** One term of the normalised blend. `value` is null when there is no evidence either way. */
-export type ScoreComponent = { key: string; label: string; weight: number; value: number | null; contribution: number };
-
-/** An additive nudge applied after normalisation, so its cap is literal. */
-export type ScoreAdjustment = { key: string; label: string; delta: number };
+/** Which signal produced a recommendation. Derived from the arithmetic, never chosen by hand (SPEC-STAGE3 §1.8). */
+export type Route = "story" | "feeling" | "form" | "creator" | "phase" | "backlog";
 
 /** One tag the candidate and the profile share. `via` is the tag the candidate actually carried. */
 export type TagMatch = { tag: string; via: string; profileWeight: number; specificity: number; contribution: number };
 
+/** The Stage 3 recommendation (SPEC-STAGE3 §1.8): the snapshot is the record, the other fields mirror it for display. */
 export type Recommendation = {
   item: MediaItem;
   entryId?: string;              // present when the candidate is from the user's own backlog
-  score: number;
-  route: Route;
-  breakdown: {
-    components: ScoreComponent[];
-    adjustments: ScoreAdjustment[];
-    normalisedWeight: number;
-    total: number;
-    matchedTags: TagMatch[];
-    tagCoverage: number;
-    creator: { name: string; role: string; entryIds: string[] } | null;
-    // Legacy mirror, kept so callers written against the first engine keep working.
-    attribute_similarity: number;
-    bridge_similarity: number;
-    reaction_bonus: number;
-    score_hint: number;
-    creator_bridge: number;
-  };
-  bridge: {
-    entryId: string;
-    title: string;
-    category: Category;
-    summary: string | null;
-    quote: string | null;
-    shared: WeightedTag[];
-  } | null;
-  explanation: string;
-  fits: string | null;           // e.g. "Fits 40 minutes"
+  score: number;                 // = snapshot.score
+  route: Route;                  // = snapshot.route
+  snapshot: ImpressionSnapshot;  // §9, everything the explanation and the learner need
+  explanation: string;           // = snapshot.explanation (the sentence shown, deterministic or AI)
+  fits: string | null;           // = snapshot.explain.fits
 };

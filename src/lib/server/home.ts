@@ -1,14 +1,17 @@
 import "server-only";
+import { after } from "next/server";
 import type { Db } from "./entries";
 import { loadLibrary } from "./entries";
 import { getOrCreateResurfaceCard } from "./resurface";
-import { buildRecommendations } from "./recommend";
+import { buildStageRecommendations, queueDeferredProfiles, readHomeCache, supabaseRecommendStore } from "./stage-recommend";
 import { loadPhases } from "./phases";
+import { loadTastePrefs } from "./recommend";
 import { findConnections } from "@/lib/taste/connections";
 import { buildPortrait } from "@/lib/taste/portrait";
 import { serializeEntry, type EntryDTO } from "./dto";
+import { adapterFor } from "@/lib/catalog";
+import { getExplainer } from "@/lib/ai/explainer";
 import type { Recommendation, WeightedTag } from "@/lib/types";
-import type { QuerySessionsRow } from "@/lib/db/types";
 
 export type HomePayload = {
   portrait: ReturnType<typeof buildPortrait>;
@@ -28,19 +31,33 @@ export async function buildHome(db: Db, userId: string): Promise<HomePayload> {
   const phases = await loadPhases(db, userId);
 
   // Recommendations are the smallest section; reuse today's set unless the library changed.
+  // readHomeCache returns null for legacy rows, so the first load after the switch-over
+  // rebuilds once instead of sending old-shape data to the new card.
   let recommendations: Recommendation[] = [];
   const logged = library.filter((e) => e.entry.status !== "want").length;
   if (logged >= 3) {
-    const { data: cached } = await db.from("query_sessions").select("*").eq("user_id", userId).eq("kind", "home")
+    const { data: cached } = await db.from("query_sessions").select("answers").eq("user_id", userId).eq("kind", "home")
       .gte("created_at", new Date(Date.now() - 24 * 3600_000).toISOString()).order("created_at", { ascending: false }).limit(1);
-    const prev = cached?.[0];
-    const answers = prev?.answers as { entryCount?: number; full?: Recommendation[] } | null;
-    if (prev && answers?.entryCount === library.length && answers.full?.length) recommendations = answers.full;
-    else {
-      recommendations = await buildRecommendations(db, userId, { limit: 3 }, { library, kind: "home" });
-      // Stash the full explained set alongside so tomorrow is free.
-      await db.from("query_sessions").update({ answers: { entryCount: library.length, full: recommendations } as unknown as QuerySessionsRow["answers"] })
-        .eq("user_id", userId).eq("kind", "home").order("created_at", { ascending: false }).limit(1);
+    if (cached?.[0]?.answers) {
+      // "Not for me" keys live in the user's prefs blob; a fresh cache row may predate a
+      // dismissal (review P2), so hidden rows are filtered out here too — otherwise the
+      // just-hidden card reappears from the cache on the next visit.
+      const { hidden } = await loadTastePrefs(db, userId);
+      const hiddenKeys = new Set(hidden);
+      const fromCache = readHomeCache(cached[0].answers, library.length, hiddenKeys);
+      if (fromCache) recommendations = fromCache;
+    }
+    if (recommendations.length === 0) {
+      const { recommendations: built, deferred } = await buildStageRecommendations(
+        supabaseRecommendStore(db),
+        { adapterFor, now: () => new Date(), explain: (s) => getExplainer().explain(s) },
+        userId,
+        { category: null, minutes: null, listOnly: false, returnable: false, shortRead: false, surprise: false, limit: 3 },
+        { kind: "home", cache: { entryCount: library.length } },
+      );
+      recommendations = built;
+      // The insert already wrote the day cache into answers.full; nothing else to store.
+      after(() => queueDeferredProfiles(deferred));
     }
   }
 

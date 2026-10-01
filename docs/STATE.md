@@ -845,3 +845,147 @@ legacy scorer until 7B.
    `buildStageRecommendations`, `after()` runs `ensureProfiles(deferred)` then
    `profileItemsNow`, the explainer and `rec-card.tsx` on snapshots, and deleting the legacy
    scorer.
+
+## 2026-09-30 — Session 7B: switch-over to the Stage 3 pipeline (GLM, uncommitted)
+
+### Built
+- **The live app now runs the Stage 3 pipeline.** `/api/recommend` and `home.ts` call
+  `buildStageRecommendations`; the response shape the client reads (`{ recommendations, filters }`)
+  is unchanged apart from the `Recommendation` type.
+- `src/lib/types.ts`: `Route` is the six Stage 3 routes; `Recommendation` per §1.8 (`score`,
+  `route`, `snapshot`, `explanation`, `fits`, optional `entryId`) with a type-only
+  `ImpressionSnapshot` import; `breakdown`, `bridge`, `ScoreComponent`, `ScoreAdjustment` deleted;
+  `TagMatch` kept (tags.ts uses it).
+- `src/lib/taste/snapshot.ts` + `explain.ts`: `RouteV3` renamed to the shared `Route`
+  (rename only; no behaviour change).
+- `src/lib/taste/labels.ts` (new, client-safe, DECISIONS #103): `ROUTE_LABEL`, `BAND_LABEL`.
+- §B row 10 moves, **byte-identical**: `TimeBudget`, `estimatedMinutes`, `fitsTime` →
+  `form.ts`; `daySeed` → `score.ts`. Import paths updated in `filters.ts`, `pipeline.ts`,
+  `score.ts` only.
+- `src/lib/server/stage-recommend.ts`: `StageDeps.explain` (optional AI rewrite), `opts.cache`
+  (`{ entryCount }` → answers gain `entryCount` + `full`), `recommendations` in the return,
+  exported pure `toRecommendation` (strips `item.profile`, §9.3), exported `readHomeCache`
+  (pure; reuse only when `entryCount` matches and every row has a snapshot object — legacy rows
+  force a rebuild), exported `queueDeferredProfiles` (ensure → profileNow on at most
+  `PROFILE_INLINE_LIMIT` = 5; catches and logs everything; empty list → zero calls).
+- `src/app/api/recommend/route.ts`: same zod schema and filter mapping; Stage 3 call with
+  `explain: (s) => getExplainer().explain(s)`; `after(() => queueDeferredProfiles(deferred))`.
+- `src/lib/server/home.ts`: `logged ≥ 3` gate and 24-hour cache kept; cache reuse via
+  `readHomeCache`; on a miss, Stage 3 with `kind: "home"` + `cache: { entryCount: library.length }`
+  and the same `after()`; the legacy follow-up `update(...).order().limit()` is deleted (the insert
+  writes the day cache).
+- `src/lib/ai/explainer.ts`: new `Explainer` interface over `ImpressionSnapshot[]` →
+  `Array<string | null>`; exported `explainerPayload` (exactly the §2.4 keys; no scores, weights,
+  features, ids or raw notes beyond `quote`/`valued`); exported `EXPLAINER_PROMPT` (one prompt,
+  six routes, legacy hype/invention/tone rules, curly quotes); mock returns all nulls; Claude
+  parses once then guards per item; every failure mode returns all nulls; never throws.
+- `src/lib/ai/nvidia.ts` (`nvidiaExplainer` only): same payload and prompt, JSON-mode complete,
+  per-item guard, and try/catch around everything — the legacy version could throw into a live
+  request (DECISIONS #100).
+- `src/lib/taste/explain.ts`: `checkAiExplanation(text, snapshot)` (§2.4): non-empty ≤ 320 chars;
+  after removing the allowed strings, no digit; no `ENDINGS` word; none of the reception words;
+  any double-quoted fragment (curly or straight) verbatim inside `explain.quote` or `explain.valued`.
+- `src/components/rec-card.tsx`: renders from `rec.snapshot` — `ROUTE_LABEL[rec.route]` pill, `fits`,
+  "On your list", `rec.explanation`, "Connects to {anchor.title}" + up to three `describeKey(shared)`,
+  and "Why this" (collapsed by default) showing the six `COMPONENTS` rows
+  (`features × weights = contributions`, "no evidence" when `!has_evidence[k]`), the total
+  `rec.score`, and `BAND_LABEL[rerank.band]` + the cross-media note. "Not for me" hides by
+  `rec.snapshot.key` with the same undo. No popularity, no external score, no score outside the
+  debug panel.
+- `src/app/dev/preview/page.tsx`: the pure Stage 3 path — `generateCandidates` over canon items
+  from `buildFixtureLibrary(now, { profiles: "canon" })`, no pool, no creators, `rankPipeline`
+  with `limit: 3`, `toRecommendation` rows, no network/database/explainer (deterministic sentences).
+- Screens: only what the types forced — `key={r.snapshot.key}` in `home-screen.tsx` and
+  `recommend-screen.tsx`.
+- **Deletion of the legacy scorer** (§2.7): `src/lib/taste/recommend.ts` deleted;
+  `server/recommend.ts` keeps only `loadTastePrefs` (`buildCandidates`, `buildRecommendations`,
+  `materialise` gone). `src/__tests__/scoring.test.ts` deleted; the anime-feature time-budget
+  regression moved into `form.test.ts` against the moved `fitsTime` (unchanged apart from the
+  import). `engines.test.ts` lost only its `describe("recommendations", …)` block and the imports
+  only it used; every other block is byte-identical.
+- Tests: `src/__tests__/switch-over.test.ts` (8) and `src/__tests__/explainer.test.ts` (13) —
+  21 new tests, offline and deterministic.
+- One file touched outside §1 (DECISIONS #105): `tags.ts` doc comment reworded because the §3L
+  grep bans the word "breakdown" anywhere in `src`.
+
+### Deleted legacy tests → Stage 3 replacement
+- scoring.test.ts "leads with tags when nothing has been written…" → score.ts B (unprofiled defers)
+  and profile.ts family evidence (loved entries drive the components).
+- scoring.test.ts "rises only with written notes…" → replaced by the Stage 3 design: components
+  score per-family evidence (score.test.ts A/C), not a notes-count blend.
+- scoring.test.ts cold-start "still produces a full set of explained picks…" → pipeline M
+  (five results, non-empty explanations) and pipeline N.
+- scoring.test.ts "routes through tags rather than pretending to read a feeling…" → explain H
+  (route = argmax contribution; story/feeling/creator/phase/form/backlog).
+- scoring.test.ts "scores a candidate the feeling layer cannot read at all…" → score B (unprofiled
+  defers) + score A (components without evidence contribute 0; nothing re-normalised away).
+- scoring.test.ts "declares a route that matches the explanation it produced…" → explain K
+  (explanation === explanationFromSnapshot) + explain H.
+- scoring.test.ts "re-normalises so a candidate without a feeling vector is not structurally
+  punished…" → obsolete by design: Stage 3 has no normalisation (§2.8); each component is
+  independent (score.test.ts A).
+- scoring.test.ts "keeps the total equal to the arithmetic it displays…" → snapshot L
+  (score = snapshotTotal) + pipeline N.
+- scoring.test.ts "keeps the private score a nudge…" → gone by design: private scores are never
+  stored (§9.3) and the anti component replaces the hint (score.test.ts F).
+- scoring.test.ts "never returns more than two things by the same maker…" → rerank G
+  (creator cap).
+- scoring.test.ts "treats a dismissed candidate and a muted kind as filters…" → filters A
+  (hidden / muted steps).
+- scoring.test.ts "is deterministic…" → rerank K + pipeline K.
+- scoring.test.ts creator-route "fires and says whose hands they are…" → score D (creator feature
+  from the profile; creator route wins) + explain "creator route names the creator".
+- scoring.test.ts regression "treats an anime feature as a film…" → **moved to form.test.ts**
+  (fitsTime against the moved function).
+- scoring.test.ts regression "breaks score ties by candidate key…" → score Q + pipeline K.
+- engines.test.ts recommendations "returns 3–5 explained picks with bridges…" → pipeline M/N;
+  "applies time as a hard filter…" → filters A (time step); "surprise mode stays within the
+  backlog and is stable within a day…" → candidates E (backlog-only) + score Q (surprise order);
+  "keeps the private score a low-weight nudge…" → gone by design (§9.3, anti component).
+
+### Verified
+- **Baseline before (post-7A commit `1f5716c`):** typecheck 0 errors; eslint 0 problems;
+  **308/308** tests (24 files); build compiled successfully.
+- **AI-verified (pre-review):** `npm test` → **311/311** (25 files; the pre-existing suite untouched
+  apart from §2.7, plus 21 new); `npm run typecheck` clean; `npx eslint src` clean (0 problems);
+  `npm run build` → Compiled successfully; `git diff --check` clean; §3L grep
+  (`grep -rn "taste/recommend\"\|buildRecommendations\|breakdown\|RouteV3" src`) prints nothing.
+- **Dev preview check (headless Chrome via CDP, emulated 375 × 812 px, DPR 2):**
+  `/dev/preview` returned 200; full-page screenshot with cards closed; three "Why this" buttons
+  clicked → 3 panels open; per-card screenshots at each scroll position (10 PNGs,
+  all distinct); route pill "Same kind of story" renders; **no decimal score anywhere with the
+  panels closed**; with panels open, totals render (e.g. 0.677, 0.362) with band label
+  "Close to what you love"; **no console errors or warnings**.
+- **AI-verified only; the real Home and Recommend screens have not been opened against the live
+  database; nothing phone-verified.**
+
+### Review round (2026-09-30): both findings fixed, pre-commit
+
+Reviewer P1 (misattribution risk) and P2 (hidden card resurfacing from the cache) fixed; no
+scoring/filter/rerank/candidate/snapshot behaviour touched (the §7 boundary holds), and the diff
+scope is unchanged: §1 files (+ `tags.ts` one-word comment, DECISIONS/STATE).
+
+- **P1 — explanations map by the named index, not array position.** New shared
+  `explanationsByIndex` (explainer.ts): every index 0..n-1 must appear exactly once; a wrong
+  length, missing index, duplicate or out-of-range index returns null and the whole batch keeps
+  the deterministic sentences. Both Claude (`claudeExplainer`) and NVIDIA (`nvidiaExplainer`) use
+  it, so an out-of-order valid response can no longer attach a sentence to the wrong card
+  (DECISIONS #106).
+- **P2 — "Not for me" now survives the 24h Home cache.** `readHomeCache` takes the user's hidden
+  keys (from `loadTastePrefs`) and drops matching rows; a set emptied by hiding returns null so
+  Home rebuilds instead of showing nothing. `buildHome` loads the hidden list only when a cache
+  row exists; the rebuild path already excludes hidden candidates (DECISIONS #107).
+- Tests: 12 new — `explanationsByIndex` unit block, I5–I8, J4–J6 (explainer.test.ts) and
+  E5–E7 (switch-over.test.ts).
+- **AI-verified:** `npm run typecheck` clean; `npx eslint src` 0 problems; `npm test` →
+  **323/323** (25 files); `npm run build` compiled; §3L grep still prints nothing;
+  `git diff --check` clean. No UI re-screenshot needed: labels and cards are untouched, and the
+  hidden filter only removes whole cached cards.
+
+### Next
+1. Founder authorizes the commit (review round done; the founder's live walk is still owed).
+2. **The founder's walk:** open Home and Recommend in dev against the real library (the
+   categories, time budgets, list only, surprise, "Why this", Not for me with undo, and Add to
+   list), then the same on a phone.
+3. Session 8 (scripts + baseline calibration), then Session 9 (controlled live rollout, including
+   the first live profiling run).

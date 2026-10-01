@@ -6,7 +6,7 @@
 import type { Category, EntryWithContext, MediaItem } from "@/lib/types";
 import { usableProfile } from "./affinity";
 import { minutesToFinish } from "./form";
-import { fitsTime, type TimeBudget } from "./recommend";
+import { fitsTime, type TimeBudget } from "./form";
 import { buildTagProfile, isMuted, type TagProfile, type TastePrefs } from "./tags";
 import { RECENCY_DAYS } from "./weights";
 import type { StageCandidate } from "./score";

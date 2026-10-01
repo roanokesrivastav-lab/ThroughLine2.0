@@ -2,15 +2,13 @@
 // displayed total, and every sentence is rebuildable from stored fields alone.
 // §9.3 lists what may never be stored — no raw notes beyond the verbatim quote or
 // valued phrase, no full profiles or centroids, no private scores, no popularity.
-import type { Category, EntryWithContext } from "@/lib/types";
+import type { Category, EntryWithContext, Route } from "@/lib/types";
 import { usableProfile, type UserProfile } from "./profile";
 import type { ScoredCandidate } from "./score";
 import { anchorBlock, explanationFromSnapshot, explainFields } from "./explain";
 import { CALIBRATION, type CalibrationRange } from "./calibration";
 import { COMPONENTS, FEATURE_VERSION, RECENCY_DAYS, LOVED, BAND, CREATOR_CAP, type Component } from "./weights";
 import { VOCABULARY_VERSION } from "./vocabulary";
-
-export type RouteV3 = "story" | "feeling" | "form" | "creator" | "phase" | "backlog";
 
 export type RerankInfo = { band: "familiar" | "adjacent" | "stretch"; closeness: number; pass: 1 | 2 | 3; bridge_repair: boolean };
 
@@ -29,7 +27,7 @@ export type ImpressionSnapshot = {
   weights: Record<Component, number>;
   contributions: Record<Component, number>;
   score: number;
-  route: RouteV3;
+  route: Route;
   anchor: { entryId: string; itemId: string; title: string; category: Category; affinity: number; ownWords: boolean; family: "story" | "feeling" } | null;
   shared: Array<{ key: string; weight: number }>;
   explain: { summary: string | null; quote: string | null; valued: string | null; creator: string | null; phase_label: string | null; fits: string | null };
@@ -83,7 +81,7 @@ export function buildSnapshot(args: {
   filters: Filters;
   fits: string | null;
   rerank: RerankInfo;
-  route: RouteV3;
+  route: Route;
   anchor: ScoredCandidate["anchors"]["story"];
   shared: Array<{ key: string; weight: number }>;
   anchorEntry: EntryWithContext | null;

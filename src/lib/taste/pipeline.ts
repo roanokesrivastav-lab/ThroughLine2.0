@@ -4,7 +4,7 @@
 // is computed here and handed to buildSnapshot; nothing is invented downstream.
 import type { EntryWithContext } from "@/lib/types";
 import { anchorOf, routeOf, sharedFor } from "./explain";
-import { fitsTime } from "./recommend";
+import { fitsTime } from "./form";
 import { filterCandidates, type PipelineFilters, type RecentImpression } from "./filters";
 import type { Source, StageCandidate } from "./score";
 import { scoreCandidates, orderScored } from "./score";

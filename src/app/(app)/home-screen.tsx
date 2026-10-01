@@ -63,7 +63,7 @@ export function HomeScreen() {
             <section aria-labelledby="recs-heading" className="rise rise-4">
               <SectionHeader eyebrow="If you want something new" title={<span id="recs-heading">A few threads to follow</span>} href="/recommend" hrefLabel="More" />
               <div className="space-y-3">
-                {home.data.recommendations.slice(0, 3).map((r) => <RecCard key={r.item.id} rec={r} onAdd={setAdding} />)}
+                {home.data.recommendations.slice(0, 3).map((r) => <RecCard key={r.snapshot.key} rec={r} onAdd={setAdding} />)}
               </div>
             </section>
           )}

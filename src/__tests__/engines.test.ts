@@ -5,10 +5,7 @@ import { detectPhases } from "@/lib/taste/phases";
 import { buildPortrait } from "@/lib/taste/portrait";
 import { buildEvolution } from "@/lib/taste/evolution";
 import { pickResurfaceCandidate } from "@/lib/taste/resurface";
-import { scoreCandidates, type Candidate } from "@/lib/taste/recommend";
 import { similarity } from "@/lib/taste/vector";
-import { CANON } from "@/lib/catalog/canon-data";
-import { canonToResult } from "@/lib/catalog/canon";
 import { affinity } from "@/lib/taste/affinity";
 
 const NOW = Date.UTC(2026, 8, 10);
@@ -100,37 +97,5 @@ describe("resurfacing", () => {
   it("skips recently surfaced entries", () => {
     const recent = lib.map((e) => ({ ...e, resurfaces: [{ id: "r", user_id: "u", entry_id: e.entry.id, surfaced_at: new Date(NOW - 86_400_000).toISOString(), channel: "home" as const, response: null, responded_at: null, note_reaction_id: null, snoozed_until: null }] }));
     expect(pickResurfaceCandidate(recent, new Date(NOW))).toBeNull();
-  });
-});
-
-describe("recommendations", () => {
-  const inLib = new Set(lib.map((e) => e.item.external_id));
-  const candidates: Candidate[] = CANON.filter((c) => !inLib.has(c.slug)).map((c) => { const r = canonToResult(c); return { item: { ...r, id: `canon:${c.slug}`, feel_prior: r.feel_prior ?? null }, vector: r.feel_prior ?? null }; });
-  it("returns 3–5 explained picks with bridges", () => {
-    const recs = scoreCandidates(lib, candidates, { limit: 5 });
-    expect(recs.length).toBeGreaterThanOrEqual(3);
-    expect(recs.length).toBeLessThanOrEqual(5);
-    for (const r of recs) {
-      expect(r.explanation.length).toBeGreaterThan(20);
-      expect(r.bridge).not.toBeNull();
-      expect(r.explanation).toMatch(/connects to something you loved/i);
-    }
-  });
-  it("applies time as a hard filter", () => {
-    const recs = scoreCandidates(lib, candidates, { minutes: 20, limit: 5 });
-    for (const r of recs) expect(["music"]).toContain(r.item.category);
-    const evening = scoreCandidates(lib, candidates, { minutes: 150, limit: 5 });
-    for (const r of evening) if (r.item.category === "movie") expect(r.item.metadata.runtime_minutes! <= 150).toBe(true);
-  });
-  it("surprise mode stays within the backlog and is stable within a day", () => {
-    const backlog: Candidate[] = lib.filter((e) => e.entry.status === "want").map((e) => ({ item: e.item, entryId: e.entry.id, vector: e.item.feel_prior }));
-    const a = scoreCandidates(lib, backlog, { surprise: true, listOnly: true, limit: 5 }, "user-1");
-    const b = scoreCandidates(lib, backlog, { surprise: true, listOnly: true, limit: 5 }, "user-1");
-    expect(a.map((r) => r.item.id)).toEqual(b.map((r) => r.item.id));
-    for (const r of a) expect(r.entryId).toBeDefined();
-  });
-  it("keeps the private score a low-weight nudge", () => {
-    const recs = scoreCandidates(lib, candidates, { limit: 5 });
-    for (const r of recs) expect(Math.abs(r.breakdown.score_hint)).toBeLessThan(0.06);
   });
 });

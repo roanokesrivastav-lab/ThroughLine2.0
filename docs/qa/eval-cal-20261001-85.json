@@ -1,0 +1,876 @@
+{
+  "feature_version": "f2",
+  "calibration_id": "cal-20261001-85",
+  "library_size": 40,
+  "d1": {
+    "hit5": 0.3333333333333333,
+    "hit20": 0.5833333333333334,
+    "mrr": 0.21741841838378176,
+    "median_rank": 16,
+    "n": 24,
+    "excluded": [
+      {
+        "key": "canon:song-wide-open-spaces",
+        "reason": "filtered"
+      },
+      {
+        "key": "canon:song-heroes",
+        "reason": "filtered"
+      },
+      {
+        "key": "canon:song-both-sides-now",
+        "reason": "filtered"
+      },
+      {
+        "key": "canon:song-the-night-we-met",
+        "reason": "filtered"
+      },
+      {
+        "key": "canon:song-motion-picture-soundtrack",
+        "reason": "filtered"
+      },
+      {
+        "key": "canon:song-re-stacks",
+        "reason": "filtered"
+      },
+      {
+        "key": "canon:song-skinny-love",
+        "reason": "filtered"
+      },
+      {
+        "key": "canon:song-flume",
+        "reason": "filtered"
+      },
+      {
+        "key": "canon:song-motion-sickness",
+        "reason": "filtered"
+      },
+      {
+        "key": "canon:song-holocene",
+        "reason": "filtered"
+      }
+    ],
+    "rows": [
+      {
+        "key": "canon:movie-paddington-2",
+        "entryId": "entry-movie-paddington-2",
+        "title": "Paddington 2",
+        "rank": 2,
+        "score": 0.6842995638922036,
+        "features": {
+          "story": 1,
+          "feeling": 0.8119395708292743,
+          "form": 0.8127443315089915,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:tv-ted-lasso",
+        "entryId": "entry-tv-ted-lasso",
+        "title": "Ted Lasso",
+        "rank": 5,
+        "score": 0.672704010777924,
+        "features": {
+          "story": 1,
+          "feeling": 0.774296923048498,
+          "form": 0.7856308411214953,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:song-wide-open-spaces",
+        "entryId": "entry-song-wide-open-spaces",
+        "title": "Wide Open Spaces",
+        "rank": null,
+        "score": null,
+        "features": null,
+        "band": null,
+        "route": null,
+        "excluded": "filtered"
+      },
+      {
+        "key": "canon:book-the-hobbit",
+        "entryId": "entry-book-the-hobbit",
+        "title": "The Hobbit",
+        "rank": 26,
+        "score": 0.6131180617875699,
+        "features": {
+          "story": 0.8311500391063291,
+          "feeling": 0.6532902307251909,
+          "form": 1,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:anime-spy-x-family",
+        "entryId": "entry-anime-spy-x-family",
+        "title": "Spy × Family",
+        "rank": 15,
+        "score": 0.6397434364315011,
+        "features": {
+          "story": 1,
+          "feeling": 0.6658224453154004,
+          "form": 0.7105263157894737,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:song-heroes",
+        "entryId": "entry-song-heroes",
+        "title": "Heroes",
+        "rank": null,
+        "score": null,
+        "features": null,
+        "band": null,
+        "route": null,
+        "excluded": "filtered"
+      },
+      {
+        "key": "canon:movie-mad-max-fury-road",
+        "entryId": "entry-movie-mad-max-fury-road",
+        "title": "Mad Max: Fury Road",
+        "rank": 59,
+        "score": 0.3587425720095239,
+        "features": {
+          "story": 0.4867130777169564,
+          "feeling": 0.3520372766960865,
+          "form": 0.6243325705568269,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:anime-haikyuu",
+        "entryId": "entry-anime-haikyuu",
+        "title": "Haikyu!!",
+        "rank": 30,
+        "score": 0.5929558402913152,
+        "features": {
+          "story": 1,
+          "feeling": 0.4954191146886803,
+          "form": 0.6258134490238612,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:movie-in-the-mood-for-love",
+        "entryId": "entry-movie-in-the-mood-for-love",
+        "title": "In the Mood for Love",
+        "rank": 4,
+        "score": 0.669864112178,
+        "features": {
+          "story": 1,
+          "feeling": 0.9516445872084649,
+          "form": 0.8105221518987341,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.2802875203233536
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:song-both-sides-now",
+        "entryId": "entry-song-both-sides-now",
+        "title": "Both Sides, Now",
+        "rank": null,
+        "score": null,
+        "features": null,
+        "band": null,
+        "route": null,
+        "excluded": "filtered"
+      },
+      {
+        "key": "canon:book-the-remains-of-the-day",
+        "entryId": "entry-book-the-remains-of-the-day",
+        "title": "The Remains of the Day",
+        "rank": 2,
+        "score": 0.7050551981753765,
+        "features": {
+          "story": 0.9638718246014513,
+          "feeling": 0.9528338721968832,
+          "form": 1,
+          "creator": 0.6487704717386574,
+          "phase": 0,
+          "anti": 0.572915688522976
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:movie-past-lives",
+        "entryId": "entry-movie-past-lives",
+        "title": "Past Lives",
+        "rank": 9,
+        "score": 0.6623818956741369,
+        "features": {
+          "story": 1,
+          "feeling": 1,
+          "form": 0.8105221518987341,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.3946428474044885
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:tv-normal-people",
+        "entryId": "entry-tv-normal-people",
+        "title": "Normal People",
+        "rank": 28,
+        "score": 0.6118544343624258,
+        "features": {
+          "story": 1,
+          "feeling": 0.9618581791060314,
+          "form": 0.6190476190476191,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.48916229543948947
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:song-the-night-we-met",
+        "entryId": "entry-song-the-night-we-met",
+        "title": "The Night We Met",
+        "rank": null,
+        "score": null,
+        "features": null,
+        "band": null,
+        "route": null,
+        "excluded": "filtered"
+      },
+      {
+        "key": "canon:movie-aftersun",
+        "entryId": "entry-movie-aftersun",
+        "title": "Aftersun",
+        "rank": 2,
+        "score": 0.6820732529929786,
+        "features": {
+          "story": 1,
+          "feeling": 1,
+          "form": 0.8105221518987341,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.2633671319455436
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:book-crying-in-h-mart",
+        "entryId": "entry-book-crying-in-h-mart",
+        "title": "Crying in H Mart",
+        "rank": 2,
+        "score": 0.6784946368990277,
+        "features": {
+          "story": 1,
+          "feeling": 1,
+          "form": 1,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.4767024206731499
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:tv-the-leftovers",
+        "entryId": "entry-tv-the-leftovers",
+        "title": "The Leftovers",
+        "rank": 17,
+        "score": 0.6384294950052204,
+        "features": {
+          "story": 1,
+          "feeling": 0.9531685322566179,
+          "form": 0.7756723716381417,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.45703378127882954
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:song-motion-picture-soundtrack",
+        "entryId": "entry-song-motion-picture-soundtrack",
+        "title": "Motion Picture Soundtrack",
+        "rank": null,
+        "score": null,
+        "features": null,
+        "band": null,
+        "route": null,
+        "excluded": "filtered"
+      },
+      {
+        "key": "canon:book-the-year-of-magical-thinking",
+        "entryId": "entry-book-the-year-of-magical-thinking",
+        "title": "The Year of Magical Thinking",
+        "rank": 16,
+        "score": 0.6450509233611682,
+        "features": {
+          "story": 1,
+          "feeling": 1,
+          "form": 1,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.6996605109255458
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:anime-frieren",
+        "entryId": "entry-anime-frieren",
+        "title": "Frieren: Beyond Journey's End",
+        "rank": 16,
+        "score": 0.6445245018732864,
+        "features": {
+          "story": 1,
+          "feeling": 0.8761424591304547,
+          "form": 0.6726190476190477,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.2106456473044122
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:song-re-stacks",
+        "entryId": "entry-song-re-stacks",
+        "title": "Re: Stacks",
+        "rank": null,
+        "score": null,
+        "features": null,
+        "band": null,
+        "route": null,
+        "excluded": "filtered"
+      },
+      {
+        "key": "canon:song-skinny-love",
+        "entryId": "entry-song-skinny-love",
+        "title": "Skinny Love",
+        "rank": null,
+        "score": null,
+        "features": null,
+        "band": null,
+        "route": null,
+        "excluded": "filtered"
+      },
+      {
+        "key": "canon:song-flume",
+        "entryId": "entry-song-flume",
+        "title": "Flume",
+        "rank": null,
+        "score": null,
+        "features": null,
+        "band": null,
+        "route": null,
+        "excluded": "filtered"
+      },
+      {
+        "key": "canon:book-never-let-me-go",
+        "entryId": "entry-book-never-let-me-go",
+        "title": "Never Let Me Go",
+        "rank": 1,
+        "score": 0.7414746925396658,
+        "features": {
+          "story": 1,
+          "feeling": 1,
+          "form": 1,
+          "creator": 0.6487704717386574,
+          "phase": 0,
+          "anti": 0.48934903089466725
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:book-klara-and-the-sun",
+        "entryId": "entry-book-klara-and-the-sun",
+        "title": "Klara and the Sun",
+        "rank": 1,
+        "score": 0.7582396922574725,
+        "features": {
+          "story": 1,
+          "feeling": 1,
+          "form": 1,
+          "creator": 0.7071067811865476,
+          "phase": 0,
+          "anti": 0.4164732390745495
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:movie-moonlight",
+        "entryId": "entry-movie-moonlight",
+        "title": "Moonlight",
+        "rank": 7,
+        "score": 0.6644136058415555,
+        "features": {
+          "story": 1,
+          "feeling": 1,
+          "form": 0.8105221518987341,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.3810981129550313
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:tv-succession",
+        "entryId": "entry-tv-succession",
+        "title": "Succession",
+        "rank": 47,
+        "score": 0.4807014875272745,
+        "features": {
+          "story": 0.8918011303382438,
+          "feeling": 0.4401856356465138,
+          "form": 0.7851288056206089,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.5455027505361145
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:movie-the-social-network",
+        "entryId": "entry-movie-the-social-network",
+        "title": "The Social Network",
+        "rank": 51,
+        "score": 0.4598938678061311,
+        "features": {
+          "story": 0.8665274350436215,
+          "feeling": 0.5416059671292425,
+          "form": 0.6226053639846743,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.5895273615657808
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:song-motion-sickness",
+        "entryId": "entry-song-motion-sickness",
+        "title": "Motion Sickness",
+        "rank": null,
+        "score": null,
+        "features": null,
+        "band": null,
+        "route": null,
+        "excluded": "filtered"
+      },
+      {
+        "key": "canon:tv-fleabag",
+        "entryId": "entry-tv-fleabag",
+        "title": "Fleabag",
+        "rank": 35,
+        "score": 0.5786333177682361,
+        "features": {
+          "story": 1,
+          "feeling": 0.7651319242793473,
+          "form": 0.6034696406443618,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.43275675456191814
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:anime-monster",
+        "entryId": "entry-anime-monster",
+        "title": "Monster",
+        "rank": 46,
+        "score": 0.49122696543528976,
+        "features": {
+          "story": 0.9078250883573395,
+          "feeling": 0.3904036469587252,
+          "form": 0.6577380952380952,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.32429675723403656
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:tv-severance",
+        "entryId": "entry-tv-severance",
+        "title": "Severance",
+        "rank": 54,
+        "score": 0.44465073646502784,
+        "features": {
+          "story": 0.8288341663995664,
+          "feeling": 0.664446539389742,
+          "form": 0.7866279069767441,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0.9184428267950583
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:movie-everything-everywhere",
+        "entryId": "entry-movie-everything-everywhere",
+        "title": "Everything Everywhere All at Once",
+        "rank": 34,
+        "score": 0.5748343220595273,
+        "features": {
+          "story": 0.849230394272505,
+          "feeling": 0.7105026490463816,
+          "form": 0.620277563608327,
+          "creator": 0,
+          "phase": 0,
+          "anti": 0
+        },
+        "band": "familiar",
+        "route": "story",
+        "excluded": null
+      },
+      {
+        "key": "canon:song-holocene",
+        "entryId": "entry-song-holocene",
+        "title": "Holocene",
+        "rank": null,
+        "score": null,
+        "features": null,
+        "band": null,
+        "route": null,
+        "excluded": "filtered"
+      }
+    ]
+  },
+  "d2": {
+    "skipped": null,
+    "t": "2026-02-02T00:00:00.000Z",
+    "n_train": 23,
+    "n_holdout": 11,
+    "unprofiled_share": 0,
+    "hit5": 0.2222222222222222,
+    "hit20": 0.3333333333333333,
+    "mrr": 0.20001645228971446
+  },
+  "d3": [
+    {
+      "component": "story",
+      "mean": 0.9158415334291633,
+      "sd": 0.11266416729482279,
+      "min": 0.6298975941020517,
+      "max": 1,
+      "zero_share": 0,
+      "dead": false,
+      "dominant": false
+    },
+    {
+      "component": "feeling",
+      "mean": 0.7590256576798764,
+      "sd": 0.1822680011344464,
+      "min": 0.24029485897828431,
+      "max": 1,
+      "zero_share": 0,
+      "dead": false,
+      "dominant": false
+    },
+    {
+      "component": "form",
+      "mean": 0.6226200871639939,
+      "sd": 0.24787996498972834,
+      "min": 0.16359289617486336,
+      "max": 1,
+      "zero_share": 0,
+      "dead": false,
+      "dominant": false
+    },
+    {
+      "component": "creator",
+      "mean": 0,
+      "sd": 0,
+      "min": 0,
+      "max": 0,
+      "zero_share": 1,
+      "dead": true,
+      "dominant": false
+    },
+    {
+      "component": "phase",
+      "mean": 0,
+      "sd": 0,
+      "min": 0,
+      "max": 0,
+      "zero_share": 1,
+      "dead": false,
+      "dominant": false
+    },
+    {
+      "component": "anti",
+      "mean": 0.26182359564262436,
+      "sd": 0.19298629998044692,
+      "min": 0,
+      "max": 0.7863254610164239,
+      "zero_share": 0.13559322033898305,
+      "dead": false,
+      "dominant": false
+    }
+  ],
+  "d4": {
+    "results": 25,
+    "categories_covered": [
+      "movie",
+      "tv",
+      "anime",
+      "book"
+    ],
+    "routes": [
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story",
+      "story"
+    ],
+    "own_words_zero_share": 1,
+    "quotas_met": true,
+    "mean_closeness": 0.8522823779982294,
+    "per_category": [
+      {
+        "category": "movie",
+        "results": 5,
+        "categories_covered": [
+          "movie"
+        ],
+        "routes": [
+          "story",
+          "story",
+          "story",
+          "story",
+          "story"
+        ],
+        "own_words_zero_share": 1,
+        "quotas_met": false,
+        "mean_closeness": 0.9150782084583418
+      },
+      {
+        "category": "tv",
+        "results": 5,
+        "categories_covered": [
+          "tv"
+        ],
+        "routes": [
+          "story",
+          "story",
+          "story",
+          "story",
+          "story"
+        ],
+        "own_words_zero_share": 1,
+        "quotas_met": false,
+        "mean_closeness": 0.9179084692130441
+      },
+      {
+        "category": "anime",
+        "results": 5,
+        "categories_covered": [
+          "anime"
+        ],
+        "routes": [
+          "story",
+          "story",
+          "story",
+          "story",
+          "story"
+        ],
+        "own_words_zero_share": 1,
+        "quotas_met": true,
+        "mean_closeness": 0.7568033584572191
+      },
+      {
+        "category": "book",
+        "results": 5,
+        "categories_covered": [
+          "book"
+        ],
+        "routes": [
+          "story",
+          "story",
+          "story",
+          "story",
+          "story"
+        ],
+        "own_words_zero_share": 1,
+        "quotas_met": false,
+        "mean_closeness": 0.8919570285824617
+      }
+    ],
+    "pass": {
+      "five_results": true,
+      "all_explained": true,
+      "story_evidence_all": true,
+      "no_feeling_route_with_own_words_anchor": true
+    }
+  },
+  "d5": {
+    "days": [
+      {
+        "day": 0,
+        "keys": [
+          "canon:book-beloved",
+          "canon:movie-la-la-land",
+          "canon:movie-her",
+          "canon:book-piranesi",
+          "canon:movie-before-sunrise"
+        ]
+      },
+      {
+        "day": 1,
+        "keys": [
+          "canon:anime-march-comes-in-like-a-lion",
+          "canon:book-educated",
+          "canon:anime-mob-psycho-100",
+          "canon:movie-the-shawshank-redemption",
+          "canon:movie-eternal-sunshine"
+        ]
+      },
+      {
+        "day": 2,
+        "keys": [
+          "canon:movie-lost-in-translation",
+          "canon:tv-station-eleven",
+          "canon:tv-derry-girls",
+          "canon:movie-portrait-of-a-lady-on-fire",
+          "canon:tv-twin-peaks"
+        ]
+      },
+      {
+        "day": 3,
+        "keys": [
+          "canon:movie-spirited-away",
+          "canon:movie-amelie",
+          "canon:book-harry-potter-1",
+          "canon:book-the-little-prince",
+          "canon:book-the-great-gatsby"
+        ]
+      },
+      {
+        "day": 4,
+        "keys": [
+          "canon:book-the-alchemist",
+          "canon:anime-mushishi",
+          "canon:movie-hereditary",
+          "canon:book-kafka-on-the-shore",
+          "canon:tv-the-bear"
+        ]
+      },
+      {
+        "day": 5,
+        "keys": [
+          "canon:movie-inception",
+          "canon:book-to-kill-a-mockingbird",
+          "canon:book-the-name-of-the-wind",
+          "canon:anime-hunter-x-hunter",
+          "canon:anime-a-silent-voice"
+        ]
+      },
+      {
+        "day": 6,
+        "keys": [
+          "canon:anime-cowboy-bebop",
+          "canon:anime-jujutsu-kaisen",
+          "canon:book-pride-and-prejudice",
+          "canon:book-a-little-life",
+          "canon:tv-better-call-saul"
+        ]
+      }
+    ],
+    "mean_consecutive_jaccard": 0,
+    "bridge_share": 1,
+    "mean_intra_list_diversity": {
+      "story": 0.4736598790992392,
+      "feeling": 0.37311960631242497
+    },
+    "max_theme_share": 0.6
+  },
+  "closeness": {
+    "p10": 0.7508927927523901,
+    "p50": 0.9274972777666867,
+    "p90": 1,
+    "bands": {
+      "familiar": 1,
+      "adjacent": 0,
+      "stretch": 0
+    }
+  }
+}

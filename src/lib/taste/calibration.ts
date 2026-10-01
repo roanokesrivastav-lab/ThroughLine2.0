@@ -18,12 +18,14 @@ export type Family = "story" | "feeling";
 
 /** Provisional constants until the first calibration run (§3.5). */
 export const CALIBRATION = {
-  id: "cal-provisional",
-  n_items: 0,
-  n_pairs: 0,
-  story: { lo: 0.15, hi: 0.65 },
-  feeling: { lo: 0.15, hi: 0.65 },
-} as const;
+  id: "cal-20261001-85",
+  computed_at: "2026-10-01T00:00:00Z",
+  n_items: 85,
+  n_pairs: 3570,
+  method: "exhaustive",
+  story: { lo: 0.336, hi: 0.631 },
+  feeling: { lo: 0.3692, hi: 0.7779 },
+} as const satisfies CalibrationTable;
 
 export type CalibrationRange = { lo: number; hi: number };
 export type CalibrationTable = {

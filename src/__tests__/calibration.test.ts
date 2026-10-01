@@ -36,14 +36,19 @@ describe("calibration map (SPEC §3.1, test matrix #5)", () => {
     expect(cal(0.5, range)).toBeCloseTo(0.7272727, 5);
   });
 
-  it("the committed provisional constants are the §3.5 defaults", () => {
-    expect(CALIBRATION.id).toBe("cal-provisional");
-    expect(CALIBRATION.n_items).toBe(0);
-    expect(CALIBRATION.story).toEqual({ lo: 0.15, hi: 0.65 });
-    expect(CALIBRATION.feeling).toEqual({ lo: 0.15, hi: 0.65 });
-    expect(calStory(0.15)).toBe(0);
-    expect(calStory(0.65)).toBe(1);
-    expect(calFeeling(0.4)).toBeCloseTo(0.5, 12);
+  it("the committed calibration is the script's first run (§3.5, Session 8)", () => {
+    // Written by scripts/calibrate.mts from the 85 committed canon profiles (§2.2):
+    // the id carries the run date and population; both family spans clear the 0.05 guard.
+    expect(CALIBRATION.id).toMatch(/^cal-\d{8}-85$/);
+    expect(CALIBRATION.n_items).toBe(85);
+    expect(CALIBRATION.n_pairs).toBe(3570); // C(85, 2): exhaustive, not sampled
+    expect(CALIBRATION.story.hi - CALIBRATION.story.lo).toBeGreaterThanOrEqual(0.05);
+    expect(CALIBRATION.feeling.hi - CALIBRATION.feeling.lo).toBeGreaterThanOrEqual(0.05);
+    // cal_F maps its own table's ends to 0 and 1 (§3.1), at whatever the committed lo/hi are.
+    expect(calStory(CALIBRATION.story.lo)).toBe(0);
+    expect(calStory(CALIBRATION.story.hi)).toBe(1);
+    expect(calFeeling(CALIBRATION.feeling.lo)).toBe(0);
+    expect(calFeeling(CALIBRATION.feeling.hi)).toBe(1);
   });
 });
 

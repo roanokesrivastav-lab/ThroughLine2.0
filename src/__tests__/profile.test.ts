@@ -367,7 +367,7 @@ describe("centroid and anchors (§4.3)", () => {
     const e = entryFrom({ key: "old" }, 0);
     e.item.profile = { ...profile({}, {}, null), profile_version: "p0" };
     expect(usableProfile(e.item)).toBeNull();
-    expect(FEATURE_VERSION).toBe("f1");
+    expect(FEATURE_VERSION).toBe("f2");
   });
 
   it("an empty family vector is missing evidence, not profile evidence", () => {

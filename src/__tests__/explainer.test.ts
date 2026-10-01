@@ -80,6 +80,28 @@ describe("checkAiExplanation (§2.4)", () => {
     expect(checkAiExplanation("x".repeat(321), s)).toBe(false);
     expect(checkAiExplanation("", s)).toBe(false);
   });
+
+  it("K (§2.5): the recommended item's own digit title is allowed; an invented extra number is not", () => {
+    const snaps = SNAPSHOTS();
+    const s = { ...snaps[0], item: { ...snaps[0].item, title: "Blade Runner 2049" } };
+    // A correct sentence naming the digit-titled item passes (the 7B review carry-over).
+    expect(checkAiExplanation("Blade Runner 2049 asks the same quiet question your anchor does.", s)).toBe(true);
+    // The same sentence with an invented extra number ("ranked" is not a banned word,
+    // so this fails on the digit guard alone) is still rejected.
+    expect(checkAiExplanation("Blade Runner 2049 asks the same quiet question your anchor does, ranked 7th.", s)).toBe(false);
+  });
+
+  it("K2 (§8.6, DECISIONS #116): the user's own verbatim-quoted words are exempt from the word guards; model-authored ones are not", () => {
+    const snaps = SNAPSHOTS();
+    const s = snaps.find((x) => (x.explain.quote ?? "").toLowerCase().includes("bittersweet")) ?? snaps[0];
+    // Quoting the user's own note verbatim passes even though the note contains an
+    // ending word — the guards constrain what the MODEL authors, not what the user wrote.
+    expect(checkAiExplanation(`You wrote “${s.explain.quote}” — the same register your anchor lives in.`, s)).toBe(true);
+    // The model authoring the same word outside a quote still fails.
+    expect(checkAiExplanation("It leaves you bittersweet in the best way.", s)).toBe(false);
+    // Quoting the note AND adding an invented ending word outside the quotes still fails.
+    expect(checkAiExplanation(`You wrote “${s.explain.quote}” — an open, ambiguous piece overall.`, s)).toBe(false);
+  });
 });
 
 describe("mock (§2.4)", () => {

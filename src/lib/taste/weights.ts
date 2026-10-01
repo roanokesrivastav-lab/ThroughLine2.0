@@ -7,7 +7,7 @@
 // The learned per-user vector (§12) has this same shape and is consulted only when it
 // exists for the current feature_version. Stage 3 always uses W0.
 
-export const FEATURE_VERSION = "f1";
+export const FEATURE_VERSION = "f2";
 
 /** Item-profile version (SPEC §1.9): bump when the profiling prompt, schema, caps or merge rules change. A profile is usable only at this version. */
 export const PROFILE_VERSION = "p1";

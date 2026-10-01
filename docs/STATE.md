@@ -989,3 +989,141 @@ scope is unchanged: §1 files (+ `tags.ts` one-word comment, DECISIONS/STATE).
    list), then the same on a phone.
 3. Session 8 (scripts + baseline calibration), then Session 9 (controlled live rollout, including
    the first live profiling run).
+
+---
+
+## 2026-10-01 — Session 8: eval harness + first calibration (GLM, uncommitted)
+
+### Built
+- `src/lib/taste/eval.ts` (new, pure): `explainScore`, `leaveOneLovedOut`, `temporalHoldout`,
+  `componentSpread`, `coldStart`, `diversityRun`, `closenessDistribution`, plus the shared
+  D.1 core (generate → inject → filter with recency off → score → `orderScored`, no re-rank)
+  and `lovedWithProfile`/`coldStartLibrary` helpers. Re-uses the Stage 3 functions; never
+  re-implements scoring.
+- `scripts/calibrate.mts` (new): §3.2 population from the committed canon profiles (85 items,
+  usable at PROFILE_VERSION, ordered by key ascending), calls the existing `calibrate()` core
+  exhaustively, `--dry-run` writes nothing, guards exit non-zero, rewrites ONLY the
+  `CALIBRATION` constant, never touches `weights.ts`.
+- `scripts/eval-recs.mts` (new): one JSON report on stdout (`feature_version`,
+  `calibration_id`, `library_size`, d1–d5, closeness). Fixture mode offline; `--user` mode
+  read-only through `eval-user-reader.ts` (new) — built and stub-tested, NEVER run (Session 9).
+- `scripts/explain-rec.mts` (new): per-component explainScore table; top-5 mode and title mode
+  (see DECISIONS #114 for the Aftersun resolution).
+- `package.json`: `calibrate`, `eval:recs`, `explain:rec` scripts, existing pattern.
+- Tests: `eval.test.ts` (13: A–H), `regression.test.ts` (I, golden), `eval-user-reader.test.ts`
+  (J), `explainer.test.ts` + K (§2.5 digit-title carry-over). `src/__tests__/golden/top5.json`
+  generated under f2.
+- §2.5: `checkAiExplanation` allows `snapshot.item.title` in the digit guard's allowed strings.
+
+### Verified
+- Baseline before any edit: typecheck 0, eslint 0, 323/323, build OK (7B's end state).
+- Final (with the one reported failure): typecheck 0 errors · eslint 0 problems (src + scripts)
+  · `npm test` → **338/339** (28 files; the 1 failure is test H, see the STOP below)
+  · `npm run build` compiled · `npm run calibrate -- --dry-run` twice → byte-identical
+  · `git diff --check` clean · the §4.5 script-import grep finds no real import (only
+  pre-existing mentions in comments/generated-file headers; all 5 hits pre-date this session
+  except a wording change in our own comment, now reworded).
+- AI-verified only; no database, no network, no model call, nothing phone-verified.
+
+### The calibration (DECISIONS #108–#109)
+- Table `cal-20261001-85`, computed_at 2026-10-01, 85 items, 3,570 pairs, method exhaustive:
+  story { lo: 0.336, hi: 0.631 } · feeling { lo: 0.3692, hi: 0.7779 } (both spans > 0.05).
+  FEATURE_VERSION f1 → f2 in the same diff.
+- Determinism: two dry-runs byte-identical; the script wrote the file once; `git diff` of
+  calibration.ts touches only the constant block.
+
+### Before / after (D.1, leave-one-loved-out, fixture library, n = 24 ranked + 10 excluded)
+| | provisional (f1, cal-provisional) | calibrated (f2, cal-20261001-85) |
+|---|---|---|
+| hit@5 | 0.2917 | **0.3333** (not lower — acceptance gate passes, §2.6) |
+| hit@20 | 0.6667 | 0.5833 |
+| MRR | 0.2227 | 0.2174 |
+| median rank | 16.5 | 16 |
+
+D.2 temporal holdout (calibrated): t = 2026-02-02, 23 train / 11 holdouts, unprofiled share 0,
+hit@5 0.2222, MRR 0.1982. D.3: feeling (sd 0.182) and anti (sd 0.193) carry the spread; creator
+is dead (sd 0, evidence). D.4: 5 results, all explained, story evidence all, mean closeness 0.780,
+quotas met, all four pass conditions true. D.5: mean consecutive Jaccard 0 (no repeats),
+bridge share 1, max theme share 0.4.
+
+### Closeness distribution (default fixture request, §E Q2 input for the founder)
+- Provisional: P10 0.904 / P50 1.000 / P90 1.000 — bands: familiar 100%, adjacent 0%, stretch 0%.
+  The provisional range clamps almost everything to 1.
+- Calibrated: P10 0.751 / P50 0.927 / P90 1.000 — bands: **familiar 100%, adjacent 0%, stretch 0%**.
+  The distribution spread out (P50 dropped from 1.0 to 0.93) but every candidate still clears
+  0.60, so the band shares did not move. The founder's threshold decision (§E item 2) is live:
+  the 0.60 familiar line sits below the entire candidate population on this library.
+
+### Calibration-derived test edits (§2.6 — the complete list)
+1. `calibration.test.ts`, "the committed provisional constants are the §3.5 defaults" →
+   "the committed calibration is the script's first run": old `CALIBRATION.id ===
+   "cal-provisional"` + pinned 0.15/0.65 values → new format `/^cal-\d{8}-85$/`, n_items 85,
+   n_pairs 3570, spans ≥ 0.05, and cal maps each table's own ends to 0/1. (Spec-named edit, §2.6.)
+2. `profile.test.ts`, "usableProfile treats a wrong-version profile as unprofiled":
+   old `FEATURE_VERSION === "f1"` → new `"f2"`. (Spec-named edit, §2.6.)
+3. `eval.test.ts`, test F cold start: old `quotas_met === false` (provisional clamp pinned all
+   ten taps into the familiar band, quota unfilled) → new `true` (under the calibrated table the
+   taps spread across bands and the engine reports every quota filled). Calibration-derived:
+   the number the assertion pins is the engine's quota bookkeeping, which the calibration moved.
+4. Golden `src/__tests__/golden/top5.json` written fresh under f2 (not an edit; test I's file).
+No other existing test was touched. Structural assertions elsewhere all pass.
+
+### STOP reported (§7 — a structural assertion fails after the calibration)
+- Test H in `eval.test.ts` ("every fixture explanation sentence passes `checkAiExplanation`",
+  §3 table row H) fails under f2: 2 of 5 sentences are rejected because the Past Lives anchor's
+  own-words note begins "Bittersweet and gentle…", and the ENDINGS guard bans "bittersweet"
+  anywhere while the quote guard *requires* quoting that note verbatim. Pre-existing conflict
+  exposed by the calibration; options and the reverted narrowing are in DECISIONS #115. Session 8
+  ships the spec-exact guard, H failing, everything else green. Not worked around.
+
+### Judgment calls (full reasoning in DECISIONS #108–#115)
+- #109 the stale "provisional constants" comment in calibration.ts left untouched (§1 scope);
+  flagged for the reviewer. #111 injection construction reused by `explain:rec` for library
+  titles (Aftersun). #113 `--user` reader read-only, unrun. #114 explain:rec lookup semantics.
+- §4.5 grep: no app code imports a script. The five remaining matches are pre-existing comments
+  and generated-file headers (canon-profiles.ts, profiling-run.ts, nvidia.ts, calibration.ts).
+
+### Next
+1. Reviewer + founder: decide DECISIONS #115 (the ENDINGS/quote-guard conflict) and confirm
+   #114's explain:rec reading; then authorize the commit.
+2. **The founder:** decide whether the band thresholds stay, using the reported distribution
+   (§E item 2) — under f2 the whole default-request population still lands familiar.
+3. Session 9: controlled live rollout — the first live profiling run over live items with the
+   founder present; `eval-recs --user` on the founder's library; the founder's Home/Recommend
+   walk in dev and on a phone; watch creator-adapter latency (DECISIONS, 7B).
+
+### Review round 2 (2026-10-01) — 7 fixes applied + the authorized guard-scope decision
+- **#115 resolved (DECISIONS #116, founder-authorized):** `checkAiExplanation` exempts the
+  user's VERBATIM-quoted words from the ENDINGS/BANNED scans; model-authored words outside
+  quotes still fail. Test K2 restored with three shapes (quote passes / authored fails /
+  quote+invented fails). Test H passes; the round-1 STOP is cleared.
+- **P2-1 temporal holdout (eval.ts):** the 70/30 split now covers ALL dated loved entries,
+  profiled or not; unprofiled holdouts are injected, then deferred and counted in
+  unprofiled_share. New test: 18 dated loved entries with the newest six unprofiled →
+  n_holdout 6, unprofiled_share 1 (the old code reported 5 holdouts, share 0).
+- **P2-2 diversity metrics (eval.ts):** intra-list diversity is now 1 − the engine's
+  weighted simFamily per pair (was key-name Jaccard, which overstated it); max_theme_share
+  is the max over DAILY shares (was a week-wide average that hid peaks). Recalibrated
+  fixture numbers: intra-list 0.4737 story / 0.3731 feeling (was 0.645/0.491), max theme
+  share 0.6 (was 0.4) — matching the reviewer's own recomputation.
+- **P2-3 golden test (regression.test.ts):** pins rankPipeline().snapshots — the displayed
+  five after quotas/caps/bridge repair — not the first five raw scores. top5.json
+  regenerated under f2 through the full pipeline (same keys).
+- **P2-4 cold-start category runs (eval.ts):** coldStart now runs the unfiltered request
+  plus one per movie/tv/anime/book (25 rows reported); per_category carries each run's
+  results/quotas/closeness. Top-level quotas_met describes the unfiltered request (what
+  §D.4's pass conditions and a new user see); per category on the fixture taps,
+  movie/tv/book leave an adjacent/stretch seat unfilled (logged, not thresholded), anime fills.
+- **P2-5 user-mode parity (eval-user-reader.ts, eval-recs.mts):** the reader no longer caps
+  at 50 — the caller's limit rules, and the script passes POOL_SIZE (500), the live
+  pipeline's value. USER_POOL_LIMIT deleted. phases and pool are now threaded into
+  coldStart and diversityRun (they were silently discarded before).
+- **P2-6 env loading (package.json):** `eval:recs` now carries `--env-file=.env.local`, so
+  the documented `--user` command finds its credentials.
+- **P2-7 d1 rows (eval-recs.mts):** the saved report includes every holdout row (key, rank,
+  score, features, band, route) — both JSONs regenerated with rows (34 rows each).
+- **Re-verified:** typecheck 0 · eslint 0 (src + scripts) · npm test **341/341** (28 files) ·
+  build compiled · dry-run ×2 byte-identical · git diff --check clean · acceptance gate
+  re-checked on the regenerated JSONs: provisional hit@5 0.2917 → calibrated 0.3333 (not
+  lower). Both eval JSONs re-saved with the corrected labels (f1/cal-provisional and
+  f2/cal-20261001-85) via the same flip-and-restore dance, constants verified restored.

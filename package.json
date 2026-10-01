@@ -13,7 +13,10 @@
     "seed:demo": "node --env-file=.env.local --import tsx scripts/seed-demo.ts",
     "profile:canon": "node --conditions=react-server --env-file=.env.local --import tsx scripts/profile-canon.mts",
     "qa:profiles": "node --conditions=react-server --env-file=.env.local --import tsx scripts/profile-report.mts",
-    "qa:repeat": "node --conditions=react-server --env-file=.env.local --import tsx scripts/repeat-eval.mts"
+    "qa:repeat": "node --conditions=react-server --env-file=.env.local --import tsx scripts/repeat-eval.mts",
+    "calibrate": "node --conditions=react-server --import tsx scripts/calibrate.mts",
+    "eval:recs": "node --conditions=react-server --env-file=.env.local --import tsx scripts/eval-recs.mts",
+    "explain:rec": "node --conditions=react-server --import tsx scripts/explain-rec.mts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.124.0",

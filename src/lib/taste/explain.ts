@@ -173,8 +173,9 @@ const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /**
  * True only when the AI sentence obeys §8.6: length cap, no digit outside the
- * allowed strings, no ending value, no reception words, and every double-quoted
- * fragment verbatim from the anchor's own quote or valued phrase.
+ * allowed strings, no model-authored ending value or reception word — the user's
+ * own VERBATIM quoted words are exempt (founder decision, DECISIONS #116) — and
+ * every double-quoted fragment verbatim from the anchor's own quote or valued phrase.
  */
 export function checkAiExplanation(text: string, snapshot: ImpressionSnapshot): boolean {
   if (text.length === 0 || text.length > MAX_AI_EXPLANATION) return false;
@@ -189,10 +190,16 @@ export function checkAiExplanation(text: string, snapshot: ImpressionSnapshot): 
     if (!allowedQuotes.some((q) => q.includes(fragment))) return false;
   }
 
-  // Digits are forbidden outside the strings the snapshot itself supplies (titles,
-  // creator, phase label, valued, quote, fits) — §8.6 forbids every number the
-  // engine computes, and the model has been given none.
+  // §8.6 constrains what the MODEL authors (founder decision, DECISIONS #116). The word
+  // and digit scans run on the text minus the strings the snapshot itself supplies (the
+  // recommended item's own title — 7B review carry-over — the anchor title, creator,
+  // phase label, valued, quote, fits) and minus the quoted fragments, which the guard
+  // above has already forced to be the user's own words. A note that happens to contain
+  // an ending word ("Bittersweet and gentle…") no longer disqualifies the sentence that
+  // quotes it; any ending or reception claim the model adds OUTSIDE those quotes still
+  // fails. An unquoted forbidden word never passes, verified by test K2.
   const allowed = [
+    snapshot.item.title,
     snapshot.anchor?.title,
     snapshot.explain.creator,
     snapshot.explain.phase_label,
@@ -201,11 +208,12 @@ export function checkAiExplanation(text: string, snapshot: ImpressionSnapshot): 
     snapshot.explain.fits,
   ].filter((s): s is string => s != null && s.length > 0);
   let stripped = text;
-  if (allowed.length > 0) stripped = text.replace(new RegExp(allowed.map(escapeRegExp).join("|"), "g"), "");
+  if (allowed.length > 0) stripped = stripped.replace(new RegExp(allowed.map(escapeRegExp).join("|"), "g"), "");
+  for (const fragment of quoted) stripped = stripped.replaceAll(fragment, "");
   if (/\d/.test(stripped)) return false;
 
   const wholeWord = (words: readonly string[]) => new RegExp(`\\b(?:${words.map(escapeRegExp).join("|")})\\b`, "i");
-  if (wholeWord(ENDINGS).test(text)) return false;
-  if (wholeWord(BANNED_WORDS).test(text)) return false;
+  if (wholeWord(ENDINGS).test(stripped)) return false;
+  if (wholeWord(BANNED_WORDS).test(stripped)) return false;
   return true;
 }

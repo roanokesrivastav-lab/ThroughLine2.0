@@ -1,0 +1,12 @@
+{
+  "feature_version": "f2",
+  "calibration_id": "cal-20261001-85",
+  "now": "2026-09-25T12:00:00Z",
+  "keys": [
+    "canon:book-beloved",
+    "canon:movie-la-la-land",
+    "canon:movie-her",
+    "canon:book-piranesi",
+    "canon:movie-before-sunrise"
+  ]
+}

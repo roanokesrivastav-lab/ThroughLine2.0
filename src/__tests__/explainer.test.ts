@@ -102,6 +102,15 @@ describe("checkAiExplanation (§2.4)", () => {
     // Quoting the note AND adding an invented ending word outside the quotes still fails.
     expect(checkAiExplanation(`You wrote “${s.explain.quote}” — an open, ambiguous piece overall.`, s)).toBe(false);
   });
+
+  it("exempts only quoted occurrences, even when forbidden words repeat outside them", () => {
+    const s = { ...SNAPSHOTS()[0], explain: { ...SNAPSHOTS()[0].explain, quote: "Bittersweet critics gave it 9", valued: null } };
+    expect(checkAiExplanation('You wrote “Bittersweet”. Bittersweet is how it ends.', s)).toBe(false);
+    expect(checkAiExplanation('You wrote "critics". The critics loved it.', s)).toBe(false);
+    expect(checkAiExplanation('You wrote “9”. It earned 9.', s)).toBe(false);
+    expect(checkAiExplanation('Bittersweet critics gave it 9', s)).toBe(false);
+    expect(checkAiExplanation('You wrote “Bittersweet critics gave it 9”. A familiar feeling.', s)).toBe(true);
+  });
 });
 
 describe("mock (§2.4)", () => {

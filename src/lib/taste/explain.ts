@@ -190,26 +190,17 @@ export function checkAiExplanation(text: string, snapshot: ImpressionSnapshot): 
     if (!allowedQuotes.some((q) => q.includes(fragment))) return false;
   }
 
-  // §8.6 constrains what the MODEL authors (founder decision, DECISIONS #116). The word
-  // and digit scans run on the text minus the strings the snapshot itself supplies (the
-  // recommended item's own title — 7B review carry-over — the anchor title, creator,
-  // phase label, valued, quote, fits) and minus the quoted fragments, which the guard
-  // above has already forced to be the user's own words. A note that happens to contain
-  // an ending word ("Bittersweet and gentle…") no longer disqualifies the sentence that
-  // quotes it; any ending or reception claim the model adds OUTSIDE those quotes still
-  // fails. An unquoted forbidden word never passes, verified by test K2.
+  // Remove whole, validated quotation spans, never matching words elsewhere.
+  // User quote/valued strings have no exemption when used outside quotation marks.
+  let stripped = text.replace(/“([^”]*)”|"([^"]*)"/g, "");
   const allowed = [
     snapshot.item.title,
     snapshot.anchor?.title,
     snapshot.explain.creator,
     snapshot.explain.phase_label,
-    snapshot.explain.valued,
-    snapshot.explain.quote,
     snapshot.explain.fits,
   ].filter((s): s is string => s != null && s.length > 0);
-  let stripped = text;
   if (allowed.length > 0) stripped = stripped.replace(new RegExp(allowed.map(escapeRegExp).join("|"), "g"), "");
-  for (const fragment of quoted) stripped = stripped.replaceAll(fragment, "");
   if (/\d/.test(stripped)) return false;
 
   const wholeWord = (words: readonly string[]) => new RegExp(`\\b(?:${words.map(escapeRegExp).join("|")})\\b`, "i");

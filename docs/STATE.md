@@ -1127,3 +1127,11 @@ No other existing test was touched. Structural assertions elsewhere all pass.
   re-checked on the regenerated JSONs: provisional hit@5 0.2917 → calibrated 0.3333 (not
   lower). Both eval JSONs re-saved with the corrected labels (f1/cal-provisional and
   f2/cal-20261001-85) via the same flip-and-restore dance, constants verified restored.
+
+### Session 8 follow-up review (2026-10-03)
+
+- Session 8 was already committed as `cd11d3c` when this review began. The seven earlier review fixes are present; type check, source/scripts lint, all 341 tests and production build passed before the follow-up.
+- Fixed one remaining #116 implementation gap: only validated quotation spans are exempt; duplicate model-authored words outside quotes and unquoted user-note copies are checked normally (DECISIONS #117). Regression failed before the fix and passes after it.
+- Final gates: type check clean; source/scripts lint clean; **342/342 tests** across 28 files; production build compiled; whitespace check clean. No live recommendation run, calibration/threshold change, or phone verification.
+- Founder authorized committing and pushing Session 8 to `https://github.com/roanokesrivastav-lab/ThroughLine2.0`; repository has no remote refs. Follow-up is committed separately from the existing Session 8 commit.
+- Localhost sign-in diagnosis: configured project `eiljwuaqmjgdgubihknw.supabase.co` returns DNS `ENOTFOUND`, including outside the sandbox, while GitHub and Supabase's main domain resolve normally. Account lookup could not reach Supabase. Founder asked to resume the project or provide its replacement URL; auth work continues separately.

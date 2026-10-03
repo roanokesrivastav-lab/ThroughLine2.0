@@ -6,16 +6,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ThreadMark } from "@/components/shell/app-shell";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { signInDestination, signInError } from "@/lib/auth/sign-in";
 
 export function SignInScreen() {
   const router = useRouter();
   const params = useSearchParams();
-  const next = params.get("next") || "/";
+  const next = signInDestination(params.get("next"));
   const [mode, setMode] = useState<"in" | "up" | "link">("in");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
-  const [msg, setMsg] = useState<{ kind: "error" | "ok"; text: string } | null>(null);
+  const [msg, setMsg] = useState<{ kind: "error" | "ok"; text: string } | null>(params.get("error") === "link" ? { kind: "error", text: "That sign-in link could not be used. Request a fresh link and open it in the same browser." } : null);
 
   // TEMPORARY: skips the confirmation email while delivery is broken. Development only.
   const devBypass = process.env.NODE_ENV !== "production";
@@ -31,8 +32,8 @@ export function SignInScreen() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBusy(true); setMsg(null);
-    const supabase = supabaseBrowser();
     try {
+      const supabase = supabaseBrowser();
       if (mode === "link") {
         const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: `${location.origin}/auth/callback?next=${encodeURIComponent(next)}` } });
         if (error) throw error;
@@ -61,8 +62,20 @@ export function SignInScreen() {
         router.push(next); router.refresh();
       }
     } catch (err) {
-      setMsg({ kind: "error", text: (err as Error).message });
+      setMsg({ kind: "error", text: signInError(err) });
     } finally { setBusy(false); }
+  };
+
+  const signInLocally = async () => {
+    setBusy(true); setMsg(null);
+    try {
+      const res = await fetch("/api/dev/sign-in", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email }) });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Could not sign in locally.");
+      // Reload so browser auth and server-rendered screens both see the new cookies.
+      window.location.assign(next);
+    } catch (error) { setMsg({ kind: "error", text: signInError(error) }); }
+    finally { setBusy(false); }
   };
 
   return (
@@ -92,7 +105,10 @@ export function SignInScreen() {
             {mode !== "link" && <button type="button" className="underline-offset-4 hover:underline" onClick={() => setMode("link")}>Use a magic link</button>}
           </div>
           {devBypass && mode !== "link" && (
-            <p className="text-xs text-ink-soft">Dev mode: email confirmation is skipped, so accounts sign in immediately.</p>
+            <div className="space-y-2">
+              <Button type="button" variant="outline" className="w-full" disabled={busy || !email.trim()} onClick={signInLocally}>Sign in locally</Button>
+              <p className="text-xs text-ink-soft">Local sign-in uses the account configured for development. Your password stays unchanged.</p>
+            </div>
           )}
         </form>
       </div>

@@ -1135,3 +1135,13 @@ No other existing test was touched. Structural assertions elsewhere all pass.
 - Final gates: type check clean; source/scripts lint clean; **342/342 tests** across 28 files; production build compiled; whitespace check clean. No live recommendation run, calibration/threshold change, or phone verification.
 - Founder authorized committing and pushing Session 8 to `https://github.com/roanokesrivastav-lab/ThroughLine2.0`; repository has no remote refs. Follow-up is committed separately from the existing Session 8 commit.
 - Localhost sign-in diagnosis: configured project `eiljwuaqmjgdgubihknw.supabase.co` returns DNS `ENOTFOUND`, including outside the sandbox, while GitHub and Supabase's main domain resolve normally. Account lookup could not reach Supabase. Founder asked to resume the project or provide its replacement URL; auth work continues separately.
+
+### Localhost sign-in repair (2026-10-03)
+
+- Session 8 `cd11d3c` and guard follow-up `f6e7534` were successfully pushed to `origin/main` at the founder's supplied GitHub repository.
+- The configured Supabase hostname initially failed DNS lookup. The founder resumed the paused project; the service became reachable, and the requested account was found with email already confirmed. This was a connection failure, not evidence of a wrong password.
+- Added opt-in **Sign in locally** for the existing account configured in server-only `DEV_SIGN_IN_EMAIL` (ignored `.env.local`), development + loopback + same Origin only; generated token is consumed server-side into session cookies. Password unchanged. DECISIONS #118 records the scope.
+- Sign-in now explains network failures and failed email-link callbacks. Client setup exceptions are caught. Password and callback return destinations stay within the app.
+- **Live desktop verification:** entered the founder's requested email on `http://localhost:3000/auth/sign-in?next=/settings`, clicked Sign in locally, and confirmed `/settings` loaded with that account's email and library count. The signed-in Codex browser tab is left open. No Home/Recommend request or manual profiling/evaluation run, and no phone verification.
+- Required gates: type check clean; source/scripts lint clean; **356/356 tests** in 29 files; production build compiled; whitespace check clean. Tests cover disabled/production/nonlocal/cross-origin access, account scoping, missing-account refusal, server token verification with no token response, verification failure, and email-link redirect safety.
+- Sign-in fixes are committed separately from Session 8. No Session 9 plan was written. The band threshold decision remains unchanged (#110).
